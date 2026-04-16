@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 
 interface HeroSectionProps {
-  image: string;
+  video: string;
+  poster?: string;
   title: string;
   subtitle: string;
   description?: string;
@@ -13,7 +14,8 @@ interface HeroSectionProps {
 }
 
 export function HeroSection({
-  image,
+  video,
+  poster,
   title,
   subtitle,
   description,
@@ -25,13 +27,15 @@ export function HeroSection({
 }: HeroSectionProps) {
   return (
     <section id={id} className="relative h-screen w-full overflow-hidden">
-      <img
-        src={image}
-        alt=""
-        loading={priority ? "eager" : "lazy"}
-        width={1920}
-        height={1080}
-        className="absolute inset-0 w-full h-full object-cover hero-ken-burns"
+      <video
+        src={video}
+        poster={poster}
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload={priority ? "auto" : "metadata"}
+        className="absolute inset-0 w-full h-full object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/50 to-background/95" />
       <div className="absolute inset-0 bg-gradient-to-r from-background/40 to-transparent" />

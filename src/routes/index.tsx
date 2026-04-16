@@ -8,12 +8,19 @@ import { ProjectsGallery } from "@/components/ProjectsGallery";
 import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
 
-import heroMain from "@/assets/hero-main.jpg";
-import heroElectronics from "@/assets/hero-electronics.jpg";
-import heroSecurity from "@/assets/hero-security.jpg";
-import heroEnergy from "@/assets/hero-energy.jpg";
-import heroTv from "@/assets/hero-tv.jpg";
-import heroBtp from "@/assets/hero-btp.jpg";
+import heroMainImg from "@/assets/hero-main.jpg";
+import heroElectronicsImg from "@/assets/hero-electronics.jpg";
+import heroSecurityImg from "@/assets/hero-security.jpg";
+import heroEnergyImg from "@/assets/hero-energy.jpg";
+import heroTvImg from "@/assets/hero-tv.jpg";
+import heroBtpImg from "@/assets/hero-btp.jpg";
+
+import heroMainVid from "@/assets/hero-main.mp4.asset.json";
+import heroElectronicsVid from "@/assets/hero-electronics.mp4.asset.json";
+import heroSecurityVid from "@/assets/hero-security.mp4.asset.json";
+import heroEnergyVid from "@/assets/hero-energy.mp4.asset.json";
+import heroTvVid from "@/assets/hero-tv.mp4.asset.json";
+import heroBtpVid from "@/assets/hero-btp.mp4.asset.json";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
@@ -38,7 +45,8 @@ export const Route = createFileRoute("/")({
 const heroSections = [
   {
     id: "hero",
-    image: heroMain,
+    video: heroMainVid.url,
+    poster: heroMainImg,
     title: "BYTI Technologie SARL",
     subtitle: "Connecter · Construire · Innover",
     description: "Solutions technologiques, énergétiques et infrastructurelles pour un monde moderne",
@@ -49,7 +57,8 @@ const heroSections = [
   },
   {
     id: "electronics",
-    image: heroElectronics,
+    video: heroElectronicsVid.url,
+    poster: heroElectronicsImg,
     title: "Électronique & équipements intelligents",
     subtitle: "Des technologies modernes pour un quotidien connecté",
     buttonText: "Découvrir",
@@ -57,7 +66,8 @@ const heroSections = [
   },
   {
     id: "security",
-    image: heroSecurity,
+    video: heroSecurityVid.url,
+    poster: heroSecurityImg,
     title: "Sécurité & vidéosurveillance",
     subtitle: "Protégez vos biens avec des solutions intelligentes et performantes",
     buttonText: "Nos solutions",
@@ -65,7 +75,8 @@ const heroSections = [
   },
   {
     id: "energy",
-    image: heroEnergy,
+    video: heroEnergyVid.url,
+    poster: heroEnergyImg,
     title: "Énergie & batteries lithium",
     subtitle: "Des solutions énergétiques fiables, durables et innovantes",
     buttonText: "En savoir plus",
@@ -73,7 +84,8 @@ const heroSections = [
   },
   {
     id: "tv",
-    image: heroTv,
+    video: heroTvVid.url,
+    poster: heroTvImg,
     title: "Téléviseurs & solutions d'affichage",
     subtitle: "Une expérience visuelle immersive et de haute qualité",
     buttonText: "Voir produits",
@@ -81,7 +93,8 @@ const heroSections = [
   },
   {
     id: "btp",
-    image: heroBtp,
+    video: heroBtpVid.url,
+    poster: heroBtpImg,
     title: "BTP & construction",
     subtitle: "Construire avec expertise, précision et innovation",
     buttonText: "Nos réalisations",
