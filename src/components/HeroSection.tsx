@@ -58,7 +58,7 @@ export function HeroSection({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="mt-6 text-lg md:text-xl text-primary font-medium tracking-wide"
+            className="mt-6 text-lg md:text-xl text-white font-medium tracking-wide drop-shadow-[0_2px_10px_rgba(0,0,0,0.7)]"
           >
             {subtitle}
           </motion.p>
