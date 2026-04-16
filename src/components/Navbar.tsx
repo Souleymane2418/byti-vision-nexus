@@ -1,18 +1,22 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ShoppingCart } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { useCart } from "@/lib/cart";
 
 const navLinks = [
-  { label: "Accueil", href: "#hero" },
-  { label: "Activités", href: "#services" },
-  { label: "À propos", href: "#about" },
-  { label: "Projets", href: "#projects" },
-  { label: "Contact", href: "#contact" },
+  { label: "Accueil", href: "/", hash: "" },
+  { label: "Boutique", href: "/boutique", hash: "" },
+  { label: "Activités", href: "/", hash: "#services" },
+  { label: "À propos", href: "/", hash: "#about" },
+  { label: "Projets", href: "/", hash: "#projects" },
+  { label: "Contact", href: "/", hash: "#contact" },
 ];
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { count, setOpen } = useCart();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -26,46 +30,63 @@ export function Navbar() {
       animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: [0.25, 0.1, 0, 1] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
-        scrolled
-          ? "bg-background/80 backdrop-blur-2xl border-b border-border/50"
-          : "bg-transparent"
+        scrolled ? "bg-background/80 backdrop-blur-2xl border-b border-border/50" : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4 flex items-center justify-between">
-        <a href="#hero" className="flex items-center gap-2">
-          <span className="text-2xl font-bold tracking-tight font-display text-primary">
-            BYTI
-          </span>
+        <Link to="/" className="flex items-center gap-2">
+          <span className="text-2xl font-bold tracking-tight font-display text-primary">BYTI</span>
           <span className="text-xs font-light text-muted-foreground tracking-widest uppercase">
             Technologie
           </span>
-        </a>
+        </Link>
 
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.label}
-              href={link.href}
+              to={link.href}
+              hash={link.hash || undefined}
               className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300 tracking-wide"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
-          <a
-            href="#contact"
-            className="btn-primary-glow px-5 py-2 rounded-lg text-sm font-medium"
+          <button
+            onClick={() => setOpen(true)}
+            className="relative text-foreground hover:text-primary transition-colors p-2"
+            aria-label="Open cart"
           >
-            Contact
-          </a>
+            <ShoppingCart size={20} />
+            {count > 0 && (
+              <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-[10px] font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                {count}
+              </span>
+            )}
+          </button>
         </div>
 
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden text-foreground p-2"
-          aria-label="Toggle menu"
-        >
-          {menuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="md:hidden flex items-center gap-2">
+          <button
+            onClick={() => setOpen(true)}
+            className="relative text-foreground p-2"
+            aria-label="Open cart"
+          >
+            <ShoppingCart size={22} />
+            {count > 0 && (
+              <span className="absolute top-0 right-0 bg-primary text-primary-foreground text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">
+                {count}
+              </span>
+            )}
+          </button>
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="text-foreground p-2"
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       <AnimatePresence>
@@ -78,14 +99,15 @@ export function Navbar() {
           >
             <div className="px-6 py-4 space-y-1">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.label}
-                  href={link.href}
+                  to={link.href}
+                  hash={link.hash || undefined}
                   onClick={() => setMenuOpen(false)}
                   className="block py-3 text-foreground hover:text-primary transition-colors border-b border-border/30 last:border-0"
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
             </div>
           </motion.div>
