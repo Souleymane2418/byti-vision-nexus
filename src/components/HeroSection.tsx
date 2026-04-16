@@ -37,8 +37,8 @@ export function HeroSection({
         preload={priority ? "auto" : "metadata"}
         className="absolute inset-0 w-full h-full object-cover"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/10 to-background/80" />
-      <div className="absolute inset-0 bg-gradient-to-r from-background/20 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/70" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent" />
 
       <div className="relative z-10 flex items-center justify-center h-full px-6">
         <div className="max-w-5xl text-center">
@@ -48,7 +48,7 @@ export function HeroSection({
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.9, ease: [0.25, 0.1, 0, 1] }}
           >
-            <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold tracking-tight text-foreground leading-[0.95]">
+            <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold tracking-tight text-white leading-[0.95] drop-shadow-[0_2px_20px_rgba(0,0,0,0.6)]">
               {title}
             </h1>
           </motion.div>
@@ -58,7 +58,7 @@ export function HeroSection({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="mt-6 text-lg md:text-xl text-primary font-medium tracking-wide"
+            className="mt-6 text-lg md:text-xl text-white font-medium tracking-wide drop-shadow-[0_2px_10px_rgba(0,0,0,0.7)]"
           >
             {subtitle}
           </motion.p>
@@ -69,7 +69,7 @@ export function HeroSection({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, delay: 0.35 }}
-              className="mt-4 text-base md:text-lg text-muted-foreground max-w-2xl mx-auto"
+              className="mt-4 text-base md:text-lg text-white/90 max-w-2xl mx-auto drop-shadow-[0_1px_8px_rgba(0,0,0,0.6)]"
             >
               {description}
             </motion.p>
