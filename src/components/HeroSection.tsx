@@ -48,7 +48,7 @@ export function HeroSection({
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.9, ease: [0.25, 0.1, 0, 1] }}
           >
-            <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold tracking-tight text-foreground leading-[0.95]">
+            <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold tracking-tight text-white leading-[0.95] drop-shadow-[0_2px_20px_rgba(0,0,0,0.6)]">
               {title}
             </h1>
           </motion.div>
