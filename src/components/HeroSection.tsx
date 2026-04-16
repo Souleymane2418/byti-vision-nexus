@@ -37,8 +37,8 @@ export function HeroSection({
         preload={priority ? "auto" : "metadata"}
         className="absolute inset-0 w-full h-full object-cover"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/50 to-background/95" />
-      <div className="absolute inset-0 bg-gradient-to-r from-background/40 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/10 to-background/80" />
+      <div className="absolute inset-0 bg-gradient-to-r from-background/20 to-transparent" />
 
       <div className="relative z-10 flex items-center justify-center h-full px-6">
         <div className="max-w-5xl text-center">
