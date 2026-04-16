@@ -69,7 +69,7 @@ export function HeroSection({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, delay: 0.35 }}
-              className="mt-4 text-base md:text-lg text-muted-foreground max-w-2xl mx-auto"
+              className="mt-4 text-base md:text-lg text-white/90 max-w-2xl mx-auto drop-shadow-[0_1px_8px_rgba(0,0,0,0.6)]"
             >
               {description}
             </motion.p>
