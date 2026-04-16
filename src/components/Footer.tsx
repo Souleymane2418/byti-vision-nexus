@@ -1,0 +1,88 @@
+import { Smartphone, Camera, Battery, Monitor, HardHat } from "lucide-react";
+
+const activities = [
+  { icon: Smartphone, label: "Électronique" },
+  { icon: Camera, label: "Sécurité" },
+  { icon: Battery, label: "Énergie" },
+  { icon: Monitor, label: "Téléviseurs" },
+  { icon: HardHat, label: "BTP" },
+];
+
+const quickLinks = [
+  { label: "Accueil", href: "#hero" },
+  { label: "Activités", href: "#services" },
+  { label: "À propos", href: "#about" },
+  { label: "Projets", href: "#projects" },
+  { label: "Contact", href: "#contact" },
+];
+
+export function Footer() {
+  return (
+    <footer className="border-t border-border/40 bg-card/30">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12">
+          {/* Brand */}
+          <div className="lg:col-span-1">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="text-2xl font-bold text-primary font-display">BYTI</span>
+              <span className="text-xs text-muted-foreground tracking-widest uppercase">Technologie</span>
+            </div>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Solutions technologiques, énergétiques et infrastructurelles pour un monde moderne.
+            </p>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h4 className="text-sm font-semibold text-foreground tracking-wide uppercase mb-4">
+              Navigation
+            </h4>
+            <ul className="space-y-2">
+              {quickLinks.map((link) => (
+                <li key={link.label}>
+                  <a href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Activities */}
+          <div>
+            <h4 className="text-sm font-semibold text-foreground tracking-wide uppercase mb-4">
+              Activités
+            </h4>
+            <ul className="space-y-2">
+              {activities.map((a) => (
+                <li key={a.label} className="flex items-center gap-2">
+                  <a.icon className="w-4 h-4 text-primary" />
+                  <span className="text-sm text-muted-foreground">{a.label}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h4 className="text-sm font-semibold text-foreground tracking-wide uppercase mb-4">
+              Contact
+            </h4>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li>contact@bytitechnologie.com</li>
+              <li>+XXX XXX XXX XXX</li>
+              <li>Votre adresse ici</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="section-divider mt-12 mb-8" />
+
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
+          <p>&copy; {new Date().getFullYear()} BYTI Technologie SARL. Tous droits réservés.</p>
+          <p>Connecter · Construire · Innover</p>
+        </div>
+      </div>
+    </footer>
+  );
+}
