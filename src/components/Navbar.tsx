@@ -70,19 +70,19 @@ export function Navbar() {
         <div className="md:hidden flex items-center gap-2">
           <button
             onClick={() => setOpen(true)}
-            className="relative text-foreground p-2"
+            className="relative text-white p-2"
             aria-label="Open cart"
           >
             <ShoppingCart size={22} />
             {count > 0 && (
-              <span className="absolute top-0 right-0 bg-primary text-primary-foreground text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">
+              <span className="absolute top-0 right-0 bg-byti-red text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">
                 {count}
               </span>
             )}
           </button>
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="text-foreground p-2"
+            className="text-white p-2"
             aria-label="Toggle menu"
           >
             {menuOpen ? <X size={24} /> : <Menu size={24} />}
