@@ -26,7 +26,10 @@ export function HeroSection({
   priority = false,
 }: HeroSectionProps) {
   return (
-    <section id={id} className="relative h-screen w-full overflow-hidden">
+    <section
+      id={id}
+      className={`relative w-full overflow-hidden ${priority ? "h-screen" : "min-h-[85vh] md:min-h-[90vh] py-20"}`}
+    >
       <video
         src={video}
         poster={poster}
@@ -35,10 +38,14 @@ export function HeroSection({
         muted
         playsInline
         preload={priority ? "auto" : "metadata"}
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover scale-105"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/70" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-black/75" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/45 to-transparent" />
+      {/* Top fade for smoother transitions between heroes */}
+      {!priority && (
+        <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-background/90 via-background/30 to-transparent z-[1]" />
+      )}
 
       <div className="relative z-10 flex items-center justify-center h-full px-6">
         <div className="max-w-5xl text-center">
@@ -100,8 +107,8 @@ export function HeroSection({
         </div>
       </div>
 
-      {/* Bottom gradient fade into next section */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
+      {/* Bottom gradient fade into next section — softer & larger for fluidity */}
+      <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-background via-background/60 to-transparent z-[1]" />
     </section>
   );
 }
