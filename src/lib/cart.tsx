@@ -80,6 +80,7 @@ export function useCart() {
   return ctx;
 }
 
-export function formatPrice(amount: number, currency = "XAF") {
+export function formatPrice(amount: number | null | undefined, currency = "XAF") {
+  if (amount === null || amount === undefined || amount === 0) return "Sur devis";
   return new Intl.NumberFormat("fr-FR").format(amount) + " " + currency;
 }
