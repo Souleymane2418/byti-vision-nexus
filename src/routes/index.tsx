@@ -87,7 +87,7 @@ const heroSections = [
   },
   {
     id: "tv",
-    video: heroTvVid.url,
+    video: heroStationVid.url,
     poster: heroTvImg,
     title: "Téléviseurs & solutions d'affichage",
     subtitle: "Une expérience visuelle immersive et de haute qualité",
