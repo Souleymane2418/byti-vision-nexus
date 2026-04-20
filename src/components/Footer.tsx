@@ -1,4 +1,5 @@
 import { Smartphone, Camera, Battery, Monitor, HardHat } from "lucide-react";
+import bytiLogo from "@/assets/byti-logo.png";
 
 const activities = [
   { icon: Smartphone, label: "Électronique" },
@@ -23,9 +24,8 @@ export function Footer() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="text-2xl font-bold text-primary font-display">BYTI</span>
-              <span className="text-xs text-muted-foreground tracking-widest uppercase">Technologie</span>
+            <div className="mb-4">
+              <img src={bytiLogo} alt="BYTI Technologie SARL" className="h-16 w-auto" />
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
               Solutions technologiques, énergétiques et infrastructurelles pour un monde moderne.
