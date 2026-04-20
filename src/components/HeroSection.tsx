@@ -43,9 +43,9 @@ export function HeroSection({
       {/* Lighter overlay so the video stays clearly visible while text remains readable */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/15 to-black/55" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-transparent" />
-      {/* Top fade for smoother transitions between heroes */}
+      {/* Top fade — subtle dark overlay so navbar stays visible without washing out the video */}
       {!priority && (
-        <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-background/90 via-background/30 to-transparent z-[1]" />
+        <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black/50 to-transparent z-[1]" />
       )}
 
       <div className="relative z-10 flex items-center justify-center h-full px-6">
