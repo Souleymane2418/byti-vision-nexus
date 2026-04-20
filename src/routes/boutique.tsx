@@ -142,7 +142,7 @@ function ShopPage() {
                       loading="lazy"
                     />
                   )}
-                  {product.compare_at_price && product.compare_at_price > product.price && (
+                  {product.price && product.compare_at_price && product.compare_at_price > product.price && (
                     <Badge className="absolute top-3 left-3 bg-destructive text-destructive-foreground">
                       -{Math.round(((product.compare_at_price - product.price) / product.compare_at_price) * 100)}%
                     </Badge>
