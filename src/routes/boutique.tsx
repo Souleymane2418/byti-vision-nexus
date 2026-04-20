@@ -14,18 +14,20 @@ type Product = {
   id: string;
   name: string;
   description: string | null;
-  category: "smartphones" | "televisions" | "security" | "toys";
-  price: number;
+  category: "smartphones" | "televisions" | "security" | "toys" | "energy";
+  price: number | null;
   compare_at_price: number | null;
   currency: string;
   image_url: string | null;
   stock: number;
   featured: boolean;
+  model?: string | null;
 };
 
 const CATEGORIES = [
   { id: "all", label: "Tout" },
-  { id: "smartphones", label: "Smartphones & accessoires" },
+  { id: "energy", label: "Énergie & batteries" },
+  { id: "smartphones", label: "Smartphones" },
   { id: "televisions", label: "Téléviseurs" },
   { id: "security", label: "Sécurité & vidéo" },
   { id: "toys", label: "Jouets enfants" },
@@ -140,7 +142,7 @@ function ShopPage() {
                       loading="lazy"
                     />
                   )}
-                  {product.compare_at_price && product.compare_at_price > product.price && (
+                  {product.price && product.compare_at_price && product.compare_at_price > product.price && (
                     <Badge className="absolute top-3 left-3 bg-destructive text-destructive-foreground">
                       -{Math.round(((product.compare_at_price - product.price) / product.compare_at_price) * 100)}%
                     </Badge>
@@ -159,30 +161,40 @@ function ShopPage() {
                     <span className="text-primary font-bold font-display">
                       {formatPrice(product.price, product.currency)}
                     </span>
-                    {product.compare_at_price && product.compare_at_price > product.price && (
+                    {product.compare_at_price && product.price && product.compare_at_price > product.price && (
                       <span className="text-xs text-muted-foreground line-through">
                         {formatPrice(product.compare_at_price, product.currency)}
                       </span>
                     )}
                   </div>
-                  <Button
-                    size="sm"
-                    className="w-full"
-                    disabled={product.stock <= 0}
-                    onClick={() => {
-                      add({
-                        id: product.id,
-                        name: product.name,
-                        price: Number(product.price),
-                        currency: product.currency,
-                        image_url: product.image_url,
-                      });
-                      toast.success("Ajouté au panier");
-                    }}
-                  >
-                    <ShoppingCart className="h-4 w-4 mr-2" />
-                    {product.stock > 0 ? "Ajouter" : "Rupture"}
-                  </Button>
+                  {!product.price ? (
+                    <Link
+                      to="/"
+                      hash="contact"
+                      className="btn-byti-red w-full inline-flex items-center justify-center gap-2 px-4 py-2 rounded-md text-sm font-semibold"
+                    >
+                      Demander un devis
+                    </Link>
+                  ) : (
+                    <Button
+                      size="sm"
+                      className="w-full"
+                      disabled={product.stock <= 0}
+                      onClick={() => {
+                        add({
+                          id: product.id,
+                          name: product.name,
+                          price: Number(product.price),
+                          currency: product.currency,
+                          image_url: product.image_url,
+                        });
+                        toast.success("Ajouté au panier");
+                      }}
+                    >
+                      <ShoppingCart className="h-4 w-4 mr-2" />
+                      {product.stock > 0 ? "Ajouter" : "Rupture"}
+                    </Button>
+                  )}
                 </div>
               </motion.div>
             ))}

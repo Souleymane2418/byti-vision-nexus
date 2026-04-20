@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "@/components/Navbar";
 import { HeroSection } from "@/components/HeroSection";
+import { EnergyShowcase } from "@/components/EnergyShowcase";
 import { AboutSection } from "@/components/AboutSection";
 import { WhyChooseUs } from "@/components/WhyChooseUs";
 import { ServicesGrid } from "@/components/ServicesGrid";
@@ -109,6 +110,7 @@ function HomePage() {
       {heroSections.map((hero) => (
         <HeroSection key={hero.id} {...hero} />
       ))}
+      <EnergyShowcase />
       <AboutSection />
       <WhyChooseUs />
       <ServicesGrid />

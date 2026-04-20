@@ -70,8 +70,10 @@ export type Database = {
           featured: boolean
           id: string
           image_url: string | null
+          model: string | null
           name: string
-          price: number
+          price: number | null
+          specs: Json | null
           stock: number
           updated_at: string
         }
@@ -85,8 +87,10 @@ export type Database = {
           featured?: boolean
           id?: string
           image_url?: string | null
+          model?: string | null
           name: string
-          price: number
+          price?: number | null
+          specs?: Json | null
           stock?: number
           updated_at?: string
         }
@@ -100,8 +104,10 @@ export type Database = {
           featured?: boolean
           id?: string
           image_url?: string | null
+          model?: string | null
           name?: string
-          price?: number
+          price?: number | null
+          specs?: Json | null
           stock?: number
           updated_at?: string
         }
@@ -115,7 +121,12 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      product_category: "smartphones" | "televisions" | "security" | "toys"
+      product_category:
+        | "smartphones"
+        | "televisions"
+        | "security"
+        | "toys"
+        | "energy"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -243,7 +254,13 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
-      product_category: ["smartphones", "televisions", "security", "toys"],
+      product_category: [
+        "smartphones",
+        "televisions",
+        "security",
+        "toys",
+        "energy",
+      ],
     },
   },
 } as const

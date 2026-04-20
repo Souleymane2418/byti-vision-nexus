@@ -56,43 +56,69 @@
   --font-family-display: 'Space Grotesk', sans-serif;
   --font-family-body: 'Inter', sans-serif;
 
-  /* Light corporate theme */
+  /* BYTI Brand — Bleu (#1E50A8) + Rouge (#E63946) équilibrés */
   --background: oklch(0.99 0.003 250);
-  --foreground: oklch(0.18 0.03 255);
+  --foreground: oklch(0.16 0.04 260);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.03 255);
+  --card-foreground: oklch(0.16 0.04 260);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.03 255);
-  --primary: oklch(0.55 0.2 250);
+  --popover-foreground: oklch(0.16 0.04 260);
+
+  /* Primary: BYTI Blue */
+  --primary: oklch(0.45 0.18 260);
   --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.96 0.01 250);
-  --secondary-foreground: oklch(0.2 0.03 255);
-  --muted: oklch(0.96 0.008 250);
-  --muted-foreground: oklch(0.45 0.02 255);
-  --accent: oklch(0.6 0.2 20);
+  --byti-blue: oklch(0.45 0.18 260);
+  --byti-blue-deep: oklch(0.32 0.15 262);
+  --byti-blue-light: oklch(0.62 0.16 255);
+
+  /* Accent: BYTI Red */
+  --accent: oklch(0.58 0.22 25);
   --accent-foreground: oklch(0.99 0 0);
-  --destructive: oklch(0.55 0.22 20);
+  --byti-red: oklch(0.58 0.22 25);
+  --byti-red-deep: oklch(0.46 0.22 25);
+  --byti-yellow: oklch(0.88 0.18 100);
+
+  --secondary: oklch(0.96 0.012 260);
+  --secondary-foreground: oklch(0.2 0.04 260);
+  --muted: oklch(0.96 0.008 260);
+  --muted-foreground: oklch(0.45 0.02 260);
+  --destructive: oklch(0.58 0.22 25);
   --destructive-foreground: oklch(0.99 0 0);
-  --border: oklch(0.9 0.01 250);
-  --input: oklch(0.94 0.01 250);
-  --ring: oklch(0.55 0.2 250);
-  --glow: oklch(0.55 0.2 250);
+  --border: oklch(0.9 0.012 260);
+  --input: oklch(0.94 0.012 260);
+  --ring: oklch(0.45 0.18 260);
+  --glow: oklch(0.45 0.18 260);
   --glow-foreground: oklch(0.99 0 0);
 
-  --chart-1: oklch(0.55 0.2 250);
-  --chart-2: oklch(0.6 0.2 20);
-  --chart-3: oklch(0.6 0.15 180);
-  --chart-4: oklch(0.7 0.15 80);
-  --chart-5: oklch(0.5 0.2 300);
+  --chart-1: oklch(0.45 0.18 260);
+  --chart-2: oklch(0.58 0.22 25);
+  --chart-3: oklch(0.62 0.16 255);
+  --chart-4: oklch(0.88 0.18 100);
+  --chart-5: oklch(0.32 0.15 262);
 
-  --sidebar: oklch(0.98 0.005 250);
-  --sidebar-foreground: oklch(0.18 0.03 255);
-  --sidebar-primary: oklch(0.55 0.2 250);
+  /* BYTI gradients */
+  --gradient-byti: linear-gradient(135deg, oklch(0.45 0.18 260), oklch(0.58 0.22 25));
+  --gradient-byti-soft: linear-gradient(135deg, oklch(0.45 0.18 260 / 0.08), oklch(0.58 0.22 25 / 0.08));
+  --shadow-byti: 0 20px 60px oklch(0.45 0.18 260 / 0.15);
+  --shadow-byti-red: 0 20px 60px oklch(0.58 0.22 25 / 0.18);
+
+  --sidebar: oklch(0.98 0.005 260);
+  --sidebar-foreground: oklch(0.16 0.04 260);
+  --sidebar-primary: oklch(0.45 0.18 260);
   --sidebar-primary-foreground: oklch(0.99 0 0);
-  --sidebar-accent: oklch(0.94 0.01 250);
-  --sidebar-accent-foreground: oklch(0.18 0.03 255);
-  --sidebar-border: oklch(0.9 0.01 250);
-  --sidebar-ring: oklch(0.55 0.2 250);
+  --sidebar-accent: oklch(0.94 0.012 260);
+  --sidebar-accent-foreground: oklch(0.16 0.04 260);
+  --sidebar-border: oklch(0.9 0.012 260);
+  --sidebar-ring: oklch(0.45 0.18 260);
+}
+
+@theme inline {
+  --color-byti-blue: var(--byti-blue);
+  --color-byti-blue-deep: var(--byti-blue-deep);
+  --color-byti-blue-light: var(--byti-blue-light);
+  --color-byti-red: var(--byti-red);
+  --color-byti-red-deep: var(--byti-red-deep);
+  --color-byti-yellow: var(--byti-yellow);
 }
 
 @layer base {
@@ -136,27 +162,40 @@
 }
 
 .btn-primary-glow {
-  background: linear-gradient(135deg, var(--primary), oklch(0.5 0.22 250));
+  background: var(--gradient-byti);
   color: var(--primary-foreground);
-  box-shadow: 0 0 30px oklch(0.6 0.2 250 / 0.3);
+  box-shadow: 0 10px 30px oklch(0.45 0.18 260 / 0.3);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-primary-glow:hover {
-  box-shadow: 0 0 50px oklch(0.6 0.2 250 / 0.5);
+  box-shadow: 0 20px 50px oklch(0.58 0.22 25 / 0.4);
   transform: translateY(-2px);
 }
 
 .btn-outline-glow {
-  border: 1px solid oklch(0.6 0.2 250 / 0.4);
-  color: var(--foreground);
-  background: oklch(0.6 0.2 250 / 0.05);
+  border: 1.5px solid oklch(1 0 0 / 0.6);
+  color: oklch(1 0 0);
+  background: oklch(0 0 0 / 0.2);
+  backdrop-filter: blur(8px);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-outline-glow:hover {
-  border-color: oklch(0.6 0.2 250 / 0.8);
-  background: oklch(0.6 0.2 250 / 0.1);
+  border-color: oklch(1 0 0);
+  background: oklch(1 0 0 / 0.15);
+  transform: translateY(-2px);
+}
+
+.btn-byti-red {
+  background: linear-gradient(135deg, var(--byti-red), var(--byti-red-deep));
+  color: oklch(0.99 0 0);
+  box-shadow: 0 10px 30px oklch(0.58 0.22 25 / 0.3);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-byti-red:hover {
+  box-shadow: 0 20px 50px oklch(0.58 0.22 25 / 0.5);
   transform: translateY(-2px);
 }
 
@@ -171,13 +210,40 @@
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, var(--foreground), var(--primary));
+  background: var(--gradient-byti);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-blue {
+  background: linear-gradient(135deg, var(--byti-blue), var(--byti-blue-light));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .section-divider {
-  background: linear-gradient(90deg, transparent, var(--primary), transparent);
-  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--byti-blue), var(--byti-red), transparent);
+  height: 2px;
+}
+
+@keyframes byti-shine {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.byti-shine {
+  background: linear-gradient(110deg, transparent 30%, oklch(1 0 0 / 0.4) 50%, transparent 70%);
+  background-size: 200% 100%;
+  animation: byti-shine 3s linear infinite;
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+.float-slow {
+  animation: float-slow 6s ease-in-out infinite;
 }
