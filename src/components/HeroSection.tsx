@@ -107,8 +107,8 @@ export function HeroSection({
         </div>
       </div>
 
-      {/* Bottom gradient fade into next section */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
+      {/* Bottom gradient fade into next section — softer & larger for fluidity */}
+      <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-background via-background/60 to-transparent z-[1]" />
     </section>
   );
 }
