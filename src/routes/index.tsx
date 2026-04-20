@@ -20,8 +20,6 @@ import heroMainVid from "@/assets/hero-main.mp4.asset.json";
 import heroElectronicsVid from "@/assets/hero-electronics.mp4.asset.json";
 import heroSecurityVid from "@/assets/hero-security.mp4.asset.json";
 import heroEnergyVid from "@/assets/hero-energy-battery.mp4.asset.json";
-import heroStationVid from "@/assets/hero-station.mp4.asset.json";
-import heroShowroomVid from "@/assets/hero-showroom.mp4.asset.json";
 import heroTvVid from "@/assets/hero-tv.mp4.asset.json";
 import heroBtpVid from "@/assets/hero-btp.mp4.asset.json";
 
