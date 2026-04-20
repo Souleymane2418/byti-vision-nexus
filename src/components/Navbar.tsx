@@ -30,34 +30,37 @@ export function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: [0.25, 0.1, 0, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
-        scrolled ? "bg-background/80 backdrop-blur-2xl border-b border-border/50" : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? "bg-[oklch(0.16_0.04_260)/0.92] backdrop-blur-xl border-b border-white/10 shadow-lg"
+          : "bg-gradient-to-b from-black/60 via-black/30 to-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-3 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
-          <img src={bytiLogo} alt="BYTI Technologie SARL" className="h-10 md:h-12 w-auto" />
+          <img src={bytiLogo} alt="BYTI Technologie SARL" className="h-10 md:h-12 w-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]" />
         </Link>
 
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-7">
           {navLinks.map((link) => (
             <Link
               key={link.label}
               to={link.href}
               hash={link.hash || undefined}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300 tracking-wide"
+              className="text-sm font-medium text-white/90 hover:text-white transition-colors duration-300 tracking-wide relative group"
             >
               {link.label}
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-byti-blue-light to-byti-red group-hover:w-full transition-all duration-300" />
             </Link>
           ))}
           <button
             onClick={() => setOpen(true)}
-            className="relative text-foreground hover:text-primary transition-colors p-2"
+            className="relative text-white hover:text-byti-red transition-colors p-2"
             aria-label="Open cart"
           >
             <ShoppingCart size={20} />
             {count > 0 && (
-              <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-[10px] font-bold rounded-full h-5 w-5 flex items-center justify-center">
+              <span className="absolute -top-1 -right-1 bg-byti-red text-white text-[10px] font-bold rounded-full h-5 w-5 flex items-center justify-center shadow-lg">
                 {count}
               </span>
             )}
