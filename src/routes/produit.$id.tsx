@@ -15,11 +15,13 @@ type Product = {
   name: string;
   description: string | null;
   category: string;
-  price: number;
+  price: number | null;
   compare_at_price: number | null;
   currency: string;
   image_url: string | null;
   stock: number;
+  model: string | null;
+  specs: Record<string, string> | null;
 };
 
 export const Route = createFileRoute("/produit/$id")({
@@ -104,13 +106,18 @@ function ProductPage() {
             animate={{ opacity: 1, x: 0 }}
             className="flex flex-col"
           >
+            {product.model && (
+              <div className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-2">
+                Réf. {product.model}
+              </div>
+            )}
             <h1 className="text-3xl md:text-4xl font-display font-bold mb-4">{product.name}</h1>
 
             <div className="flex items-baseline gap-3 mb-6">
-              <span className="text-3xl font-bold text-primary font-display">
-                {formatPrice(Number(product.price), product.currency)}
+              <span className="text-3xl font-bold gradient-text font-display">
+                {formatPrice(product.price, product.currency)}
               </span>
-              {product.compare_at_price && product.compare_at_price > product.price && (
+              {product.price && product.compare_at_price && product.compare_at_price > product.price && (
                 <span className="text-lg text-muted-foreground line-through">
                   {formatPrice(Number(product.compare_at_price), product.currency)}
                 </span>
@@ -118,6 +125,24 @@ function ProductPage() {
             </div>
 
             <p className="text-muted-foreground mb-6 leading-relaxed">{product.description}</p>
+
+            {product.specs && Object.keys(product.specs).length > 0 && (
+              <div className="mb-6 p-5 rounded-2xl bg-secondary/50 border border-border/60">
+                <h3 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-3">
+                  Caractéristiques techniques
+                </h3>
+                <dl className="grid grid-cols-2 gap-x-4 gap-y-2">
+                  {Object.entries(product.specs).map(([key, value]) => (
+                    <div key={key} className="flex flex-col">
+                      <dt className="text-[10px] uppercase tracking-wider text-muted-foreground">
+                        {key.replace(/_/g, " ")}
+                      </dt>
+                      <dd className="text-sm font-semibold text-foreground">{value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            )}
 
             <div className="flex items-center gap-2 text-sm mb-6">
               {product.stock > 0 ? (
@@ -129,59 +154,80 @@ function ProductPage() {
               )}
             </div>
 
-            <div className="flex items-center gap-3 mb-6">
-              <span className="text-sm">Quantité :</span>
-              <Button size="icon" variant="outline" onClick={() => setQty(Math.max(1, qty - 1))}>
-                −
-              </Button>
-              <span className="w-8 text-center font-medium">{qty}</span>
-              <Button size="icon" variant="outline" onClick={() => setQty(Math.min(product.stock, qty + 1))}>
-                +
-              </Button>
-            </div>
+            {!product.price ? (
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link
+                  to="/"
+                  hash="contact"
+                  className="btn-byti-red flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-md text-sm font-bold uppercase tracking-wide"
+                >
+                  Demander un devis
+                </Link>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  asChild
+                >
+                  <a href="tel:+237000000000">Appeler BYTI</a>
+                </Button>
+              </div>
+            ) : (
+              <>
+                <div className="flex items-center gap-3 mb-6">
+                  <span className="text-sm">Quantité :</span>
+                  <Button size="icon" variant="outline" onClick={() => setQty(Math.max(1, qty - 1))}>
+                    −
+                  </Button>
+                  <span className="w-8 text-center font-medium">{qty}</span>
+                  <Button size="icon" variant="outline" onClick={() => setQty(Math.min(product.stock, qty + 1))}>
+                    +
+                  </Button>
+                </div>
 
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Button
-                size="lg"
-                className="flex-1"
-                disabled={product.stock <= 0}
-                onClick={() => {
-                  add(
-                    {
-                      id: product.id,
-                      name: product.name,
-                      price: Number(product.price),
-                      currency: product.currency,
-                      image_url: product.image_url,
-                    },
-                    qty
-                  );
-                  toast.success("Ajouté au panier");
-                }}
-              >
-                <ShoppingCart className="h-5 w-5 mr-2" /> Ajouter au panier
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                disabled={product.stock <= 0}
-                onClick={() => {
-                  add(
-                    {
-                      id: product.id,
-                      name: product.name,
-                      price: Number(product.price),
-                      currency: product.currency,
-                      image_url: product.image_url,
-                    },
-                    qty
-                  );
-                  setOpen(true);
-                }}
-              >
-                Acheter maintenant
-              </Button>
-            </div>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Button
+                    size="lg"
+                    className="flex-1"
+                    disabled={product.stock <= 0}
+                    onClick={() => {
+                      add(
+                        {
+                          id: product.id,
+                          name: product.name,
+                          price: Number(product.price),
+                          currency: product.currency,
+                          image_url: product.image_url,
+                        },
+                        qty
+                      );
+                      toast.success("Ajouté au panier");
+                    }}
+                  >
+                    <ShoppingCart className="h-5 w-5 mr-2" /> Ajouter au panier
+                  </Button>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    disabled={product.stock <= 0}
+                    onClick={() => {
+                      add(
+                        {
+                          id: product.id,
+                          name: product.name,
+                          price: Number(product.price),
+                          currency: product.currency,
+                          image_url: product.image_url,
+                        },
+                        qty
+                      );
+                      setOpen(true);
+                    }}
+                  >
+                    Acheter maintenant
+                  </Button>
+                </div>
+              </>
+            )}
           </motion.div>
         </div>
       </section>
