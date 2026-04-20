@@ -44,8 +44,8 @@ export function HeroSection({
         <div className="max-w-5xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            animate={{ opacity: 1, y: 0 }}
+            
             transition={{ duration: 0.9, ease: [0.25, 0.1, 0, 1] }}
           >
             <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold tracking-tight text-white leading-[0.95] drop-shadow-[0_2px_20px_rgba(0,0,0,0.6)]">
@@ -55,8 +55,8 @@ export function HeroSection({
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            animate={{ opacity: 1, y: 0 }}
+            
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mt-6 text-lg md:text-xl text-white font-medium tracking-wide drop-shadow-[0_2px_10px_rgba(0,0,0,0.7)]"
           >
@@ -66,8 +66,8 @@ export function HeroSection({
           {description && (
             <motion.p
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
+              animate={{ opacity: 1, y: 0 }}
+              
               transition={{ duration: 0.8, delay: 0.35 }}
               className="mt-4 text-base md:text-lg text-white/90 max-w-2xl mx-auto drop-shadow-[0_1px_8px_rgba(0,0,0,0.6)]"
             >
@@ -77,8 +77,8 @@ export function HeroSection({
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            animate={{ opacity: 1, y: 0 }}
+            
             transition={{ duration: 0.8, delay: 0.5 }}
             className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
           >
