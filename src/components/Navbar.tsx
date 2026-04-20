@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ShoppingCart } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { useCart } from "@/lib/cart";
+import bytiLogo from "@/assets/byti-logo.png";
 
 const navLinks = [
   { label: "Accueil", href: "/", hash: "" },
@@ -35,10 +36,7 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
-          <span className="text-2xl font-bold tracking-tight font-display text-primary">BYTI</span>
-          <span className="text-xs font-light text-muted-foreground tracking-widest uppercase">
-            Technologie
-          </span>
+          <img src={bytiLogo} alt="BYTI Technologie SARL" className="h-10 md:h-12 w-auto" />
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
