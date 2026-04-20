@@ -40,8 +40,9 @@ export function HeroSection({
         preload={priority ? "auto" : "metadata"}
         className="absolute inset-0 w-full h-full object-cover scale-105"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-black/75" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/45 to-transparent" />
+      {/* Lighter overlay so the video stays clearly visible while text remains readable */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/15 to-black/55" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-transparent" />
       {/* Top fade for smoother transitions between heroes */}
       {!priority && (
         <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-background/90 via-background/30 to-transparent z-[1]" />
