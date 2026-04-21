@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "@/components/Navbar";
+import { HeroCarousel } from "@/components/HeroCarousel";
 import { HeroSection } from "@/components/HeroSection";
 import { EnergyShowcase } from "@/components/EnergyShowcase";
 import { EcoCommitment } from "@/components/EcoCommitment";
@@ -47,18 +48,6 @@ export const Route = createFileRoute("/")({
 });
 
 const heroSections = [
-  {
-    id: "hero-solar",
-    video: heroSolarFarmVid.url,
-    poster: heroSolarFarmImg,
-    title: "BYTI Technologie SARL",
-    subtitle: "Connecter · Construire · Innover",
-    description: "Solutions technologiques, énergétiques et infrastructurelles pour un monde moderne",
-    buttonText: "Découvrir nos activités",
-    buttonHref: "#services",
-    secondaryButton: { text: "Nous contacter", href: "#contact" },
-    priority: true,
-  },
   {
     id: "electronics",
     video: heroElectronicsVid.url,
@@ -110,6 +99,7 @@ function HomePage() {
   return (
     <div className="bg-background min-h-screen">
       <Navbar />
+      <HeroCarousel />
       {heroSections.map((hero) => (
         <HeroSection key={hero.id} {...hero} />
       ))}
