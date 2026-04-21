@@ -1,15 +1,22 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-import slide1 from "@/assets/hero-carousel-1.jpg";
-import slide2 from "@/assets/hero-carousel-2.jpg";
-import slide3 from "@/assets/hero-carousel-3.jpg";
-import slide4 from "@/assets/hero-carousel-4.jpg";
-import slide5 from "@/assets/hero-carousel-5.jpg";
+import poster1 from "@/assets/hero-energy.jpg";
+import poster2 from "@/assets/hero-energy.jpg";
+import poster3 from "@/assets/hero-btp.jpg";
+import poster4 from "@/assets/hero-security.jpg";
+import poster5 from "@/assets/hero-solar-farm.jpg";
+
+import vid1 from "@/assets/hero-energy-loop.mp4.asset.json";
+import vid2 from "@/assets/hero-energy-battery.mp4.asset.json";
+import vid3 from "@/assets/hero-btp-loop.mp4.asset.json";
+import vid4 from "@/assets/hero-security-loop.mp4.asset.json";
+import vid5 from "@/assets/hero-solar-farm.mp4.asset.json";
 
 interface Slide {
-  image: string;
+  video: string;
+  poster: string;
   title: string;
   caption: string;
   description: string;
@@ -17,31 +24,36 @@ interface Slide {
 
 const slides: Slide[] = [
   {
-    image: slide1,
+    video: vid1.url,
+    poster: poster1,
     title: "Énergie solaire pour l'Afrique",
     caption: "Des kilowatts propres pour préserver notre savane",
     description: "Réduire les gaz à effet de serre, un panneau à la fois.",
   },
   {
-    image: slide2,
+    video: vid2.url,
+    poster: poster2,
     title: "Stockage lithium intelligent",
     caption: "Une énergie fiable, durable et décarbonée",
     description: "Nos solutions de batteries pour un futur sans coupure.",
   },
   {
-    image: slide3,
+    video: vid3.url,
+    poster: poster3,
     title: "BTP éco-responsable",
     caption: "Construire en harmonie avec la nature",
     description: "Bâtiments modernes, matériaux durables, espaces végétalisés.",
   },
   {
-    image: slide4,
+    video: vid4.url,
+    poster: poster4,
     title: "Sécurité connectée",
     caption: "Protéger vos biens, préserver votre tranquillité",
     description: "Vidéosurveillance intelligente et basse consommation.",
   },
   {
-    image: slide5,
+    video: vid5.url,
+    poster: poster5,
     title: "BYTI s'engage pour la planète",
     caption: "Technologie et écosystème, une seule mission",
     description: "Chaque projet contribue à un environnement plus sain.",
@@ -50,11 +62,20 @@ const slides: Slide[] = [
 
 export function HeroCarousel() {
   const [index, setIndex] = useState(0);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const t = setInterval(() => setIndex((i) => (i + 1) % slides.length), 5500);
     return () => clearInterval(t);
   }, []);
+
+  // Restart playback when slide changes
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.currentTime = 0;
+    v.play().catch(() => {});
+  }, [index]);
 
   const go = (dir: number) =>
     setIndex((i) => (i + dir + slides.length) % slides.length);
@@ -72,11 +93,15 @@ export function HeroCarousel() {
           transition={{ duration: 1.2, ease: [0.25, 0.1, 0, 1] }}
           className="absolute inset-0"
         >
-          <img
-            src={slide.image}
-            alt={slide.title}
-            width={1920}
-            height={1080}
+          <video
+            ref={videoRef}
+            src={slide.video}
+            poster={slide.poster}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
             className="absolute inset-0 w-full h-full object-cover"
           />
         </motion.div>
