@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import poster1 from "@/assets/hero-energy.jpg";
-import poster2 from "@/assets/hero-energy-battery.jpg";
+import poster2 from "@/assets/hero-energy.jpg";
 import poster3 from "@/assets/hero-btp.jpg";
 import poster4 from "@/assets/hero-security.jpg";
 import poster5 from "@/assets/hero-solar-farm.jpg";
