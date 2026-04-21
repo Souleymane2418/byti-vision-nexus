@@ -162,14 +162,14 @@
 }
 
 .btn-primary-glow {
-  background: var(--gradient-byti);
-  color: var(--primary-foreground);
-  box-shadow: 0 10px 30px oklch(0.45 0.18 260 / 0.3);
+  background: linear-gradient(135deg, var(--byti-red), var(--byti-red-deep));
+  color: oklch(0.99 0 0);
+  box-shadow: 0 10px 30px oklch(0.58 0.22 25 / 0.35);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-primary-glow:hover {
-  box-shadow: 0 20px 50px oklch(0.58 0.22 25 / 0.4);
+  box-shadow: 0 20px 50px oklch(0.58 0.22 25 / 0.5);
   transform: translateY(-2px);
 }
 
