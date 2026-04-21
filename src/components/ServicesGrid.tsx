@@ -26,13 +26,14 @@ export function ServicesGrid() {
           transition={{ duration: 0.7 }}
           className="text-center mb-16"
         >
-          <span className="text-primary text-sm font-semibold tracking-widest uppercase">
-            Nos activités
-          </span>
-          <h2 className="mt-4 text-3xl md:text-5xl font-bold tracking-tight text-foreground">
+          <span className="pill-badge">★ Nos activités</span>
+          <h2 className="editorial-title mt-6 text-3xl md:text-5xl">
             Des solutions pour{" "}
-            <span className="gradient-text">chaque secteur</span>
+            <span className="editorial-accent">chaque secteur</span>
           </h2>
+          <div className="dot-divider mt-6">
+            <span className="dot-divider-dot" />
+          </div>
         </motion.div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
