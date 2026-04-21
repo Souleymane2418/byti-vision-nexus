@@ -23,12 +23,13 @@ export function ProjectsGallery() {
           transition={{ duration: 0.7 }}
           className="text-center mb-16"
         >
-          <span className="text-primary text-sm font-semibold tracking-widest uppercase">
-            Réalisations
-          </span>
-          <h2 className="mt-4 text-3xl md:text-5xl font-bold tracking-tight text-foreground">
-            Nos <span className="gradient-text">projets</span>
+          <span className="pill-badge pill-badge-red">★ Réalisations</span>
+          <h2 className="editorial-title mt-6 text-3xl md:text-5xl">
+            Nos <span className="editorial-accent">projets</span> récents
           </h2>
+          <div className="dot-divider mt-6">
+            <span className="dot-divider-dot" />
+          </div>
         </motion.div>
 
         <div className="grid sm:grid-cols-2 gap-6">

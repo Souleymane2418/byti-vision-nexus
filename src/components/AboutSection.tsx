@@ -19,12 +19,10 @@ export function AboutSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <span className="text-primary text-sm font-semibold tracking-widest uppercase">
-              À propos
-            </span>
-            <h2 className="mt-4 text-3xl md:text-5xl font-bold tracking-tight text-foreground">
+            <span className="pill-badge">★ À propos</span>
+            <h2 className="editorial-title mt-6 text-3xl md:text-5xl">
               Un groupe multi-sectoriel{" "}
-              <span className="gradient-text">d'envergure</span>
+              <span className="editorial-accent">d'envergure</span>
             </h2>
             <p className="mt-6 text-muted-foreground text-lg leading-relaxed">
               BYTI Technologie SARL est une entreprise spécialisée dans les solutions

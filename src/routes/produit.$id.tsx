@@ -83,18 +83,18 @@ function ProductPage() {
   }
 
   return (
-    <div className="bg-background min-h-screen">
+    <div className="bg-white min-h-screen">
       <Navbar />
-      <section className="pt-28 pb-16 px-6 lg:px-8 max-w-6xl mx-auto">
-        <Button variant="ghost" size="sm" onClick={() => router.history.back()} className="mb-6">
+      <section className="pt-28 pb-20 px-6 lg:px-8 max-w-6xl mx-auto">
+        <Button variant="ghost" size="sm" onClick={() => router.history.back()} className="mb-8 text-muted-foreground hover:text-[var(--byti-blue)]">
           <ArrowLeft className="h-4 w-4 mr-2" /> Retour
         </Button>
 
-        <div className="grid md:grid-cols-2 gap-10">
+        <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="aspect-square bg-muted rounded-2xl overflow-hidden"
+            className="aspect-square rounded-3xl overflow-hidden bg-[oklch(0.97_0.005_260)] border border-border/40"
           >
             {product.image_url && (
               <img src={product.image_url} alt={product.name} className="w-full h-full object-cover" />
@@ -106,15 +106,24 @@ function ProductPage() {
             animate={{ opacity: 1, x: 0 }}
             className="flex flex-col"
           >
+            <span className="pill-badge w-fit mb-5">★ Produit BYTI</span>
+
             {product.model && (
               <div className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-2">
                 Réf. {product.model}
               </div>
             )}
-            <h1 className="text-3xl md:text-4xl font-display font-bold mb-4">{product.name}</h1>
+
+            <h1 className="editorial-title text-3xl md:text-5xl">
+              {product.name}
+            </h1>
+
+            <div className="dot-divider !my-6 !mx-0 !justify-start">
+              <span className="dot-divider-dot" />
+            </div>
 
             <div className="flex items-baseline gap-3 mb-6">
-              <span className="text-3xl font-bold gradient-text font-display">
+              <span className="text-3xl font-bold text-[var(--byti-blue)] font-display">
                 {formatPrice(product.price, product.currency)}
               </span>
               {product.price && product.compare_at_price && product.compare_at_price > product.price && (
@@ -124,14 +133,14 @@ function ProductPage() {
               )}
             </div>
 
-            <p className="text-muted-foreground mb-6 leading-relaxed">{product.description}</p>
+            <p className="text-muted-foreground mb-6 leading-relaxed text-base">{product.description}</p>
 
             {product.specs && Object.keys(product.specs).length > 0 && (
-              <div className="mb-6 p-5 rounded-2xl bg-secondary/50 border border-border/60">
-                <h3 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-3">
+              <div className="mb-6 p-6 rounded-2xl bg-[oklch(0.97_0.005_260)] border border-border/40">
+                <h3 className="text-xs font-bold uppercase tracking-widest text-[var(--byti-blue)] mb-4">
                   Caractéristiques techniques
                 </h3>
-                <dl className="grid grid-cols-2 gap-x-4 gap-y-2">
+                <dl className="grid grid-cols-2 gap-x-4 gap-y-3">
                   {Object.entries(product.specs).map(([key, value]) => (
                     <div key={key} className="flex flex-col">
                       <dt className="text-[10px] uppercase tracking-wider text-muted-foreground">
@@ -146,11 +155,11 @@ function ProductPage() {
 
             <div className="flex items-center gap-2 text-sm mb-6">
               {product.stock > 0 ? (
-                <Badge variant="outline" className="border-green-500/40 text-green-600">
-                  <Check className="h-3 w-3 mr-1" /> En stock ({product.stock} disponibles)
-                </Badge>
+                <span className="tag-pill tag-pill-blue">
+                  <Check className="h-3 w-3" /> En stock ({product.stock} disponibles)
+                </span>
               ) : (
-                <Badge variant="destructive">Rupture de stock</Badge>
+                <span className="tag-pill tag-pill-red">Rupture de stock</span>
               )}
             </div>
 
@@ -159,27 +168,23 @@ function ProductPage() {
                 <Link
                   to="/"
                   hash="contact"
-                  className="btn-byti-red flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-md text-sm font-bold uppercase tracking-wide"
+                  className="btn-byti-red flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wide"
                 >
                   Demander un devis
                 </Link>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  asChild
-                >
+                <Button size="lg" variant="outline" asChild className="rounded-full">
                   <a href="tel:+237000000000">Appeler BYTI</a>
                 </Button>
               </div>
             ) : (
               <>
                 <div className="flex items-center gap-3 mb-6">
-                  <span className="text-sm">Quantité :</span>
-                  <Button size="icon" variant="outline" onClick={() => setQty(Math.max(1, qty - 1))}>
+                  <span className="text-sm text-muted-foreground">Quantité :</span>
+                  <Button size="icon" variant="outline" onClick={() => setQty(Math.max(1, qty - 1))} className="rounded-full">
                     −
                   </Button>
                   <span className="w-8 text-center font-medium">{qty}</span>
-                  <Button size="icon" variant="outline" onClick={() => setQty(Math.min(product.stock, qty + 1))}>
+                  <Button size="icon" variant="outline" onClick={() => setQty(Math.min(product.stock, qty + 1))} className="rounded-full">
                     +
                   </Button>
                 </div>
@@ -187,17 +192,11 @@ function ProductPage() {
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Button
                     size="lg"
-                    className="flex-1"
+                    className="flex-1 rounded-full bg-[var(--byti-blue)] hover:bg-[var(--byti-blue-deep)]"
                     disabled={product.stock <= 0}
                     onClick={() => {
                       add(
-                        {
-                          id: product.id,
-                          name: product.name,
-                          price: Number(product.price),
-                          currency: product.currency,
-                          image_url: product.image_url,
-                        },
+                        { id: product.id, name: product.name, price: Number(product.price), currency: product.currency, image_url: product.image_url },
                         qty
                       );
                       toast.success("Ajouté au panier");
@@ -208,16 +207,11 @@ function ProductPage() {
                   <Button
                     size="lg"
                     variant="outline"
+                    className="rounded-full"
                     disabled={product.stock <= 0}
                     onClick={() => {
                       add(
-                        {
-                          id: product.id,
-                          name: product.name,
-                          price: Number(product.price),
-                          currency: product.currency,
-                          image_url: product.image_url,
-                        },
+                        { id: product.id, name: product.name, price: Number(product.price), currency: product.currency, image_url: product.image_url },
                         qty
                       );
                       setOpen(true);

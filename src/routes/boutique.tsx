@@ -7,7 +7,7 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useCart, formatPrice } from "@/lib/cart";
-import { ShoppingCart, Loader2 } from "lucide-react";
+import { ShoppingCart, Loader2, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
 
 type Product = {
@@ -78,38 +78,52 @@ function ShopPage() {
   const filtered = filter === "all" ? products : products.filter((p) => p.category === filter);
 
   return (
-    <div className="bg-background min-h-screen">
+    <div className="bg-white min-h-screen">
       <Navbar />
 
-      <section className="pt-32 pb-12 px-6 lg:px-8 max-w-7xl mx-auto">
+      <section className="pt-32 pb-20 px-6 lg:px-8 max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-14"
         >
-          <Badge variant="outline" className="mb-4 border-primary/30 text-primary">
-            Boutique
-          </Badge>
-          <h1 className="text-4xl md:text-6xl font-display font-bold tracking-tight mb-4">
-            Matériel électronique & jouets premium
+          <span className="pill-badge">★ Catalogue BYTI</span>
+
+          <h1 className="editorial-title mt-6 text-4xl md:text-6xl">
+            Du matériel pensé pour{" "}
+            <span className="editorial-accent">tous vos besoins</span>
           </h1>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Une sélection rigoureuse de produits de haute qualité pour les particuliers et les professionnels.
+
+          <p className="text-muted-foreground max-w-2xl mx-auto mt-6 text-base md:text-lg leading-relaxed">
+            Une sélection rigoureuse de produits électroniques, énergétiques et de sécurité,
+            distribués par BYTI Technologie avec un contrôle qualité strict.
           </p>
+
+          <div className="dot-divider">
+            <span className="dot-divider-dot" />
+          </div>
+
+          <div className="flex flex-wrap gap-3 justify-center mt-2">
+            <span className="pill-badge">🛡️ Garantie BYTI</span>
+            <span className="pill-badge pill-badge-red">🇨🇲 Livraison locale</span>
+            <span className="pill-badge">⚡ Stock disponible</span>
+          </div>
         </motion.div>
 
-        <div className="flex flex-wrap gap-2 justify-center mb-10">
+        <div className="flex flex-wrap gap-2 justify-center mb-12">
           {CATEGORIES.map((c) => (
-            <Button
+            <button
               key={c.id}
-              variant={filter === c.id ? "default" : "outline"}
-              size="sm"
               onClick={() => setFilter(c.id)}
-              className="rounded-full"
+              className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
+                filter === c.id
+                  ? "bg-[var(--byti-blue)] text-white shadow-md"
+                  : "bg-white text-foreground border border-border hover:border-[var(--byti-blue)] hover:text-[var(--byti-blue)]"
+              }`}
             >
               {c.label}
-            </Button>
+            </button>
           ))}
         </div>
 
@@ -120,81 +134,83 @@ function ShopPage() {
         ) : filtered.length === 0 ? (
           <p className="text-center text-muted-foreground py-20">Aucun produit dans cette catégorie.</p>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-7">
             {filtered.map((product, i) => (
               <motion.div
                 key={product.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: Math.min(i * 0.05, 0.4) }}
-                className="group bg-card border border-border/50 rounded-2xl overflow-hidden hover:border-primary/40 transition-all hover:shadow-xl hover:-translate-y-1"
+                className="product-card-clean group flex flex-col"
               >
                 <Link
                   to="/produit/$id"
                   params={{ id: product.id }}
-                  className="block aspect-square overflow-hidden bg-muted relative"
+                  className="product-card-image block relative"
                 >
                   {product.image_url && (
-                    <img
-                      src={product.image_url}
-                      alt={product.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
-                    />
+                    <img src={product.image_url} alt={product.name} loading="lazy" />
                   )}
                   {product.price && product.compare_at_price && product.compare_at_price > product.price && (
-                    <Badge className="absolute top-3 left-3 bg-destructive text-destructive-foreground">
+                    <span className="tag-pill tag-pill-red absolute top-3 left-3 shadow-sm">
                       -{Math.round(((product.compare_at_price - product.price) / product.compare_at_price) * 100)}%
-                    </Badge>
+                    </span>
                   )}
                   {product.featured && (
-                    <Badge className="absolute top-3 right-3 bg-primary">Top</Badge>
+                    <span className="tag-pill tag-pill-yellow absolute top-3 right-3 shadow-sm">★ Top</span>
                   )}
                 </Link>
-                <div className="p-4">
+
+                <div className="p-5 flex flex-col flex-1">
                   <Link to="/produit/$id" params={{ id: product.id }}>
-                    <h3 className="font-medium text-sm line-clamp-2 mb-2 hover:text-primary transition-colors min-h-[2.5rem]">
+                    <h3 className="font-serif text-lg leading-snug text-foreground hover:text-[var(--byti-blue)] transition-colors title-underline">
                       {product.name}
                     </h3>
                   </Link>
-                  <div className="flex items-baseline gap-2 mb-3">
-                    <span className="text-primary font-bold font-display">
-                      {formatPrice(product.price, product.currency)}
-                    </span>
-                    {product.compare_at_price && product.price && product.compare_at_price > product.price && (
-                      <span className="text-xs text-muted-foreground line-through">
-                        {formatPrice(product.compare_at_price, product.currency)}
-                      </span>
+
+                  {product.description && (
+                    <p className="text-sm text-muted-foreground mt-3 line-clamp-2 leading-relaxed">
+                      {product.description}
+                    </p>
+                  )}
+
+                  <div className="flex items-center justify-between mt-auto pt-5">
+                    <div>
+                      <div className="text-base font-semibold text-[var(--byti-blue)] font-display">
+                        {formatPrice(product.price, product.currency)}
+                      </div>
+                      {product.compare_at_price && product.price && product.compare_at_price > product.price && (
+                        <div className="text-xs text-muted-foreground line-through">
+                          {formatPrice(product.compare_at_price, product.currency)}
+                        </div>
+                      )}
+                    </div>
+
+                    {!product.price ? (
+                      <Link to="/produit/$id" params={{ id: product.id }} className="round-arrow-btn">
+                        <ArrowRight className="h-4 w-4" />
+                      </Link>
+                    ) : (
+                      <button
+                        type="button"
+                        disabled={product.stock <= 0}
+                        onClick={() => {
+                          add({
+                            id: product.id,
+                            name: product.name,
+                            price: Number(product.price),
+                            currency: product.currency,
+                            image_url: product.image_url,
+                          });
+                          toast.success("Ajouté au panier");
+                        }}
+                        className="round-arrow-btn disabled:opacity-40 disabled:cursor-not-allowed"
+                        aria-label="Ajouter au panier"
+                      >
+                        {product.stock > 0 ? <ShoppingCart className="h-4 w-4" /> : <ArrowRight className="h-4 w-4" />}
+                      </button>
                     )}
                   </div>
-                  {!product.price ? (
-                    <Link
-                      to="/"
-                      hash="contact"
-                      className="btn-byti-red w-full inline-flex items-center justify-center gap-2 px-4 py-2 rounded-md text-sm font-semibold"
-                    >
-                      Demander un devis
-                    </Link>
-                  ) : (
-                    <Button
-                      size="sm"
-                      className="w-full"
-                      disabled={product.stock <= 0}
-                      onClick={() => {
-                        add({
-                          id: product.id,
-                          name: product.name,
-                          price: Number(product.price),
-                          currency: product.currency,
-                          image_url: product.image_url,
-                        });
-                        toast.success("Ajouté au panier");
-                      }}
-                    >
-                      <ShoppingCart className="h-4 w-4 mr-2" />
-                      {product.stock > 0 ? "Ajouter" : "Rupture"}
-                    </Button>
-                  )}
                 </div>
               </motion.div>
             ))}

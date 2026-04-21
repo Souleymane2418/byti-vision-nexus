@@ -49,12 +49,14 @@
   --color-glow-foreground: var(--glow-foreground);
   --font-display: var(--font-family-display);
   --font-body: var(--font-family-body);
+  --font-serif: var(--font-family-serif);
 }
 
 :root {
   --radius: 0.625rem;
   --font-family-display: 'Space Grotesk', sans-serif;
   --font-family-body: 'Inter', sans-serif;
+  --font-family-serif: 'Playfair Display', Georgia, serif;
 
   /* BYTI Brand — Bleu (#1E50A8) + Rouge (#E63946) équilibrés */
   --background: oklch(0.99 0.003 250);
@@ -252,5 +254,174 @@
 /* Global fluid scrolling & breathing rhythm */
 html {
   scroll-behavior: smooth;
+}
+
+/* ===== Style Babali-inspired (épuré, élégant) ===== */
+
+/* Badge pill type "BOISSONS GAZEUSES" */
+.pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  background: oklch(0.45 0.18 260 / 0.06);
+  color: var(--byti-blue);
+  border: 1px solid oklch(0.45 0.18 260 / 0.18);
+}
+
+.pill-badge-red {
+  background: oklch(0.58 0.22 25 / 0.08);
+  color: var(--byti-red);
+  border-color: oklch(0.58 0.22 25 / 0.22);
+}
+
+/* Titre éditorial avec mot accentué en italique */
+.editorial-title {
+  font-family: var(--font-family-serif);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--foreground);
+}
+
+.editorial-accent {
+  font-style: italic;
+  color: var(--byti-blue);
+}
+
+/* Petit séparateur point central */
+.dot-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 1.5rem auto;
+}
+
+.dot-divider::before,
+.dot-divider::after {
+  content: "";
+  width: 40px;
+  height: 1px;
+  background: var(--byti-red);
+  opacity: 0.4;
+}
+
+.dot-divider::after {
+  background: var(--byti-blue);
+}
+
+.dot-divider-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: var(--byti-red);
+}
+
+/* Carte produit "Babali style" */
+.product-card-clean {
+  background: oklch(1 0 0);
+  border-radius: 1.25rem;
+  border: 1px solid oklch(0.92 0.008 260);
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.product-card-clean:hover {
+  transform: translateY(-6px);
+  border-color: oklch(0.45 0.18 260 / 0.3);
+  box-shadow: 0 24px 50px -20px oklch(0.45 0.18 260 / 0.18);
+}
+
+.product-card-image {
+  background: oklch(0.97 0.005 260);
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.product-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.product-card-clean:hover .product-card-image img {
+  transform: scale(1.04);
+}
+
+/* Soulignement coloré sous titre carte */
+.title-underline {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.35rem;
+}
+
+.title-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 32px;
+  height: 2px;
+  background: var(--byti-red);
+  border-radius: 9999px;
+}
+
+/* Bouton flèche rond */
+.round-arrow-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid oklch(0.45 0.18 260 / 0.3);
+  color: var(--byti-blue);
+  background: oklch(1 0 0);
+  transition: all 0.3s ease;
+}
+
+.round-arrow-btn:hover {
+  background: var(--byti-blue);
+  color: white;
+  transform: translateX(3px);
+}
+
+/* Section blanche épurée */
+.section-clean {
+  background: oklch(1 0 0);
+}
+
+/* Pastille tag dans carte (catégorie) */
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.tag-pill-blue {
+  background: oklch(0.45 0.18 260 / 0.08);
+  color: var(--byti-blue);
+}
+
+.tag-pill-red {
+  background: oklch(0.58 0.22 25 / 0.1);
+  color: var(--byti-red);
+}
+
+.tag-pill-yellow {
+  background: oklch(0.88 0.18 100 / 0.25);
+  color: oklch(0.45 0.15 80);
 }
 
