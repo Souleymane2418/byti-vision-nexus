@@ -162,9 +162,10 @@
 }
 
 .btn-primary-glow {
-  background: linear-gradient(135deg, var(--byti-blue), var(--byti-red));
-  color: oklch(0.99 0 0);
-  box-shadow: 0 10px 30px oklch(0.45 0.18 260 / 0.35);
+  background: linear-gradient(135deg, var(--byti-red), var(--byti-red-deep));
+  color: var(--byti-blue-deep);
+  font-weight: 700;
+  box-shadow: 0 10px 30px oklch(0.58 0.22 25 / 0.35);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
