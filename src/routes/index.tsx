@@ -10,6 +10,7 @@ import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
 
 import heroMainImg from "@/assets/hero-main.jpg";
+import heroSolarFarmImg from "@/assets/hero-solar-farm.jpg";
 import heroElectronicsImg from "@/assets/hero-electronics.jpg";
 import heroSecurityImg from "@/assets/hero-security.jpg";
 import heroEnergyImg from "@/assets/hero-energy.jpg";
@@ -17,6 +18,7 @@ import heroTvImg from "@/assets/hero-tv.jpg";
 import heroBtpImg from "@/assets/hero-btp.jpg";
 
 import heroMainVid from "@/assets/hero-main.mp4.asset.json";
+import heroSolarFarmVid from "@/assets/hero-solar-farm.mp4.asset.json";
 import heroElectronicsVid from "@/assets/hero-electronics.mp4.asset.json";
 import heroSecurityVid from "@/assets/hero-security-loop.mp4.asset.json";
 import heroEnergyVid from "@/assets/hero-energy-loop.mp4.asset.json";
@@ -45,6 +47,18 @@ export const Route = createFileRoute("/")({
 
 const heroSections = [
   {
+    id: "hero-solar",
+    video: heroSolarFarmVid.url,
+    poster: heroSolarFarmImg,
+    title: "L'énergie solaire à grande échelle",
+    subtitle: "BYTI déploie des solutions photovoltaïques durables",
+    description: "Des fermes solaires aux installations sur toiture, nous construisons l'avenir énergétique de l'Afrique",
+    buttonText: "Nos solutions énergie",
+    buttonHref: "#energy",
+    secondaryButton: { text: "Nous contacter", href: "#contact" },
+    priority: true,
+  },
+  {
     id: "hero",
     video: heroMainVid.url,
     poster: heroMainImg,
@@ -54,7 +68,6 @@ const heroSections = [
     buttonText: "Découvrir nos activités",
     buttonHref: "#services",
     secondaryButton: { text: "Nous contacter", href: "#contact" },
-    priority: true,
   },
   {
     id: "electronics",
