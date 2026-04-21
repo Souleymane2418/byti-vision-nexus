@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { Link } from "@tanstack/react-router";
 import { Battery, Zap, Sun, ArrowRight } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import energyTechniciansVid from "@/assets/energy-technicians.mp4.asset.json";
+import energyTechniciansImg from "@/assets/energy-technicians.jpg";
 
 type EnergyProduct = {
   id: string;
@@ -74,6 +76,47 @@ export function EnergyShowcase() {
             Stations portables, onduleurs solaires et batteries lithium LiFePO₄ certifiés BYTI.
             Conçus pour résister, pensés pour durer.
           </p>
+        </motion.div>
+
+        {/* Cinematic video banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.9 }}
+          className="relative rounded-3xl overflow-hidden mb-16 border border-border/50"
+          style={{ boxShadow: "var(--shadow-byti)" }}
+        >
+          <div className="relative aspect-[21/9] md:aspect-[21/8]">
+            <video
+              src={energyTechniciansVid.url}
+              poster={energyTechniciansImg}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+
+            <div className="relative z-10 h-full flex items-center px-6 md:px-12 lg:px-16">
+              <div className="max-w-xl text-white">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-4 backdrop-blur-md"
+                  style={{ background: "color-mix(in oklch, var(--byti-red) 80%, transparent)" }}>
+                  <Zap className="h-3.5 w-3.5" />
+                  <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest">Installation & expertise</span>
+                </div>
+                <h3 className="text-2xl md:text-4xl lg:text-5xl font-display font-bold leading-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]">
+                  Des équipes certifiées<br />sur le terrain
+                </h3>
+                <p className="mt-3 text-sm md:text-base text-white/90 max-w-md drop-shadow-[0_1px_6px_rgba(0,0,0,0.7)]">
+                  De l'étude technique à la mise en service, BYTI installe vos solutions solaires avec rigueur et savoir-faire.
+                </p>
+              </div>
+            </div>
+          </div>
         </motion.div>
 
         {/* Stats strip */}
