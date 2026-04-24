@@ -27,8 +27,14 @@ export function Footer() {
             <div className="mb-4">
               <img src={bytiLogo} alt="BYTI Technologie SARL" className="h-16 w-auto" />
             </div>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/8 border border-primary/20 mb-4">
+              <span className="w-1.5 h-1.5 rounded-full bg-byti-red" />
+              <span className="text-[10px] font-semibold tracking-[0.2em] uppercase text-byti-blue">
+                Membre du Groupe BYTI
+              </span>
+            </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Solutions technologiques, énergétiques et infrastructurelles pour un monde moderne.
+              Filiale africaine de <span className="font-semibold text-foreground">BYTI Worldwide</span>, multinationale spécialisée en technologie, énergie et infrastructure.
             </p>
           </div>
 
