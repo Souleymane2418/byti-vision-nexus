@@ -8,7 +8,7 @@ import heroElectronics from "@/assets/hero-electronics.jpg";
 const projects = [
   { title: "Installation vidéosurveillance", category: "Sécurité", image: heroSecurity },
   { title: "Déploiement énergie solaire", category: "Énergie", image: heroEnergy },
-  { title: "Infrastructure moderne", category: "BTP", image: heroBtp },
+  { title: "Production briques, pavés & béton", category: "BTP", image: heroBtp },
   { title: "Équipement technologique", category: "Électronique", image: heroElectronics },
 ];
 
