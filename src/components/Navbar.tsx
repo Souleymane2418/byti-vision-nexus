@@ -37,8 +37,12 @@ export function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-3 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-3 group">
           <img src={bytiLogo} alt="BYTI Technologie SARL" className="h-10 md:h-12 w-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]" />
+          <div className="hidden sm:flex flex-col leading-tight border-l border-white/20 pl-3">
+            <span className="text-[10px] font-semibold tracking-[0.22em] text-white/70 uppercase">Membre du Groupe</span>
+            <span className="text-xs font-bold tracking-[0.3em] text-white uppercase">BYTI Worldwide</span>
+          </div>
         </Link>
 
         <div className="hidden md:flex items-center gap-7">

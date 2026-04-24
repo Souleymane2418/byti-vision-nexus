@@ -21,17 +21,31 @@ export function AboutSection() {
           >
             <span className="pill-badge">★ À propos</span>
             <h2 className="editorial-title mt-6 text-3xl md:text-5xl">
-              Un groupe multi-sectoriel{" "}
-              <span className="editorial-accent">d'envergure</span>
+              Filiale du groupe{" "}
+              <span className="editorial-accent">BYTI Worldwide</span>
             </h2>
             <p className="mt-6 text-muted-foreground text-lg leading-relaxed">
-              BYTI Technologie SARL est une entreprise spécialisée dans les solutions
-              technologiques, énergétiques, sécuritaires et de construction.
+              <span className="font-semibold text-foreground">BYTI Technologie SARL</span> est la filiale locale de
+              <span className="font-semibold text-foreground"> BYTI</span>, multinationale de référence
+              dans la technologie, l'énergie et les infrastructures.
             </p>
             <p className="mt-4 text-muted-foreground text-lg leading-relaxed">
-              Nous accompagnons les entreprises, institutions et particuliers avec des
-              produits modernes, fiables et adaptés aux exigences du marché.
+              Nous portons localement l'excellence d'un groupe international, en proposant des
+              solutions modernes, fiables et adaptées aux exigences du marché.
             </p>
+
+            {/* Group brand bar */}
+            <div className="mt-8 flex items-center gap-4 p-4 rounded-2xl bg-gradient-to-r from-primary/5 via-transparent to-byti-red/5 border border-border/60">
+              <div className="flex flex-col">
+                <span className="text-[10px] font-semibold tracking-[0.25em] uppercase text-muted-foreground">Powered by</span>
+                <span className="text-xl font-bold tracking-[0.15em] gradient-text">BYTI WORLDWIDE</span>
+              </div>
+              <div className="ml-auto h-10 w-px bg-border" />
+              <p className="text-xs text-muted-foreground max-w-[180px] leading-snug">
+                Présence internationale · Standards globaux · Innovation continue
+              </p>
+            </div>
+
             <div className="mt-8 section-divider w-24" />
           </motion.div>
 
