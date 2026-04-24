@@ -40,9 +40,9 @@ const slides: Slide[] = [
   {
     video: vid3.url,
     poster: poster3,
-    title: "BTP éco-responsable",
-    caption: "Construire en harmonie avec la nature",
-    description: "Bâtiments modernes, matériaux durables, espaces végétalisés.",
+    title: "Matériaux de construction",
+    caption: "Briques, pavés, parpaings & béton",
+    description: "Notre pôle BTP fabrique des matériaux durables : briques pleines et creuses, pavés autobloquants, parpaings et béton prêt à l'emploi.",
   },
   {
     video: vid4.url,

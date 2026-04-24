@@ -35,7 +35,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Solutions technologiques, énergétiques et infrastructurelles pour un monde moderne. Électronique, sécurité, énergie, BTP.",
+          "Solutions technologiques, énergétiques et matériaux de construction pour un monde moderne. Électronique, sécurité, énergie, briques, pavés et béton.",
       },
       { property: "og:title", content: "BYTI Technologie SARL" },
       {
@@ -88,8 +88,8 @@ const heroSections = [
     id: "btp",
     video: heroBtpVid.url,
     poster: heroBtpImg,
-    title: "BTP & construction",
-    subtitle: "Construire avec expertise, précision et innovation",
+    title: "BTP — Briques, Pavés & Béton",
+    subtitle: "Notre pôle BTP conçoit et fabrique briques, pavés autobloquants, parpaings et béton prêt à l'emploi pour vos chantiers résidentiels et industriels.",
     buttonText: "Nos réalisations",
     buttonHref: "#projects",
   },

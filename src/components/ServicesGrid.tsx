@@ -12,7 +12,7 @@ const services = [
   { icon: Camera, title: "Sécurité", description: "Vidéosurveillance et solutions de monitoring", image: heroSecurity },
   { icon: Battery, title: "Énergie", description: "Batteries lithium et solutions énergétiques", image: heroEnergy },
   { icon: Monitor, title: "Téléviseurs", description: "Écrans HD et solutions d'affichage", image: heroTv },
-  { icon: HardHat, title: "BTP", description: "Construction et infrastructures modernes", image: heroBtp },
+  { icon: HardHat, title: "BTP & Matériaux", description: "Fabrication de briques, pavés, parpaings et béton de qualité", image: heroBtp },
 ];
 
 export function ServicesGrid() {
