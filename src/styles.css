@@ -58,60 +58,65 @@
   --font-family-body: 'Inter', sans-serif;
   --font-family-serif: 'Playfair Display', Georgia, serif;
 
-  /* BYTI Brand — Bleu (#1E50A8) + Rouge (#E63946) équilibrés */
-  --background: oklch(0.99 0.003 250);
-  --foreground: oklch(0.16 0.04 260);
+  /* BYTI Brand — Couleurs extraites directement du logo officiel
+     Bleu #0069A5 · Rouge #D21E1E · Jaune #E1F01E */
+  --background: oklch(0.99 0.004 235);
+  --foreground: oklch(0.18 0.05 240);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.16 0.04 260);
+  --card-foreground: oklch(0.18 0.05 240);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.16 0.04 260);
+  --popover-foreground: oklch(0.18 0.05 240);
 
-  /* Primary: BYTI Blue */
-  --primary: oklch(0.45 0.18 260);
+  /* Primary: BYTI Blue logo (#0069A5) */
+  --primary: oklch(0.5 0.13 240);
   --primary-foreground: oklch(0.99 0 0);
-  --byti-blue: oklch(0.45 0.18 260);
-  --byti-blue-deep: oklch(0.32 0.15 262);
-  --byti-blue-light: oklch(0.62 0.16 255);
+  --byti-blue: oklch(0.5 0.13 240);
+  --byti-blue-deep: oklch(0.36 0.11 242);
+  --byti-blue-light: oklch(0.66 0.12 235);
 
-  /* Accent: BYTI Red */
-  --accent: oklch(0.58 0.22 25);
+  /* Accent: BYTI Red logo (#D21E1E) */
+  --accent: oklch(0.56 0.21 28);
   --accent-foreground: oklch(0.99 0 0);
-  --byti-red: oklch(0.58 0.22 25);
-  --byti-red-deep: oklch(0.46 0.22 25);
-  --byti-yellow: oklch(0.88 0.18 100);
+  --byti-red: oklch(0.56 0.21 28);
+  --byti-red-deep: oklch(0.45 0.21 28);
 
-  --secondary: oklch(0.96 0.012 260);
-  --secondary-foreground: oklch(0.2 0.04 260);
-  --muted: oklch(0.96 0.008 260);
-  --muted-foreground: oklch(0.45 0.02 260);
-  --destructive: oklch(0.58 0.22 25);
+  /* Yellow logo (#E1F01E) */
+  --byti-yellow: oklch(0.94 0.21 110);
+  --byti-yellow-deep: oklch(0.85 0.2 105);
+
+  --secondary: oklch(0.96 0.012 235);
+  --secondary-foreground: oklch(0.22 0.05 240);
+  --muted: oklch(0.96 0.008 235);
+  --muted-foreground: oklch(0.45 0.025 240);
+  --destructive: oklch(0.56 0.21 28);
   --destructive-foreground: oklch(0.99 0 0);
-  --border: oklch(0.9 0.012 260);
-  --input: oklch(0.94 0.012 260);
-  --ring: oklch(0.45 0.18 260);
-  --glow: oklch(0.45 0.18 260);
+  --border: oklch(0.9 0.012 235);
+  --input: oklch(0.94 0.012 235);
+  --ring: oklch(0.5 0.13 240);
+  --glow: oklch(0.5 0.13 240);
   --glow-foreground: oklch(0.99 0 0);
 
-  --chart-1: oklch(0.45 0.18 260);
-  --chart-2: oklch(0.58 0.22 25);
-  --chart-3: oklch(0.62 0.16 255);
-  --chart-4: oklch(0.88 0.18 100);
-  --chart-5: oklch(0.32 0.15 262);
+  --chart-1: oklch(0.5 0.13 240);
+  --chart-2: oklch(0.56 0.21 28);
+  --chart-3: oklch(0.66 0.12 235);
+  --chart-4: oklch(0.94 0.21 110);
+  --chart-5: oklch(0.36 0.11 242);
 
-  /* BYTI gradients */
-  --gradient-byti: linear-gradient(135deg, oklch(0.45 0.18 260), oklch(0.58 0.22 25));
-  --gradient-byti-soft: linear-gradient(135deg, oklch(0.45 0.18 260 / 0.08), oklch(0.58 0.22 25 / 0.08));
-  --shadow-byti: 0 20px 60px oklch(0.45 0.18 260 / 0.15);
-  --shadow-byti-red: 0 20px 60px oklch(0.58 0.22 25 / 0.18);
+  /* BYTI gradients (logo) */
+  --gradient-byti: linear-gradient(135deg, oklch(0.5 0.13 240), oklch(0.56 0.21 28));
+  --gradient-byti-soft: linear-gradient(135deg, oklch(0.5 0.13 240 / 0.08), oklch(0.56 0.21 28 / 0.08));
+  --gradient-byti-tri: linear-gradient(120deg, oklch(0.5 0.13 240) 0%, oklch(0.56 0.21 28) 60%, oklch(0.94 0.21 110) 100%);
+  --shadow-byti: 0 20px 60px oklch(0.5 0.13 240 / 0.18);
+  --shadow-byti-red: 0 20px 60px oklch(0.56 0.21 28 / 0.2);
 
-  --sidebar: oklch(0.98 0.005 260);
-  --sidebar-foreground: oklch(0.16 0.04 260);
-  --sidebar-primary: oklch(0.45 0.18 260);
+  --sidebar: oklch(0.98 0.005 235);
+  --sidebar-foreground: oklch(0.18 0.05 240);
+  --sidebar-primary: oklch(0.5 0.13 240);
   --sidebar-primary-foreground: oklch(0.99 0 0);
-  --sidebar-accent: oklch(0.94 0.012 260);
-  --sidebar-accent-foreground: oklch(0.16 0.04 260);
-  --sidebar-border: oklch(0.9 0.012 260);
-  --sidebar-ring: oklch(0.45 0.18 260);
+  --sidebar-accent: oklch(0.94 0.012 235);
+  --sidebar-accent-foreground: oklch(0.18 0.05 240);
+  --sidebar-border: oklch(0.9 0.012 235);
+  --sidebar-ring: oklch(0.5 0.13 240);
 }
 
 @theme inline {
@@ -228,8 +233,32 @@
 }
 
 .section-divider {
-  background: linear-gradient(90deg, transparent, var(--byti-blue), var(--byti-red), transparent);
+  background: linear-gradient(90deg, transparent, var(--byti-blue), var(--byti-red), var(--byti-yellow), transparent);
   height: 2px;
+}
+
+/* Bande tricolore inspirée du logo */
+.logo-stripe {
+  height: 3px;
+  background: linear-gradient(90deg, var(--byti-blue) 0%, var(--byti-blue) 45%, var(--byti-red) 45%, var(--byti-red) 85%, var(--byti-yellow) 85%, var(--byti-yellow) 100%);
+}
+
+/* Halo lumineux aux 3 couleurs du logo */
+.logo-halo {
+  position: relative;
+}
+.logo-halo::before {
+  content: "";
+  position: absolute;
+  inset: -12%;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at 25% 30%, oklch(0.5 0.13 240 / 0.5), transparent 55%),
+    radial-gradient(circle at 75% 70%, oklch(0.56 0.21 28 / 0.45), transparent 55%),
+    radial-gradient(circle at 50% 50%, oklch(0.94 0.21 110 / 0.25), transparent 60%);
+  filter: blur(20px);
+  z-index: -1;
+  pointer-events: none;
 }
 
 @keyframes byti-shine {

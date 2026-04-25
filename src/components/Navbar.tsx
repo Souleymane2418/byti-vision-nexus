@@ -36,9 +36,15 @@ export function Navbar() {
           : "bg-gradient-to-b from-black/60 via-black/30 to-transparent"
       }`}
     >
+      <div className="logo-stripe w-full" />
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-3 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3 group">
-          <img src={bytiLogo} alt="BYTI Technologie SARL" className="h-10 md:h-12 w-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]" />
+          <div className="relative">
+            <span className="absolute inset-0 -m-1 rounded-2xl bg-[radial-gradient(circle_at_30%_30%,oklch(0.5_0.13_240/0.55),transparent_60%),radial-gradient(circle_at_70%_70%,oklch(0.56_0.21_28/0.45),transparent_60%)] blur-md opacity-80 group-hover:opacity-100 transition-opacity" />
+            <div className="relative bg-white rounded-xl px-2.5 py-1.5 shadow-[0_8px_24px_-6px_rgba(0,0,0,0.35)] ring-1 ring-white/40">
+              <img src={bytiLogo} alt="BYTI Technologie SARL" className="h-9 md:h-11 w-auto" />
+            </div>
+          </div>
           <div className="hidden sm:flex flex-col leading-tight border-l border-white/20 pl-3">
             <span className="text-[10px] font-semibold tracking-[0.22em] text-white/70 uppercase">Membre du Groupe</span>
             <span className="text-xs font-bold tracking-[0.3em] text-white uppercase">BYTI Worldwide</span>
