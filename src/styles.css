@@ -233,8 +233,32 @@
 }
 
 .section-divider {
-  background: linear-gradient(90deg, transparent, var(--byti-blue), var(--byti-red), transparent);
+  background: linear-gradient(90deg, transparent, var(--byti-blue), var(--byti-red), var(--byti-yellow), transparent);
   height: 2px;
+}
+
+/* Bande tricolore inspirée du logo */
+.logo-stripe {
+  height: 3px;
+  background: linear-gradient(90deg, var(--byti-blue) 0%, var(--byti-blue) 45%, var(--byti-red) 45%, var(--byti-red) 85%, var(--byti-yellow) 85%, var(--byti-yellow) 100%);
+}
+
+/* Halo lumineux aux 3 couleurs du logo */
+.logo-halo {
+  position: relative;
+}
+.logo-halo::before {
+  content: "";
+  position: absolute;
+  inset: -12%;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at 25% 30%, oklch(0.5 0.13 240 / 0.5), transparent 55%),
+    radial-gradient(circle at 75% 70%, oklch(0.56 0.21 28 / 0.45), transparent 55%),
+    radial-gradient(circle at 50% 50%, oklch(0.94 0.21 110 / 0.25), transparent 60%);
+  filter: blur(20px);
+  z-index: -1;
+  pointer-events: none;
 }
 
 @keyframes byti-shine {
