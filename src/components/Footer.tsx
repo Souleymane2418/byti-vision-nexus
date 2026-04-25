@@ -24,8 +24,11 @@ export function Footer() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <div className="mb-4">
-              <img src={bytiLogo} alt="BYTI Technologie SARL" className="h-16 w-auto" />
+            <div className="mb-4 inline-block relative">
+              <span className="absolute inset-0 -m-2 rounded-3xl bg-[radial-gradient(circle_at_30%_30%,oklch(0.5_0.13_240/0.35),transparent_60%),radial-gradient(circle_at_70%_70%,oklch(0.56_0.21_28/0.3),transparent_60%)] blur-xl" />
+              <div className="relative bg-white rounded-2xl px-4 py-3 shadow-[0_12px_40px_-12px_oklch(0.5_0.13_240/0.35)] ring-1 ring-byti-blue/10">
+                <img src={bytiLogo} alt="BYTI Technologie SARL" className="h-16 w-auto" />
+              </div>
             </div>
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/8 border border-primary/20 mb-4">
               <span className="w-1.5 h-1.5 rounded-full bg-byti-red" />
