@@ -36,6 +36,7 @@ export function Navbar() {
           : "bg-gradient-to-b from-black/60 via-black/30 to-transparent"
       }`}
     >
+      <div className="logo-stripe w-full" />
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-3 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3 group">
           <div className="relative">
