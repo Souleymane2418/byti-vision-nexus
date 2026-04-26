@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, MessageCircle, Facebook } from "lucide-react";
+import { Phone, Mail, MapPin, MessageCircle, Share2 } from "lucide-react";
 
 export function ContactSection() {
   return (
