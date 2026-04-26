@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
+import { Phone, Mail, MapPin, MessageCircle, Share2 } from "lucide-react";
 
 export function ContactSection() {
   return (
@@ -36,7 +36,12 @@ export function ContactSection() {
               </div>
               <div>
                 <h4 className="font-semibold text-foreground">Téléphone</h4>
-                <p className="text-muted-foreground text-sm mt-1">+XXX XXX XXX XXX</p>
+                <a href="tel:+22676767663" className="block text-muted-foreground text-sm mt-1 hover:text-primary transition-colors">
+                  +226 76 76 76 63
+                </a>
+                <a href="tel:+22670681212" className="block text-muted-foreground text-sm hover:text-primary transition-colors">
+                  +226 70 68 12 12
+                </a>
               </div>
             </div>
 
@@ -47,12 +52,29 @@ export function ContactSection() {
               <div>
                 <h4 className="font-semibold text-foreground">WhatsApp</h4>
                 <a
-                  href="https://wa.me/XXXXXXXXXXX"
+                  href="https://wa.me/22676767663"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-primary text-sm mt-1 hover:underline"
                 >
                   Envoyer un message
+                </a>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                <Share2 className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <h4 className="font-semibold text-foreground">Facebook</h4>
+                <a
+                  href="https://web.facebook.com/people/BYTI-Technologie-Internationale/61577925500422/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary text-sm mt-1 hover:underline"
+                >
+                  BYTI Technologie Internationale
                 </a>
               </div>
             </div>

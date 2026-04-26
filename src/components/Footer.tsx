@@ -79,8 +79,22 @@ export function Footer() {
             </h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>contact@bytitechnologie.com</li>
-              <li>+XXX XXX XXX XXX</li>
-              <li>Votre adresse ici</li>
+              <li>
+                <a href="tel:+22676767663" className="hover:text-foreground transition-colors">+226 76 76 76 63</a>
+              </li>
+              <li>
+                <a href="tel:+22670681212" className="hover:text-foreground transition-colors">+226 70 68 12 12</a>
+              </li>
+              <li>
+                <a
+                  href="https://web.facebook.com/people/BYTI-Technologie-Internationale/61577925500422/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-foreground transition-colors"
+                >
+                  Facebook : BYTI Technologie Internationale
+                </a>
+              </li>
             </ul>
           </div>
         </div>
