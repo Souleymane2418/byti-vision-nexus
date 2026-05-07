@@ -30,10 +30,10 @@ export function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: [0.25, 0.1, 0, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b-2 border-byti-yellow ${
         scrolled
-          ? "bg-[oklch(0.16_0.04_260)/0.92] backdrop-blur-xl border-b border-white/10 shadow-lg"
-          : "bg-gradient-to-b from-black/60 via-black/30 to-transparent"
+          ? "bg-byti-blue/95 backdrop-blur-xl shadow-lg"
+          : "bg-byti-blue"
       }`}
     >
       <div className="logo-stripe w-full" />
