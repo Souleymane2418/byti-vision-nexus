@@ -71,7 +71,7 @@ function CheckoutPage() {
         <Navbar />
         <div className="pt-32 pb-20 px-6 max-w-xl mx-auto text-center">
           <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="inline-block mb-6">
-            <CheckCircle2 className="h-20 w-20 text-green-500" />
+            <CheckCircle2 className="h-20 w-20 text-byti-blue" />
           </motion.div>
           <h1 className="text-3xl font-display font-bold mb-4">Commande confirmée !</h1>
           <p className="text-muted-foreground mb-8">

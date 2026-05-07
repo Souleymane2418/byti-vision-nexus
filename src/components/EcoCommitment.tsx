@@ -38,7 +38,7 @@ export function EcoCommitment() {
           transition={{ duration: 0.8 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-6">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-byti-blue/10 text-byti-blue dark:text-byti-blue text-xs font-semibold uppercase tracking-wider mb-6">
             <Leaf className="w-3.5 h-3.5" />
             Engagement environnemental
           </span>
@@ -69,7 +69,7 @@ export function EcoCommitment() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
-            <p className="text-emerald-300 text-sm font-semibold uppercase tracking-widest mb-3">
+            <p className="text-byti-yellow text-sm font-semibold uppercase tracking-widest mb-3">
               Énergie propre · Écosystème préservé
             </p>
             <h3 className="text-2xl md:text-4xl font-bold text-white max-w-2xl drop-shadow-lg">
@@ -87,9 +87,9 @@ export function EcoCommitment() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="relative p-6 md:p-8 rounded-2xl bg-card border border-border/50 hover:border-emerald-500/50 transition-colors group"
+              className="relative p-6 md:p-8 rounded-2xl bg-card border border-border/50 hover:border-byti-blue/50 transition-colors group"
             >
-              <stat.icon className="w-7 h-7 text-emerald-500 mb-4 group-hover:scale-110 transition-transform" />
+              <stat.icon className="w-7 h-7 text-byti-blue mb-4 group-hover:scale-110 transition-transform" />
               <div className="text-3xl md:text-4xl font-bold text-foreground tracking-tight">
                 {stat.value}
               </div>
@@ -107,7 +107,7 @@ export function EcoCommitment() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.7, delay: i * 0.15 }}
-              className="group rounded-2xl overflow-hidden bg-card border border-border/50 hover:border-emerald-500/50 transition-all"
+              className="group rounded-2xl overflow-hidden bg-card border border-border/50 hover:border-byti-blue/50 transition-all"
             >
               <div className="relative h-64 overflow-hidden">
                 <img
