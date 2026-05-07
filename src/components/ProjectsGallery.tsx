@@ -1,13 +1,13 @@
 import { motion } from "framer-motion";
 
-import heroSecurity from "@/assets/hero-security.jpg";
-import heroEnergy from "@/assets/hero-energy.jpg";
+import projectVideosurveillance from "@/assets/project-videosurveillance.jpg";
+import projectSolar from "@/assets/project-solar-deployment.jpg";
 import heroBtp from "@/assets/hero-btp.jpg";
 import heroElectronics from "@/assets/hero-electronics.jpg";
 
 const projects = [
-  { title: "Installation vidéosurveillance", category: "Sécurité", image: heroSecurity },
-  { title: "Déploiement énergie solaire", category: "Énergie", image: heroEnergy },
+  { title: "Installation vidéosurveillance", category: "Sécurité", image: projectVideosurveillance },
+  { title: "Déploiement énergie solaire", category: "Énergie", image: projectSolar },
   { title: "Production briques, pavés & béton", category: "BTP", image: heroBtp },
   { title: "Équipement technologique", category: "Électronique", image: heroElectronics },
 ];
