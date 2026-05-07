@@ -84,14 +84,14 @@ export function HeroCarousel() {
     return () => clearInterval(t);
   }, []);
 
+  const slide = slides[index];
+
   useEffect(() => {
     const v = videoRef.current;
     if (!v || !slide.video) return;
     v.currentTime = 0;
     v.play().catch(() => {});
-  }, [index]);
-
-  const slide = slides[index];
+  }, [index, slide.video]);
 
   return (
     <section className="relative w-full h-screen overflow-hidden bg-black">
