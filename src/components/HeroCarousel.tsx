@@ -21,6 +21,7 @@ interface Slide {
   subtitle: string;
   cta1: { label: string; href: string };
   cta2: { label: string; href: string };
+  objectPosition?: string;
 }
 
 const slides: Slide[] = [
@@ -41,6 +42,7 @@ const slides: Slide[] = [
     subtitle: "Batteries 30 kWh, 6000 cycles garantis",
     cta1: { label: "Voir nos produits", href: "/boutique" },
     cta2: { label: "Demander un devis", href: "#contact" },
+    objectPosition: "center 25%",
   },
   {
     video: vid3.url,
@@ -110,6 +112,7 @@ export function HeroCarousel() {
             playsInline
             preload="auto"
             className="absolute inset-0 w-full h-full object-cover"
+            style={{ objectPosition: slide.objectPosition ?? "center" }}
           />
           <div className="absolute inset-0 bg-black/45" />
         </motion.div>
