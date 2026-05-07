@@ -255,9 +255,9 @@
   inset: -12%;
   border-radius: inherit;
   background:
-    radial-gradient(circle at 25% 30%, oklch(0.5 0.13 240 / 0.5), transparent 55%),
-    radial-gradient(circle at 75% 70%, oklch(0.56 0.21 28 / 0.45), transparent 55%),
-    radial-gradient(circle at 50% 50%, oklch(0.94 0.21 110 / 0.25), transparent 60%);
+    radial-gradient(circle at 25% 30%, rgb(21 101 192 / 0.5), transparent 55%),
+    radial-gradient(circle at 75% 70%, rgb(212 43 43 / 0.45), transparent 55%),
+    radial-gradient(circle at 50% 50%, rgb(204 221 0 / 0.25), transparent 60%);
   filter: blur(20px);
   z-index: -1;
   pointer-events: none;
