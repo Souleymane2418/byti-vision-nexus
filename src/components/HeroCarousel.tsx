@@ -12,9 +12,11 @@ import vid2 from "@/assets/hero-energy-battery.mp4.asset.json";
 import vid3 from "@/assets/hero-btp-loop.mp4.asset.json";
 import vid4 from "@/assets/hero-security-loop.mp4.asset.json";
 import vid5 from "@/assets/hero-solar-farm.mp4.asset.json";
+import solarInverterImg from "@/assets/hero-solar-inverter.jpeg";
 
 interface Slide {
-  video: string;
+  video?: string;
+  image?: string;
   poster: string;
   badge: string;
   title: string;
@@ -35,14 +37,14 @@ const slides: Slide[] = [
     cta2: { label: "Nous contacter", href: "#contact" },
   },
   {
-    video: vid2.url,
-    poster: poster2,
+    image: solarInverterImg,
+    poster: solarInverterImg,
     badge: "Stockage Lithium",
     title: "Zéro coupure",
     subtitle: "Batteries 30 kWh, 6000 cycles garantis",
     cta1: { label: "Voir nos produits", href: "/boutique" },
     cta2: { label: "Demander un devis", href: "#contact" },
-    objectPosition: "center 25%",
+    objectPosition: "center center",
   },
   {
     video: vid3.url,
@@ -82,14 +84,14 @@ export function HeroCarousel() {
     return () => clearInterval(t);
   }, []);
 
+  const slide = slides[index];
+
   useEffect(() => {
     const v = videoRef.current;
-    if (!v) return;
+    if (!v || !slide.video) return;
     v.currentTime = 0;
     v.play().catch(() => {});
-  }, [index]);
-
-  const slide = slides[index];
+  }, [index, slide.video]);
 
   return (
     <section className="relative w-full h-screen overflow-hidden bg-black">
@@ -102,18 +104,27 @@ export function HeroCarousel() {
           transition={{ duration: 1.2, ease: "easeInOut" }}
           className="absolute inset-0"
         >
-          <video
-            ref={videoRef}
-            src={slide.video}
-            poster={slide.poster}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            className="absolute inset-0 w-full h-full object-cover"
-            style={{ objectPosition: slide.objectPosition ?? "center" }}
-          />
+          {slide.video ? (
+            <video
+              ref={videoRef}
+              src={slide.video}
+              poster={slide.poster}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              className="absolute inset-0 w-full h-full object-cover"
+              style={{ objectPosition: slide.objectPosition ?? "center" }}
+            />
+          ) : (
+            <img
+              src={slide.image}
+              alt={slide.title}
+              className="absolute inset-0 w-full h-full object-cover"
+              style={{ objectPosition: slide.objectPosition ?? "center" }}
+            />
+          )}
           <div className="absolute inset-0 bg-black/45" />
         </motion.div>
       </AnimatePresence>
