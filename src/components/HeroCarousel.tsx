@@ -21,6 +21,7 @@ interface Slide {
   subtitle: string;
   cta1: { label: string; href: string };
   cta2: { label: string; href: string };
+  objectPosition?: string;
 }
 
 const slides: Slide[] = [
