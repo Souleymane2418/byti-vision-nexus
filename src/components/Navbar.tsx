@@ -30,10 +30,10 @@ export function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: [0.25, 0.1, 0, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b-2 border-byti-yellow ${
         scrolled
-          ? "bg-[oklch(0.16_0.04_260)/0.92] backdrop-blur-xl border-b border-white/10 shadow-lg"
-          : "bg-gradient-to-b from-black/60 via-black/30 to-transparent"
+          ? "bg-byti-blue/95 backdrop-blur-xl shadow-lg"
+          : "bg-byti-blue"
       }`}
     >
       <div className="logo-stripe w-full" />
@@ -57,10 +57,10 @@ export function Navbar() {
               key={link.label}
               to={link.href}
               hash={link.hash || undefined}
-              className="text-sm font-medium text-white/90 hover:text-white transition-colors duration-300 tracking-wide relative group"
+              className="text-sm font-medium text-white/85 hover:text-byti-yellow transition-colors duration-300 tracking-wide relative group"
             >
               {link.label}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-byti-blue-light to-byti-red group-hover:w-full transition-all duration-300" />
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-byti-yellow group-hover:w-full transition-all duration-300" />
             </Link>
           ))}
           <button
@@ -106,7 +106,7 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[oklch(0.16_0.04_260)/0.96] backdrop-blur-2xl border-t border-white/10 overflow-hidden"
+            className="md:hidden bg-byti-blue-deep backdrop-blur-2xl border-t border-byti-yellow/30 overflow-hidden"
           >
             <div className="px-6 py-4 space-y-1">
               {navLinks.map((link) => (

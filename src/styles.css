@@ -58,65 +58,65 @@
   --font-family-body: 'Inter', sans-serif;
   --font-family-serif: 'Playfair Display', Georgia, serif;
 
-  /* BYTI Brand — Couleurs extraites directement du logo officiel
-     Bleu #0069A5 · Rouge #D21E1E · Jaune #E1F01E */
-  --background: oklch(0.99 0.004 235);
-  --foreground: oklch(0.18 0.05 240);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.05 240);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.05 240);
+  /* BYTI Brand — Palette officielle exacte du logo
+     Bleu roi #1565C0 · Bleu foncé #0D3A7A · Rouge #D42B2B · Jaune #CCDD00 */
+  --background: #FFFFFF;
+  --foreground: #333333;
+  --card: #FFFFFF;
+  --card-foreground: #0D3A7A;
+  --popover: #FFFFFF;
+  --popover-foreground: #333333;
 
-  /* Primary: BYTI Blue logo (#0069A5) */
-  --primary: oklch(0.5 0.13 240);
-  --primary-foreground: oklch(0.99 0 0);
-  --byti-blue: oklch(0.5 0.13 240);
-  --byti-blue-deep: oklch(0.36 0.11 242);
-  --byti-blue-light: oklch(0.66 0.12 235);
+  /* Primary: BYTI Bleu roi #1565C0 */
+  --primary: #1565C0;
+  --primary-foreground: #FFFFFF;
+  --byti-blue: #1565C0;
+  --byti-blue-deep: #0D3A7A;
+  --byti-blue-light: #1E88E5;
 
-  /* Accent: BYTI Red logo (#D21E1E) */
-  --accent: oklch(0.56 0.21 28);
-  --accent-foreground: oklch(0.99 0 0);
-  --byti-red: oklch(0.56 0.21 28);
-  --byti-red-deep: oklch(0.45 0.21 28);
+  /* Accent: BYTI Rouge #D42B2B */
+  --accent: #D42B2B;
+  --accent-foreground: #FFFFFF;
+  --byti-red: #D42B2B;
+  --byti-red-deep: #A51E1E;
 
-  /* Yellow logo (#E1F01E) */
-  --byti-yellow: oklch(0.94 0.21 110);
-  --byti-yellow-deep: oklch(0.85 0.2 105);
+  /* Jaune accent #CCDD00 — usage limité (badges, underlines, accents) */
+  --byti-yellow: #CCDD00;
+  --byti-yellow-deep: #B8C700;
 
-  --secondary: oklch(0.96 0.012 235);
-  --secondary-foreground: oklch(0.22 0.05 240);
-  --muted: oklch(0.96 0.008 235);
-  --muted-foreground: oklch(0.45 0.025 240);
-  --destructive: oklch(0.56 0.21 28);
-  --destructive-foreground: oklch(0.99 0 0);
-  --border: oklch(0.9 0.012 235);
-  --input: oklch(0.94 0.012 235);
-  --ring: oklch(0.5 0.13 240);
-  --glow: oklch(0.5 0.13 240);
-  --glow-foreground: oklch(0.99 0 0);
+  --secondary: #F4F7FB;
+  --secondary-foreground: #0D3A7A;
+  --muted: #F4F7FB;
+  --muted-foreground: #555555;
+  --destructive: #D42B2B;
+  --destructive-foreground: #FFFFFF;
+  --border: #E2E8F0;
+  --input: #EEF2F7;
+  --ring: #1565C0;
+  --glow: #1565C0;
+  --glow-foreground: #FFFFFF;
 
-  --chart-1: oklch(0.5 0.13 240);
-  --chart-2: oklch(0.56 0.21 28);
-  --chart-3: oklch(0.66 0.12 235);
-  --chart-4: oklch(0.94 0.21 110);
-  --chart-5: oklch(0.36 0.11 242);
+  --chart-1: #1565C0;
+  --chart-2: #D42B2B;
+  --chart-3: #1E88E5;
+  --chart-4: #CCDD00;
+  --chart-5: #0D3A7A;
 
   /* BYTI gradients (logo) */
-  --gradient-byti: linear-gradient(135deg, oklch(0.5 0.13 240), oklch(0.56 0.21 28));
-  --gradient-byti-soft: linear-gradient(135deg, oklch(0.5 0.13 240 / 0.08), oklch(0.56 0.21 28 / 0.08));
-  --gradient-byti-tri: linear-gradient(120deg, oklch(0.5 0.13 240) 0%, oklch(0.56 0.21 28) 60%, oklch(0.94 0.21 110) 100%);
-  --shadow-byti: 0 20px 60px oklch(0.5 0.13 240 / 0.18);
-  --shadow-byti-red: 0 20px 60px oklch(0.56 0.21 28 / 0.2);
+  --gradient-byti: linear-gradient(135deg, #1565C0, #D42B2B);
+  --gradient-byti-soft: linear-gradient(135deg, rgb(21 101 192 / 0.08), rgb(212 43 43 / 0.08));
+  --gradient-byti-tri: linear-gradient(120deg, #1565C0 0%, #D42B2B 60%, #CCDD00 100%);
+  --shadow-byti: 0 20px 60px rgb(21 101 192 / 0.22);
+  --shadow-byti-red: 0 20px 60px rgb(212 43 43 / 0.25);
 
-  --sidebar: oklch(0.98 0.005 235);
-  --sidebar-foreground: oklch(0.18 0.05 240);
-  --sidebar-primary: oklch(0.5 0.13 240);
-  --sidebar-primary-foreground: oklch(0.99 0 0);
-  --sidebar-accent: oklch(0.94 0.012 235);
-  --sidebar-accent-foreground: oklch(0.18 0.05 240);
-  --sidebar-border: oklch(0.9 0.012 235);
-  --sidebar-ring: oklch(0.5 0.13 240);
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #0D3A7A;
+  --sidebar-primary: #1565C0;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #F4F7FB;
+  --sidebar-accent-foreground: #0D3A7A;
+  --sidebar-border: #E2E8F0;
+  --sidebar-ring: #1565C0;
 }
 
 @theme inline {
@@ -157,8 +157,8 @@
 }
 
 @keyframes glow-border {
-  0%, 100% { box-shadow: 0 0 20px oklch(0.6 0.2 250 / 0.2); }
-  50% { box-shadow: 0 0 40px oklch(0.6 0.2 250 / 0.4); }
+  0%, 100% { box-shadow: 0 0 20px rgb(21 101 192 / 0.25); }
+  50% { box-shadow: 0 0 40px rgb(21 101 192 / 0.45); }
 }
 
 .hero-ken-burns {
@@ -170,41 +170,43 @@
 }
 
 .btn-primary-glow {
-  background: linear-gradient(135deg, var(--byti-red), var(--byti-red-deep));
-  color: var(--byti-blue-deep);
+  background: var(--byti-red);
+  color: #FFFFFF;
   font-weight: 700;
-  box-shadow: 0 10px 30px oklch(0.58 0.22 25 / 0.35);
+  box-shadow: 0 10px 30px rgb(212 43 43 / 0.35);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-primary-glow:hover {
-  box-shadow: 0 20px 50px oklch(0.58 0.22 25 / 0.5);
+  background: var(--byti-red-deep);
+  box-shadow: 0 20px 50px rgb(212 43 43 / 0.5);
   transform: translateY(-2px);
 }
 
 .btn-outline-glow {
-  border: 1.5px solid oklch(1 0 0 / 0.6);
-  color: oklch(1 0 0);
-  background: oklch(0 0 0 / 0.2);
+  border: 2px solid var(--byti-yellow);
+  color: var(--byti-yellow);
+  background: transparent;
   backdrop-filter: blur(8px);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-outline-glow:hover {
-  border-color: oklch(1 0 0);
-  background: oklch(1 0 0 / 0.15);
+  background: var(--byti-yellow);
+  color: var(--byti-blue-deep);
   transform: translateY(-2px);
 }
 
 .btn-byti-red {
-  background: linear-gradient(135deg, var(--byti-red), var(--byti-red-deep));
-  color: oklch(0.99 0 0);
-  box-shadow: 0 10px 30px oklch(0.58 0.22 25 / 0.3);
+  background: var(--byti-red);
+  color: #FFFFFF;
+  box-shadow: 0 10px 30px rgb(212 43 43 / 0.3);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-byti-red:hover {
-  box-shadow: 0 20px 50px oklch(0.58 0.22 25 / 0.5);
+  background: var(--byti-red-deep);
+  box-shadow: 0 20px 50px rgb(212 43 43 / 0.5);
   transform: translateY(-2px);
 }
 
@@ -214,8 +216,8 @@
 
 .card-hover:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 60px oklch(0.6 0.2 250 / 0.15);
-  border-color: oklch(0.6 0.2 250 / 0.3);
+  box-shadow: 0 20px 60px rgb(21 101 192 / 0.18);
+  border-color: var(--byti-red);
 }
 
 .gradient-text {
@@ -253,9 +255,9 @@
   inset: -12%;
   border-radius: inherit;
   background:
-    radial-gradient(circle at 25% 30%, oklch(0.5 0.13 240 / 0.5), transparent 55%),
-    radial-gradient(circle at 75% 70%, oklch(0.56 0.21 28 / 0.45), transparent 55%),
-    radial-gradient(circle at 50% 50%, oklch(0.94 0.21 110 / 0.25), transparent 60%);
+    radial-gradient(circle at 25% 30%, rgb(21 101 192 / 0.5), transparent 55%),
+    radial-gradient(circle at 75% 70%, rgb(212 43 43 / 0.45), transparent 55%),
+    radial-gradient(circle at 50% 50%, rgb(204 221 0 / 0.25), transparent 60%);
   filter: blur(20px);
   z-index: -1;
   pointer-events: none;
@@ -267,7 +269,7 @@
 }
 
 .byti-shine {
-  background: linear-gradient(110deg, transparent 30%, oklch(1 0 0 / 0.4) 50%, transparent 70%);
+  background: linear-gradient(110deg, transparent 30%, rgb(255 255 255 / 0.4) 50%, transparent 70%);
   background-size: 200% 100%;
   animation: byti-shine 3s linear infinite;
 }
@@ -296,18 +298,18 @@ html {
   padding: 0.5rem 1.25rem;
   border-radius: 9999px;
   font-size: 0.7rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  background: oklch(0.45 0.18 260 / 0.06);
-  color: var(--byti-blue);
-  border: 1px solid oklch(0.45 0.18 260 / 0.18);
+  background: var(--byti-yellow);
+  color: var(--byti-blue-deep);
+  border: 1px solid var(--byti-yellow-deep);
 }
 
 .pill-badge-red {
-  background: oklch(0.58 0.22 25 / 0.08);
+  background: rgb(212 43 43 / 0.08);
   color: var(--byti-red);
-  border-color: oklch(0.58 0.22 25 / 0.22);
+  border-color: rgb(212 43 43 / 0.22);
 }
 
 /* Titre éditorial avec mot accentué en italique */
@@ -355,21 +357,21 @@ html {
 
 /* Carte produit "Babali style" */
 .product-card-clean {
-  background: oklch(1 0 0);
+  background: #FFFFFF;
   border-radius: 1.25rem;
-  border: 1px solid oklch(0.92 0.008 260);
+  border: 1.5px solid var(--byti-blue);
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .product-card-clean:hover {
   transform: translateY(-6px);
-  border-color: oklch(0.45 0.18 260 / 0.3);
-  box-shadow: 0 24px 50px -20px oklch(0.45 0.18 260 / 0.18);
+  border-color: var(--byti-red);
+  box-shadow: 0 24px 50px -20px rgb(21 101 192 / 0.25);
 }
 
 .product-card-image {
-  background: oklch(0.97 0.005 260);
+  background: #F4F7FB;
   aspect-ratio: 1 / 1;
   overflow: hidden;
 }
@@ -411,21 +413,21 @@ html {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid oklch(0.45 0.18 260 / 0.3);
+  border: 1px solid rgb(21 101 192 / 0.3);
   color: var(--byti-blue);
-  background: oklch(1 0 0);
+  background: #FFFFFF;
   transition: all 0.3s ease;
 }
 
 .round-arrow-btn:hover {
   background: var(--byti-blue);
-  color: white;
+  color: #FFFFFF;
   transform: translateX(3px);
 }
 
 /* Section blanche épurée */
 .section-clean {
-  background: oklch(1 0 0);
+  background: #FFFFFF;
 }
 
 /* Pastille tag dans carte (catégorie) */
@@ -441,17 +443,18 @@ html {
 }
 
 .tag-pill-blue {
-  background: oklch(0.45 0.18 260 / 0.08);
+  background: rgb(21 101 192 / 0.08);
   color: var(--byti-blue);
 }
 
 .tag-pill-red {
-  background: oklch(0.58 0.22 25 / 0.1);
+  background: rgb(212 43 43 / 0.1);
   color: var(--byti-red);
 }
 
 .tag-pill-yellow {
-  background: oklch(0.88 0.18 100 / 0.25);
-  color: oklch(0.45 0.15 80);
+  background: var(--byti-yellow);
+  color: var(--byti-blue-deep);
+  font-weight: 700;
 }
 
