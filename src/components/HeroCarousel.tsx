@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import poster1 from "@/assets/hero-energy.jpg";
 import poster2 from "@/assets/hero-energy.jpg";
@@ -17,46 +16,58 @@ import vid5 from "@/assets/hero-solar-farm.mp4.asset.json";
 interface Slide {
   video: string;
   poster: string;
+  badge: string;
   title: string;
-  caption: string;
-  description: string;
+  subtitle: string;
+  cta1: { label: string; href: string };
+  cta2: { label: string; href: string };
 }
 
 const slides: Slide[] = [
   {
     video: vid1.url,
     poster: poster1,
-    title: "Énergie solaire pour l'Afrique",
-    caption: "Des kilowatts propres pour préserver notre savane",
-    description: "Réduire les gaz à effet de serre, un panneau à la fois.",
+    badge: "Énergie Solaire",
+    title: "L'énergie du soleil",
+    subtitle: "Panneaux & batteries lithium LiFePO₄",
+    cta1: { label: "Voir nos solutions", href: "#services" },
+    cta2: { label: "Nous contacter", href: "#contact" },
   },
   {
     video: vid2.url,
     poster: poster2,
-    title: "Stockage lithium intelligent",
-    caption: "Une énergie fiable, durable et décarbonée",
-    description: "Nos solutions de batteries pour un futur sans coupure.",
+    badge: "Stockage Lithium",
+    title: "Zéro coupure",
+    subtitle: "Batteries 30 kWh, 6000 cycles garantis",
+    cta1: { label: "Voir nos produits", href: "/boutique" },
+    cta2: { label: "Demander un devis", href: "#contact" },
   },
   {
     video: vid3.url,
     poster: poster3,
-    title: "Matériaux de construction",
-    caption: "Briques, pavés, parpaings & béton",
-    description: "Notre pôle BTP fabrique des matériaux durables : briques pleines et creuses, pavés autobloquants, parpaings et béton prêt à l'emploi.",
+    badge: "BTP & Matériaux",
+    title: "Bâtir solide",
+    subtitle: "Briques, pavés, béton de qualité",
+    cta1: { label: "Nos réalisations", href: "#projects" },
+    cta2: { label: "Nous contacter", href: "#contact" },
   },
   {
     video: vid4.url,
     poster: poster4,
-    title: "Sécurité connectée",
-    caption: "Protéger vos biens, préserver votre tranquillité",
-    description: "Vidéosurveillance intelligente et basse consommation.",
+    badge: "Sécurité",
+    title: "Protéger l'essentiel",
+    subtitle: "Vidéosurveillance intelligente & connectée",
+    cta1: { label: "Nos solutions", href: "#services" },
+    cta2: { label: "Nous contacter", href: "#contact" },
   },
   {
     video: vid5.url,
     poster: poster5,
-    title: "BYTI s'engage pour la planète",
-    caption: "Technologie et écosystème, une seule mission",
-    description: "Chaque projet contribue à un environnement plus sain.",
+    badge: "Électronique",
+    title: "Toujours connecté",
+    subtitle: "Smartphones, TV & équipements modernes",
+    cta1: { label: "Voir la boutique", href: "/boutique" },
+    cta2: { label: "En savoir plus", href: "#services" },
   },
 ];
 
@@ -65,11 +76,10 @@ export function HeroCarousel() {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    const t = setInterval(() => setIndex((i) => (i + 1) % slides.length), 5500);
+    const t = setInterval(() => setIndex((i) => (i + 1) % slides.length), 6000);
     return () => clearInterval(t);
   }, []);
 
-  // Restart playback when slide changes
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
@@ -77,20 +87,17 @@ export function HeroCarousel() {
     v.play().catch(() => {});
   }, [index]);
 
-  const go = (dir: number) =>
-    setIndex((i) => (i + dir + slides.length) % slides.length);
-
   const slide = slides[index];
 
   return (
-    <section className="relative w-full h-screen overflow-hidden">
+    <section className="relative w-full h-screen overflow-hidden bg-black">
       <AnimatePresence mode="sync">
         <motion.div
           key={index}
-          initial={{ opacity: 0, scale: 1.08 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 1.02 }}
-          transition={{ duration: 1.2, ease: [0.25, 0.1, 0, 1] }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.2, ease: "easeInOut" }}
           className="absolute inset-0"
         >
           <video
@@ -104,79 +111,67 @@ export function HeroCarousel() {
             preload="auto"
             className="absolute inset-0 w-full h-full object-cover"
           />
+          <div className="absolute inset-0 bg-black/45" />
         </motion.div>
       </AnimatePresence>
 
-      {/* Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/70" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-transparent" />
-
-      {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full px-6 text-center">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.7, ease: [0.25, 0.1, 0, 1] }}
-            className="max-w-5xl"
-          >
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[0.95] drop-shadow-[0_2px_20px_rgba(0,0,0,0.7)]">
-              {slide.title}
-            </h1>
-            <p className="mt-5 text-lg md:text-2xl text-white font-medium tracking-wide drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
-              {slide.caption}
-            </p>
-            <p className="mt-3 text-base md:text-lg text-white/85 max-w-2xl mx-auto drop-shadow-[0_1px_8px_rgba(0,0,0,0.7)]">
-              {slide.description}
-            </p>
-            <div className="mt-9 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a
-                href="#services"
-                className="btn-primary-glow px-8 py-3.5 rounded-lg text-sm font-semibold tracking-wide uppercase"
-              >
-                Découvrir nos activités
-              </a>
-              <a
-                href="#contact"
-                className="btn-outline-glow px-8 py-3.5 rounded-lg text-sm font-semibold tracking-wide uppercase"
-              >
-                Nous contacter
-              </a>
-            </div>
-          </motion.div>
-        </AnimatePresence>
+      {/* Content - bottom left */}
+      <div className="absolute inset-0 z-10 flex items-end">
+        <div className="w-full pl-[60px] pr-6 pb-20 max-w-4xl">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.8, ease: [0.25, 0.1, 0, 1] }}
+            >
+              <span className="inline-block bg-white/10 backdrop-blur-sm text-white uppercase tracking-[0.2em] px-3 py-1.5 rounded-sm border border-white/15" style={{ fontSize: "11px" }}>
+                ★ {slide.badge}
+              </span>
+              <h1 className="mt-5 text-white font-extrabold leading-tight text-5xl md:text-6xl lg:text-7xl drop-shadow-[0_2px_20px_rgba(0,0,0,0.5)]">
+                {slide.title}
+              </h1>
+              <p className="mt-3 text-white/75 text-lg max-w-xl">
+                {slide.subtitle}
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a
+                  href={slide.cta1.href}
+                  className="inline-flex items-center justify-center px-8 py-3.5 rounded-md text-sm font-bold uppercase tracking-wide text-white transition-all hover:brightness-110"
+                  style={{ backgroundColor: "#D42B2B" }}
+                >
+                  {slide.cta1.label}
+                </a>
+                <a
+                  href={slide.cta2.href}
+                  className="inline-flex items-center justify-center px-8 py-3.5 rounded-md text-sm font-bold uppercase tracking-wide text-white border-[1.5px] border-white/60 hover:bg-white/10 transition-all"
+                >
+                  {slide.cta2.label}
+                </a>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </div>
 
-      {/* Arrows */}
-      <button
-        aria-label="Précédent"
-        onClick={() => go(-1)}
-        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 size-11 md:size-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white grid place-items-center transition"
-      >
-        <ChevronLeft className="size-6" />
-      </button>
-      <button
-        aria-label="Suivant"
-        onClick={() => go(1)}
-        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 size-11 md:size-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white grid place-items-center transition"
-      >
-        <ChevronRight className="size-6" />
-      </button>
-
-      {/* Dots */}
-      <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-20 flex gap-2">
-        {slides.map((_, i) => (
-          <button
-            key={i}
-            aria-label={`Aller à la diapositive ${i + 1}`}
-            onClick={() => setIndex(i)}
-            className={`h-1.5 rounded-full transition-all ${
-              i === index ? "w-8 bg-white" : "w-3 bg-white/40 hover:bg-white/60"
-            }`}
-          />
-        ))}
+      {/* Indicators */}
+      <div className="absolute bottom-8 left-0 right-0 z-20 flex items-center justify-center gap-6">
+        <div className="flex items-center gap-2">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              aria-label={`Slide ${i + 1}`}
+              onClick={() => setIndex(i)}
+              className={`h-0.5 transition-all duration-300 ${
+                i === index ? "w-8 bg-white" : "w-4 bg-white/35 hover:bg-white/60"
+              }`}
+            />
+          ))}
+        </div>
+        <span className="text-white/50 text-xs font-mono tabular-nums">
+          {String(index + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}
+        </span>
       </div>
 
       {/* Bottom fade */}
