@@ -28,15 +28,6 @@ interface Slide {
 
 const slides: Slide[] = [
   {
-    video: vid1.url,
-    poster: poster1,
-    badge: "Énergie Solaire",
-    title: "L'énergie du soleil",
-    subtitle: "Panneaux & batteries lithium LiFePO₄",
-    cta1: { label: "Voir nos solutions", href: "#services" },
-    cta2: { label: "Nous contacter", href: "#contact" },
-  },
-  {
     image: solarInverterImg,
     poster: solarInverterImg,
     badge: "Stockage Lithium",
@@ -45,6 +36,15 @@ const slides: Slide[] = [
     cta1: { label: "Voir nos produits", href: "/boutique" },
     cta2: { label: "Demander un devis", href: "#contact" },
     objectPosition: "center center",
+  },
+  {
+    video: vid1.url,
+    poster: poster1,
+    badge: "Énergie Solaire",
+    title: "L'énergie du soleil",
+    subtitle: "Panneaux & batteries lithium LiFePO₄",
+    cta1: { label: "Voir nos solutions", href: "#services" },
+    cta2: { label: "Nous contacter", href: "#contact" },
   },
   {
     video: vid3.url,
