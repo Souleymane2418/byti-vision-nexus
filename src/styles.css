@@ -58,65 +58,65 @@
   --font-family-body: 'Inter', sans-serif;
   --font-family-serif: 'Playfair Display', Georgia, serif;
 
-  /* BYTI Brand — Couleurs extraites directement du logo officiel
-     Bleu #0069A5 · Rouge #D21E1E · Jaune #E1F01E */
-  --background: oklch(0.99 0.004 235);
-  --foreground: oklch(0.18 0.05 240);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.05 240);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.05 240);
+  /* BYTI Brand — Palette officielle exacte du logo
+     Bleu roi #1565C0 · Bleu foncé #0D3A7A · Rouge #D42B2B · Jaune #CCDD00 */
+  --background: #FFFFFF;
+  --foreground: #333333;
+  --card: #FFFFFF;
+  --card-foreground: #0D3A7A;
+  --popover: #FFFFFF;
+  --popover-foreground: #333333;
 
-  /* Primary: BYTI Blue logo (#0069A5) */
-  --primary: oklch(0.5 0.13 240);
-  --primary-foreground: oklch(0.99 0 0);
-  --byti-blue: oklch(0.5 0.13 240);
-  --byti-blue-deep: oklch(0.36 0.11 242);
-  --byti-blue-light: oklch(0.66 0.12 235);
+  /* Primary: BYTI Bleu roi #1565C0 */
+  --primary: #1565C0;
+  --primary-foreground: #FFFFFF;
+  --byti-blue: #1565C0;
+  --byti-blue-deep: #0D3A7A;
+  --byti-blue-light: #1E88E5;
 
-  /* Accent: BYTI Red logo (#D21E1E) */
-  --accent: oklch(0.56 0.21 28);
-  --accent-foreground: oklch(0.99 0 0);
-  --byti-red: oklch(0.56 0.21 28);
-  --byti-red-deep: oklch(0.45 0.21 28);
+  /* Accent: BYTI Rouge #D42B2B */
+  --accent: #D42B2B;
+  --accent-foreground: #FFFFFF;
+  --byti-red: #D42B2B;
+  --byti-red-deep: #A51E1E;
 
-  /* Yellow logo (#E1F01E) */
-  --byti-yellow: oklch(0.94 0.21 110);
-  --byti-yellow-deep: oklch(0.85 0.2 105);
+  /* Jaune accent #CCDD00 — usage limité (badges, underlines, accents) */
+  --byti-yellow: #CCDD00;
+  --byti-yellow-deep: #B8C700;
 
-  --secondary: oklch(0.96 0.012 235);
-  --secondary-foreground: oklch(0.22 0.05 240);
-  --muted: oklch(0.96 0.008 235);
-  --muted-foreground: oklch(0.45 0.025 240);
-  --destructive: oklch(0.56 0.21 28);
-  --destructive-foreground: oklch(0.99 0 0);
-  --border: oklch(0.9 0.012 235);
-  --input: oklch(0.94 0.012 235);
-  --ring: oklch(0.5 0.13 240);
-  --glow: oklch(0.5 0.13 240);
-  --glow-foreground: oklch(0.99 0 0);
+  --secondary: #F4F7FB;
+  --secondary-foreground: #0D3A7A;
+  --muted: #F4F7FB;
+  --muted-foreground: #555555;
+  --destructive: #D42B2B;
+  --destructive-foreground: #FFFFFF;
+  --border: #E2E8F0;
+  --input: #EEF2F7;
+  --ring: #1565C0;
+  --glow: #1565C0;
+  --glow-foreground: #FFFFFF;
 
-  --chart-1: oklch(0.5 0.13 240);
-  --chart-2: oklch(0.56 0.21 28);
-  --chart-3: oklch(0.66 0.12 235);
-  --chart-4: oklch(0.94 0.21 110);
-  --chart-5: oklch(0.36 0.11 242);
+  --chart-1: #1565C0;
+  --chart-2: #D42B2B;
+  --chart-3: #1E88E5;
+  --chart-4: #CCDD00;
+  --chart-5: #0D3A7A;
 
   /* BYTI gradients (logo) */
-  --gradient-byti: linear-gradient(135deg, oklch(0.5 0.13 240), oklch(0.56 0.21 28));
-  --gradient-byti-soft: linear-gradient(135deg, oklch(0.5 0.13 240 / 0.08), oklch(0.56 0.21 28 / 0.08));
-  --gradient-byti-tri: linear-gradient(120deg, oklch(0.5 0.13 240) 0%, oklch(0.56 0.21 28) 60%, oklch(0.94 0.21 110) 100%);
-  --shadow-byti: 0 20px 60px oklch(0.5 0.13 240 / 0.18);
-  --shadow-byti-red: 0 20px 60px oklch(0.56 0.21 28 / 0.2);
+  --gradient-byti: linear-gradient(135deg, #1565C0, #D42B2B);
+  --gradient-byti-soft: linear-gradient(135deg, rgb(21 101 192 / 0.08), rgb(212 43 43 / 0.08));
+  --gradient-byti-tri: linear-gradient(120deg, #1565C0 0%, #D42B2B 60%, #CCDD00 100%);
+  --shadow-byti: 0 20px 60px rgb(21 101 192 / 0.22);
+  --shadow-byti-red: 0 20px 60px rgb(212 43 43 / 0.25);
 
-  --sidebar: oklch(0.98 0.005 235);
-  --sidebar-foreground: oklch(0.18 0.05 240);
-  --sidebar-primary: oklch(0.5 0.13 240);
-  --sidebar-primary-foreground: oklch(0.99 0 0);
-  --sidebar-accent: oklch(0.94 0.012 235);
-  --sidebar-accent-foreground: oklch(0.18 0.05 240);
-  --sidebar-border: oklch(0.9 0.012 235);
-  --sidebar-ring: oklch(0.5 0.13 240);
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #0D3A7A;
+  --sidebar-primary: #1565C0;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #F4F7FB;
+  --sidebar-accent-foreground: #0D3A7A;
+  --sidebar-border: #E2E8F0;
+  --sidebar-ring: #1565C0;
 }
 
 @theme inline {
