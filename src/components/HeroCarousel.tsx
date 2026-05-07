@@ -15,7 +15,8 @@ import vid5 from "@/assets/hero-solar-farm.mp4.asset.json";
 import solarInverterImg from "@/assets/hero-solar-inverter.jpeg";
 
 interface Slide {
-  video: string;
+  video?: string;
+  image?: string;
   poster: string;
   badge: string;
   title: string;
