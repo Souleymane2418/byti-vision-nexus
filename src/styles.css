@@ -157,8 +157,8 @@
 }
 
 @keyframes glow-border {
-  0%, 100% { box-shadow: 0 0 20px oklch(0.6 0.2 250 / 0.2); }
-  50% { box-shadow: 0 0 40px oklch(0.6 0.2 250 / 0.4); }
+  0%, 100% { box-shadow: 0 0 20px rgb(21 101 192 / 0.25); }
+  50% { box-shadow: 0 0 40px rgb(21 101 192 / 0.45); }
 }
 
 .hero-ken-burns {
@@ -170,41 +170,43 @@
 }
 
 .btn-primary-glow {
-  background: linear-gradient(135deg, var(--byti-red), var(--byti-red-deep));
-  color: var(--byti-blue-deep);
+  background: var(--byti-red);
+  color: #FFFFFF;
   font-weight: 700;
-  box-shadow: 0 10px 30px oklch(0.58 0.22 25 / 0.35);
+  box-shadow: 0 10px 30px rgb(212 43 43 / 0.35);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-primary-glow:hover {
-  box-shadow: 0 20px 50px oklch(0.58 0.22 25 / 0.5);
+  background: var(--byti-red-deep);
+  box-shadow: 0 20px 50px rgb(212 43 43 / 0.5);
   transform: translateY(-2px);
 }
 
 .btn-outline-glow {
-  border: 1.5px solid oklch(1 0 0 / 0.6);
-  color: oklch(1 0 0);
-  background: oklch(0 0 0 / 0.2);
+  border: 2px solid var(--byti-yellow);
+  color: var(--byti-yellow);
+  background: transparent;
   backdrop-filter: blur(8px);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-outline-glow:hover {
-  border-color: oklch(1 0 0);
-  background: oklch(1 0 0 / 0.15);
+  background: var(--byti-yellow);
+  color: var(--byti-blue-deep);
   transform: translateY(-2px);
 }
 
 .btn-byti-red {
-  background: linear-gradient(135deg, var(--byti-red), var(--byti-red-deep));
-  color: oklch(0.99 0 0);
-  box-shadow: 0 10px 30px oklch(0.58 0.22 25 / 0.3);
+  background: var(--byti-red);
+  color: #FFFFFF;
+  box-shadow: 0 10px 30px rgb(212 43 43 / 0.3);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-byti-red:hover {
-  box-shadow: 0 20px 50px oklch(0.58 0.22 25 / 0.5);
+  background: var(--byti-red-deep);
+  box-shadow: 0 20px 50px rgb(212 43 43 / 0.5);
   transform: translateY(-2px);
 }
 
@@ -214,8 +216,8 @@
 
 .card-hover:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 60px oklch(0.6 0.2 250 / 0.15);
-  border-color: oklch(0.6 0.2 250 / 0.3);
+  box-shadow: 0 20px 60px rgb(21 101 192 / 0.18);
+  border-color: var(--byti-red);
 }
 
 .gradient-text {
