@@ -12,6 +12,7 @@ import vid2 from "@/assets/hero-energy-battery.mp4.asset.json";
 import vid3 from "@/assets/hero-btp-loop.mp4.asset.json";
 import vid4 from "@/assets/hero-security-loop.mp4.asset.json";
 import vid5 from "@/assets/hero-solar-farm.mp4.asset.json";
+import solarInverterImg from "@/assets/hero-solar-inverter.jpeg";
 
 interface Slide {
   video: string;
