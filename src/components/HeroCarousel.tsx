@@ -42,6 +42,7 @@ const slides: Slide[] = [
     subtitle: "Batteries 30 kWh, 6000 cycles garantis",
     cta1: { label: "Voir nos produits", href: "/boutique" },
     cta2: { label: "Demander un devis", href: "#contact" },
+    objectPosition: "center 25%",
   },
   {
     video: vid3.url,
