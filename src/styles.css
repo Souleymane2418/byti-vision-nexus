@@ -357,21 +357,21 @@ html {
 
 /* Carte produit "Babali style" */
 .product-card-clean {
-  background: oklch(1 0 0);
+  background: #FFFFFF;
   border-radius: 1.25rem;
-  border: 1px solid oklch(0.92 0.008 260);
+  border: 1.5px solid var(--byti-blue);
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .product-card-clean:hover {
   transform: translateY(-6px);
-  border-color: oklch(0.45 0.18 260 / 0.3);
-  box-shadow: 0 24px 50px -20px oklch(0.45 0.18 260 / 0.18);
+  border-color: var(--byti-red);
+  box-shadow: 0 24px 50px -20px rgb(21 101 192 / 0.25);
 }
 
 .product-card-image {
-  background: oklch(0.97 0.005 260);
+  background: #F4F7FB;
   aspect-ratio: 1 / 1;
   overflow: hidden;
 }
