@@ -19,7 +19,7 @@ const quickLinks = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-border/40 bg-card/30">
+    <footer className="border-t-2 border-byti-blue bg-byti-blue-deep text-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
