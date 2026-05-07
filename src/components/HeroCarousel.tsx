@@ -86,7 +86,7 @@ export function HeroCarousel() {
 
   useEffect(() => {
     const v = videoRef.current;
-    if (!v) return;
+    if (!v || !slide.video) return;
     v.currentTime = 0;
     v.play().catch(() => {});
   }, [index]);
@@ -104,18 +104,27 @@ export function HeroCarousel() {
           transition={{ duration: 1.2, ease: "easeInOut" }}
           className="absolute inset-0"
         >
-          <video
-            ref={videoRef}
-            src={slide.video}
-            poster={slide.poster}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            className="absolute inset-0 w-full h-full object-cover"
-            style={{ objectPosition: slide.objectPosition ?? "center" }}
-          />
+          {slide.video ? (
+            <video
+              ref={videoRef}
+              src={slide.video}
+              poster={slide.poster}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              className="absolute inset-0 w-full h-full object-cover"
+              style={{ objectPosition: slide.objectPosition ?? "center" }}
+            />
+          ) : (
+            <img
+              src={slide.image}
+              alt={slide.title}
+              className="absolute inset-0 w-full h-full object-cover"
+              style={{ objectPosition: slide.objectPosition ?? "center" }}
+            />
+          )}
           <div className="absolute inset-0 bg-black/45" />
         </motion.div>
       </AnimatePresence>
