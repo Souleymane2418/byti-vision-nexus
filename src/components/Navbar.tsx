@@ -106,7 +106,7 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[oklch(0.16_0.04_260)/0.96] backdrop-blur-2xl border-t border-white/10 overflow-hidden"
+            className="md:hidden bg-byti-blue-deep backdrop-blur-2xl border-t border-byti-yellow/30 overflow-hidden"
           >
             <div className="px-6 py-4 space-y-1">
               {navLinks.map((link) => (
