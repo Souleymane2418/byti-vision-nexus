@@ -112,6 +112,7 @@ export function HeroCarousel() {
             playsInline
             preload="auto"
             className="absolute inset-0 w-full h-full object-cover"
+            style={{ objectPosition: slide.objectPosition ?? "center" }}
           />
           <div className="absolute inset-0 bg-black/45" />
         </motion.div>
