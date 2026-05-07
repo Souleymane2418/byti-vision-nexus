@@ -37,14 +37,14 @@ const slides: Slide[] = [
     cta2: { label: "Nous contacter", href: "#contact" },
   },
   {
-    video: vid2.url,
-    poster: poster2,
+    image: solarInverterImg,
+    poster: solarInverterImg,
     badge: "Stockage Lithium",
     title: "Zéro coupure",
     subtitle: "Batteries 30 kWh, 6000 cycles garantis",
     cta1: { label: "Voir nos produits", href: "/boutique" },
     cta2: { label: "Demander un devis", href: "#contact" },
-    objectPosition: "center 25%",
+    objectPosition: "center center",
   },
   {
     video: vid3.url,
