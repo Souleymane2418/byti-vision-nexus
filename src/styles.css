@@ -413,21 +413,21 @@ html {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid oklch(0.45 0.18 260 / 0.3);
+  border: 1px solid rgb(21 101 192 / 0.3);
   color: var(--byti-blue);
-  background: oklch(1 0 0);
+  background: #FFFFFF;
   transition: all 0.3s ease;
 }
 
 .round-arrow-btn:hover {
   background: var(--byti-blue);
-  color: white;
+  color: #FFFFFF;
   transform: translateX(3px);
 }
 
 /* Section blanche épurée */
 .section-clean {
-  background: oklch(1 0 0);
+  background: #FFFFFF;
 }
 
 /* Pastille tag dans carte (catégorie) */
@@ -443,17 +443,18 @@ html {
 }
 
 .tag-pill-blue {
-  background: oklch(0.45 0.18 260 / 0.08);
+  background: rgb(21 101 192 / 0.08);
   color: var(--byti-blue);
 }
 
 .tag-pill-red {
-  background: oklch(0.58 0.22 25 / 0.1);
+  background: rgb(212 43 43 / 0.1);
   color: var(--byti-red);
 }
 
 .tag-pill-yellow {
-  background: oklch(0.88 0.18 100 / 0.25);
-  color: oklch(0.45 0.15 80);
+  background: var(--byti-yellow);
+  color: var(--byti-blue-deep);
+  font-weight: 700;
 }
 
