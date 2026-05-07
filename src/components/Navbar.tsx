@@ -57,10 +57,10 @@ export function Navbar() {
               key={link.label}
               to={link.href}
               hash={link.hash || undefined}
-              className="text-sm font-medium text-white/90 hover:text-white transition-colors duration-300 tracking-wide relative group"
+              className="text-sm font-medium text-white/85 hover:text-byti-yellow transition-colors duration-300 tracking-wide relative group"
             >
               {link.label}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-byti-blue-light to-byti-red group-hover:w-full transition-all duration-300" />
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-byti-yellow group-hover:w-full transition-all duration-300" />
             </Link>
           ))}
           <button
