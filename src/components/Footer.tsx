@@ -43,13 +43,13 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-sm font-semibold text-foreground tracking-wide uppercase mb-4">
+            <h4 className="text-sm font-bold text-byti-yellow tracking-wide uppercase mb-4">
               Navigation
             </h4>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.label}>
-                  <a href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                  <a href={link.href} className="text-sm text-white/65 hover:text-byti-yellow transition-colors">
                     {link.label}
                   </a>
                 </li>
@@ -59,14 +59,14 @@ export function Footer() {
 
           {/* Activities */}
           <div>
-            <h4 className="text-sm font-semibold text-foreground tracking-wide uppercase mb-4">
+            <h4 className="text-sm font-bold text-byti-yellow tracking-wide uppercase mb-4">
               Activités
             </h4>
             <ul className="space-y-2">
               {activities.map((a) => (
                 <li key={a.label} className="flex items-center gap-2">
-                  <a.icon className="w-4 h-4 text-primary" />
-                  <span className="text-sm text-muted-foreground">{a.label}</span>
+                  <a.icon className="w-4 h-4 text-byti-yellow" />
+                  <span className="text-sm text-white/85">{a.label}</span>
                 </li>
               ))}
             </ul>
@@ -74,23 +74,23 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-sm font-semibold text-foreground tracking-wide uppercase mb-4">
+            <h4 className="text-sm font-bold text-byti-yellow tracking-wide uppercase mb-4">
               Contact
             </h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
+            <ul className="space-y-2 text-sm text-white/85">
               <li>contact@bytitechnologie.com</li>
               <li>
-                <a href="tel:+22676767663" className="hover:text-foreground transition-colors">+226 76 76 76 63</a>
+                <a href="tel:+22676767663" className="text-white/65 hover:text-byti-yellow transition-colors">+226 76 76 76 63</a>
               </li>
               <li>
-                <a href="tel:+22670681212" className="hover:text-foreground transition-colors">+226 70 68 12 12</a>
+                <a href="tel:+22670681212" className="text-white/65 hover:text-byti-yellow transition-colors">+226 70 68 12 12</a>
               </li>
               <li>
                 <a
                   href="https://web.facebook.com/people/BYTI-Technologie-Internationale/61577925500422/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-foreground transition-colors"
+                  className="text-white/65 hover:text-byti-yellow transition-colors"
                 >
                   Facebook : BYTI Technologie Internationale
                 </a>
@@ -101,9 +101,9 @@ export function Footer() {
 
         <div className="section-divider mt-12 mb-8" />
 
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} BYTI Technologie SARL. Tous droits réservés.</p>
-          <p>Connecter · Construire · Innover</p>
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+          <p className="text-white/50">&copy; {new Date().getFullYear()} BYTI Technologie SARL. Tous droits réservés.</p>
+          <p className="text-byti-yellow font-bold tracking-wide">Connecter · Construire · Innover</p>
         </div>
       </div>
     </footer>
