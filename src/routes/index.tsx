@@ -105,11 +105,7 @@ function HomePage() {
       ))}
       <EnergyShowcase />
       <EcoCommitment />
-      
       <WhyChooseUs />
-      <ServicesGrid />
-      <ProjectsGallery />
-      <ContactSection />
       <Footer />
     </div>
   );

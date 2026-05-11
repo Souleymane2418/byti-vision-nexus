@@ -8,10 +8,10 @@ import bytiLogo from "@/assets/byti-logo.png";
 const navLinks = [
   { label: "Accueil", href: "/", hash: "" },
   { label: "Boutique", href: "/boutique", hash: "" },
-  { label: "Activités", href: "/", hash: "services" },
+  { label: "Activités", href: "/activites", hash: "" },
   { label: "À propos", href: "/a-propos", hash: "" },
-  { label: "Projets", href: "/", hash: "projects" },
-  { label: "Contact", href: "/", hash: "contact" },
+  { label: "Projets", href: "/projets", hash: "" },
+  { label: "Contact", href: "/contact", hash: "" },
 ];
 
 export function Navbar() {
