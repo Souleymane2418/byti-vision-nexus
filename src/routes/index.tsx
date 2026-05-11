@@ -73,7 +73,7 @@ const heroSections = [
     title: "Énergie & batteries lithium",
     subtitle: "Des solutions énergétiques fiables, durables et innovantes",
     buttonText: "En savoir plus",
-    buttonHref: "#energy-showcase",
+    buttonHref: "/batteries",
   },
   {
     id: "tv",

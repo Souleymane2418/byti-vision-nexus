@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as BoutiqueRouteImport } from './routes/boutique'
+import { Route as BatteriesRouteImport } from './routes/batteries'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProduitIdRouteImport } from './routes/produit.$id'
 
@@ -22,6 +23,11 @@ const CheckoutRoute = CheckoutRouteImport.update({
 const BoutiqueRoute = BoutiqueRouteImport.update({
   id: '/boutique',
   path: '/boutique',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BatteriesRoute = BatteriesRouteImport.update({
+  id: '/batteries',
+  path: '/batteries',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -37,12 +43,14 @@ const ProduitIdRoute = ProduitIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/batteries': typeof BatteriesRoute
   '/boutique': typeof BoutiqueRoute
   '/checkout': typeof CheckoutRoute
   '/produit/$id': typeof ProduitIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/batteries': typeof BatteriesRoute
   '/boutique': typeof BoutiqueRoute
   '/checkout': typeof CheckoutRoute
   '/produit/$id': typeof ProduitIdRoute
@@ -50,20 +58,28 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/batteries': typeof BatteriesRoute
   '/boutique': typeof BoutiqueRoute
   '/checkout': typeof CheckoutRoute
   '/produit/$id': typeof ProduitIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/boutique' | '/checkout' | '/produit/$id'
+  fullPaths: '/' | '/batteries' | '/boutique' | '/checkout' | '/produit/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/boutique' | '/checkout' | '/produit/$id'
-  id: '__root__' | '/' | '/boutique' | '/checkout' | '/produit/$id'
+  to: '/' | '/batteries' | '/boutique' | '/checkout' | '/produit/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/batteries'
+    | '/boutique'
+    | '/checkout'
+    | '/produit/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BatteriesRoute: typeof BatteriesRoute
   BoutiqueRoute: typeof BoutiqueRoute
   CheckoutRoute: typeof CheckoutRoute
   ProduitIdRoute: typeof ProduitIdRoute
@@ -85,6 +101,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BoutiqueRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/batteries': {
+      id: '/batteries'
+      path: '/batteries'
+      fullPath: '/batteries'
+      preLoaderRoute: typeof BatteriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -104,6 +127,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BatteriesRoute: BatteriesRoute,
   BoutiqueRoute: BoutiqueRoute,
   CheckoutRoute: CheckoutRoute,
   ProduitIdRoute: ProduitIdRoute,
