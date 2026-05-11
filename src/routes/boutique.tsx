@@ -7,7 +7,7 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useCart, formatPrice } from "@/lib/cart";
-import { ShoppingCart, Loader2, ArrowRight } from "lucide-react";
+import { ShoppingCart, Loader2, ArrowRight, Search, X } from "lucide-react";
 import { toast } from "sonner";
 
 type Product = {
@@ -22,6 +22,7 @@ type Product = {
   stock: number;
   featured: boolean;
   model?: string | null;
+  created_at?: string | null;
 };
 
 const CATEGORIES = [
@@ -56,6 +57,10 @@ function ShopPage() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<string>("all");
+  const [search, setSearch] = useState("");
+  const [minPrice, setMinPrice] = useState<string>("");
+  const [maxPrice, setMaxPrice] = useState<string>("");
+  const [sort, setSort] = useState<"recent" | "old" | "price_asc" | "price_desc">("recent");
   const { add } = useCart();
 
   useEffect(() => {
@@ -75,7 +80,47 @@ function ShopPage() {
     })();
   }, []);
 
-  const filtered = filter === "all" ? products : products.filter((p) => p.category === filter);
+  const min = minPrice ? Number(minPrice) : null;
+  const max = maxPrice ? Number(maxPrice) : null;
+  const q = search.trim().toLowerCase();
+
+  const filtered = products
+    .filter((p) => filter === "all" || p.category === filter)
+    .filter((p) => {
+      if (!q) return true;
+      return (
+        p.name.toLowerCase().includes(q) ||
+        (p.description ?? "").toLowerCase().includes(q) ||
+        (p.model ?? "").toLowerCase().includes(q)
+      );
+    })
+    .filter((p) => {
+      if (min !== null && (p.price ?? 0) < min) return false;
+      if (max !== null && (p.price ?? Infinity) > max) return false;
+      return true;
+    })
+    .sort((a, b) => {
+      switch (sort) {
+        case "price_asc":
+          return (a.price ?? Infinity) - (b.price ?? Infinity);
+        case "price_desc":
+          return (b.price ?? -Infinity) - (a.price ?? -Infinity);
+        case "old":
+          return (a.created_at ?? "").localeCompare(b.created_at ?? "");
+        case "recent":
+        default:
+          return (b.created_at ?? "").localeCompare(a.created_at ?? "");
+      }
+    });
+
+  const hasActiveFilters = !!q || !!minPrice || !!maxPrice || filter !== "all" || sort !== "recent";
+  const resetFilters = () => {
+    setSearch("");
+    setMinPrice("");
+    setMaxPrice("");
+    setFilter("all");
+    setSort("recent");
+  };
 
   return (
     <div className="bg-white min-h-screen">
