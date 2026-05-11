@@ -16,6 +16,7 @@ interface HeroSectionProps {
 
 export function HeroSection({
   video,
+  image,
   poster,
   title,
   subtitle,
@@ -31,16 +32,24 @@ export function HeroSection({
       id={id}
       className={`relative w-full overflow-hidden ${priority ? "h-screen" : "min-h-[85vh] md:min-h-[90vh] py-20"}`}
     >
-      <video
-        src={video}
-        poster={poster}
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload={priority ? "auto" : "metadata"}
-        className="absolute inset-0 w-full h-full object-cover"
-      />
+      {video ? (
+        <video
+          src={video}
+          poster={poster}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload={priority ? "auto" : "metadata"}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      ) : (
+        <img
+          src={image}
+          alt={title}
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+      )}
       {/* Lighter overlay so the video stays clearly visible while text remains readable */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/15 to-black/55" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-transparent" />
