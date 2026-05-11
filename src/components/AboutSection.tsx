@@ -1,18 +1,18 @@
 import { motion } from "framer-motion";
 import { Globe2, Building2, Users, Award, MapPin } from "lucide-react";
 
-const groupStats = [
-  { icon: Globe2, value: "25+", label: "Pays d'implantation" },
-  { icon: Building2, value: "40+", label: "Filiales & bureaux" },
-  { icon: Users, value: "8 000+", label: "Collaborateurs" },
-  { icon: Award, value: "1998", label: "Année de fondation" },
+const visionStats = [
+  { icon: Globe2, value: "Afrique", label: "Notre terrain d'action" },
+  { icon: Building2, value: "Multi-pôles", label: "Tech · Énergie · BTP" },
+  { icon: Users, value: "Équipes", label: "Engagées & qualifiées" },
+  { icon: Award, value: "Qualité", label: "Standards internationaux" },
 ];
 
-const regions = [
-  { zone: "Afrique", hubs: "Yaoundé · Douala · Lagos · Abidjan · Nairobi" },
-  { zone: "Europe", hubs: "Paris · Madrid · Istanbul" },
-  { zone: "Moyen-Orient", hubs: "Dubaï · Riyad" },
-  { zone: "Asie", hubs: "Shenzhen · Singapour · Mumbai" },
+const ambitions = [
+  { zone: "Aujourd'hui", hubs: "Burkina Faso · Cameroun — opérations actives" },
+  { zone: "Court terme", hubs: "Renforcer notre présence en Afrique de l'Ouest" },
+  { zone: "Vision", hubs: "Devenir une référence panafricaine de la tech & de l'énergie" },
+  { zone: "Partenariats", hubs: "Fournisseurs internationaux sélectionnés (Asie · Europe)" },
 ];
 
 export function AboutSection() {
@@ -27,30 +27,28 @@ export function AboutSection() {
           transition={{ duration: 0.7 }}
           className="max-w-3xl"
         >
-          <span className="pill-badge">★ Groupe International</span>
+          <span className="pill-badge">★ Notre Vision</span>
           <h2 className="editorial-title mt-6 text-3xl md:text-5xl">
-            Filiale du groupe{" "}
-            <span className="editorial-accent">BYTI Worldwide</span>
+            Une ambition{" "}
+            <span className="editorial-accent">panafricaine</span>
           </h2>
           <p className="mt-6 text-muted-foreground text-lg leading-relaxed">
-            Fondé en <span className="font-semibold text-foreground">1998</span>,
-            <span className="font-semibold text-foreground"> BYTI Worldwide</span> est un
-            groupe international actif dans la technologie, l'énergie, les
-            infrastructures et la distribution électronique. Présent sur{" "}
-            <span className="font-semibold text-foreground">4 continents</span> à travers
-            plus de <span className="font-semibold text-foreground">25 pays</span>, le
-            groupe accompagne gouvernements, opérateurs et entreprises dans leur
-            transformation numérique et énergétique.
+            <span className="font-semibold text-foreground">BYTI Technologie SARL</span> est
+            une entreprise engagée dans la transformation technologique, énergétique et
+            structurelle de l'Afrique. Nous opérons à travers plusieurs pôles
+            complémentaires : électronique grand public, sécurité & vidéosurveillance,
+            énergie solaire & batteries lithium, téléviseurs et matériaux de construction
+            (BTP).
           </p>
           <p className="mt-4 text-muted-foreground text-lg leading-relaxed">
-            <span className="font-semibold text-foreground">BYTI Technologie SARL</span>{" "}
-            est la filiale officielle du groupe pour l'Afrique Centrale, basée au
-            Cameroun. Nous portons localement l'excellence, les standards qualité et
-            l'innovation continue d'un acteur global.
+            Notre ambition : apporter à nos clients africains les{" "}
+            <span className="font-semibold text-foreground">meilleures technologies mondiales</span>{" "}
+            au juste prix, tout en construisant progressivement un acteur de référence sur
+            le continent.
           </p>
         </motion.div>
 
-        {/* Group brand banner */}
+        {/* Vision banner */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -65,21 +63,21 @@ export function AboutSection() {
               </div>
               <div className="flex flex-col leading-tight">
                 <span className="text-[10px] font-semibold tracking-[0.3em] uppercase text-muted-foreground">
-                  BYTI Group
+                  BYTI Technologie SARL
                 </span>
                 <span className="text-2xl md:text-3xl font-bold tracking-[0.12em] gradient-text">
-                  BYTI WORLDWIDE
+                  CONNECTER · CONSTRUIRE · INNOVER
                 </span>
                 <span className="text-xs text-muted-foreground mt-1">
-                  Headquarters · Dubaï (UAE) — Founded 1998
+                  Notre signature au service de l'Afrique
                 </span>
               </div>
             </div>
             <div className="md:ml-auto grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-6 w-full md:w-auto">
-              {groupStats.map((s) => (
+              {visionStats.map((s) => (
                 <div key={s.label} className="text-center md:text-left">
                   <s.icon className="h-5 w-5 text-primary mb-1.5 mx-auto md:mx-0" />
-                  <div className="text-xl md:text-2xl font-bold text-foreground font-display">
+                  <div className="text-base md:text-lg font-bold text-foreground font-display">
                     {s.value}
                   </div>
                   <div className="text-[11px] uppercase tracking-wider text-muted-foreground">
@@ -91,7 +89,7 @@ export function AboutSection() {
           </div>
         </motion.div>
 
-        {/* Regional presence */}
+        {/* Ambitions */}
         <div className="mt-16 grid lg:grid-cols-2 gap-12 items-start">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -100,16 +98,17 @@ export function AboutSection() {
             transition={{ duration: 0.7 }}
           >
             <h3 className="text-xs font-bold uppercase tracking-[0.25em] text-byti-red mb-4">
-              Présence Mondiale
+              Notre trajectoire
             </h3>
             <p className="editorial-title text-2xl md:text-3xl mb-6">
-              Une empreinte sur <span className="editorial-accent">4 continents</span>
+              Construire pas à pas un{" "}
+              <span className="editorial-accent">acteur de référence</span>
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              De Dubaï à Yaoundé, de Paris à Singapour, BYTI déploie ses activités
-              à travers un réseau de filiales et de partenaires stratégiques. Cette
-              présence globale nous permet d'apporter à nos clients africains les
-              meilleures technologies mondiales aux meilleurs prix.
+              Nous croyons que l'Afrique mérite des solutions technologiques fiables,
+              durables et accessibles. Notre approche : sélectionner les meilleurs
+              partenaires internationaux, adapter les produits aux réalités locales et
+              accompagner nos clients sur le long terme.
             </p>
           </motion.div>
 
@@ -120,7 +119,7 @@ export function AboutSection() {
             transition={{ duration: 0.7, delay: 0.15 }}
             className="space-y-3"
           >
-            {regions.map((r, i) => (
+            {ambitions.map((r, i) => (
               <motion.div
                 key={r.zone}
                 initial={{ opacity: 0, y: 15 }}
@@ -132,7 +131,7 @@ export function AboutSection() {
                 <MapPin className="h-5 w-5 text-byti-red shrink-0 mt-0.5" />
                 <div className="flex-1 min-w-0">
                   <div className="text-sm font-bold text-foreground">{r.zone}</div>
-                  <div className="text-xs text-muted-foreground mt-0.5 truncate">
+                  <div className="text-xs text-muted-foreground mt-0.5">
                     {r.hubs}
                   </div>
                 </div>
