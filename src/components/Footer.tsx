@@ -13,7 +13,7 @@ const activities = [
 const quickLinks = [
   { label: "Accueil", to: "/", hash: "" },
   { label: "Activités", to: "/", hash: "services" },
-  { label: "À propos", to: "/", hash: "about" },
+  { label: "À propos", to: "/a-propos", hash: "" },
   { label: "Projets", to: "/", hash: "projects" },
   { label: "Contact", to: "/", hash: "contact" },
   { label: "Boutique", to: "/boutique", hash: "" },
