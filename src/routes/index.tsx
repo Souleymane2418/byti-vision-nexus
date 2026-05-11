@@ -13,7 +13,7 @@ import { Footer } from "@/components/Footer";
 
 import heroMainImg from "@/assets/hero-main.jpg";
 import heroSolarFarmImg from "@/assets/hero-solar-farm.jpg";
-import heroElectronicsImg from "@/assets/hero-electronics.jpg";
+import heroElectronicsImg from "@/assets/hero-electronics-wide.jpg";
 import heroSecurityImg from "@/assets/hero-security.jpg";
 import heroEnergyImg from "@/assets/hero-energy.jpg";
 import heroTvImg from "@/assets/hero-tv.jpg";
@@ -50,7 +50,7 @@ export const Route = createFileRoute("/")({
 const heroSections = [
   {
     id: "electronics",
-    video: heroElectronicsVid.url,
+    image: heroElectronicsImg,
     poster: heroElectronicsImg,
     title: "Électronique & équipements intelligents",
     subtitle: "Des technologies modernes pour un quotidien connecté",
