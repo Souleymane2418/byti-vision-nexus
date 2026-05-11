@@ -1,21 +1,23 @@
 import { Smartphone, Camera, Battery, Monitor, HardHat } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import bytiLogo from "@/assets/byti-logo.png";
 
 const activities = [
-  { icon: Smartphone, label: "Électronique" },
-  { icon: Camera, label: "Sécurité" },
-  { icon: Battery, label: "Énergie" },
-  { icon: Monitor, label: "Téléviseurs" },
-  { icon: HardHat, label: "BTP" },
-];
+  { icon: Smartphone, label: "Électronique", to: "/electronique" },
+  { icon: Camera, label: "Sécurité", to: "/securite" },
+  { icon: Battery, label: "Énergie", to: "/batteries" },
+  { icon: Monitor, label: "Téléviseurs", to: "/televiseurs" },
+  { icon: HardHat, label: "BTP", to: "/btp" },
+] as const;
 
 const quickLinks = [
-  { label: "Accueil", href: "#hero" },
-  { label: "Activités", href: "#services" },
-  { label: "À propos", href: "#about" },
-  { label: "Projets", href: "#projects" },
-  { label: "Contact", href: "#contact" },
-];
+  { label: "Accueil", to: "/", hash: "" },
+  { label: "Activités", to: "/", hash: "services" },
+  { label: "À propos", to: "/", hash: "about" },
+  { label: "Projets", to: "/", hash: "projects" },
+  { label: "Contact", to: "/", hash: "contact" },
+  { label: "Boutique", to: "/boutique", hash: "" },
+] as const;
 
 export function Footer() {
   return (
@@ -49,9 +51,13 @@ export function Footer() {
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.label}>
-                  <a href={link.href} className="text-sm text-white/65 hover:text-byti-yellow transition-colors">
+                  <Link
+                    to={link.to}
+                    hash={link.hash || undefined}
+                    className="text-sm text-white/65 hover:text-byti-yellow transition-colors"
+                  >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -64,9 +70,14 @@ export function Footer() {
             </h4>
             <ul className="space-y-2">
               {activities.map((a) => (
-                <li key={a.label} className="flex items-center gap-2">
-                  <a.icon className="w-4 h-4 text-byti-yellow" />
-                  <span className="text-sm text-white/85">{a.label}</span>
+                <li key={a.label}>
+                  <Link
+                    to={a.to}
+                    className="flex items-center gap-2 text-sm text-white/85 hover:text-byti-yellow transition-colors"
+                  >
+                    <a.icon className="w-4 h-4 text-byti-yellow" />
+                    <span>{a.label}</span>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -78,7 +89,11 @@ export function Footer() {
               Contact
             </h4>
             <ul className="space-y-2 text-sm text-white/85">
-              <li>contact@bytitechnologie.com</li>
+              <li>
+                <a href="mailto:contact@bytitechnologie.com" className="text-white/65 hover:text-byti-yellow transition-colors">
+                  contact@bytitechnologie.com
+                </a>
+              </li>
               <li>
                 <a href="tel:+22676767663" className="text-white/65 hover:text-byti-yellow transition-colors">+226 76 76 76 63</a>
               </li>

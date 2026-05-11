@@ -162,7 +162,7 @@ function BatteriesPage() {
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <a
-                href="#contact"
+                href="/#contact"
                 className="btn-byti-red inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-bold uppercase tracking-wide"
               >
                 Demander un devis <ArrowRight className="h-4 w-4" />
@@ -330,7 +330,7 @@ function BatteriesPage() {
               Voir nos modèles <ArrowRight className="h-4 w-4" />
             </Link>
             <a
-              href="#contact"
+              href="/#contact"
               className="inline-flex items-center px-8 py-4 rounded-full text-sm font-bold uppercase tracking-wide text-white border-[1.5px] border-white/60 hover:bg-white/10 transition-all"
             >
               Parler à un expert
