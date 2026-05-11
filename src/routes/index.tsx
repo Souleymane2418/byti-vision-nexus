@@ -68,7 +68,7 @@ const heroSections = [
   },
   {
     id: "energy",
-    video: heroEnergyVid.url,
+    image: heroEnergyImg,
     poster: heroEnergyImg,
     title: "Énergie & batteries lithium",
     subtitle: "Des solutions énergétiques fiables, durables et innovantes",
