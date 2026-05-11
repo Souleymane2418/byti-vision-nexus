@@ -38,15 +38,6 @@ const slides: Slide[] = [
     objectPosition: "center center",
   },
   {
-    video: vid1.url,
-    poster: poster1,
-    badge: "Énergie Solaire",
-    title: "L'énergie du soleil",
-    subtitle: "Panneaux & batteries lithium LiFePO₄",
-    cta1: { label: "Voir nos solutions", href: "#services" },
-    cta2: { label: "Nous contacter", href: "#contact" },
-  },
-  {
     video: vid3.url,
     poster: poster3,
     badge: "BTP & Matériaux",
