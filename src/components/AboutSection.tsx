@@ -1,18 +1,18 @@
 import { motion } from "framer-motion";
-import { Globe2, Building2, Users, Award, MapPin } from "lucide-react";
+import { Globe2, MessageSquare, Smartphone, Network, MapPin } from "lucide-react";
 
-const visionStats = [
-  { icon: Globe2, value: "Afrique", label: "Notre terrain d'action" },
-  { icon: Building2, value: "Multi-pôles", label: "Tech · Énergie · BTP" },
-  { icon: Users, value: "Équipes", label: "Engagées & qualifiées" },
-  { icon: Award, value: "Qualité", label: "Standards internationaux" },
+const partnerStats = [
+  { icon: Globe2, value: "Inde · EAU · Singapour", label: "Présence du partenaire" },
+  { icon: MessageSquare, value: "CPaaS", label: "SMS · WhatsApp · Voice · RCS" },
+  { icon: Network, value: "Wholesale", label: "Routes télécoms internationales" },
+  { icon: Smartphone, value: "Digital", label: "Transformation client" },
 ];
 
-const ambitions = [
-  { zone: "Aujourd'hui", hubs: "Burkina Faso · Cameroun — opérations actives" },
-  { zone: "Court terme", hubs: "Renforcer notre présence en Afrique de l'Ouest" },
-  { zone: "Vision", hubs: "Devenir une référence panafricaine de la tech & de l'énergie" },
-  { zone: "Partenariats", hubs: "Fournisseurs internationaux sélectionnés (Asie · Europe)" },
+const synergies = [
+  { zone: "Burkina Faso · Cameroun", hubs: "BYTI Technologie SARL — opérations locales" },
+  { zone: "Inde (HQ)", hubs: "Byti Technologies — siège du partenaire technologique" },
+  { zone: "EAU · Singapour", hubs: "Byti Technologies — bureaux internationaux" },
+  { zone: "Synergie", hubs: "Accès aux solutions CPaaS et expertise télécoms" },
 ];
 
 export function AboutSection() {
@@ -27,28 +27,41 @@ export function AboutSection() {
           transition={{ duration: 0.7 }}
           className="max-w-3xl"
         >
-          <span className="pill-badge">★ Notre Vision</span>
+          <span className="pill-badge">★ Partenariat international</span>
           <h2 className="editorial-title mt-6 text-3xl md:text-5xl">
-            Une ambition{" "}
-            <span className="editorial-accent">panafricaine</span>
+            Adossée à{" "}
+            <span className="editorial-accent">Byti Technologies</span>
           </h2>
           <p className="mt-6 text-muted-foreground text-lg leading-relaxed">
-            <span className="font-semibold text-foreground">BYTI Technologie SARL</span> est
-            une entreprise engagée dans la transformation technologique, énergétique et
-            structurelle de l'Afrique. Nous opérons à travers plusieurs pôles
-            complémentaires : électronique grand public, sécurité & vidéosurveillance,
-            énergie solaire & batteries lithium, téléviseurs et matériaux de construction
-            (BTP).
+            <span className="font-semibold text-foreground">BYTI Technologie SARL</span>{" "}
+            s'inscrit dans la dynamique de{" "}
+            <span className="font-semibold text-foreground">Byti Technologies</span>, une
+            société internationale de télécommunications et de messagerie (CPaaS) présente
+            en <span className="font-semibold text-foreground">Inde, aux Émirats Arabes Unis
+            et à Singapour</span>. Spécialisée dans les solutions SMS, WhatsApp Business,
+            Voice, RCS et e-mail, Byti Technologies accompagne opérateurs et entreprises
+            dans leur transformation digitale.
           </p>
           <p className="mt-4 text-muted-foreground text-lg leading-relaxed">
-            Notre ambition : apporter à nos clients africains les{" "}
-            <span className="font-semibold text-foreground">meilleures technologies mondiales</span>{" "}
-            au juste prix, tout en construisant progressivement un acteur de référence sur
-            le continent.
+            Cette proximité de marque nous permet d'apporter à nos clients africains une
+            expertise technologique éprouvée à l'international, tout en gardant une
+            <span className="font-semibold text-foreground"> identité locale forte</span>{" "}
+            au Burkina Faso et au Cameroun.
+          </p>
+          <p className="mt-3 text-xs text-muted-foreground/80 italic">
+            En savoir plus sur le partenaire :{" "}
+            <a
+              href="https://bytitech.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-primary transition-colors"
+            >
+              bytitech.com
+            </a>
           </p>
         </motion.div>
 
-        {/* Vision banner */}
+        {/* Partner banner */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -63,24 +76,24 @@ export function AboutSection() {
               </div>
               <div className="flex flex-col leading-tight">
                 <span className="text-[10px] font-semibold tracking-[0.3em] uppercase text-muted-foreground">
-                  BYTI Technologie SARL
+                  Partenaire technologique
                 </span>
                 <span className="text-2xl md:text-3xl font-bold tracking-[0.12em] gradient-text">
-                  CONNECTER · CONSTRUIRE · INNOVER
+                  BYTI TECHNOLOGIES
                 </span>
                 <span className="text-xs text-muted-foreground mt-1">
-                  Notre signature au service de l'Afrique
+                  CPaaS · Inde · EAU · Singapour
                 </span>
               </div>
             </div>
             <div className="md:ml-auto grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-6 w-full md:w-auto">
-              {visionStats.map((s) => (
+              {partnerStats.map((s) => (
                 <div key={s.label} className="text-center md:text-left">
                   <s.icon className="h-5 w-5 text-primary mb-1.5 mx-auto md:mx-0" />
-                  <div className="text-base md:text-lg font-bold text-foreground font-display">
+                  <div className="text-sm md:text-base font-bold text-foreground font-display leading-tight">
                     {s.value}
                   </div>
-                  <div className="text-[11px] uppercase tracking-wider text-muted-foreground">
+                  <div className="text-[11px] uppercase tracking-wider text-muted-foreground mt-1">
                     {s.label}
                   </div>
                 </div>
@@ -89,7 +102,7 @@ export function AboutSection() {
           </div>
         </motion.div>
 
-        {/* Ambitions */}
+        {/* Synergies */}
         <div className="mt-16 grid lg:grid-cols-2 gap-12 items-start">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -98,17 +111,18 @@ export function AboutSection() {
             transition={{ duration: 0.7 }}
           >
             <h3 className="text-xs font-bold uppercase tracking-[0.25em] text-byti-red mb-4">
-              Notre trajectoire
+              Notre écosystème
             </h3>
             <p className="editorial-title text-2xl md:text-3xl mb-6">
-              Construire pas à pas un{" "}
-              <span className="editorial-accent">acteur de référence</span>
+              Une marque, des{" "}
+              <span className="editorial-accent">synergies internationales</span>
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              Nous croyons que l'Afrique mérite des solutions technologiques fiables,
-              durables et accessibles. Notre approche : sélectionner les meilleurs
-              partenaires internationaux, adapter les produits aux réalités locales et
-              accompagner nos clients sur le long terme.
+              Tandis que Byti Technologies opère sur le marché mondial des
+              télécommunications et de la messagerie, BYTI Technologie SARL déploie
+              localement un portefeuille complémentaire : électronique, sécurité, énergie,
+              téléviseurs et matériaux de construction. Une même marque, deux territoires
+              d'expertise.
             </p>
           </motion.div>
 
@@ -119,7 +133,7 @@ export function AboutSection() {
             transition={{ duration: 0.7, delay: 0.15 }}
             className="space-y-3"
           >
-            {ambitions.map((r, i) => (
+            {synergies.map((r, i) => (
               <motion.div
                 key={r.zone}
                 initial={{ opacity: 0, y: 15 }}
