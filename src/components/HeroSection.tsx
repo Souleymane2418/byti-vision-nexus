@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 
 interface HeroSectionProps {
-  video: string;
+  video?: string;
+  image?: string;
   poster?: string;
   title: string;
   subtitle: string;
