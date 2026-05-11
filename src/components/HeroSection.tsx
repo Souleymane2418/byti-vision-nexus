@@ -38,7 +38,7 @@ export function HeroSection({
         muted
         playsInline
         preload={priority ? "auto" : "metadata"}
-        className="absolute inset-0 w-full h-full object-cover scale-105"
+        className="absolute inset-0 w-full h-full object-cover"
       />
       {/* Lighter overlay so the video stays clearly visible while text remains readable */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/15 to-black/55" />
