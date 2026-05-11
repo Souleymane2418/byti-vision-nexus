@@ -288,6 +288,22 @@ html {
   scroll-behavior: smooth;
 }
 
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* Account for fixed navbar when scrolling to anchors (#contact, #services, etc.) */
+section[id],
+[id="contact"],
+[id="services"],
+[id="about"],
+[id="projects"],
+[id="energy-showcase"] {
+  scroll-margin-top: 96px;
+}
+
 /* ===== Style Babali-inspired (épuré, élégant) ===== */
 
 /* Badge pill type "BOISSONS GAZEUSES" */
