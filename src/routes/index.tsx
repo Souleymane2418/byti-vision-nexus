@@ -4,7 +4,7 @@ import { HeroCarousel } from "@/components/HeroCarousel";
 import { HeroSection } from "@/components/HeroSection";
 import { EnergyShowcase } from "@/components/EnergyShowcase";
 import { EcoCommitment } from "@/components/EcoCommitment";
-import { AboutSection } from "@/components/AboutSection";
+
 import { WhyChooseUs } from "@/components/WhyChooseUs";
 import { ServicesGrid } from "@/components/ServicesGrid";
 import { ProjectsGallery } from "@/components/ProjectsGallery";
@@ -105,7 +105,7 @@ function HomePage() {
       ))}
       <EnergyShowcase />
       <EcoCommitment />
-      <AboutSection />
+      
       <WhyChooseUs />
       <ServicesGrid />
       <ProjectsGallery />
