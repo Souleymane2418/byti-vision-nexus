@@ -55,7 +55,7 @@ const heroSections = [
     title: "Électronique & équipements intelligents",
     subtitle: "Des technologies modernes pour un quotidien connecté",
     buttonText: "Découvrir",
-    buttonHref: "#services",
+    buttonHref: "/electronique",
   },
   {
     id: "security",
@@ -64,7 +64,7 @@ const heroSections = [
     title: "Sécurité & vidéosurveillance",
     subtitle: "Protégez vos biens avec des solutions intelligentes et performantes",
     buttonText: "Nos solutions",
-    buttonHref: "#services",
+    buttonHref: "/securite",
   },
   {
     id: "energy",
@@ -82,7 +82,7 @@ const heroSections = [
     title: "Téléviseurs & solutions d'affichage",
     subtitle: "Une expérience visuelle immersive et de haute qualité",
     buttonText: "Voir produits",
-    buttonHref: "#services",
+    buttonHref: "/televiseurs",
   },
   {
     id: "btp",
@@ -91,7 +91,7 @@ const heroSections = [
     title: "BTP — Briques, Pavés & Béton",
     subtitle: "Notre pôle BTP conçoit et fabrique briques, pavés autobloquants, parpaings et béton prêt à l'emploi pour vos chantiers résidentiels et industriels.",
     buttonText: "Nos réalisations",
-    buttonHref: "#projects",
+    buttonHref: "/btp",
   },
 ];
 
