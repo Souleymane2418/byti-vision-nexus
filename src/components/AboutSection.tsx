@@ -2,17 +2,17 @@ import { motion } from "framer-motion";
 import { Globe2, MessageSquare, Smartphone, Network, MapPin } from "lucide-react";
 
 const partnerStats = [
-  { icon: Globe2, value: "Inde · EAU · Singapour", label: "Présence du partenaire" },
-  { icon: MessageSquare, value: "CPaaS", label: "SMS · WhatsApp · Voice · RCS" },
-  { icon: Network, value: "Wholesale", label: "Routes télécoms internationales" },
+  { icon: Globe2, value: "International", label: "Présence multi-continents" },
+  { icon: MessageSquare, value: "Télécoms", label: "Messagerie & communication" },
+  { icon: Network, value: "Réseaux", label: "Routes & interconnexions" },
   { icon: Smartphone, value: "Digital", label: "Transformation client" },
 ];
 
 const synergies = [
   { zone: "Burkina Faso · Cameroun", hubs: "BYTI Technologie SARL — opérations locales" },
-  { zone: "Inde (HQ)", hubs: "Byti Technologies — siège du partenaire technologique" },
-  { zone: "EAU · Singapour", hubs: "Byti Technologies — bureaux internationaux" },
-  { zone: "Synergie", hubs: "Accès aux solutions CPaaS et expertise télécoms" },
+  { zone: "Asie · Moyen-Orient", hubs: "Partenaires technologiques de la sphère BYTI" },
+  { zone: "Échanges", hubs: "Sourcing, expertise et standards qualité partagés" },
+  { zone: "Ambition", hubs: "Faire rayonner la marque BYTI en Afrique" },
 ];
 
 export function AboutSection() {
@@ -27,41 +27,28 @@ export function AboutSection() {
           transition={{ duration: 0.7 }}
           className="max-w-3xl"
         >
-          <span className="pill-badge">★ Partenariat international</span>
+          <span className="pill-badge">★ Une marque qui voyage</span>
           <h2 className="editorial-title mt-6 text-3xl md:text-5xl">
-            Adossée à{" "}
-            <span className="editorial-accent">Byti Technologies</span>
+            Dans la sphère{" "}
+            <span className="editorial-accent">BYTI</span>
           </h2>
           <p className="mt-6 text-muted-foreground text-lg leading-relaxed">
             <span className="font-semibold text-foreground">BYTI Technologie SARL</span>{" "}
-            s'inscrit dans la dynamique de{" "}
-            <span className="font-semibold text-foreground">Byti Technologies</span>, une
-            société internationale de télécommunications et de messagerie (CPaaS) présente
-            en <span className="font-semibold text-foreground">Inde, aux Émirats Arabes Unis
-            et à Singapour</span>. Spécialisée dans les solutions SMS, WhatsApp Business,
-            Voice, RCS et e-mail, Byti Technologies accompagne opérateurs et entreprises
-            dans leur transformation digitale.
+            partage son nom avec d'autres acteurs technologiques internationaux portant
+            l'identité <span className="font-semibold text-foreground">BYTI</span>,
+            actifs notamment dans les télécommunications, la messagerie d'entreprise et la
+            transformation digitale en Asie et au Moyen-Orient.
           </p>
           <p className="mt-4 text-muted-foreground text-lg leading-relaxed">
-            Cette proximité de marque nous permet d'apporter à nos clients africains une
-            expertise technologique éprouvée à l'international, tout en gardant une
-            <span className="font-semibold text-foreground"> identité locale forte</span>{" "}
-            au Burkina Faso et au Cameroun.
-          </p>
-          <p className="mt-3 text-xs text-muted-foreground/80 italic">
-            En savoir plus sur le partenaire :{" "}
-            <a
-              href="https://bytitech.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline hover:text-primary transition-colors"
-            >
-              bytitech.com
-            </a>
+            Sans en être une filiale, nous nous inscrivons dans cette dynamique
+            internationale en gardant une{" "}
+            <span className="font-semibold text-foreground">identité 100% locale</span>{" "}
+            et indépendante au Burkina Faso et au Cameroun, au service de la clientèle
+            africaine.
           </p>
         </motion.div>
 
-        {/* Partner banner */}
+        {/* Brand banner */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -76,13 +63,13 @@ export function AboutSection() {
               </div>
               <div className="flex flex-col leading-tight">
                 <span className="text-[10px] font-semibold tracking-[0.3em] uppercase text-muted-foreground">
-                  Partenaire technologique
+                  Identité de marque
                 </span>
                 <span className="text-2xl md:text-3xl font-bold tracking-[0.12em] gradient-text">
-                  BYTI TECHNOLOGIES
+                  LA SPHÈRE BYTI
                 </span>
                 <span className="text-xs text-muted-foreground mt-1">
-                  CPaaS · Inde · EAU · Singapour
+                  Une marque, plusieurs territoires d'expertise
                 </span>
               </div>
             </div>
@@ -118,11 +105,10 @@ export function AboutSection() {
               <span className="editorial-accent">synergies internationales</span>
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              Tandis que Byti Technologies opère sur le marché mondial des
-              télécommunications et de la messagerie, BYTI Technologie SARL déploie
-              localement un portefeuille complémentaire : électronique, sécurité, énergie,
-              téléviseurs et matériaux de construction. Une même marque, deux territoires
-              d'expertise.
+              Nous déployons localement un portefeuille complémentaire : électronique,
+              sécurité, énergie, téléviseurs et matériaux de construction. Notre approche
+              s'inspire des standards internationaux portés par la marque BYTI, tout en
+              restant ancrée dans les réalités africaines.
             </p>
           </motion.div>
 
