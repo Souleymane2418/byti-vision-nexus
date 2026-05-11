@@ -173,7 +173,7 @@ function ProductPage() {
                   Demander un devis
                 </Link>
                 <Button size="lg" variant="outline" asChild className="rounded-full">
-                  <a href="tel:+237000000000">Appeler BYTI</a>
+                  <a href="tel:+22676767663">Appeler BYTI</a>
                 </Button>
               </div>
             ) : (
