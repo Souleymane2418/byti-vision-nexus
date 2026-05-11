@@ -50,7 +50,7 @@ export const Route = createFileRoute("/")({
 const heroSections = [
   {
     id: "electronics",
-    video: heroElectronicsVid.url,
+    image: heroElectronicsImg,
     poster: heroElectronicsImg,
     title: "Électronique & équipements intelligents",
     subtitle: "Des technologies modernes pour un quotidien connecté",
