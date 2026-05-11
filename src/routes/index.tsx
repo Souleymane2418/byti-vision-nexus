@@ -15,7 +15,7 @@ import heroMainImg from "@/assets/hero-main.jpg";
 import heroSolarFarmImg from "@/assets/hero-solar-farm.jpg";
 import heroElectronicsImg from "@/assets/hero-electronics-wide.jpg";
 import heroSecurityImg from "@/assets/hero-security.jpg";
-import heroEnergyImg from "@/assets/hero-energy.jpg";
+import heroEnergyImg from "@/assets/hero-energy-wide.jpg";
 import heroTvImg from "@/assets/hero-tv.jpg";
 import heroBtpImg from "@/assets/hero-btp.jpg";
 
