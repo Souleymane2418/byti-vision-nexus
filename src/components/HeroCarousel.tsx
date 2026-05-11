@@ -43,8 +43,8 @@ const slides: Slide[] = [
     badge: "BTP & Matériaux",
     title: "Bâtir solide",
     subtitle: "Briques, pavés, béton de qualité",
-    cta1: { label: "Nos réalisations", href: "#projects" },
-    cta2: { label: "Nous contacter", href: "#contact" },
+    cta1: { label: "Nos réalisations", href: "/btp" },
+    cta2: { label: "Nous contacter", href: "/#contact" },
   },
   {
     video: vid4.url,
@@ -52,8 +52,8 @@ const slides: Slide[] = [
     badge: "Sécurité",
     title: "Protéger l'essentiel",
     subtitle: "Vidéosurveillance intelligente & connectée",
-    cta1: { label: "Nos solutions", href: "#services" },
-    cta2: { label: "Nous contacter", href: "#contact" },
+    cta1: { label: "Nos solutions", href: "/securite" },
+    cta2: { label: "Nous contacter", href: "/#contact" },
   },
   {
     video: vid5.url,
@@ -62,7 +62,7 @@ const slides: Slide[] = [
     title: "Toujours connecté",
     subtitle: "Smartphones, TV & équipements modernes",
     cta1: { label: "Voir la boutique", href: "/boutique" },
-    cta2: { label: "En savoir plus", href: "#services" },
+    cta2: { label: "En savoir plus", href: "/electronique" },
   },
 ];
 
