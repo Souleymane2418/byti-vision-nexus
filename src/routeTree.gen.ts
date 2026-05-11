@@ -9,15 +9,39 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TeleviseursRouteImport } from './routes/televiseurs'
+import { Route as SecuriteRouteImport } from './routes/securite'
+import { Route as ElectroniqueRouteImport } from './routes/electronique'
 import { Route as CheckoutRouteImport } from './routes/checkout'
+import { Route as BtpRouteImport } from './routes/btp'
 import { Route as BoutiqueRouteImport } from './routes/boutique'
 import { Route as BatteriesRouteImport } from './routes/batteries'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProduitIdRouteImport } from './routes/produit.$id'
 
+const TeleviseursRoute = TeleviseursRouteImport.update({
+  id: '/televiseurs',
+  path: '/televiseurs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SecuriteRoute = SecuriteRouteImport.update({
+  id: '/securite',
+  path: '/securite',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ElectroniqueRoute = ElectroniqueRouteImport.update({
+  id: '/electronique',
+  path: '/electronique',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CheckoutRoute = CheckoutRouteImport.update({
   id: '/checkout',
   path: '/checkout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BtpRoute = BtpRouteImport.update({
+  id: '/btp',
+  path: '/btp',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BoutiqueRoute = BoutiqueRouteImport.update({
@@ -45,14 +69,22 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/batteries': typeof BatteriesRoute
   '/boutique': typeof BoutiqueRoute
+  '/btp': typeof BtpRoute
   '/checkout': typeof CheckoutRoute
+  '/electronique': typeof ElectroniqueRoute
+  '/securite': typeof SecuriteRoute
+  '/televiseurs': typeof TeleviseursRoute
   '/produit/$id': typeof ProduitIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/batteries': typeof BatteriesRoute
   '/boutique': typeof BoutiqueRoute
+  '/btp': typeof BtpRoute
   '/checkout': typeof CheckoutRoute
+  '/electronique': typeof ElectroniqueRoute
+  '/securite': typeof SecuriteRoute
+  '/televiseurs': typeof TeleviseursRoute
   '/produit/$id': typeof ProduitIdRoute
 }
 export interface FileRoutesById {
@@ -60,20 +92,46 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/batteries': typeof BatteriesRoute
   '/boutique': typeof BoutiqueRoute
+  '/btp': typeof BtpRoute
   '/checkout': typeof CheckoutRoute
+  '/electronique': typeof ElectroniqueRoute
+  '/securite': typeof SecuriteRoute
+  '/televiseurs': typeof TeleviseursRoute
   '/produit/$id': typeof ProduitIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/batteries' | '/boutique' | '/checkout' | '/produit/$id'
+  fullPaths:
+    | '/'
+    | '/batteries'
+    | '/boutique'
+    | '/btp'
+    | '/checkout'
+    | '/electronique'
+    | '/securite'
+    | '/televiseurs'
+    | '/produit/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/batteries' | '/boutique' | '/checkout' | '/produit/$id'
+  to:
+    | '/'
+    | '/batteries'
+    | '/boutique'
+    | '/btp'
+    | '/checkout'
+    | '/electronique'
+    | '/securite'
+    | '/televiseurs'
+    | '/produit/$id'
   id:
     | '__root__'
     | '/'
     | '/batteries'
     | '/boutique'
+    | '/btp'
     | '/checkout'
+    | '/electronique'
+    | '/securite'
+    | '/televiseurs'
     | '/produit/$id'
   fileRoutesById: FileRoutesById
 }
@@ -81,17 +139,49 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BatteriesRoute: typeof BatteriesRoute
   BoutiqueRoute: typeof BoutiqueRoute
+  BtpRoute: typeof BtpRoute
   CheckoutRoute: typeof CheckoutRoute
+  ElectroniqueRoute: typeof ElectroniqueRoute
+  SecuriteRoute: typeof SecuriteRoute
+  TeleviseursRoute: typeof TeleviseursRoute
   ProduitIdRoute: typeof ProduitIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/televiseurs': {
+      id: '/televiseurs'
+      path: '/televiseurs'
+      fullPath: '/televiseurs'
+      preLoaderRoute: typeof TeleviseursRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/securite': {
+      id: '/securite'
+      path: '/securite'
+      fullPath: '/securite'
+      preLoaderRoute: typeof SecuriteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/electronique': {
+      id: '/electronique'
+      path: '/electronique'
+      fullPath: '/electronique'
+      preLoaderRoute: typeof ElectroniqueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/checkout': {
       id: '/checkout'
       path: '/checkout'
       fullPath: '/checkout'
       preLoaderRoute: typeof CheckoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/btp': {
+      id: '/btp'
+      path: '/btp'
+      fullPath: '/btp'
+      preLoaderRoute: typeof BtpRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/boutique': {
@@ -129,9 +219,22 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BatteriesRoute: BatteriesRoute,
   BoutiqueRoute: BoutiqueRoute,
+  BtpRoute: BtpRoute,
   CheckoutRoute: CheckoutRoute,
+  ElectroniqueRoute: ElectroniqueRoute,
+  SecuriteRoute: SecuriteRoute,
+  TeleviseursRoute: TeleviseursRoute,
   ProduitIdRoute: ProduitIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}
