@@ -11,11 +11,14 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TeleviseursRouteImport } from './routes/televiseurs'
 import { Route as SecuriteRouteImport } from './routes/securite'
+import { Route as ProjetsRouteImport } from './routes/projets'
 import { Route as ElectroniqueRouteImport } from './routes/electronique'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as BtpRouteImport } from './routes/btp'
 import { Route as BoutiqueRouteImport } from './routes/boutique'
 import { Route as BatteriesRouteImport } from './routes/batteries'
+import { Route as ActivitesRouteImport } from './routes/activites'
 import { Route as AProposRouteImport } from './routes/a-propos'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProduitIdRouteImport } from './routes/produit.$id'
@@ -30,9 +33,19 @@ const SecuriteRoute = SecuriteRouteImport.update({
   path: '/securite',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProjetsRoute = ProjetsRouteImport.update({
+  id: '/projets',
+  path: '/projets',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ElectroniqueRoute = ElectroniqueRouteImport.update({
   id: '/electronique',
   path: '/electronique',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CheckoutRoute = CheckoutRouteImport.update({
@@ -55,6 +68,11 @@ const BatteriesRoute = BatteriesRouteImport.update({
   path: '/batteries',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ActivitesRoute = ActivitesRouteImport.update({
+  id: '/activites',
+  path: '/activites',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AProposRoute = AProposRouteImport.update({
   id: '/a-propos',
   path: '/a-propos',
@@ -74,11 +92,14 @@ const ProduitIdRoute = ProduitIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
+  '/activites': typeof ActivitesRoute
   '/batteries': typeof BatteriesRoute
   '/boutique': typeof BoutiqueRoute
   '/btp': typeof BtpRoute
   '/checkout': typeof CheckoutRoute
+  '/contact': typeof ContactRoute
   '/electronique': typeof ElectroniqueRoute
+  '/projets': typeof ProjetsRoute
   '/securite': typeof SecuriteRoute
   '/televiseurs': typeof TeleviseursRoute
   '/produit/$id': typeof ProduitIdRoute
@@ -86,11 +107,14 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
+  '/activites': typeof ActivitesRoute
   '/batteries': typeof BatteriesRoute
   '/boutique': typeof BoutiqueRoute
   '/btp': typeof BtpRoute
   '/checkout': typeof CheckoutRoute
+  '/contact': typeof ContactRoute
   '/electronique': typeof ElectroniqueRoute
+  '/projets': typeof ProjetsRoute
   '/securite': typeof SecuriteRoute
   '/televiseurs': typeof TeleviseursRoute
   '/produit/$id': typeof ProduitIdRoute
@@ -99,11 +123,14 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
+  '/activites': typeof ActivitesRoute
   '/batteries': typeof BatteriesRoute
   '/boutique': typeof BoutiqueRoute
   '/btp': typeof BtpRoute
   '/checkout': typeof CheckoutRoute
+  '/contact': typeof ContactRoute
   '/electronique': typeof ElectroniqueRoute
+  '/projets': typeof ProjetsRoute
   '/securite': typeof SecuriteRoute
   '/televiseurs': typeof TeleviseursRoute
   '/produit/$id': typeof ProduitIdRoute
@@ -113,11 +140,14 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/a-propos'
+    | '/activites'
     | '/batteries'
     | '/boutique'
     | '/btp'
     | '/checkout'
+    | '/contact'
     | '/electronique'
+    | '/projets'
     | '/securite'
     | '/televiseurs'
     | '/produit/$id'
@@ -125,11 +155,14 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/a-propos'
+    | '/activites'
     | '/batteries'
     | '/boutique'
     | '/btp'
     | '/checkout'
+    | '/contact'
     | '/electronique'
+    | '/projets'
     | '/securite'
     | '/televiseurs'
     | '/produit/$id'
@@ -137,11 +170,14 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/a-propos'
+    | '/activites'
     | '/batteries'
     | '/boutique'
     | '/btp'
     | '/checkout'
+    | '/contact'
     | '/electronique'
+    | '/projets'
     | '/securite'
     | '/televiseurs'
     | '/produit/$id'
@@ -150,11 +186,14 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AProposRoute: typeof AProposRoute
+  ActivitesRoute: typeof ActivitesRoute
   BatteriesRoute: typeof BatteriesRoute
   BoutiqueRoute: typeof BoutiqueRoute
   BtpRoute: typeof BtpRoute
   CheckoutRoute: typeof CheckoutRoute
+  ContactRoute: typeof ContactRoute
   ElectroniqueRoute: typeof ElectroniqueRoute
+  ProjetsRoute: typeof ProjetsRoute
   SecuriteRoute: typeof SecuriteRoute
   TeleviseursRoute: typeof TeleviseursRoute
   ProduitIdRoute: typeof ProduitIdRoute
@@ -176,11 +215,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SecuriteRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/projets': {
+      id: '/projets'
+      path: '/projets'
+      fullPath: '/projets'
+      preLoaderRoute: typeof ProjetsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/electronique': {
       id: '/electronique'
       path: '/electronique'
       fullPath: '/electronique'
       preLoaderRoute: typeof ElectroniqueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/checkout': {
@@ -211,6 +264,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BatteriesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/activites': {
+      id: '/activites'
+      path: '/activites'
+      fullPath: '/activites'
+      preLoaderRoute: typeof ActivitesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/a-propos': {
       id: '/a-propos'
       path: '/a-propos'
@@ -238,11 +298,14 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AProposRoute: AProposRoute,
+  ActivitesRoute: ActivitesRoute,
   BatteriesRoute: BatteriesRoute,
   BoutiqueRoute: BoutiqueRoute,
   BtpRoute: BtpRoute,
   CheckoutRoute: CheckoutRoute,
+  ContactRoute: ContactRoute,
   ElectroniqueRoute: ElectroniqueRoute,
+  ProjetsRoute: ProjetsRoute,
   SecuriteRoute: SecuriteRoute,
   TeleviseursRoute: TeleviseursRoute,
   ProduitIdRoute: ProduitIdRoute,

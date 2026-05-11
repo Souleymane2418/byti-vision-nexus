@@ -6,9 +6,6 @@ import { EnergyShowcase } from "@/components/EnergyShowcase";
 import { EcoCommitment } from "@/components/EcoCommitment";
 
 import { WhyChooseUs } from "@/components/WhyChooseUs";
-import { ServicesGrid } from "@/components/ServicesGrid";
-import { ProjectsGallery } from "@/components/ProjectsGallery";
-import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
 
 import heroMainImg from "@/assets/hero-main.jpg";
@@ -105,11 +102,7 @@ function HomePage() {
       ))}
       <EnergyShowcase />
       <EcoCommitment />
-      
       <WhyChooseUs />
-      <ServicesGrid />
-      <ProjectsGallery />
-      <ContactSection />
       <Footer />
     </div>
   );
