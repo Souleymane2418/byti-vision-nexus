@@ -60,23 +60,7 @@ function CheckoutPage() {
     }
     setSubmitting(true);
     const currency = items[0]?.currency ?? "XAF";
-    const orderItems = items.map((i) => ({ id: i.id, name: i.name, price: i.price, quantity: i.quantity }));
-
-    // Persist (best effort)
-    const { error: dbError } = await supabase.from("orders").insert({
-      customer_name: form.customer_name.trim(),
-      customer_phone: form.customer_phone.trim(),
-      customer_email: form.customer_email.trim() || null,
-      customer_address: form.customer_address.trim() || null,
-      notes:
-        (form.notes.trim() ? form.notes.trim() + "\n\n" : "") +
-        `Paiement: ${selectedPayment.label}` +
-        (selectedPayment.needsPhone ? ` (${paymentPhone.trim()})` : ""),
-      items: orderItems,
-      total,
-      currency,
-    });
-    if (dbError) console.warn("Order DB insert failed:", dbError);
+    const orderItems = items.map((i) => ({ name: i.name, quantity: i.quantity, price: i.price }));
 
     const res = await sendOrder({
       data: {
@@ -87,46 +71,22 @@ function CheckoutPage() {
         notes: form.notes.trim() || null,
         payment_method: paymentMethod,
         payment_phone: selectedPayment.needsPhone ? paymentPhone.trim() : null,
-        items: orderItems.map((i) => ({ name: i.name, quantity: i.quantity, price: i.price })),
+        items: orderItems,
         total,
         currency,
       },
     });
 
     setSubmitting(false);
-    if (!res?.ok) {
-      toast.error(res?.error || "Erreur lors de l'envoi de la commande");
+
+    if (res?.order_id) {
+      clear();
+      navigate({ to: "/commande/$id", params: { id: res.order_id } });
       return;
     }
-    clear();
-    setSuccess(true);
-  };
 
-  if (success) {
-    return (
-      <div className="bg-background min-h-screen">
-        <Navbar />
-        <div className="pt-32 pb-20 px-6 max-w-xl mx-auto text-center">
-          <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="inline-block mb-6">
-            <CheckCircle2 className="h-20 w-20 text-byti-blue" />
-          </motion.div>
-          <h1 className="text-3xl font-display font-bold mb-4">Commande confirmée !</h1>
-          <p className="text-muted-foreground mb-8">
-            Merci pour votre commande. Notre équipe vous contactera très rapidement pour confirmer la livraison et le paiement.
-          </p>
-          <div className="flex gap-3 justify-center">
-            <Button asChild>
-              <Link to="/boutique">Continuer vos achats</Link>
-            </Button>
-            <Button asChild variant="outline">
-              <Link to="/">Retour à l'accueil</Link>
-            </Button>
-          </div>
-        </div>
-        <Footer />
-      </div>
-    );
-  }
+    toast.error(res?.error || "Erreur lors de l'envoi de la commande");
+  };
 
   return (
     <div className="bg-background min-h-screen">
