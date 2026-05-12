@@ -310,25 +310,71 @@ function ProductsAdmin() {
                 <Textarea rows={3} value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} />
               </div>
               <div className="col-span-2">
-                <Label>Image</Label>
-                <div className="flex items-center gap-3">
-                  {form.image_url && <img src={form.image_url} alt="" className="h-16 w-16 rounded object-cover" />}
+                <Label>Images du produit</Label>
+                <p className="text-xs text-muted-foreground mb-2">
+                  Vous pouvez ajouter plusieurs photos. La photo marquée d'une étoile est la photo principale (vignette boutique).
+                </p>
+                <div className="flex flex-wrap items-center gap-3 mb-3">
                   <label className="cursor-pointer inline-flex items-center gap-2 px-3 py-2 border rounded-md text-sm hover:bg-slate-50">
                     {uploading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Upload className="h-4 w-4" />}
-                    Choisir une image
+                    Ajouter des photos
                     <input
                       type="file"
                       accept="image/*"
+                      multiple
                       className="hidden"
-                      onChange={(e) => e.target.files?.[0] && upload(e.target.files[0])}
+                      onChange={(e) => e.target.files && uploadFiles(e.target.files)}
                     />
                   </label>
                   <Input
-                    placeholder="ou URL d'image"
-                    value={form.image_url}
-                    onChange={(e) => setForm({ ...form, image_url: e.target.value })}
+                    placeholder="ou coller une URL puis Entrée"
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        e.preventDefault();
+                        const v = (e.target as HTMLInputElement).value.trim();
+                        if (v) {
+                          setGallery((g) => [...g, { url: v, position: g.length }]);
+                          if (!form.image_url) setForm({ ...form, image_url: v });
+                          (e.target as HTMLInputElement).value = "";
+                        }
+                      }
+                    }}
+                    className="max-w-xs"
                   />
                 </div>
+                {gallery.length === 0 ? (
+                  <div className="text-sm text-muted-foreground italic border border-dashed rounded-lg p-6 text-center">
+                    Aucune photo. Cliquez sur "Ajouter des photos".
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-3 sm:grid-cols-4 gap-3">
+                    {gallery.map((img, idx) => {
+                      const isMain = form.image_url === img.url;
+                      return (
+                        <div key={idx} className={`relative group border rounded-lg overflow-hidden ${isMain ? "ring-2 ring-byti-blue" : ""}`}>
+                          <img src={img.url} alt="" className="w-full aspect-square object-cover" />
+                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition flex items-center justify-center gap-1 opacity-0 group-hover:opacity-100">
+                            <button type="button" title="Définir principale" onClick={() => setMain(img.url)} className="p-1.5 bg-white rounded">
+                              <Star className={`h-3.5 w-3.5 ${isMain ? "fill-amber-500 text-amber-500" : ""}`} />
+                            </button>
+                            <button type="button" title="Monter" onClick={() => moveImage(idx, -1)} className="p-1.5 bg-white rounded">
+                              <ArrowUp className="h-3.5 w-3.5" />
+                            </button>
+                            <button type="button" title="Descendre" onClick={() => moveImage(idx, 1)} className="p-1.5 bg-white rounded">
+                              <ArrowDown className="h-3.5 w-3.5" />
+                            </button>
+                            <button type="button" title="Supprimer" onClick={() => removeImage(idx)} className="p-1.5 bg-white rounded">
+                              <X className="h-3.5 w-3.5 text-destructive" />
+                            </button>
+                          </div>
+                          {isMain && (
+                            <span className="absolute top-1 left-1 bg-byti-blue text-white text-[10px] font-bold px-1.5 py-0.5 rounded">PRINCIPALE</span>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
             </div>
             <DialogFooter>
