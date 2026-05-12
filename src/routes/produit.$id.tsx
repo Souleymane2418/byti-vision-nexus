@@ -270,6 +270,64 @@ function ProductPage() {
         </div>
       </section>
       <Footer />
+
+      <Dialog open={quoteOpen} onOpenChange={setQuoteOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>Demander un devis</DialogTitle>
+            <DialogDescription>
+              Votre demande sera envoyée directement à BYTI via WhatsApp.
+            </DialogDescription>
+          </DialogHeader>
+          <form onSubmit={submitQuote} className="space-y-4">
+            <div className="rounded-lg bg-muted/50 px-3 py-2 text-sm">
+              <span className="text-muted-foreground">Produit : </span>
+              <span className="font-medium">{product.name}</span>
+              {product.model && (
+                <span className="text-muted-foreground"> · {product.model}</span>
+              )}
+            </div>
+            <div>
+              <Label htmlFor="q-name">Votre nom *</Label>
+              <Input
+                id="q-name"
+                required
+                maxLength={100}
+                value={quoteForm.name}
+                onChange={(e) => setQuoteForm({ ...quoteForm, name: e.target.value })}
+              />
+            </div>
+            <div>
+              <Label htmlFor="q-phone">Téléphone (WhatsApp) *</Label>
+              <Input
+                id="q-phone"
+                type="tel"
+                required
+                maxLength={30}
+                placeholder="+226 ..."
+                value={quoteForm.phone}
+                onChange={(e) => setQuoteForm({ ...quoteForm, phone: e.target.value })}
+              />
+            </div>
+            <div>
+              <Label htmlFor="q-message">Message (optionnel)</Label>
+              <Textarea
+                id="q-message"
+                rows={3}
+                maxLength={1000}
+                value={quoteForm.message}
+                onChange={(e) => setQuoteForm({ ...quoteForm, message: e.target.value })}
+              />
+            </div>
+            <DialogFooter>
+              <Button type="submit" disabled={quoteSubmitting} className="w-full">
+                {quoteSubmitting && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
+                Envoyer la demande
+              </Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
