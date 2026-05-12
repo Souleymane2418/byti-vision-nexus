@@ -88,6 +88,7 @@ function ResetPasswordPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
+              <PasswordStrength password={password} />
             </div>
             <div>
               <Label htmlFor="confirm">Confirmer</Label>
