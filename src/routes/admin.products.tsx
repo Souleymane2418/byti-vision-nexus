@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
-import { Loader2, Plus, Pencil, Trash2, Upload } from "lucide-react";
+import { Loader2, Plus, Pencil, Trash2, Upload, X, ArrowUp, ArrowDown, Star } from "lucide-react";
 
 export const Route = createFileRoute("/admin/products")({
   component: ProductsAdmin,
