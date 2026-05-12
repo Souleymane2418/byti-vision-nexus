@@ -31,6 +31,11 @@ function LoginPage() {
         toast.success("Connexion réussie");
         navigate({ to: "/admin" });
       } else if (mode === "signup") {
+        if (getPasswordScore(password) < 4) {
+          toast.error("Mot de passe trop faible. Respectez les règles affichées.");
+          setLoading(false);
+          return;
+        }
         const { error } = await supabase.auth.signUp({
           email,
           password,
