@@ -51,6 +51,37 @@ function ProductPage() {
   const [loading, setLoading] = useState(true);
   const [qty, setQty] = useState(1);
   const { add, setOpen } = useCart();
+  const sendQuote = useServerFn(sendWhatsAppQuote);
+  const [quoteOpen, setQuoteOpen] = useState(false);
+  const [quoteSubmitting, setQuoteSubmitting] = useState(false);
+  const [quoteForm, setQuoteForm] = useState({ name: "", phone: "", message: "" });
+
+  const submitQuote = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!product) return;
+    if (quoteForm.name.trim().length < 2 || quoteForm.phone.trim().length < 6) {
+      toast.error("Nom et téléphone requis");
+      return;
+    }
+    setQuoteSubmitting(true);
+    const res = await sendQuote({
+      data: {
+        customer_name: quoteForm.name.trim(),
+        customer_phone: quoteForm.phone.trim(),
+        product_name: product.name,
+        product_model: product.model,
+        message: quoteForm.message.trim() || null,
+      },
+    });
+    setQuoteSubmitting(false);
+    if (res.ok) {
+      toast.success("Demande envoyée ! BYTI vous recontactera rapidement.");
+      setQuoteOpen(false);
+      setQuoteForm({ name: "", phone: "", message: "" });
+    } else {
+      toast.error(res.error ?? "Erreur lors de l'envoi");
+    }
+  };
 
   useEffect(() => {
     (async () => {
