@@ -87,6 +87,7 @@ function LoginPage() {
             <div>
               <Label htmlFor="password">Mot de passe</Label>
               <Input id="password" type="password" required minLength={8} value={password} onChange={(e) => setPassword(e.target.value)} />
+              {mode === "signup" && <PasswordStrength password={password} />}
             </div>
           )}
           <Button type="submit" disabled={loading} className="w-full bg-byti-blue hover:bg-byti-blue-deep">
