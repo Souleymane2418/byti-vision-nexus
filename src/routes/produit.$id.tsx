@@ -1,12 +1,25 @@
 import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { useServerFn } from "@tanstack/react-start";
 import { supabase } from "@/integrations/supabase/client";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { useCart, formatPrice } from "@/lib/cart";
+import { sendWhatsAppQuote } from "@/lib/whatsapp.functions";
 import { ShoppingCart, Loader2, ArrowLeft, Check } from "lucide-react";
 import { toast } from "sonner";
 
@@ -38,6 +51,37 @@ function ProductPage() {
   const [loading, setLoading] = useState(true);
   const [qty, setQty] = useState(1);
   const { add, setOpen } = useCart();
+  const sendQuote = useServerFn(sendWhatsAppQuote);
+  const [quoteOpen, setQuoteOpen] = useState(false);
+  const [quoteSubmitting, setQuoteSubmitting] = useState(false);
+  const [quoteForm, setQuoteForm] = useState({ name: "", phone: "", message: "" });
+
+  const submitQuote = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!product) return;
+    if (quoteForm.name.trim().length < 2 || quoteForm.phone.trim().length < 6) {
+      toast.error("Nom et téléphone requis");
+      return;
+    }
+    setQuoteSubmitting(true);
+    const res = await sendQuote({
+      data: {
+        customer_name: quoteForm.name.trim(),
+        customer_phone: quoteForm.phone.trim(),
+        product_name: product.name,
+        product_model: product.model,
+        message: quoteForm.message.trim() || null,
+      },
+    });
+    setQuoteSubmitting(false);
+    if (res.ok) {
+      toast.success("Demande envoyée ! BYTI vous recontactera rapidement.");
+      setQuoteOpen(false);
+      setQuoteForm({ name: "", phone: "", message: "" });
+    } else {
+      toast.error(res.error ?? "Erreur lors de l'envoi");
+    }
+  };
 
   useEffect(() => {
     (async () => {
@@ -165,16 +209,13 @@ function ProductPage() {
 
             {!product.price ? (
               <div className="flex flex-col sm:flex-row gap-3">
-                <a
-                  href={`https://wa.me/22676767663?text=${encodeURIComponent(
-                    `Bonjour BYTI, je souhaite un devis pour : ${product.name}${product.model ? ` (${product.model})` : ""}.`
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  type="button"
+                  onClick={() => setQuoteOpen(true)}
                   className="btn-byti-red flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wide"
                 >
                   Demander un devis
-                </a>
+                </button>
                 <Button size="lg" variant="outline" asChild className="rounded-full">
                   <a href="tel:+22676767663">Appeler BYTI</a>
                 </Button>
@@ -229,6 +270,64 @@ function ProductPage() {
         </div>
       </section>
       <Footer />
+
+      <Dialog open={quoteOpen} onOpenChange={setQuoteOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>Demander un devis</DialogTitle>
+            <DialogDescription>
+              Votre demande sera envoyée directement à BYTI via WhatsApp.
+            </DialogDescription>
+          </DialogHeader>
+          <form onSubmit={submitQuote} className="space-y-4">
+            <div className="rounded-lg bg-muted/50 px-3 py-2 text-sm">
+              <span className="text-muted-foreground">Produit : </span>
+              <span className="font-medium">{product.name}</span>
+              {product.model && (
+                <span className="text-muted-foreground"> · {product.model}</span>
+              )}
+            </div>
+            <div>
+              <Label htmlFor="q-name">Votre nom *</Label>
+              <Input
+                id="q-name"
+                required
+                maxLength={100}
+                value={quoteForm.name}
+                onChange={(e) => setQuoteForm({ ...quoteForm, name: e.target.value })}
+              />
+            </div>
+            <div>
+              <Label htmlFor="q-phone">Téléphone (WhatsApp) *</Label>
+              <Input
+                id="q-phone"
+                type="tel"
+                required
+                maxLength={30}
+                placeholder="+226 ..."
+                value={quoteForm.phone}
+                onChange={(e) => setQuoteForm({ ...quoteForm, phone: e.target.value })}
+              />
+            </div>
+            <div>
+              <Label htmlFor="q-message">Message (optionnel)</Label>
+              <Textarea
+                id="q-message"
+                rows={3}
+                maxLength={1000}
+                value={quoteForm.message}
+                onChange={(e) => setQuoteForm({ ...quoteForm, message: e.target.value })}
+              />
+            </div>
+            <DialogFooter>
+              <Button type="submit" disabled={quoteSubmitting} className="w-full">
+                {quoteSubmitting && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
+                Envoyer la demande
+              </Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
