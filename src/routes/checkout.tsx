@@ -19,13 +19,13 @@ export const Route = createFileRoute("/checkout")({
   head: () => ({ meta: [{ title: "Commande | BYTI Technologie" }] }),
 });
 
-type PaymentMethod = "orange_money" | "mtn_momo" | "cash_on_delivery" | "bank_transfer";
+type PaymentMethod = "orange_money" | "moov_money" | "wave" | "cash_on_delivery";
 
 const PAYMENT_OPTIONS: { id: PaymentMethod; label: string; icon: string; needsPhone: boolean; hint?: string }[] = [
   { id: "orange_money", label: "Orange Money", icon: "🟠", needsPhone: true, hint: "Notre équipe vous contactera sur WhatsApp avec les instructions de paiement." },
-  { id: "mtn_momo", label: "MTN Mobile Money", icon: "🟡", needsPhone: true, hint: "Notre équipe vous contactera sur WhatsApp avec les instructions de paiement." },
+  { id: "moov_money", label: "Moov Money", icon: "🔵", needsPhone: true, hint: "Notre équipe vous contactera sur WhatsApp avec les instructions de paiement." },
+  { id: "wave", label: "Wave", icon: "🌊", needsPhone: true, hint: "Notre équipe vous contactera sur WhatsApp avec les instructions de paiement." },
   { id: "cash_on_delivery", label: "Paiement à la livraison", icon: "💵", needsPhone: false },
-  { id: "bank_transfer", label: "Virement bancaire", icon: "🏦", needsPhone: false, hint: "Coordonnées bancaires envoyées par WhatsApp." },
 ];
 
 function CheckoutPage() {

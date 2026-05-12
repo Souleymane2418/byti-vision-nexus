@@ -21,7 +21,7 @@ const OrderSchema = z.object({
   customer_email: z.string().trim().max(150).optional().nullable(),
   customer_address: z.string().trim().max(500).optional().nullable(),
   notes: z.string().trim().max(1000).optional().nullable(),
-  payment_method: z.enum(["orange_money", "mtn_momo", "cash_on_delivery", "bank_transfer"]),
+  payment_method: z.enum(["orange_money", "moov_money", "wave", "cash_on_delivery"]),
   payment_phone: z.string().trim().max(30).optional().nullable(),
   items: z.array(OrderItemSchema).min(1).max(50),
   total: z.number().min(0),
@@ -30,9 +30,9 @@ const OrderSchema = z.object({
 
 const PAYMENT_LABELS: Record<string, string> = {
   orange_money: "🟠 Orange Money",
-  mtn_momo: "🟡 MTN Mobile Money",
+  moov_money: "🔵 Moov Money",
+  wave: "🌊 Wave",
   cash_on_delivery: "💵 Paiement à la livraison",
-  bank_transfer: "🏦 Virement bancaire",
 };
 
 export const sendWhatsAppOrder = createServerFn({ method: "POST" })
