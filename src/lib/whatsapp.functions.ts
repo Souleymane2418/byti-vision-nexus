@@ -35,12 +35,14 @@ const PAYMENT_LABELS: Record<string, string> = {
   cash_on_delivery: "💵 Paiement à la livraison",
 };
 
+// BYTI WhatsApp number (international format, digits only)
+const BYTI_WHATSAPP_NUMBER = "22676038813";
+
 export const sendWhatsAppOrder = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) => OrderSchema.parse(input))
   .handler(async ({ data }) => {
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
 
-    // 1) Create order with status 'created'
     const notesWithPayment =
       (data.notes?.trim() ? data.notes.trim() + "\n\n" : "") +
       `Paiement: ${PAYMENT_LABELS[data.payment_method] ?? data.payment_method}` +
@@ -64,84 +66,50 @@ export const sendWhatsAppOrder = createServerFn({ method: "POST" })
 
     if (insertError || !inserted) {
       console.error("Order insert failed:", insertError);
-      return { ok: false, order_id: null, status: "error" as const, error: "Impossible d'enregistrer la commande." };
+      return {
+        ok: false as const,
+        order_id: null,
+        status: "error" as const,
+        wa_url: null,
+        error: "Impossible d'enregistrer la commande.",
+      };
     }
 
     const orderId = inserted.id;
 
-    const token = process.env.WHATSAPP_ACCESS_TOKEN;
-    const phoneNumberId = process.env.WHATSAPP_PHONE_NUMBER_ID;
-    const recipient = process.env.WHATSAPP_RECIPIENT_NUMBER;
-
-    if (!token || !phoneNumberId || !recipient) {
-      await supabaseAdmin
-        .from("orders")
-        .update({ status: "whatsapp_error" })
-        .eq("id", orderId);
-      return {
-        ok: false,
-        order_id: orderId,
-        status: "whatsapp_error" as const,
-        error: "Configuration WhatsApp manquante côté serveur.",
-      };
-    }
-
     const itemsText = data.items
       .map(
         (i) =>
-          `  • ${i.name} × ${i.quantity} — ${(i.price * i.quantity).toLocaleString("fr-FR")} ${data.currency}`,
+          `  • ${i.name} x ${i.quantity} - ${(i.price * i.quantity).toLocaleString("fr-FR")} ${data.currency}`,
       )
       .join("\n");
 
     const text =
       `🛒 *NOUVELLE COMMANDE - BYTI*\n\n` +
-      `🆔 *Réf:* ${orderId.slice(0, 8).toUpperCase()}\n` +
-      `👤 *Client:* ${data.customer_name}\n` +
-      `📞 *Téléphone:* ${data.customer_phone}\n` +
-      (data.customer_email ? `📧 *Email:* ${data.customer_email}\n` : "") +
-      (data.customer_address ? `📍 *Adresse:* ${data.customer_address}\n` : "") +
-      `\n💳 *Paiement:* ${PAYMENT_LABELS[data.payment_method] ?? data.payment_method}` +
-      (data.payment_phone ? `\n📱 *N° paiement:* ${data.payment_phone}` : "") +
-      `\n\n📦 *Articles:*\n${itemsText}\n\n` +
-      `💰 *TOTAL: ${data.total.toLocaleString("fr-FR")} ${data.currency}*` +
-      (data.notes ? `\n\n📝 *Notes:*\n${data.notes}` : "");
+      `🆔 Réf: ${orderId.slice(0, 8).toUpperCase()}\n` +
+      `👤 Client: ${data.customer_name}\n` +
+      `📞 Téléphone: ${data.customer_phone}\n` +
+      (data.customer_email ? `📧 Email: ${data.customer_email}\n` : "") +
+      (data.customer_address ? `📍 Adresse: ${data.customer_address}\n` : "") +
+      `\n💳 Paiement: ${PAYMENT_LABELS[data.payment_method] ?? data.payment_method}` +
+      (data.payment_phone ? `\n📱 N° paiement: ${data.payment_phone}` : "") +
+      `\n\n📦 Articles:\n${itemsText}\n\n` +
+      `💰 TOTAL: ${data.total.toLocaleString("fr-FR")} ${data.currency}` +
+      (data.notes ? `\n\n📝 Notes:\n${data.notes}` : "");
 
-    try {
-      const res = await fetch(
-        `https://graph.facebook.com/v21.0/${phoneNumberId}/messages`,
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            messaging_product: "whatsapp",
-            to: recipient.replace(/[^0-9]/g, ""),
-            type: "text",
-            text: { body: text },
-          }),
-        },
-      );
-      const json = (await res.json()) as Record<string, unknown>;
-      if (!res.ok) {
-        const err = (json as { error?: { message?: string } }).error?.message ?? `HTTP ${res.status}`;
-        console.error("WhatsApp order error:", err, json);
-        await supabaseAdmin.from("orders").update({ status: "whatsapp_error" }).eq("id", orderId);
-        return { ok: false, order_id: orderId, status: "whatsapp_error" as const, error: err };
-      }
-      await supabaseAdmin.from("orders").update({ status: "whatsapp_sent" }).eq("id", orderId);
-      return { ok: true, order_id: orderId, status: "whatsapp_sent" as const };
-    } catch (e) {
-      console.error("WhatsApp order send failed:", e);
-      await supabaseAdmin.from("orders").update({ status: "whatsapp_error" }).eq("id", orderId);
-      return {
-        ok: false,
-        order_id: orderId,
-        status: "whatsapp_error" as const,
-        error: "Erreur réseau lors de l'envoi",
-      };
-    }
+    const wa_url = `https://wa.me/${BYTI_WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+
+    await supabaseAdmin
+      .from("orders")
+      .update({ status: "whatsapp_sent" })
+      .eq("id", orderId);
+
+    return {
+      ok: true as const,
+      order_id: orderId,
+      status: "whatsapp_sent" as const,
+      wa_url,
+    };
   });
 
 const OrderStatusInput = z.object({ id: z.string().uuid() });
@@ -166,49 +134,14 @@ export const getOrderStatus = createServerFn({ method: "GET" })
 export const sendWhatsAppQuote = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) => QuoteSchema.parse(input))
   .handler(async ({ data }) => {
-    const token = process.env.WHATSAPP_ACCESS_TOKEN;
-    const phoneNumberId = process.env.WHATSAPP_PHONE_NUMBER_ID;
-    const recipient = process.env.WHATSAPP_RECIPIENT_NUMBER;
-
-    if (!token || !phoneNumberId || !recipient) {
-      return { ok: false, error: "Configuration WhatsApp manquante côté serveur." };
-    }
-
     const text =
       `🛒 *Nouvelle demande de devis - BYTI*\n\n` +
-      `👤 *Client:* ${data.customer_name}\n` +
-      `📞 *Téléphone:* ${data.customer_phone}\n\n` +
-      `📦 *Produit:* ${data.product_name}` +
-      (data.product_model ? `\n🔖 *Réf:* ${data.product_model}` : "") +
-      (data.message ? `\n\n💬 *Message:*\n${data.message}` : "");
+      `👤 Client: ${data.customer_name}\n` +
+      `📞 Téléphone: ${data.customer_phone}\n\n` +
+      `📦 Produit: ${data.product_name}` +
+      (data.product_model ? `\n🔖 Réf: ${data.product_model}` : "") +
+      (data.message ? `\n\n💬 Message:\n${data.message}` : "");
 
-    try {
-      const res = await fetch(
-        `https://graph.facebook.com/v21.0/${phoneNumberId}/messages`,
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            messaging_product: "whatsapp",
-            to: recipient.replace(/[^0-9]/g, ""),
-            type: "text",
-            text: { body: text },
-          }),
-        }
-      );
-
-      const json = (await res.json()) as Record<string, unknown>;
-      if (!res.ok) {
-        const err = (json as { error?: { message?: string } }).error?.message ?? `HTTP ${res.status}`;
-        console.error("WhatsApp API error:", err, json);
-        return { ok: false, error: err };
-      }
-      return { ok: true };
-    } catch (e) {
-      console.error("WhatsApp send failed:", e);
-      return { ok: false, error: "Erreur réseau lors de l'envoi" };
-    }
+    const wa_url = `https://wa.me/${BYTI_WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+    return { ok: true as const, wa_url };
   });

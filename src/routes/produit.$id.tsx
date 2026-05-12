@@ -76,12 +76,13 @@ function ProductPage() {
       },
     });
     setQuoteSubmitting(false);
-    if (res.ok) {
-      toast.success("Demande envoyée ! BYTI vous recontactera rapidement.");
+    if (res.ok && res.wa_url) {
+      window.open(res.wa_url, "_blank", "noopener");
+      toast.success("Ouverture de WhatsApp pour envoyer votre demande…");
       setQuoteOpen(false);
       setQuoteForm({ name: "", phone: "", message: "" });
     } else {
-      toast.error(res.error ?? "Erreur lors de l'envoi");
+      toast.error("Erreur lors de la préparation du message");
     }
   };
 
