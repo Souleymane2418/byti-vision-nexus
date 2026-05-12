@@ -217,7 +217,13 @@ function ProductPage() {
                   Demander un devis
                 </button>
                 <Button size="lg" variant="outline" asChild className="rounded-full">
-                  <a href="tel:+22676767663">Appeler BYTI</a>
+                  <a
+                    href={`https://wa.me/22676767663?text=${encodeURIComponent(`Bonjour BYTI, je souhaite plus d'informations sur : ${product.name}`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    WhatsApp BYTI
+                  </a>
                 </Button>
               </div>
             ) : (
