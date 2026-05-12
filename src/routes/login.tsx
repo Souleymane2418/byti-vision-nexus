@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 import bytiLogo from "@/assets/byti-logo.png";
+import { PasswordStrength, getPasswordScore } from "@/components/PasswordStrength";
 
 export const Route = createFileRoute("/login")({
   component: LoginPage,
@@ -30,6 +31,11 @@ function LoginPage() {
         toast.success("Connexion réussie");
         navigate({ to: "/admin" });
       } else if (mode === "signup") {
+        if (getPasswordScore(password) < 4) {
+          toast.error("Mot de passe trop faible. Respectez les règles affichées.");
+          setLoading(false);
+          return;
+        }
         const { error } = await supabase.auth.signUp({
           email,
           password,
@@ -81,6 +87,7 @@ function LoginPage() {
             <div>
               <Label htmlFor="password">Mot de passe</Label>
               <Input id="password" type="password" required minLength={8} value={password} onChange={(e) => setPassword(e.target.value)} />
+              {mode === "signup" && <PasswordStrength password={password} />}
             </div>
           )}
           <Button type="submit" disabled={loading} className="w-full bg-byti-blue hover:bg-byti-blue-deep">
