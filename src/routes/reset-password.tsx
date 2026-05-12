@@ -43,6 +43,8 @@ function ResetPasswordPage() {
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (password.length < 8) return toast.error("8 caractères minimum");
+    if (getPasswordScore(password) < 4)
+      return toast.error("Mot de passe trop faible. Respectez les règles affichées.");
     if (password !== confirm) return toast.error("Les mots de passe ne correspondent pas");
     setLoading(true);
     const { error } = await supabase.auth.updateUser({ password });
