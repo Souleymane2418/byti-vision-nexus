@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TeleviseursRouteImport } from './routes/televiseurs'
 import { Route as SecuriteRouteImport } from './routes/securite'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as ProjetsRouteImport } from './routes/projets'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as ElectroniqueRouteImport } from './routes/electronique'
@@ -36,6 +37,11 @@ const TeleviseursRoute = TeleviseursRouteImport.update({
 const SecuriteRoute = SecuriteRouteImport.update({
   id: '/securite',
   path: '/securite',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjetsRoute = ProjetsRouteImport.update({
@@ -132,6 +138,7 @@ export interface FileRoutesByFullPath {
   '/electronique': typeof ElectroniqueRoute
   '/login': typeof LoginRoute
   '/projets': typeof ProjetsRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/securite': typeof SecuriteRoute
   '/televiseurs': typeof TeleviseursRoute
   '/admin/products': typeof AdminProductsRoute
@@ -151,6 +158,7 @@ export interface FileRoutesByTo {
   '/electronique': typeof ElectroniqueRoute
   '/login': typeof LoginRoute
   '/projets': typeof ProjetsRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/securite': typeof SecuriteRoute
   '/televiseurs': typeof TeleviseursRoute
   '/admin/products': typeof AdminProductsRoute
@@ -172,6 +180,7 @@ export interface FileRoutesById {
   '/electronique': typeof ElectroniqueRoute
   '/login': typeof LoginRoute
   '/projets': typeof ProjetsRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/securite': typeof SecuriteRoute
   '/televiseurs': typeof TeleviseursRoute
   '/admin/products': typeof AdminProductsRoute
@@ -194,6 +203,7 @@ export interface FileRouteTypes {
     | '/electronique'
     | '/login'
     | '/projets'
+    | '/reset-password'
     | '/securite'
     | '/televiseurs'
     | '/admin/products'
@@ -213,6 +223,7 @@ export interface FileRouteTypes {
     | '/electronique'
     | '/login'
     | '/projets'
+    | '/reset-password'
     | '/securite'
     | '/televiseurs'
     | '/admin/products'
@@ -233,6 +244,7 @@ export interface FileRouteTypes {
     | '/electronique'
     | '/login'
     | '/projets'
+    | '/reset-password'
     | '/securite'
     | '/televiseurs'
     | '/admin/products'
@@ -254,6 +266,7 @@ export interface RootRouteChildren {
   ElectroniqueRoute: typeof ElectroniqueRoute
   LoginRoute: typeof LoginRoute
   ProjetsRoute: typeof ProjetsRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
   SecuriteRoute: typeof SecuriteRoute
   TeleviseursRoute: typeof TeleviseursRoute
   ProduitIdRoute: typeof ProduitIdRoute
@@ -273,6 +286,13 @@ declare module '@tanstack/react-router' {
       path: '/securite'
       fullPath: '/securite'
       preLoaderRoute: typeof SecuriteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projets': {
@@ -417,6 +437,7 @@ const rootRouteChildren: RootRouteChildren = {
   ElectroniqueRoute: ElectroniqueRoute,
   LoginRoute: LoginRoute,
   ProjetsRoute: ProjetsRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
   SecuriteRoute: SecuriteRoute,
   TeleviseursRoute: TeleviseursRoute,
   ProduitIdRoute: ProduitIdRoute,
