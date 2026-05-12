@@ -154,10 +154,35 @@ function ProductPage() {
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="aspect-square rounded-3xl overflow-hidden bg-[oklch(0.97_0.005_260)] border border-border/40"
+            className="flex flex-col gap-3"
           >
-            {product.image_url && (
-              <img src={product.image_url} alt={product.name} className="w-full h-full object-cover" />
+            <div className="aspect-square rounded-3xl overflow-hidden bg-[oklch(0.97_0.005_260)] border border-border/40">
+              {images[activeImg] && (
+                <img
+                  src={images[activeImg]}
+                  alt={product.name}
+                  className="w-full h-full object-cover transition-opacity duration-200"
+                />
+              )}
+            </div>
+            {images.length > 1 && (
+              <div className="grid grid-cols-5 gap-2">
+                {images.map((url, i) => (
+                  <button
+                    key={url + i}
+                    type="button"
+                    onClick={() => setActiveImg(i)}
+                    className={`aspect-square rounded-xl overflow-hidden border-2 transition ${
+                      i === activeImg
+                        ? "border-[var(--byti-blue)] ring-2 ring-[var(--byti-blue)]/20"
+                        : "border-border/40 hover:border-[var(--byti-blue)]/50"
+                    }`}
+                    aria-label={`Photo ${i + 1}`}
+                  >
+                    <img src={url} alt="" className="w-full h-full object-cover" />
+                  </button>
+                ))}
+              </div>
             )}
           </motion.div>
 
