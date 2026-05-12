@@ -80,6 +80,9 @@ function CheckoutPage() {
     setSubmitting(false);
 
     if (res?.order_id) {
+      if (res.wa_url) {
+        window.open(res.wa_url, "_blank", "noopener");
+      }
       clear();
       navigate({ to: "/commande/$id", params: { id: res.order_id } });
       return;
