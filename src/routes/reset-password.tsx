@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 import bytiLogo from "@/assets/byti-logo.png";
+import { PasswordStrength, getPasswordScore } from "@/components/PasswordStrength";
 
 export const Route = createFileRoute("/reset-password")({
   component: ResetPasswordPage,
