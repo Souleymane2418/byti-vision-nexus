@@ -38,12 +38,52 @@ const PAYMENT_LABELS: Record<string, string> = {
 export const sendWhatsAppOrder = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) => OrderSchema.parse(input))
   .handler(async ({ data }) => {
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+
+    // 1) Create order with status 'created'
+    const notesWithPayment =
+      (data.notes?.trim() ? data.notes.trim() + "\n\n" : "") +
+      `Paiement: ${PAYMENT_LABELS[data.payment_method] ?? data.payment_method}` +
+      (data.payment_phone ? ` (${data.payment_phone})` : "");
+
+    const { data: inserted, error: insertError } = await supabaseAdmin
+      .from("orders")
+      .insert({
+        customer_name: data.customer_name,
+        customer_phone: data.customer_phone,
+        customer_email: data.customer_email ?? null,
+        customer_address: data.customer_address ?? null,
+        notes: notesWithPayment,
+        items: data.items,
+        total: data.total,
+        currency: data.currency,
+        status: "created",
+      })
+      .select("id")
+      .single();
+
+    if (insertError || !inserted) {
+      console.error("Order insert failed:", insertError);
+      return { ok: false, order_id: null, status: "error" as const, error: "Impossible d'enregistrer la commande." };
+    }
+
+    const orderId = inserted.id;
+
     const token = process.env.WHATSAPP_ACCESS_TOKEN;
     const phoneNumberId = process.env.WHATSAPP_PHONE_NUMBER_ID;
     const recipient = process.env.WHATSAPP_RECIPIENT_NUMBER;
 
     if (!token || !phoneNumberId || !recipient) {
-      return { ok: false, error: "Configuration WhatsApp manquante côté serveur." };
+      await supabaseAdmin
+        .from("orders")
+        .update({ status: "whatsapp_error" })
+        .eq("id", orderId);
+      return {
+        ok: false,
+        order_id: orderId,
+        status: "whatsapp_error" as const,
+        error: "Configuration WhatsApp manquante côté serveur.",
+      };
     }
 
     const itemsText = data.items
@@ -55,6 +95,7 @@ export const sendWhatsAppOrder = createServerFn({ method: "POST" })
 
     const text =
       `🛒 *NOUVELLE COMMANDE - BYTI*\n\n` +
+      `🆔 *Réf:* ${orderId.slice(0, 8).toUpperCase()}\n` +
       `👤 *Client:* ${data.customer_name}\n` +
       `📞 *Téléphone:* ${data.customer_phone}\n` +
       (data.customer_email ? `📧 *Email:* ${data.customer_email}\n` : "") +
@@ -86,13 +127,40 @@ export const sendWhatsAppOrder = createServerFn({ method: "POST" })
       if (!res.ok) {
         const err = (json as { error?: { message?: string } }).error?.message ?? `HTTP ${res.status}`;
         console.error("WhatsApp order error:", err, json);
-        return { ok: false, error: err };
+        await supabaseAdmin.from("orders").update({ status: "whatsapp_error" }).eq("id", orderId);
+        return { ok: false, order_id: orderId, status: "whatsapp_error" as const, error: err };
       }
-      return { ok: true };
+      await supabaseAdmin.from("orders").update({ status: "whatsapp_sent" }).eq("id", orderId);
+      return { ok: true, order_id: orderId, status: "whatsapp_sent" as const };
     } catch (e) {
       console.error("WhatsApp order send failed:", e);
-      return { ok: false, error: "Erreur réseau lors de l'envoi" };
+      await supabaseAdmin.from("orders").update({ status: "whatsapp_error" }).eq("id", orderId);
+      return {
+        ok: false,
+        order_id: orderId,
+        status: "whatsapp_error" as const,
+        error: "Erreur réseau lors de l'envoi",
+      };
     }
+  });
+
+const OrderStatusInput = z.object({ id: z.string().uuid() });
+
+export const getOrderStatus = createServerFn({ method: "GET" })
+  .inputValidator((input: unknown) => OrderStatusInput.parse(input))
+  .handler(async ({ data }) => {
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { data: row, error } = await supabaseAdmin
+      .from("orders")
+      .select("id, status, customer_name, customer_phone, total, currency, items, notes, created_at, updated_at")
+      .eq("id", data.id)
+      .maybeSingle();
+    if (error) {
+      console.error("getOrderStatus error:", error);
+      return { ok: false as const, error: "Commande introuvable" };
+    }
+    if (!row) return { ok: false as const, error: "Commande introuvable" };
+    return { ok: true as const, order: row };
   });
 
 export const sendWhatsAppQuote = createServerFn({ method: "POST" })

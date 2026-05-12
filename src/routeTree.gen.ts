@@ -26,6 +26,7 @@ import { Route as AProposRouteImport } from './routes/a-propos'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as ProduitIdRouteImport } from './routes/produit.$id'
+import { Route as CommandeIdRouteImport } from './routes/commande.$id'
 import { Route as AdminUsersRouteImport } from './routes/admin.users'
 import { Route as AdminProductsRouteImport } from './routes/admin.products'
 
@@ -114,6 +115,11 @@ const ProduitIdRoute = ProduitIdRouteImport.update({
   path: '/produit/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CommandeIdRoute = CommandeIdRouteImport.update({
+  id: '/commande/$id',
+  path: '/commande/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminUsersRoute = AdminUsersRouteImport.update({
   id: '/users',
   path: '/users',
@@ -143,6 +149,7 @@ export interface FileRoutesByFullPath {
   '/televiseurs': typeof TeleviseursRoute
   '/admin/products': typeof AdminProductsRoute
   '/admin/users': typeof AdminUsersRoute
+  '/commande/$id': typeof CommandeIdRoute
   '/produit/$id': typeof ProduitIdRoute
   '/admin/': typeof AdminIndexRoute
 }
@@ -163,6 +170,7 @@ export interface FileRoutesByTo {
   '/televiseurs': typeof TeleviseursRoute
   '/admin/products': typeof AdminProductsRoute
   '/admin/users': typeof AdminUsersRoute
+  '/commande/$id': typeof CommandeIdRoute
   '/produit/$id': typeof ProduitIdRoute
   '/admin': typeof AdminIndexRoute
 }
@@ -185,6 +193,7 @@ export interface FileRoutesById {
   '/televiseurs': typeof TeleviseursRoute
   '/admin/products': typeof AdminProductsRoute
   '/admin/users': typeof AdminUsersRoute
+  '/commande/$id': typeof CommandeIdRoute
   '/produit/$id': typeof ProduitIdRoute
   '/admin/': typeof AdminIndexRoute
 }
@@ -208,6 +217,7 @@ export interface FileRouteTypes {
     | '/televiseurs'
     | '/admin/products'
     | '/admin/users'
+    | '/commande/$id'
     | '/produit/$id'
     | '/admin/'
   fileRoutesByTo: FileRoutesByTo
@@ -228,6 +238,7 @@ export interface FileRouteTypes {
     | '/televiseurs'
     | '/admin/products'
     | '/admin/users'
+    | '/commande/$id'
     | '/produit/$id'
     | '/admin'
   id:
@@ -249,6 +260,7 @@ export interface FileRouteTypes {
     | '/televiseurs'
     | '/admin/products'
     | '/admin/users'
+    | '/commande/$id'
     | '/produit/$id'
     | '/admin/'
   fileRoutesById: FileRoutesById
@@ -269,6 +281,7 @@ export interface RootRouteChildren {
   ResetPasswordRoute: typeof ResetPasswordRoute
   SecuriteRoute: typeof SecuriteRoute
   TeleviseursRoute: typeof TeleviseursRoute
+  CommandeIdRoute: typeof CommandeIdRoute
   ProduitIdRoute: typeof ProduitIdRoute
 }
 
@@ -393,6 +406,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProduitIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/commande/$id': {
+      id: '/commande/$id'
+      path: '/commande/$id'
+      fullPath: '/commande/$id'
+      preLoaderRoute: typeof CommandeIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/users': {
       id: '/admin/users'
       path: '/users'
@@ -440,6 +460,7 @@ const rootRouteChildren: RootRouteChildren = {
   ResetPasswordRoute: ResetPasswordRoute,
   SecuriteRoute: SecuriteRoute,
   TeleviseursRoute: TeleviseursRoute,
+  CommandeIdRoute: CommandeIdRoute,
   ProduitIdRoute: ProduitIdRoute,
 }
 export const routeTree = rootRouteImport
