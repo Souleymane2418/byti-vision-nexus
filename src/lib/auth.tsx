@@ -17,7 +17,8 @@ export function useAuth(): AuthState {
   const [user, setUser] = useState<User | null>(null);
   const [session, setSession] = useState<Session | null>(null);
   const [roles, setRoles] = useState<AppRole[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [authLoading, setAuthLoading] = useState(true);
+  const [rolesLoading, setRolesLoading] = useState(true);
 
   useEffect(() => {
     const { data: sub } = supabase.auth.onAuthStateChange((_event, s) => {
@@ -28,7 +29,7 @@ export function useAuth(): AuthState {
     supabase.auth.getSession().then(({ data }) => {
       setSession(data.session);
       setUser(data.session?.user ?? null);
-      setLoading(false);
+      setAuthLoading(false);
     });
 
     return () => sub.subscription.unsubscribe();
@@ -37,16 +38,21 @@ export function useAuth(): AuthState {
   useEffect(() => {
     if (!user) {
       setRoles([]);
+      setRolesLoading(false);
       return;
     }
+    setRolesLoading(true);
     (async () => {
       const { data } = await supabase
         .from("user_roles")
         .select("role")
         .eq("user_id", user.id);
       setRoles((data ?? []).map((r) => r.role as AppRole));
+      setRolesLoading(false);
     })();
   }, [user]);
+
+  const loading = authLoading || (!!user && rolesLoading);
 
   return {
     user,
