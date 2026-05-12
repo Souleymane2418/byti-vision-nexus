@@ -48,6 +48,8 @@ function ProductPage() {
   const { id } = Route.useParams();
   const router = useRouter();
   const [product, setProduct] = useState<Product | null>(null);
+  const [images, setImages] = useState<string[]>([]);
+  const [activeImg, setActiveImg] = useState(0);
   const [loading, setLoading] = useState(true);
   const [qty, setQty] = useState(1);
   const { add, setOpen } = useCart();
@@ -86,6 +88,7 @@ function ProductPage() {
   useEffect(() => {
     (async () => {
       setLoading(true);
+      setActiveImg(0);
       const { data, error } = await supabase
         .from("products")
         .select("*")
@@ -94,8 +97,21 @@ function ProductPage() {
         .maybeSingle();
       if (error || !data) {
         setProduct(null);
+        setImages([]);
       } else {
         setProduct(data as Product);
+        const { data: imgs } = await supabase
+          .from("product_images")
+          .select("url,position")
+          .eq("product_id", id)
+          .order("position", { ascending: true });
+        const urls = (imgs ?? []).map((i) => i.url);
+        // Mettre l'image principale en premier si présente, sinon ajouter
+        const main = (data as Product).image_url;
+        const ordered = main
+          ? [main, ...urls.filter((u) => u !== main)]
+          : urls;
+        setImages(ordered.length > 0 ? ordered : main ? [main] : []);
       }
       setLoading(false);
     })();
