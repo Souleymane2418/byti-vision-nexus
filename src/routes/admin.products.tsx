@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
-import { Loader2, Plus, Pencil, Trash2, Upload } from "lucide-react";
+import { Loader2, Plus, Pencil, Trash2, Upload, X, ArrowUp, ArrowDown, Star } from "lucide-react";
 
 export const Route = createFileRoute("/admin/products")({
   component: ProductsAdmin,
@@ -64,6 +64,8 @@ const empty: FormState = {
   image_url: "",
 };
 
+type GalleryImage = { id?: string; url: string; position: number };
+
 function ProductsAdmin() {
   const [list, setList] = useState<ProductRow[]>([]);
   const [loading, setLoading] = useState(true);
@@ -71,6 +73,7 @@ function ProductsAdmin() {
   const [form, setForm] = useState<FormState>(empty);
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
+  const [gallery, setGallery] = useState<GalleryImage[]>([]);
 
   const load = async () => {
     setLoading(true);
@@ -85,7 +88,16 @@ function ProductsAdmin() {
 
   useEffect(() => { load(); }, []);
 
-  const openNew = () => { setForm(empty); setOpen(true); };
+  const loadGallery = async (productId: string) => {
+    const { data } = await supabase
+      .from("product_images")
+      .select("id,url,position")
+      .eq("product_id", productId)
+      .order("position", { ascending: true });
+    setGallery((data ?? []) as GalleryImage[]);
+  };
+
+  const openNew = () => { setForm(empty); setGallery([]); setOpen(true); };
   const openEdit = (p: ProductRow) => {
     setForm({
       id: p.id,
@@ -100,19 +112,30 @@ function ProductsAdmin() {
       active: p.active,
       image_url: p.image_url ?? "",
     });
+    setGallery([]);
+    loadGallery(p.id);
     setOpen(true);
   };
 
-  const upload = async (file: File) => {
+  const uploadFiles = async (files: FileList) => {
     setUploading(true);
     try {
-      const ext = file.name.split(".").pop();
-      const path = `${crypto.randomUUID()}.${ext}`;
-      const { error } = await supabase.storage.from("product-images").upload(path, file);
-      if (error) throw error;
-      const { data } = supabase.storage.from("product-images").getPublicUrl(path);
-      setForm((f) => ({ ...f, image_url: data.publicUrl }));
-      toast.success("Image téléchargée");
+      const uploaded: GalleryImage[] = [];
+      for (const file of Array.from(files)) {
+        const ext = file.name.split(".").pop();
+        const path = `${crypto.randomUUID()}.${ext}`;
+        const { error } = await supabase.storage.from("product-images").upload(path, file);
+        if (error) throw error;
+        const { data } = supabase.storage.from("product-images").getPublicUrl(path);
+        uploaded.push({ url: data.publicUrl, position: gallery.length + uploaded.length });
+      }
+      setGallery((g) => {
+        const next = [...g, ...uploaded];
+        // si pas d'image principale, prendre la 1ère
+        setForm((f) => f.image_url ? f : { ...f, image_url: next[0]?.url ?? "" });
+        return next;
+      });
+      toast.success(`${uploaded.length} image(s) téléchargée(s)`);
     } catch (e) {
       toast.error(e instanceof Error ? e.message : "Erreur upload");
     } finally {
@@ -120,9 +143,24 @@ function ProductsAdmin() {
     }
   };
 
+  const removeImage = (idx: number) => {
+    setGallery((g) => g.filter((_, i) => i !== idx).map((img, i) => ({ ...img, position: i })));
+  };
+  const moveImage = (idx: number, dir: -1 | 1) => {
+    setGallery((g) => {
+      const next = [...g];
+      const j = idx + dir;
+      if (j < 0 || j >= next.length) return g;
+      [next[idx], next[j]] = [next[j], next[idx]];
+      return next.map((img, i) => ({ ...img, position: i }));
+    });
+  };
+  const setMain = (url: string) => setForm((f) => ({ ...f, image_url: url }));
+
   const submit = async (e: FormEvent) => {
     e.preventDefault();
     setSaving(true);
+    const mainImage = form.image_url || gallery[0]?.url || null;
     const payload = {
       name: form.name,
       description: form.description || null,
@@ -133,13 +171,27 @@ function ProductsAdmin() {
       model: form.model || null,
       featured: form.featured,
       active: form.active,
-      image_url: form.image_url || null,
+      image_url: mainImage,
     };
-    const res = form.id
-      ? await supabase.from("products").update(payload).eq("id", form.id)
-      : await supabase.from("products").insert(payload);
+    let productId = form.id;
+    if (productId) {
+      const { error } = await supabase.from("products").update(payload).eq("id", productId);
+      if (error) { setSaving(false); return toast.error(error.message); }
+    } else {
+      const { data, error } = await supabase.from("products").insert(payload).select("id").single();
+      if (error || !data) { setSaving(false); return toast.error(error?.message ?? "Erreur"); }
+      productId = data.id;
+    }
+
+    // Sync gallery: delete all then re-insert (simple & robust)
+    await supabase.from("product_images").delete().eq("product_id", productId);
+    if (gallery.length > 0) {
+      const rows = gallery.map((g, i) => ({ product_id: productId!, url: g.url, position: i }));
+      const { error: gErr } = await supabase.from("product_images").insert(rows);
+      if (gErr) toast.error(`Galerie: ${gErr.message}`);
+    }
+
     setSaving(false);
-    if (res.error) return toast.error(res.error.message);
     toast.success(form.id ? "Produit mis à jour" : "Produit créé");
     setOpen(false);
     load();
@@ -258,25 +310,71 @@ function ProductsAdmin() {
                 <Textarea rows={3} value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} />
               </div>
               <div className="col-span-2">
-                <Label>Image</Label>
-                <div className="flex items-center gap-3">
-                  {form.image_url && <img src={form.image_url} alt="" className="h-16 w-16 rounded object-cover" />}
+                <Label>Images du produit</Label>
+                <p className="text-xs text-muted-foreground mb-2">
+                  Vous pouvez ajouter plusieurs photos. La photo marquée d'une étoile est la photo principale (vignette boutique).
+                </p>
+                <div className="flex flex-wrap items-center gap-3 mb-3">
                   <label className="cursor-pointer inline-flex items-center gap-2 px-3 py-2 border rounded-md text-sm hover:bg-slate-50">
                     {uploading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Upload className="h-4 w-4" />}
-                    Choisir une image
+                    Ajouter des photos
                     <input
                       type="file"
                       accept="image/*"
+                      multiple
                       className="hidden"
-                      onChange={(e) => e.target.files?.[0] && upload(e.target.files[0])}
+                      onChange={(e) => e.target.files && uploadFiles(e.target.files)}
                     />
                   </label>
                   <Input
-                    placeholder="ou URL d'image"
-                    value={form.image_url}
-                    onChange={(e) => setForm({ ...form, image_url: e.target.value })}
+                    placeholder="ou coller une URL puis Entrée"
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        e.preventDefault();
+                        const v = (e.target as HTMLInputElement).value.trim();
+                        if (v) {
+                          setGallery((g) => [...g, { url: v, position: g.length }]);
+                          if (!form.image_url) setForm({ ...form, image_url: v });
+                          (e.target as HTMLInputElement).value = "";
+                        }
+                      }
+                    }}
+                    className="max-w-xs"
                   />
                 </div>
+                {gallery.length === 0 ? (
+                  <div className="text-sm text-muted-foreground italic border border-dashed rounded-lg p-6 text-center">
+                    Aucune photo. Cliquez sur "Ajouter des photos".
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-3 sm:grid-cols-4 gap-3">
+                    {gallery.map((img, idx) => {
+                      const isMain = form.image_url === img.url;
+                      return (
+                        <div key={idx} className={`relative group border rounded-lg overflow-hidden ${isMain ? "ring-2 ring-byti-blue" : ""}`}>
+                          <img src={img.url} alt="" className="w-full aspect-square object-cover" />
+                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition flex items-center justify-center gap-1 opacity-0 group-hover:opacity-100">
+                            <button type="button" title="Définir principale" onClick={() => setMain(img.url)} className="p-1.5 bg-white rounded">
+                              <Star className={`h-3.5 w-3.5 ${isMain ? "fill-amber-500 text-amber-500" : ""}`} />
+                            </button>
+                            <button type="button" title="Monter" onClick={() => moveImage(idx, -1)} className="p-1.5 bg-white rounded">
+                              <ArrowUp className="h-3.5 w-3.5" />
+                            </button>
+                            <button type="button" title="Descendre" onClick={() => moveImage(idx, 1)} className="p-1.5 bg-white rounded">
+                              <ArrowDown className="h-3.5 w-3.5" />
+                            </button>
+                            <button type="button" title="Supprimer" onClick={() => removeImage(idx)} className="p-1.5 bg-white rounded">
+                              <X className="h-3.5 w-3.5 text-destructive" />
+                            </button>
+                          </div>
+                          {isMain && (
+                            <span className="absolute top-1 left-1 bg-byti-blue text-white text-[10px] font-bold px-1.5 py-0.5 rounded">PRINCIPALE</span>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
             </div>
             <DialogFooter>
