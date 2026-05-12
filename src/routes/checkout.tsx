@@ -1,6 +1,7 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useServerFn } from "@tanstack/react-start";
 import { supabase } from "@/integrations/supabase/client";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -9,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useCart, formatPrice } from "@/lib/cart";
+import { sendWhatsAppOrder } from "@/lib/whatsapp.functions";
 import { Loader2, CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -17,11 +19,22 @@ export const Route = createFileRoute("/checkout")({
   head: () => ({ meta: [{ title: "Commande | BYTI Technologie" }] }),
 });
 
+type PaymentMethod = "orange_money" | "mtn_momo" | "cash_on_delivery" | "bank_transfer";
+
+const PAYMENT_OPTIONS: { id: PaymentMethod; label: string; icon: string; needsPhone: boolean; hint?: string }[] = [
+  { id: "orange_money", label: "Orange Money", icon: "🟠", needsPhone: true, hint: "Notre équipe vous contactera sur WhatsApp avec les instructions de paiement." },
+  { id: "mtn_momo", label: "MTN Mobile Money", icon: "🟡", needsPhone: true, hint: "Notre équipe vous contactera sur WhatsApp avec les instructions de paiement." },
+  { id: "cash_on_delivery", label: "Paiement à la livraison", icon: "💵", needsPhone: false },
+  { id: "bank_transfer", label: "Virement bancaire", icon: "🏦", needsPhone: false, hint: "Coordonnées bancaires envoyées par WhatsApp." },
+];
+
 function CheckoutPage() {
   const { items, total, clear } = useCart();
-  const navigate = useNavigate();
+  const sendOrder = useServerFn(sendWhatsAppOrder);
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("orange_money");
+  const [paymentPhone, setPaymentPhone] = useState("");
   const [form, setForm] = useState({
     customer_name: "",
     customer_phone: "",
@@ -29,6 +42,8 @@ function CheckoutPage() {
     customer_address: "",
     notes: "",
   });
+
+  const selectedPayment = PAYMENT_OPTIONS.find((p) => p.id === paymentMethod)!;
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -40,25 +55,48 @@ function CheckoutPage() {
       toast.error("Veuillez renseigner votre nom et téléphone");
       return;
     }
+    if (selectedPayment.needsPhone && paymentPhone.trim().length < 6) {
+      toast.error(`Veuillez renseigner votre numéro ${selectedPayment.label}`);
+      return;
+    }
     setSubmitting(true);
-    const { error } = await supabase.from("orders").insert({
+    const currency = items[0]?.currency ?? "XAF";
+    const orderItems = items.map((i) => ({ id: i.id, name: i.name, price: i.price, quantity: i.quantity }));
+
+    // Persist (best effort)
+    const { error: dbError } = await supabase.from("orders").insert({
       customer_name: form.customer_name.trim(),
       customer_phone: form.customer_phone.trim(),
       customer_email: form.customer_email.trim() || null,
       customer_address: form.customer_address.trim() || null,
-      notes: form.notes.trim() || null,
-      items: items.map((i) => ({
-        id: i.id,
-        name: i.name,
-        price: i.price,
-        quantity: i.quantity,
-      })),
+      notes:
+        (form.notes.trim() ? form.notes.trim() + "\n\n" : "") +
+        `Paiement: ${selectedPayment.label}` +
+        (selectedPayment.needsPhone ? ` (${paymentPhone.trim()})` : ""),
+      items: orderItems,
       total,
-      currency: items[0]?.currency ?? "XAF",
+      currency,
     });
+    if (dbError) console.warn("Order DB insert failed:", dbError);
+
+    const res = await sendOrder({
+      data: {
+        customer_name: form.customer_name.trim(),
+        customer_phone: form.customer_phone.trim(),
+        customer_email: form.customer_email.trim() || null,
+        customer_address: form.customer_address.trim() || null,
+        notes: form.notes.trim() || null,
+        payment_method: paymentMethod,
+        payment_phone: selectedPayment.needsPhone ? paymentPhone.trim() : null,
+        items: orderItems.map((i) => ({ name: i.name, quantity: i.quantity, price: i.price })),
+        total,
+        currency,
+      },
+    });
+
     setSubmitting(false);
-    if (error) {
-      toast.error("Erreur lors de l'envoi de la commande");
+    if (!res?.ok) {
+      toast.error(res?.error || "Erreur lors de l'envoi de la commande");
       return;
     }
     clear();
