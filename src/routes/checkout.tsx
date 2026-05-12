@@ -191,10 +191,54 @@ function CheckoutPage() {
                   onChange={(e) => setForm({ ...form, notes: e.target.value })}
                 />
               </div>
+
+              <div className="pt-2">
+                <Label className="mb-2 block">Mode de paiement *</Label>
+                <div className="grid grid-cols-2 gap-2">
+                  {PAYMENT_OPTIONS.map((opt) => {
+                    const active = paymentMethod === opt.id;
+                    return (
+                      <button
+                        type="button"
+                        key={opt.id}
+                        onClick={() => setPaymentMethod(opt.id)}
+                        className={`text-left rounded-xl border px-3 py-2.5 text-sm transition-all ${
+                          active
+                            ? "border-[var(--byti-blue)] bg-[var(--byti-blue)]/5 ring-2 ring-[var(--byti-blue)]/20"
+                            : "border-border hover:border-[var(--byti-blue)]/50"
+                        }`}
+                      >
+                        <span className="mr-1.5">{opt.icon}</span>
+                        <span className="font-medium">{opt.label}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+                {selectedPayment.needsPhone && (
+                  <div className="mt-3">
+                    <Label htmlFor="payphone">Numéro {selectedPayment.label} *</Label>
+                    <Input
+                      id="payphone"
+                      type="tel"
+                      required
+                      placeholder="ex: 6 XX XX XX XX"
+                      value={paymentPhone}
+                      onChange={(e) => setPaymentPhone(e.target.value)}
+                    />
+                  </div>
+                )}
+                {selectedPayment.hint && (
+                  <p className="mt-2 text-xs text-muted-foreground">{selectedPayment.hint}</p>
+                )}
+              </div>
+
               <Button type="submit" size="lg" className="w-full" disabled={submitting}>
                 {submitting && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
-                Confirmer la commande
+                Confirmer la commande via WhatsApp
               </Button>
+              <p className="text-xs text-muted-foreground text-center">
+                Votre commande sera envoyée à BYTI par WhatsApp. Notre équipe vous recontactera rapidement.
+              </p>
             </form>
 
             <div className="bg-card border border-border/50 rounded-2xl p-6 h-fit">
