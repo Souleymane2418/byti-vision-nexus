@@ -29,9 +29,9 @@ const PAYMENT_OPTIONS: { id: PaymentMethod; label: string; icon: string; needsPh
 
 function CheckoutPage() {
   const { items, total, clear } = useCart();
+  const navigate = useNavigate();
   const sendOrder = useServerFn(sendWhatsAppOrder);
   const [submitting, setSubmitting] = useState(false);
-  const [success, setSuccess] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("orange_money");
   const [paymentPhone, setPaymentPhone] = useState("");
   const [form, setForm] = useState({
