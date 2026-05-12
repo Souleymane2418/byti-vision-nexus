@@ -12,15 +12,18 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as TeleviseursRouteImport } from './routes/televiseurs'
 import { Route as SecuriteRouteImport } from './routes/securite'
 import { Route as ProjetsRouteImport } from './routes/projets'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as ElectroniqueRouteImport } from './routes/electronique'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as BtpRouteImport } from './routes/btp'
 import { Route as BoutiqueRouteImport } from './routes/boutique'
 import { Route as BatteriesRouteImport } from './routes/batteries'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as ActivitesRouteImport } from './routes/activites'
 import { Route as AProposRouteImport } from './routes/a-propos'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as ProduitIdRouteImport } from './routes/produit.$id'
 
 const TeleviseursRoute = TeleviseursRouteImport.update({
@@ -36,6 +39,11 @@ const SecuriteRoute = SecuriteRouteImport.update({
 const ProjetsRoute = ProjetsRouteImport.update({
   id: '/projets',
   path: '/projets',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ElectroniqueRoute = ElectroniqueRouteImport.update({
@@ -68,6 +76,11 @@ const BatteriesRoute = BatteriesRouteImport.update({
   path: '/batteries',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ActivitesRoute = ActivitesRouteImport.update({
   id: '/activites',
   path: '/activites',
@@ -83,6 +96,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRoute,
+} as any)
 const ProduitIdRoute = ProduitIdRouteImport.update({
   id: '/produit/$id',
   path: '/produit/$id',
@@ -93,16 +111,19 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
   '/activites': typeof ActivitesRoute
+  '/admin': typeof AdminRouteWithChildren
   '/batteries': typeof BatteriesRoute
   '/boutique': typeof BoutiqueRoute
   '/btp': typeof BtpRoute
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/electronique': typeof ElectroniqueRoute
+  '/login': typeof LoginRoute
   '/projets': typeof ProjetsRoute
   '/securite': typeof SecuriteRoute
   '/televiseurs': typeof TeleviseursRoute
   '/produit/$id': typeof ProduitIdRoute
+  '/admin/': typeof AdminIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -114,26 +135,31 @@ export interface FileRoutesByTo {
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/electronique': typeof ElectroniqueRoute
+  '/login': typeof LoginRoute
   '/projets': typeof ProjetsRoute
   '/securite': typeof SecuriteRoute
   '/televiseurs': typeof TeleviseursRoute
   '/produit/$id': typeof ProduitIdRoute
+  '/admin': typeof AdminIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
   '/activites': typeof ActivitesRoute
+  '/admin': typeof AdminRouteWithChildren
   '/batteries': typeof BatteriesRoute
   '/boutique': typeof BoutiqueRoute
   '/btp': typeof BtpRoute
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/electronique': typeof ElectroniqueRoute
+  '/login': typeof LoginRoute
   '/projets': typeof ProjetsRoute
   '/securite': typeof SecuriteRoute
   '/televiseurs': typeof TeleviseursRoute
   '/produit/$id': typeof ProduitIdRoute
+  '/admin/': typeof AdminIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -141,16 +167,19 @@ export interface FileRouteTypes {
     | '/'
     | '/a-propos'
     | '/activites'
+    | '/admin'
     | '/batteries'
     | '/boutique'
     | '/btp'
     | '/checkout'
     | '/contact'
     | '/electronique'
+    | '/login'
     | '/projets'
     | '/securite'
     | '/televiseurs'
     | '/produit/$id'
+    | '/admin/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -162,37 +191,44 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/contact'
     | '/electronique'
+    | '/login'
     | '/projets'
     | '/securite'
     | '/televiseurs'
     | '/produit/$id'
+    | '/admin'
   id:
     | '__root__'
     | '/'
     | '/a-propos'
     | '/activites'
+    | '/admin'
     | '/batteries'
     | '/boutique'
     | '/btp'
     | '/checkout'
     | '/contact'
     | '/electronique'
+    | '/login'
     | '/projets'
     | '/securite'
     | '/televiseurs'
     | '/produit/$id'
+    | '/admin/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AProposRoute: typeof AProposRoute
   ActivitesRoute: typeof ActivitesRoute
+  AdminRoute: typeof AdminRouteWithChildren
   BatteriesRoute: typeof BatteriesRoute
   BoutiqueRoute: typeof BoutiqueRoute
   BtpRoute: typeof BtpRoute
   CheckoutRoute: typeof CheckoutRoute
   ContactRoute: typeof ContactRoute
   ElectroniqueRoute: typeof ElectroniqueRoute
+  LoginRoute: typeof LoginRoute
   ProjetsRoute: typeof ProjetsRoute
   SecuriteRoute: typeof SecuriteRoute
   TeleviseursRoute: typeof TeleviseursRoute
@@ -220,6 +256,13 @@ declare module '@tanstack/react-router' {
       path: '/projets'
       fullPath: '/projets'
       preLoaderRoute: typeof ProjetsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/electronique': {
@@ -264,6 +307,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BatteriesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/activites': {
       id: '/activites'
       path: '/activites'
@@ -285,6 +335,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/produit/$id': {
       id: '/produit/$id'
       path: '/produit/$id'
@@ -295,16 +352,28 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AdminRouteChildren {
+  AdminIndexRoute: typeof AdminIndexRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminIndexRoute: AdminIndexRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AProposRoute: AProposRoute,
   ActivitesRoute: ActivitesRoute,
+  AdminRoute: AdminRouteWithChildren,
   BatteriesRoute: BatteriesRoute,
   BoutiqueRoute: BoutiqueRoute,
   BtpRoute: BtpRoute,
   CheckoutRoute: CheckoutRoute,
   ContactRoute: ContactRoute,
   ElectroniqueRoute: ElectroniqueRoute,
+  LoginRoute: LoginRoute,
   ProjetsRoute: ProjetsRoute,
   SecuriteRoute: SecuriteRoute,
   TeleviseursRoute: TeleviseursRoute,
@@ -313,3 +382,12 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}
