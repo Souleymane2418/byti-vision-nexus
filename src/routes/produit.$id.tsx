@@ -209,16 +209,13 @@ function ProductPage() {
 
             {!product.price ? (
               <div className="flex flex-col sm:flex-row gap-3">
-                <a
-                  href={`https://wa.me/22676767663?text=${encodeURIComponent(
-                    `Bonjour BYTI, je souhaite un devis pour : ${product.name}${product.model ? ` (${product.model})` : ""}.`
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  type="button"
+                  onClick={() => setQuoteOpen(true)}
                   className="btn-byti-red flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wide"
                 >
                   Demander un devis
-                </a>
+                </button>
                 <Button size="lg" variant="outline" asChild className="rounded-full">
                   <a href="tel:+22676767663">Appeler BYTI</a>
                 </Button>
