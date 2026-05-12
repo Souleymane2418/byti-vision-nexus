@@ -45,13 +45,30 @@ export function useAuth(): AuthState {
     }
     setRolesLoading(true);
     (async () => {
-      const { data, error } = await supabase
-        .from("user_roles")
-        .select("role")
-        .eq("user_id", user.id);
-      setRoles(error ? [] : (data ?? []).map((r) => r.role as AppRole));
-      setRolesUserId(user.id);
-      setRolesLoading(false);
+      try {
+        const { data, error } = await supabase
+          .from("user_roles")
+          .select("role")
+          .eq("user_id", user.id);
+
+        if (!error && data && data.length > 0) {
+          setRoles(data.map((r) => r.role as AppRole));
+          return;
+        }
+
+        const [{ data: isStaff }, { data: isAdmin }] = await Promise.all([
+          supabase.rpc("is_staff", { _user_id: user.id }),
+          supabase.rpc("has_role", { _user_id: user.id, _role: "admin" }),
+        ]);
+
+        const resolvedRoles: AppRole[] = [];
+        if (isAdmin) resolvedRoles.push("admin");
+        if (isStaff) resolvedRoles.push("staff");
+        setRoles(resolvedRoles);
+      } finally {
+        setRolesUserId(user.id);
+        setRolesLoading(false);
+      }
     })();
   }, [user]);
 
