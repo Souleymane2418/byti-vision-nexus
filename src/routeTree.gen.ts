@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TeleviseursRouteImport } from './routes/televiseurs'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SecuriteRouteImport } from './routes/securite'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as ProjetsRouteImport } from './routes/projets'
@@ -33,6 +34,11 @@ import { Route as AdminProductsRouteImport } from './routes/admin.products'
 const TeleviseursRoute = TeleviseursRouteImport.update({
   id: '/televiseurs',
   path: '/televiseurs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SecuriteRoute = SecuriteRouteImport.update({
@@ -146,6 +152,7 @@ export interface FileRoutesByFullPath {
   '/projets': typeof ProjetsRoute
   '/reset-password': typeof ResetPasswordRoute
   '/securite': typeof SecuriteRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/televiseurs': typeof TeleviseursRoute
   '/admin/products': typeof AdminProductsRoute
   '/admin/users': typeof AdminUsersRoute
@@ -167,6 +174,7 @@ export interface FileRoutesByTo {
   '/projets': typeof ProjetsRoute
   '/reset-password': typeof ResetPasswordRoute
   '/securite': typeof SecuriteRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/televiseurs': typeof TeleviseursRoute
   '/admin/products': typeof AdminProductsRoute
   '/admin/users': typeof AdminUsersRoute
@@ -190,6 +198,7 @@ export interface FileRoutesById {
   '/projets': typeof ProjetsRoute
   '/reset-password': typeof ResetPasswordRoute
   '/securite': typeof SecuriteRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/televiseurs': typeof TeleviseursRoute
   '/admin/products': typeof AdminProductsRoute
   '/admin/users': typeof AdminUsersRoute
@@ -214,6 +223,7 @@ export interface FileRouteTypes {
     | '/projets'
     | '/reset-password'
     | '/securite'
+    | '/sitemap.xml'
     | '/televiseurs'
     | '/admin/products'
     | '/admin/users'
@@ -235,6 +245,7 @@ export interface FileRouteTypes {
     | '/projets'
     | '/reset-password'
     | '/securite'
+    | '/sitemap.xml'
     | '/televiseurs'
     | '/admin/products'
     | '/admin/users'
@@ -257,6 +268,7 @@ export interface FileRouteTypes {
     | '/projets'
     | '/reset-password'
     | '/securite'
+    | '/sitemap.xml'
     | '/televiseurs'
     | '/admin/products'
     | '/admin/users'
@@ -280,6 +292,7 @@ export interface RootRouteChildren {
   ProjetsRoute: typeof ProjetsRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
   SecuriteRoute: typeof SecuriteRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TeleviseursRoute: typeof TeleviseursRoute
   CommandeIdRoute: typeof CommandeIdRoute
   ProduitIdRoute: typeof ProduitIdRoute
@@ -292,6 +305,13 @@ declare module '@tanstack/react-router' {
       path: '/televiseurs'
       fullPath: '/televiseurs'
       preLoaderRoute: typeof TeleviseursRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/securite': {
@@ -459,6 +479,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProjetsRoute: ProjetsRoute,
   ResetPasswordRoute: ResetPasswordRoute,
   SecuriteRoute: SecuriteRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   TeleviseursRoute: TeleviseursRoute,
   CommandeIdRoute: CommandeIdRoute,
   ProduitIdRoute: ProduitIdRoute,
@@ -466,3 +487,12 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}

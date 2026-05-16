@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /login
+Disallow: /reset-password
+Disallow: /checkout
+Disallow: /commande/
+
+Sitemap: https://byti-technologie.com/sitemap.xml
