@@ -34,6 +34,8 @@ export const Route = createFileRoute("/btp")({
       { name: "description", content: "Fabrication de briques, pavés autobloquants, parpaings et béton prêt à l'emploi pour tous chantiers." },
       { property: "og:title", content: "BTP — BYTI" },
       { property: "og:description", content: "Briques, pavés, parpaings et béton de qualité." },
+      { property: "og:url", content: "https://byti-technologie.com/btp" },
     ],
+    links: [{ rel: "canonical", href: "https://byti-technologie.com/btp" }],
   }),
 });

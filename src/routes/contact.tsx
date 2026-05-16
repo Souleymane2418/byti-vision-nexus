@@ -11,7 +11,9 @@ export const Route = createFileRoute("/contact")({
       { name: "description", content: "Contactez BYTI Technologie SARL au +226 76 76 76 63." },
       { property: "og:title", content: "Contact — BYTI Technologie SARL" },
       { property: "og:description", content: "Prenez contact avec nos équipes." },
+      { property: "og:url", content: "https://byti-technologie.com/contact" },
     ],
+    links: [{ rel: "canonical", href: "https://byti-technologie.com/contact" }],
   }),
 });
 

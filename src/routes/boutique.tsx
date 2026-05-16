@@ -49,7 +49,9 @@ export const Route = createFileRoute("/boutique")({
         property: "og:description",
         content: "Matériel électronique et jouets premium — livraison rapide.",
       },
+      { property: "og:url", content: "https://byti-technologie.com/boutique" },
     ],
+    links: [{ rel: "canonical", href: "https://byti-technologie.com/boutique" }],
   }),
 });
 

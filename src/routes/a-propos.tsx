@@ -19,7 +19,9 @@ export const Route = createFileRoute("/a-propos")({
         content:
           "Filiale officielle du groupe BYTI Worldwide pour l'Afrique Centrale.",
       },
+      { property: "og:url", content: "https://byti-technologie.com/a-propos" },
     ],
+    links: [{ rel: "canonical", href: "https://byti-technologie.com/a-propos" }],
   }),
 });
 

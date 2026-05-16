@@ -34,6 +34,8 @@ export const Route = createFileRoute("/securite")({
       { name: "description", content: "Caméras IP, alarmes, contrôle d'accès. Solutions de sécurité connectées pour résidentiel, commerces et sites industriels." },
       { property: "og:title", content: "Sécurité — BYTI" },
       { property: "og:description", content: "Vidéosurveillance et alarmes connectées." },
+      { property: "og:url", content: "https://byti-technologie.com/securite" },
     ],
+    links: [{ rel: "canonical", href: "https://byti-technologie.com/securite" }],
   }),
 });
