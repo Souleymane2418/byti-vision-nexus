@@ -143,8 +143,35 @@ function ProductPage() {
     );
   }
 
+  const productJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    description: product.description ?? undefined,
+    image: images.length > 0 ? images : product.image_url ?? undefined,
+    sku: product.model ?? product.id,
+    category: product.category,
+    offers: product.price
+      ? {
+          "@type": "Offer",
+          price: product.price,
+          priceCurrency: product.currency || "XOF",
+          availability:
+            product.stock > 0
+              ? "https://schema.org/InStock"
+              : "https://schema.org/OutOfStock",
+          url: `https://byti-technologie.com/produit/${product.id}`,
+        }
+      : undefined,
+  };
+
   return (
     <div className="bg-white min-h-screen">
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
       <Navbar />
       <section className="pt-28 pb-20 px-6 lg:px-8 max-w-6xl mx-auto">
         <Button variant="ghost" size="sm" onClick={() => router.history.back()} className="mb-8 text-muted-foreground hover:text-[var(--byti-blue)]">
