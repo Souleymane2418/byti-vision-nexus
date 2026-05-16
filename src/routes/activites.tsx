@@ -11,7 +11,9 @@ export const Route = createFileRoute("/activites")({
       { name: "description", content: "Découvrez les activités de BYTI Technologie : électronique, sécurité, énergie, téléviseurs et BTP." },
       { property: "og:title", content: "Activités — BYTI Technologie SARL" },
       { property: "og:description", content: "Nos pôles d'activités au service de l'Afrique Centrale." },
+      { property: "og:url", content: "https://byti-technologie.com/activites" },
     ],
+    links: [{ rel: "canonical", href: "https://byti-technologie.com/activites" }],
   }),
 });
 

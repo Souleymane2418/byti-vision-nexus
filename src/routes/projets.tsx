@@ -11,7 +11,9 @@ export const Route = createFileRoute("/projets")({
       { name: "description", content: "Galerie des projets et réalisations de BYTI Technologie SARL." },
       { property: "og:title", content: "Projets — BYTI Technologie SARL" },
       { property: "og:description", content: "Nos réalisations à travers l'Afrique Centrale." },
+      { property: "og:url", content: "https://byti-technologie.com/projets" },
     ],
+    links: [{ rel: "canonical", href: "https://byti-technologie.com/projets" }],
   }),
 });
 

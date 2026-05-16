@@ -35,6 +35,8 @@ export const Route = createFileRoute("/electronique")({
       { name: "description", content: "Smartphones, audio, informatique et objets connectés. Distributeur agréé avec garantie et SAV local." },
       { property: "og:title", content: "Électronique — BYTI" },
       { property: "og:description", content: "Sélection d'équipements électroniques et objets connectés." },
+      { property: "og:url", content: "https://byti-technologie.com/electronique" },
     ],
+    links: [{ rel: "canonical", href: "https://byti-technologie.com/electronique" }],
   }),
 });

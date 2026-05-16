@@ -35,6 +35,8 @@ export const Route = createFileRoute("/televiseurs")({
       { name: "description", content: "TV LED, QLED, OLED et écrans professionnels. Installation et configuration par nos techniciens." },
       { property: "og:title", content: "Téléviseurs — BYTI" },
       { property: "og:description", content: "Une expérience visuelle immersive." },
+      { property: "og:url", content: "https://byti-technologie.com/televiseurs" },
     ],
+    links: [{ rel: "canonical", href: "https://byti-technologie.com/televiseurs" }],
   }),
 });

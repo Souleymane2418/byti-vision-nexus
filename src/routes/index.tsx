@@ -40,6 +40,32 @@ export const Route = createFileRoute("/")({
         content: "Connecter · Construire · Innover — Solutions technologiques pour un monde moderne",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://byti-technologie.com/" },
+    ],
+    links: [{ rel: "canonical", href: "https://byti-technologie.com/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              name: "BYTI Technologie SARL",
+              url: "https://byti-technologie.com",
+              logo: "https://byti-technologie.com/favicon.ico",
+              telephone: "+226 76 76 76 63",
+              sameAs: [],
+              parentOrganization: { "@type": "Organization", name: "BYTI Worldwide" },
+            },
+            {
+              "@type": "WebSite",
+              url: "https://byti-technologie.com",
+              name: "BYTI Technologie SARL",
+            },
+          ],
+        }),
+      },
     ],
   }),
 });

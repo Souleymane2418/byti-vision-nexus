@@ -35,7 +35,9 @@ export const Route = createFileRoute("/batteries")({
       },
       { property: "og:image", content: heroEnergyWide },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://byti-technologie.com/batteries" },
     ],
+    links: [{ rel: "canonical", href: "https://byti-technologie.com/batteries" }],
   }),
 });
 

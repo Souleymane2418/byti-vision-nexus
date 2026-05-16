@@ -1,0 +1,17 @@
+# BYTI Technologie SARL
+
+> BYTI Technologie SARL, filiale du groupe BYTI Worldwide, fournit en Afrique Centrale des solutions d'électronique, de sécurité, d'énergie (batteries lithium LiFePO₄), de téléviseurs et de matériaux BTP (briques, pavés, béton).
+
+## Pages
+
+- [Accueil](/): Présentation de BYTI Technologie et de ses pôles d'activités.
+- [À propos](/a-propos): Histoire, présence internationale et chiffres clés du groupe BYTI Worldwide.
+- [Activités](/activites): Vue d'ensemble des pôles d'activités.
+- [Électronique](/electronique): Smartphones, audio, informatique et objets connectés.
+- [Sécurité](/securite): Vidéosurveillance, alarmes connectées, contrôle d'accès.
+- [Batteries](/batteries): Batteries lithium LiFePO₄ pour stockage solaire résidentiel, commercial et industriel.
+- [Téléviseurs](/televiseurs): Téléviseurs et solutions d'affichage.
+- [BTP](/btp): Briques, pavés autobloquants, parpaings et béton prêt à l'emploi.
+- [Projets](/projets): Galerie des réalisations.
+- [Boutique](/boutique): Catalogue de produits en ligne.
+- [Contact](/contact): Coordonnées et formulaire de contact.
