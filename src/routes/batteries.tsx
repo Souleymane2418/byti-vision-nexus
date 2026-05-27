@@ -15,7 +15,7 @@ import {
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { EnergyShowcase } from "@/components/EnergyShowcase";
-import heroEnergyWide from "@/assets/hero-energy-wide.jpg";
+import heroEnergyWide from "@/assets/byti-powerwall.png";
 
 export const Route = createFileRoute("/batteries")({
   component: BatteriesPage,
