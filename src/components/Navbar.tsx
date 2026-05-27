@@ -46,8 +46,8 @@ export function Navbar() {
             </div>
           </div>
           <div className="hidden sm:flex flex-col leading-tight border-l border-white/20 pl-3">
-            <span className="text-[10px] font-semibold tracking-[0.22em] text-white/70 uppercase">Membre du Groupe</span>
-            <span className="text-xs font-bold tracking-[0.3em] text-white uppercase">BYTI Worldwide</span>
+            <span className="text-[10px] font-semibold tracking-[0.22em] text-white/70 uppercase">​</span>
+            <span className="text-xs font-bold tracking-[0.3em] text-white uppercase">BYTI </span>
           </div>
         </Link>
 
