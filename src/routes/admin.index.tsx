@@ -31,11 +31,11 @@ function AdminDashboard() {
           <div className="text-3xl font-bold">{stats.products}</div>
           <div className="text-sm text-muted-foreground">Produits dans le catalogue</div>
         </Link>
-        <div className="bg-white p-6 rounded-xl shadow-sm border">
+        <Link to="/admin/orders" className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border">
           <ShoppingBag className="h-8 w-8 text-byti-red mb-3" />
           <div className="text-3xl font-bold">{stats.orders}</div>
           <div className="text-sm text-muted-foreground">Commandes reçues</div>
-        </div>
+        </Link>
         {isAdmin && (
           <Link to="/admin/users" className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border">
             <Users className="h-8 w-8 text-byti-blue mb-3" />
