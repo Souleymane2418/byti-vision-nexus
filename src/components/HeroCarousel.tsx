@@ -3,10 +3,10 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import poster3 from "@/assets/hero-btp.jpg";
 import poster4 from "@/assets/hero-security.jpg";
-import poster5 from "@/assets/hero-solar-farm.jpg";
+import poster5 from "@/assets/hero-electronics-wide.jpg";
 
 import vid4 from "@/assets/hero-security-loop.mp4.asset.json";
-import vid5 from "@/assets/hero-solar-farm.mp4.asset.json";
+import vid5 from "@/assets/hero-electronics.mp4.asset.json";
 import bytiPowerwallImg from "@/assets/byti-powerwall.png";
 
 interface Slide {
@@ -107,7 +107,7 @@ export function HeroCarousel() {
             <img
               src={slide.image}
               alt={slide.title}
-              className="absolute inset-0 w-full h-full object-cover"
+              className={`absolute inset-0 w-full h-full ${slide.title === "Zéro coupure" ? "object-contain bg-white" : "object-cover"}`}
               style={{ objectPosition: slide.objectPosition ?? "center" }}
             />
           )}

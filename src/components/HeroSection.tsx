@@ -14,6 +14,8 @@ interface HeroSectionProps {
   priority?: boolean;
 }
 
+const containImageTitles = new Set(["Énergie & batteries lithium"]);
+
 export function HeroSection({
   video,
   image,
@@ -47,7 +49,7 @@ export function HeroSection({
         <img
           src={image}
           alt={title}
-          className="absolute inset-0 w-full h-full object-cover object-center"
+          className={`absolute inset-0 w-full h-full object-center ${containImageTitles.has(title) ? "object-contain bg-white" : "object-cover"}`}
         />
       )}
       {/* Lighter overlay so the video stays clearly visible while text remains readable */}

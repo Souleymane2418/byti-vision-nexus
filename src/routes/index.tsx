@@ -8,21 +8,14 @@ import { EcoCommitment } from "@/components/EcoCommitment";
 import { WhyChooseUs } from "@/components/WhyChooseUs";
 import { Footer } from "@/components/Footer";
 
-import heroMainImg from "@/assets/hero-main.jpg";
-import heroSolarFarmImg from "@/assets/hero-solar-farm.jpg";
 import heroElectronicsImg from "@/assets/hero-electronics-wide.jpg";
 import heroSecurityImg from "@/assets/hero-security.jpg";
 import heroEnergyImg from "@/assets/byti-powerwall.png";
 import heroTvImg from "@/assets/hero-tv.jpg";
 import heroBtpImg from "@/assets/hero-btp.jpg";
 
-import heroMainVid from "@/assets/hero-main.mp4.asset.json";
-import heroSolarFarmVid from "@/assets/hero-solar-farm.mp4.asset.json";
-import heroElectronicsVid from "@/assets/hero-electronics.mp4.asset.json";
 import heroSecurityVid from "@/assets/hero-security-loop.mp4.asset.json";
-import heroEnergyVid from "@/assets/hero-energy-loop.mp4.asset.json";
 import heroTvVid from "@/assets/hero-tv-loop.mp4.asset.json";
-import heroBtpVid from "@/assets/hero-btp-loop.mp4.asset.json";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
