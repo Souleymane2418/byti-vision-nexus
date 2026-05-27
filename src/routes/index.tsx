@@ -13,6 +13,7 @@ import heroSecurityImg from "@/assets/hero-security.jpg";
 import heroEnergyImg from "@/assets/byti-powerwall.png";
 import heroTvImg from "@/assets/hero-tv.jpg";
 import heroBtpImg from "@/assets/hero-btp.jpg";
+import heroSmartphonesImg from "@/assets/hero-smartphones.jpg";
 
 import heroSecurityVid from "@/assets/hero-security-loop.mp4.asset.json";
 import heroTvVid from "@/assets/hero-tv-loop.mp4.asset.json";
