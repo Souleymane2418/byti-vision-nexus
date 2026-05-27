@@ -10,6 +10,7 @@ const QuoteSchema = z.object({
 });
 
 const OrderItemSchema = z.object({
+  product_id: z.string().uuid().optional().nullable(),
   name: z.string().trim().min(1).max(200),
   quantity: z.number().int().min(1).max(999),
   price: z.number().min(0),
