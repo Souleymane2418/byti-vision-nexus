@@ -18,7 +18,7 @@ type EnergyProduct = {
 const stats = [
   { icon: Sun, value: "100%", label: "Énergie solaire" },
   { icon: Battery, value: "6000+", label: "Cycles LiFePO₄" },
-  { icon: Zap, value: "30 kWh", label: "Capacité max" },
+  { icon: Zap, value: "3000 kWh", label: "Capacité max" },
 ];
 
 export function EnergyShowcase() {

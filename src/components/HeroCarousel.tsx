@@ -27,7 +27,7 @@ const slides: Slide[] = [
     poster: bytiPowerwallImg,
     badge: "Stockage Lithium",
     title: "Zéro coupure",
-    subtitle: "Batteries 30 kWh, 6000 cycles garantis",
+    subtitle: "Batteries 3000 kWh, 6000 cycles garantis",
     cta1: { label: "En savoir plus", href: "/batteries" },
     cta2: { label: "Demander un devis", href: "#contact" },
     objectPosition: "center center",
