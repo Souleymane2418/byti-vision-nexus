@@ -13,6 +13,7 @@ import heroSecurityImg from "@/assets/hero-security.jpg";
 import heroEnergyImg from "@/assets/byti-powerwall.png";
 import heroTvImg from "@/assets/hero-tv.jpg";
 import heroBtpImg from "@/assets/hero-btp.jpg";
+import heroSmartphonesImg from "@/assets/hero-smartphones.jpg";
 
 import heroSecurityVid from "@/assets/hero-security-loop.mp4.asset.json";
 import heroTvVid from "@/assets/hero-tv-loop.mp4.asset.json";
@@ -90,6 +91,15 @@ const heroSections = [
     subtitle: "Des solutions énergétiques fiables, durables et innovantes",
     buttonText: "En savoir plus",
     buttonHref: "/batteries",
+  },
+  {
+    id: "smartphones",
+    image: heroSmartphonesImg,
+    poster: heroSmartphonesImg,
+    title: "Smartphones & téléphones",
+    subtitle: "Large gamme de smartphones dernière génération à des prix imbattables",
+    buttonText: "Voir la boutique",
+    buttonHref: "/boutique",
   },
   {
     id: "tv",
