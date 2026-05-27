@@ -8,6 +8,7 @@ import poster5 from "@/assets/hero-electronics-wide.jpg";
 import vid4 from "@/assets/hero-security-loop.mp4.asset.json";
 import vid5 from "@/assets/hero-electronics.mp4.asset.json";
 import bytiPowerwallImg from "@/assets/byti-powerwall.png";
+import bytiLogo from "@/assets/byti-logo.png";
 
 interface Slide {
   video?: string;
