@@ -1,18 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import poster1 from "@/assets/hero-energy.jpg";
-import poster2 from "@/assets/hero-energy.jpg";
 import poster3 from "@/assets/hero-btp.jpg";
 import poster4 from "@/assets/hero-security.jpg";
 import poster5 from "@/assets/hero-solar-farm.jpg";
 
-import vid1 from "@/assets/hero-energy-loop.mp4.asset.json";
-import vid2 from "@/assets/hero-energy-battery.mp4.asset.json";
-import vid3 from "@/assets/hero-btp-loop.mp4.asset.json";
 import vid4 from "@/assets/hero-security-loop.mp4.asset.json";
 import vid5 from "@/assets/hero-solar-farm.mp4.asset.json";
-import solarInverterImg from "@/assets/hero-solar-inverter.jpeg";
+import bytiPowerwallImg from "@/assets/byti-powerwall.png";
 
 interface Slide {
   video?: string;
@@ -28,8 +23,8 @@ interface Slide {
 
 const slides: Slide[] = [
   {
-    image: solarInverterImg,
-    poster: solarInverterImg,
+    image: bytiPowerwallImg,
+    poster: bytiPowerwallImg,
     badge: "Stockage Lithium",
     title: "Zéro coupure",
     subtitle: "Batteries 30 kWh, 6000 cycles garantis",
