@@ -25,7 +25,7 @@ export const Route = createFileRoute("/batteries")({
       {
         name: "description",
         content:
-          "Découvrez les batteries lithium LiFePO₄ BYTI : 6000+ cycles, jusqu'à 30 kWh, sécurité maximale et stockage solaire. Solutions complètes pour résidentiel, commercial et industriel.",
+          "Découvrez les batteries lithium LiFePO₄ BYTI : 6000+ cycles, jusqu'à 3000 kWh, sécurité maximale et stockage solaire. Solutions complètes pour résidentiel, commercial et industriel.",
       },
       { property: "og:title", content: "Batteries Lithium LiFePO₄ — BYTI" },
       {
@@ -84,13 +84,13 @@ const useCases = [
   {
     badge: "Commercial",
     title: "Bureaux & commerces",
-    capacity: "15 — 30 kWh",
+    capacity: "15 — 3000 kWh",
     text: "Continuité d'activité garantie. Réduisez votre facture énergétique tout en sécurisant vos équipements sensibles.",
   },
   {
     badge: "Industriel",
     title: "Sites & ateliers",
-    capacity: "30 kWh+",
+    capacity: "3000 kWh+",
     text: "Solutions modulaires extensibles pour usines, ateliers et sites isolés. Stockage haute capacité avec gestion intelligente.",
   },
 ];
@@ -159,7 +159,7 @@ function BatteriesPage() {
               <span style={{ color: "var(--byti-red)" }}>LiFePO₄</span> qui durent
             </h1>
             <p className="mt-6 text-lg md:text-xl text-white/90 max-w-2xl drop-shadow-[0_1px_10px_rgba(0,0,0,0.7)]">
-              6000+ cycles garantis, jusqu'à 30 kWh de stockage, sécurité absolue.
+              6000+ cycles garantis, jusqu'à 3000 kWh de stockage, sécurité absolue.
               Adoptez le standard mondial du stockage solaire avec BYTI.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
@@ -185,7 +185,7 @@ function BatteriesPage() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {[
             { v: "6000+", l: "Cycles garantis" },
-            { v: "30 kWh", l: "Capacité max" },
+            { v: "3000 kWh", l: "Capacité max" },
             { v: "95 %", l: "Rendement" },
             { v: "10 ans", l: "Garantie max" },
           ].map((s) => (
