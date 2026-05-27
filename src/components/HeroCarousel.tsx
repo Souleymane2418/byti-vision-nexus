@@ -38,7 +38,7 @@ const slides: Slide[] = [
     objectPosition: "center center",
   },
   {
-    video: vid3.url,
+    image: poster3,
     poster: poster3,
     badge: "BTP & Matériaux",
     title: "Bâtir solide",
