@@ -129,13 +129,13 @@ function BatteriesPage() {
       <Navbar />
 
       {/* Hero */}
-      <section className="relative w-full h-[85vh] min-h-[600px] overflow-hidden">
+      <section className="relative w-full h-[85vh] min-h-[600px] overflow-hidden bg-white">
         <img
           src={heroEnergyWide}
           alt="Installation de batteries lithium BYTI"
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-contain object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
 
         <div className="relative z-10 h-full flex items-center px-6 lg:px-16 max-w-7xl mx-auto">
