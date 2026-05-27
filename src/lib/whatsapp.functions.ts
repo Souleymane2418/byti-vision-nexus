@@ -100,6 +100,18 @@ export const sendWhatsAppOrder = createServerFn({ method: "POST" })
 
     const wa_url = `https://wa.me/${BYTI_WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
 
+    // Décrémenter le stock pour chaque article ayant un product_id
+    for (const item of data.items) {
+      if (!item.product_id) continue;
+      const { error: stockError } = await supabaseAdmin.rpc("decrement_product_stock", {
+        _product_id: item.product_id,
+        _qty: item.quantity,
+      });
+      if (stockError) {
+        console.error("Stock decrement failed for", item.product_id, stockError);
+      }
+    }
+
     await supabaseAdmin
       .from("orders")
       .update({ status: "whatsapp_sent" })
