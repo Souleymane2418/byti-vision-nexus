@@ -47,6 +47,7 @@ function AdminLayout() {
   const tabs = [
     { to: "/admin", label: "Tableau de bord", icon: LayoutDashboard, exact: true },
     { to: "/admin/products", label: "Produits", icon: Package },
+    { to: "/admin/orders", label: "Commandes", icon: ShoppingBag },
     ...(isAdmin ? [{ to: "/admin/users" as const, label: "Personnel", icon: Users }] : []),
   ];
 
