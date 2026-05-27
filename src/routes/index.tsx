@@ -109,7 +109,7 @@ const heroSections = [
   },
   {
     id: "btp",
-    video: heroBtpVid.url,
+    image: heroBtpImg,
     poster: heroBtpImg,
     title: "BTP — Briques, Pavés & Béton",
     subtitle: "Notre pôle BTP conçoit et fabrique briques, pavés autobloquants, parpaings et béton prêt à l'emploi pour vos chantiers résidentiels et industriels.",
