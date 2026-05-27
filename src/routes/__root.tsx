@@ -1,4 +1,5 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { useEffect } from "react";
 import { CartProvider } from "@/lib/cart";
 import { CartDrawer } from "@/components/CartDrawer";
 import { Toaster } from "@/components/ui/sonner";
