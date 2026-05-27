@@ -11,7 +11,7 @@ export const Route = createFileRoute("/a-propos")({
       {
         name: "description",
         content:
-          "BYTI Technologie SARL, filiale du groupe BYTI . Présence sur 4 continents, 25+ pays, 8 000+ collaborateurs depuis 1998.",
+          "BYTI Technologie SARL, avec des représentations en Chine, Dubai, Abidjan et Cameroun. Présence internationale au service de l'Afrique.",
       },
       { property: "og:title", content: "À propos — BYTI Technologie SARL" },
       {
