@@ -3,7 +3,7 @@ import { Smartphone, Camera, Battery, Monitor, HardHat } from "lucide-react";
 
 import heroElectronics from "@/assets/hero-electronics.jpg";
 import heroSecurity from "@/assets/hero-security.jpg";
-import heroEnergy from "@/assets/hero-energy.jpg";
+import heroEnergy from "@/assets/byti-powerwall.png";
 import heroTv from "@/assets/hero-tv.jpg";
 import heroBtp from "@/assets/hero-btp.jpg";
 
