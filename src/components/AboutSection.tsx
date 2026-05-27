@@ -9,8 +9,8 @@ const partnerStats = [
 ];
 
 const synergies = [
-  { zone: "Burkina Faso · Cameroun", hubs: "BYTI Technologie SARL — opérations locales" },
-  { zone: "Asie · Moyen-Orient", hubs: "Partenaires technologiques de la sphère BYTI" },
+  { zone: "Burkina Faso · Cameroun · Côte d'Ivoire", hubs: "BYTI Technologie SARL — opérations locales" },
+  { zone: "Chine · Dubai", hubs: "Représentations BYTI — sourcing & partenariats" },
   { zone: "Échanges", hubs: "Sourcing, expertise et standards qualité partagés" },
   { zone: "Ambition", hubs: "Faire rayonner la marque BYTI en Afrique" },
 ];
@@ -34,17 +34,17 @@ export function AboutSection() {
           </h2>
           <p className="mt-6 text-muted-foreground text-lg leading-relaxed">
             <span className="font-semibold text-foreground">BYTI Technologie SARL</span>{" "}
-            partage son nom avec d'autres acteurs technologiques internationaux portant
-            l'identité <span className="font-semibold text-foreground">BYTI</span>,
-            actifs notamment dans les télécommunications, la messagerie d'entreprise et la
-            transformation digitale en Asie et au Moyen-Orient.
+            est implantée en Afrique et au Moyen-Orient avec des représentations en{" "}
+            <span className="font-semibold text-foreground">Chine, Dubai, Abidjan et Cameroun</span>.
+            Cette présence internationale nous permet d'assurer un sourcing de qualité,
+            un appui logistique solide et des standards technologiques à la hauteur des
+            grandes marques mondiales.
           </p>
           <p className="mt-4 text-muted-foreground text-lg leading-relaxed">
-            Sans en être une filiale, nous nous inscrivons dans cette dynamique
-            internationale en gardant une{" "}
+            Nous combinons cette dimension globale avec une{" "}
             <span className="font-semibold text-foreground">identité 100% locale</span>{" "}
-            et indépendante au Burkina Faso et au Cameroun, au service de la clientèle
-            africaine.
+            au Burkina Faso et en Afrique de l'Ouest, pour livrer une expérience client
+            proche du terrain et adaptée aux réalités du continent.
           </p>
         </motion.div>
 
