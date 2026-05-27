@@ -93,6 +93,15 @@ const heroSections = [
     buttonHref: "/batteries",
   },
   {
+    id: "smartphones",
+    image: heroSmartphonesImg,
+    poster: heroSmartphonesImg,
+    title: "Smartphones & téléphones",
+    subtitle: "Large gamme de smartphones dernière génération à des prix imbattables",
+    buttonText: "Voir la boutique",
+    buttonHref: "/boutique",
+  },
+  {
     id: "tv",
     video: heroTvVid.url,
     poster: heroTvImg,
