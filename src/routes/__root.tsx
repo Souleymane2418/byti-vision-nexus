@@ -1,4 +1,5 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { useEffect } from "react";
 import { CartProvider } from "@/lib/cart";
 import { CartDrawer } from "@/components/CartDrawer";
 import { Toaster } from "@/components/ui/sonner";
@@ -87,6 +88,15 @@ function RootShell({ children }: { children: React.ReactNode }) {
 }
 
 function RootComponent() {
+  useEffect(() => {
+    // Unifie le domaine (www -> apex) pour partager la session entre tabs/fenêtres
+    if (typeof window !== "undefined" && window.location.hostname === "www.byti-technologie.com") {
+      window.location.replace(
+        `https://byti-technologie.com${window.location.pathname}${window.location.search}${window.location.hash}`,
+      );
+    }
+  }, []);
+
   return (
     <CartProvider>
       <Outlet />
