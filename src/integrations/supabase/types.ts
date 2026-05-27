@@ -26,8 +26,11 @@ export type Database = {
           items: Json
           notes: string | null
           status: string
+          stock_validated: boolean
           total: number
           updated_at: string
+          validated_at: string | null
+          validated_by: string | null
         }
         Insert: {
           created_at?: string
@@ -40,8 +43,11 @@ export type Database = {
           items: Json
           notes?: string | null
           status?: string
+          stock_validated?: boolean
           total: number
           updated_at?: string
+          validated_at?: string | null
+          validated_by?: string | null
         }
         Update: {
           created_at?: string
@@ -54,8 +60,11 @@ export type Database = {
           items?: Json
           notes?: string | null
           status?: string
+          stock_validated?: boolean
           total?: number
           updated_at?: string
+          validated_at?: string | null
+          validated_by?: string | null
         }
         Relationships: []
       }
