@@ -56,7 +56,7 @@ export const Route = createFileRoute("/")({
               logo: "https://byti-technologie.com/favicon.ico",
               telephone: "+226 76 76 76 63",
               sameAs: [],
-              parentOrganization: { "@type": "Organization", name: "BYTI Worldwide" },
+              parentOrganization: { "@type": "Organization", name: "BYTI " },
             },
             {
               "@type": "WebSite",
