@@ -60,7 +60,7 @@ function CheckoutPage() {
     }
     setSubmitting(true);
     const currency = items[0]?.currency ?? "XAF";
-    const orderItems = items.map((i) => ({ name: i.name, quantity: i.quantity, price: i.price }));
+    const orderItems = items.map((i) => ({ product_id: i.id, name: i.name, quantity: i.quantity, price: i.price }));
 
     const res = await sendOrder({
       data: {
