@@ -3,8 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "@tanstack/react-router";
 import { Battery, Zap, Sun, ArrowRight } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
-import energyTechniciansVid from "@/assets/energy-technicians.mp4.asset.json";
-import energyTechniciansImg from "@/assets/energy-technicians.jpg";
+import bytiPowerwallImg from "@/assets/byti-powerwall.png";
 
 type EnergyProduct = {
   id: string;
@@ -78,7 +77,7 @@ export function EnergyShowcase() {
           </p>
         </motion.div>
 
-        {/* Cinematic video banner */}
+        {/* Cinematic banner */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -88,15 +87,10 @@ export function EnergyShowcase() {
           style={{ boxShadow: "var(--shadow-byti)" }}
         >
           <div className="relative aspect-[21/9] md:aspect-[21/8]">
-            <video
-              src={energyTechniciansVid.url}
-              poster={energyTechniciansImg}
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="metadata"
-              className="absolute inset-0 w-full h-full object-cover"
+            <img
+              src={bytiPowerwallImg}
+              alt="Batteries lithium BYTI Powerwall"
+              className="absolute inset-0 w-full h-full object-contain bg-white"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
