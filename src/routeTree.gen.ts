@@ -30,6 +30,7 @@ import { Route as ProduitIdRouteImport } from './routes/produit.$id'
 import { Route as CommandeIdRouteImport } from './routes/commande.$id'
 import { Route as AdminUsersRouteImport } from './routes/admin.users'
 import { Route as AdminProductsRouteImport } from './routes/admin.products'
+import { Route as AdminOrdersRouteImport } from './routes/admin.orders'
 
 const TeleviseursRoute = TeleviseursRouteImport.update({
   id: '/televiseurs',
@@ -136,6 +137,11 @@ const AdminProductsRoute = AdminProductsRouteImport.update({
   path: '/products',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminOrdersRoute = AdminOrdersRouteImport.update({
+  id: '/orders',
+  path: '/orders',
+  getParentRoute: () => AdminRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -154,6 +160,7 @@ export interface FileRoutesByFullPath {
   '/securite': typeof SecuriteRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/televiseurs': typeof TeleviseursRoute
+  '/admin/orders': typeof AdminOrdersRoute
   '/admin/products': typeof AdminProductsRoute
   '/admin/users': typeof AdminUsersRoute
   '/commande/$id': typeof CommandeIdRoute
@@ -176,6 +183,7 @@ export interface FileRoutesByTo {
   '/securite': typeof SecuriteRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/televiseurs': typeof TeleviseursRoute
+  '/admin/orders': typeof AdminOrdersRoute
   '/admin/products': typeof AdminProductsRoute
   '/admin/users': typeof AdminUsersRoute
   '/commande/$id': typeof CommandeIdRoute
@@ -200,6 +208,7 @@ export interface FileRoutesById {
   '/securite': typeof SecuriteRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/televiseurs': typeof TeleviseursRoute
+  '/admin/orders': typeof AdminOrdersRoute
   '/admin/products': typeof AdminProductsRoute
   '/admin/users': typeof AdminUsersRoute
   '/commande/$id': typeof CommandeIdRoute
@@ -225,6 +234,7 @@ export interface FileRouteTypes {
     | '/securite'
     | '/sitemap.xml'
     | '/televiseurs'
+    | '/admin/orders'
     | '/admin/products'
     | '/admin/users'
     | '/commande/$id'
@@ -247,6 +257,7 @@ export interface FileRouteTypes {
     | '/securite'
     | '/sitemap.xml'
     | '/televiseurs'
+    | '/admin/orders'
     | '/admin/products'
     | '/admin/users'
     | '/commande/$id'
@@ -270,6 +281,7 @@ export interface FileRouteTypes {
     | '/securite'
     | '/sitemap.xml'
     | '/televiseurs'
+    | '/admin/orders'
     | '/admin/products'
     | '/admin/users'
     | '/commande/$id'
@@ -447,16 +459,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminProductsRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/orders': {
+      id: '/admin/orders'
+      path: '/orders'
+      fullPath: '/admin/orders'
+      preLoaderRoute: typeof AdminOrdersRouteImport
+      parentRoute: typeof AdminRoute
+    }
   }
 }
 
 interface AdminRouteChildren {
+  AdminOrdersRoute: typeof AdminOrdersRoute
   AdminProductsRoute: typeof AdminProductsRoute
   AdminUsersRoute: typeof AdminUsersRoute
   AdminIndexRoute: typeof AdminIndexRoute
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
+  AdminOrdersRoute: AdminOrdersRoute,
   AdminProductsRoute: AdminProductsRoute,
   AdminUsersRoute: AdminUsersRoute,
   AdminIndexRoute: AdminIndexRoute,
