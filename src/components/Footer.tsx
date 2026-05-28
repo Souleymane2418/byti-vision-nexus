@@ -89,7 +89,7 @@ export function Footer() {
             <h4 className="text-sm font-bold text-byti-yellow tracking-wide uppercase mb-4">
               Contact
             </h4>
-            <ul className="space-y-2 text-sm text-white/85">
+            <ul className="space-y-2 text-sm text-white/85 mb-6">
               <li>
                 <a href="mailto:contact@bytitechnologie.com" className="text-white/65 hover:text-byti-yellow transition-colors">
                   contact@bytitechnologie.com
@@ -101,17 +101,11 @@ export function Footer() {
               <li>
                 <a href="tel:+22670681212" className="text-white/65 hover:text-byti-yellow transition-colors">+226 70 68 12 12</a>
               </li>
-              <li>
-                <a
-                  href="https://web.facebook.com/people/BYTI-Technologie-Internationale/61577925500422/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white/65 hover:text-byti-yellow transition-colors"
-                >
-                  Facebook : BYTI Technologie Internationale
-                </a>
-              </li>
             </ul>
+            <h4 className="text-sm font-bold text-byti-yellow tracking-wide uppercase mb-3">
+              Réseaux sociaux
+            </h4>
+            <SocialLinksCompact />
           </div>
         </div>
 
