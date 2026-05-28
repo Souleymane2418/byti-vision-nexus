@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, MessageCircle, Share2 } from "lucide-react";
+import { SocialLinks } from "@/components/SocialLinks";
 
 export function ContactSection() {
   return (
