@@ -68,15 +68,10 @@ export function ContactSection() {
                 <Share2 className="w-5 h-5 text-primary" />
               </div>
               <div>
-                <h4 className="font-semibold text-foreground">Facebook</h4>
-                <a
-                  href="https://web.facebook.com/people/BYTI-Technologie-Internationale/61577925500422/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary text-sm mt-1 hover:underline"
-                >
-                  BYTI Technologie Internationale
-                </a>
+                <h4 className="font-semibold text-foreground">Réseaux sociaux</h4>
+                <div className="mt-2">
+                  <SocialLinks className="!gap-2" iconClassName="!px-2 !py-1.5 !bg-muted hover:!bg-primary hover:!text-white !text-foreground" />
+                </div>
               </div>
             </div>
 
