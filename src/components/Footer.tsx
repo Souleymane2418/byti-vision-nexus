@@ -1,6 +1,7 @@
 import { Smartphone, Camera, Battery, Monitor, HardHat } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import bytiLogo from "@/assets/byti-logo.png";
+import { SocialLinksCompact } from "@/components/SocialLinks";
 
 const activities = [
   { icon: Smartphone, label: "Électronique", to: "/electronique" },
