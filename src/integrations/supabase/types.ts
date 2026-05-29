@@ -219,7 +219,10 @@ export type Database = {
         Returns: boolean
       }
       is_staff: { Args: { _user_id: string }; Returns: boolean }
-      validate_order_stock: { Args: { _order_id: string }; Returns: Json }
+      validate_order_stock: {
+        Args: { _order_id: string; _validator_id: string }
+        Returns: Json
+      }
     }
     Enums: {
       app_role: "admin" | "staff"
