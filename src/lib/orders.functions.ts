@@ -1,6 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
+import { supabaseAdmin } from "@/integrations/supabase/client.server";
 
 export const listOrders = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
@@ -24,8 +25,11 @@ export const validateOrderStock = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((input: unknown) => z.object({ order_id: z.string().uuid() }).parse(input))
   .handler(async ({ data, context }) => {
-    const { supabase } = context;
-    const { data: result, error } = await supabase.rpc("validate_order_stock", { _order_id: data.order_id });
+    const { userId } = context;
+    const { data: result, error } = await supabaseAdmin.rpc("validate_order_stock", {
+      _order_id: data.order_id,
+      _validator_id: userId,
+    });
     if (error) return { ok: false as const, error: error.message };
 
     const payload = result as { ok?: boolean; message?: string } | null;
