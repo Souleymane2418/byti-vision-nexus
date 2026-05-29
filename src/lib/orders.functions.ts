@@ -43,11 +43,27 @@ export const validateOrderStock = createServerFn({ method: "POST" })
     if (fetchErr || !order) return { ok: false as const, error: "Commande introuvable" };
     if (order.stock_validated) return { ok: false as const, error: "Stock déjà validé" };
 
-    const items = (order.items as Array<{ product_id?: string | null; quantity: number }>) ?? [];
+    const items = (order.items as Array<{ id?: string | null; product_id?: string | null; name?: string; quantity: number }>) ?? [];
     for (const item of items) {
-      if (!item.product_id) continue;
+      let productId = item.product_id || item.id || null;
+
+      if (!productId && item.name) {
+        const { data: matchedProduct } = await supabaseAdmin
+          .from("products")
+          .select("id")
+          .ilike("name", `${item.name.trim()}%`)
+          .limit(1)
+          .maybeSingle();
+        productId = matchedProduct?.id ?? null;
+      }
+
+      if (!productId) {
+        console.error("Stock validation skipped: product not linked", item);
+        continue;
+      }
+
       const { error: stockErr } = await supabaseAdmin.rpc("decrement_product_stock", {
-        _product_id: item.product_id,
+        _product_id: productId,
         _qty: item.quantity,
       });
       if (stockErr) console.error("Stock decrement failed:", stockErr);
