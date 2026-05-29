@@ -66,6 +66,8 @@ const empty: FormState = {
 
 type GalleryImage = { id?: string; url: string; position: number };
 
+const PRODUCT_DRAFT_KEY = "byti-admin-product-draft";
+
 function ProductsAdmin() {
   const [list, setList] = useState<ProductRow[]>([]);
   const [loading, setLoading] = useState(true);
@@ -88,6 +90,27 @@ function ProductsAdmin() {
 
   useEffect(() => { load(); }, []);
 
+  useEffect(() => {
+    const savedDraft = window.localStorage.getItem(PRODUCT_DRAFT_KEY);
+    if (!savedDraft) return;
+
+    try {
+      const draft = JSON.parse(savedDraft) as { form?: FormState; gallery?: GalleryImage[]; open?: boolean };
+      if (draft.open && draft.form) {
+        setForm({ ...empty, ...draft.form });
+        setGallery(draft.gallery ?? []);
+        setOpen(true);
+      }
+    } catch {
+      window.localStorage.removeItem(PRODUCT_DRAFT_KEY);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    window.localStorage.setItem(PRODUCT_DRAFT_KEY, JSON.stringify({ open, form, gallery }));
+  }, [form, gallery, open]);
+
   const loadGallery = async (productId: string) => {
     const { data } = await supabase
       .from("product_images")
@@ -97,8 +120,12 @@ function ProductsAdmin() {
     setGallery((data ?? []) as GalleryImage[]);
   };
 
-  const openNew = () => { setForm(empty); setGallery([]); setOpen(true); };
+  const clearDraft = () => window.localStorage.removeItem(PRODUCT_DRAFT_KEY);
+  const closeDialog = () => { clearDraft(); setOpen(false); };
+
+  const openNew = () => { clearDraft(); setForm(empty); setGallery([]); setOpen(true); };
   const openEdit = (p: ProductRow) => {
+    clearDraft();
     setForm({
       id: p.id,
       name: p.name,
@@ -193,7 +220,7 @@ function ProductsAdmin() {
 
     setSaving(false);
     toast.success(form.id ? "Produit mis à jour" : "Produit créé");
-    setOpen(false);
+    closeDialog();
     load();
   };
 
@@ -259,7 +286,7 @@ function ProductsAdmin() {
         </div>
       )}
 
-      <Dialog open={open} onOpenChange={setOpen}>
+      <Dialog open={open} onOpenChange={(nextOpen) => nextOpen && setOpen(true)}>
         <DialogContent
           className="max-w-2xl max-h-[90vh] overflow-y-auto"
           onPointerDownOutside={(e) => e.preventDefault()}
@@ -384,7 +411,7 @@ function ProductsAdmin() {
               </div>
             </div>
             <DialogFooter>
-              <Button type="button" variant="outline" onClick={() => setOpen(false)}>Annuler</Button>
+              <Button type="button" variant="outline" onClick={closeDialog}>Annuler</Button>
               <Button type="submit" disabled={saving} className="bg-byti-blue hover:bg-byti-blue-deep">
                 {saving && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
                 {form.id ? "Enregistrer" : "Créer"}
