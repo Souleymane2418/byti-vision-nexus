@@ -11,7 +11,7 @@ export const Route = createFileRoute("/a-propos")({
       {
         name: "description",
         content:
-          "BYTI Technologie SARL, avec des représentations en Chine, Dubai, Abidjan et Cameroun. Présence internationale au service de l'Afrique.",
+          "BYTI Technologie SARL, avec des représentations en Chine, Dubai, Abidjan, Cameroun...  Présence internationale au service de l'Afrique.",
       },
       { property: "og:title", content: "À propos — BYTI Technologie SARL" },
       {
