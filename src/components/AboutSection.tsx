@@ -35,7 +35,7 @@ export function AboutSection() {
           <p className="mt-6 text-muted-foreground text-lg leading-relaxed">
             <span className="font-semibold text-foreground">BYTI Technologie SARL</span>{" "}
             est implantée en Afrique et au Moyen-Orient avec des représentations en{" "}
-            <span className="font-semibold text-foreground">Chine, Dubai, Abidjan et Cameroun</span>.
+            <span className="font-semibold text-foreground">Chine, Dubai, Abidjan, Cameroun... </span>
             Cette présence internationale nous permet d'assurer un sourcing de qualité,
             un appui logistique solide et des standards technologiques à la hauteur des
             grandes marques mondiales.
