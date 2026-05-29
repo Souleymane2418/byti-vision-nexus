@@ -3,6 +3,8 @@ import { z } from "zod";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import { supabaseAdmin } from "@/integrations/supabase/client.server";
 
+const PROTECTED_ADMIN_EMAIL = "direction@byti-technologie.com";
+
 const CreateUserSchema = z.object({
   email: z.string().email(),
   password: z.string().min(8),
@@ -66,6 +68,20 @@ export const setUserRole = createServerFn({ method: "POST" })
       throw new Error("Seul un administrateur peut modifier les rôles.");
     }
 
+    const { data: targetProfile } = await supabaseAdmin
+      .from("profiles")
+      .select("email")
+      .eq("user_id", data.targetUserId)
+      .maybeSingle();
+
+    if (
+      data.action === "remove" &&
+      data.role === "admin" &&
+      targetProfile?.email?.toLowerCase() === PROTECTED_ADMIN_EMAIL
+    ) {
+      throw new Error("Le compte direction@byti-technologie.com doit rester administrateur.");
+    }
+
     if (data.action === "add") {
       const { error } = await supabaseAdmin
         .from("user_roles")
@@ -95,6 +111,17 @@ export const deleteStaffUser = createServerFn({ method: "POST" })
     if (!roles?.some((r) => r.role === "admin")) {
       throw new Error("Seul un administrateur peut supprimer un compte.");
     }
+
+    const { data: targetProfile } = await supabaseAdmin
+      .from("profiles")
+      .select("email")
+      .eq("user_id", data.targetUserId)
+      .maybeSingle();
+
+    if (targetProfile?.email?.toLowerCase() === PROTECTED_ADMIN_EMAIL) {
+      throw new Error("Le compte direction@byti-technologie.com ne peut pas être supprimé.");
+    }
+
     const { error } = await supabaseAdmin.auth.admin.deleteUser(data.targetUserId);
     if (error) throw new Error(error.message);
     return { ok: true };
@@ -132,5 +159,6 @@ export const listStaffUsers = createServerFn({ method: "GET" })
       full_name: p.full_name,
       created_at: p.created_at,
       roles: byUser[p.user_id] ?? [],
+      protected: p.email?.toLowerCase() === PROTECTED_ADMIN_EMAIL,
     }));
   });
