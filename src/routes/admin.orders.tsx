@@ -26,7 +26,7 @@ function AdminOrders() {
     mutationFn: (order_id: string) => validateFn({ data: { order_id } }),
     onSuccess: (res) => {
       if (res.ok) {
-        toast.success("Stock validé et déduit");
+        toast.success(res.message ?? "Stock validé et déduit");
         qc.invalidateQueries({ queryKey: ["admin", "orders"] });
       } else {
         toast.error(res.error ?? "Erreur");
@@ -44,6 +44,11 @@ function AdminOrders() {
   return (
     <div>
       <h1 className="text-3xl font-bold mb-6 flex items-center gap-2"><Package className="h-7 w-7" /> Commandes</h1>
+      {data?.error && (
+        <div className="mb-4 rounded-lg border border-destructive/30 bg-destructive/10 px-4 py-3 text-sm text-destructive">
+          {data.error}
+        </div>
+      )}
       {orders.length === 0 ? (
         <p className="text-muted-foreground">Aucune commande pour le moment.</p>
       ) : (
