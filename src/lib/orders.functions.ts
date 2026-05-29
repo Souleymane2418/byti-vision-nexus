@@ -1,15 +1,19 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
+import { supabaseAdmin } from "@/integrations/supabase/client.server";
 
 export const listOrders = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }) => {
-    const { supabase } = context;
-    const { data: isStaff } = await supabase.rpc("is_staff", { _user_id: context.userId });
+    const { userId } = context;
+    const { data: myRoles } = await supabaseAdmin
+      .from("user_roles")
+      .select("role")
+      .eq("user_id", userId);
+    const isStaff = myRoles?.some((r) => r.role === "admin" || r.role === "staff");
     if (!isStaff) throw new Error("Forbidden");
 
-    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     const { data, error } = await supabaseAdmin
       .from("orders")
       .select("id, customer_name, customer_phone, customer_email, customer_address, items, total, currency, status, notes, stock_validated, validated_at, validated_by, created_at")
@@ -23,11 +27,13 @@ export const validateOrderStock = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((input: unknown) => z.object({ order_id: z.string().uuid() }).parse(input))
   .handler(async ({ data, context }) => {
-    const { supabase, userId } = context;
-    const { data: isStaff } = await supabase.rpc("is_staff", { _user_id: userId });
+    const { userId } = context;
+    const { data: myRoles } = await supabaseAdmin
+      .from("user_roles")
+      .select("role")
+      .eq("user_id", userId);
+    const isStaff = myRoles?.some((r) => r.role === "admin" || r.role === "staff");
     if (!isStaff) throw new Error("Forbidden");
-
-    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
 
     const { data: order, error: fetchErr } = await supabaseAdmin
       .from("orders")
