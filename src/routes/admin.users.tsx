@@ -21,6 +21,7 @@ type StaffUser = {
   full_name: string | null;
   created_at: string;
   roles: string[];
+  protected?: boolean;
 };
 
 function UsersAdmin() {
@@ -72,6 +73,10 @@ function UsersAdmin() {
 
   const toggleRole = async (u: StaffUser, role: "admin" | "staff") => {
     const action = u.roles.includes(role) ? "remove" : "add";
+    if (u.protected && role === "admin" && action === "remove") {
+      toast.error("Ce compte doit rester administrateur.");
+      return;
+    }
     try {
       await setRole({ data: { targetUserId: u.user_id, role, action } });
       load();
@@ -113,7 +118,12 @@ function UsersAdmin() {
               {rows.map((u) => (
                 <tr key={u.user_id} className="border-t">
                   <td className="px-4 py-3">{u.full_name ?? "—"}</td>
-                  <td className="px-4 py-3">{u.email}</td>
+                  <td className="px-4 py-3">
+                    <div className="flex flex-col gap-1">
+                      <span>{u.email}</span>
+                      {u.protected && <span className="text-xs font-semibold text-byti-red">Administrateur principal protégé</span>}
+                    </div>
+                  </td>
                   <td className="px-4 py-3">
                     <div className="flex flex-wrap gap-1">
                       {u.roles.length === 0 && <span className="text-xs text-muted-foreground">aucun</span>}
@@ -127,11 +137,11 @@ function UsersAdmin() {
                       {u.roles.includes("staff") ? <ShieldOff className="h-3.5 w-3.5 mr-1" /> : <Shield className="h-3.5 w-3.5 mr-1" />}
                       Staff
                     </Button>
-                    <Button size="sm" variant="outline" onClick={() => toggleRole(u, "admin")}>
+                    <Button size="sm" variant="outline" disabled={u.protected} onClick={() => toggleRole(u, "admin")}>
                       {u.roles.includes("admin") ? <ShieldOff className="h-3.5 w-3.5 mr-1" /> : <Shield className="h-3.5 w-3.5 mr-1" />}
                       Admin
                     </Button>
-                    {u.user_id !== user?.id && (
+                    {u.user_id !== user?.id && !u.protected && (
                       <Button size="icon" variant="ghost" onClick={() => remove(u)}>
                         <Trash2 className="h-4 w-4 text-destructive" />
                       </Button>
