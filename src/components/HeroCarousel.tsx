@@ -116,24 +116,6 @@ export function HeroCarousel() {
         </motion.div>
       </AnimatePresence>
 
-      {/* Logo BYTI - mis en avant dès l'ouverture */}
-      <motion.div
-        initial={{ opacity: 0, y: -30, scale: 0.9 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.1, 0, 1] }}
-        className="absolute top-24 md:top-28 left-1/2 -translate-x-1/2 z-20 pointer-events-none"
-      >
-        <div className="relative">
-          <div className="absolute inset-0 -m-3 rounded-3xl bg-white/20 blur-2xl" />
-          <div className="relative bg-white rounded-2xl px-5 py-3 md:px-7 md:py-4 shadow-[0_20px_60px_-10px_rgba(0,0,0,0.5)] ring-1 ring-white/60">
-            <img
-              src={bytiLogo}
-              alt="BYTI Technologie SARL — Connecter · Construire · Innover"
-              className="h-16 md:h-24 lg:h-28 w-auto"
-            />
-          </div>
-        </div>
-      </motion.div>
 
       {/* Content - bottom left */}
       <div className="absolute inset-0 z-10 flex items-end">
