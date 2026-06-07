@@ -149,6 +149,25 @@ export function Footer() {
           </div>
         </div>
 
+        <div className="mt-6 grid sm:grid-cols-2 gap-6">
+          <div className="rounded-2xl overflow-hidden border border-white/15 bg-white/5">
+            <img
+              src={bytiMap1.url}
+              alt="Plan d'emplacement BYTI — vue d'ensemble depuis le Rond-point des Nations Unies"
+              className="w-full h-auto block"
+              loading="lazy"
+            />
+          </div>
+          <div className="rounded-2xl overflow-hidden border border-white/15 bg-white/5">
+            <img
+              src={bytiMap2.url}
+              alt="Plan d'emplacement BYTI — accès détaillé via Avenue Kwame Nkrumah"
+              className="w-full h-auto block"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
         <div className="section-divider mt-12 mb-8" />
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
