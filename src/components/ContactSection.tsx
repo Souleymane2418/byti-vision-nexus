@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, MessageCircle, Share2 } from "lucide-react";
 import { SocialLinks } from "@/components/SocialLinks";
+import bytiMap1 from "@/assets/byti-map-1.png.asset.json";
+import bytiMap2 from "@/assets/byti-map-2.png.asset.json";
 
 export function ContactSection() {
   return (
@@ -91,7 +93,9 @@ export function ContactSection() {
               </div>
               <div>
                 <h4 className="font-semibold text-foreground">Adresse</h4>
-                <p className="text-muted-foreground text-sm mt-1">Votre adresse ici</p>
+                <p className="text-muted-foreground text-sm mt-1">
+                  Av. Kwame Nkrumah, Ouagadougou, Burkina Faso
+                </p>
               </div>
             </div>
           </motion.div>
@@ -147,6 +151,35 @@ export function ContactSection() {
             </button>
           </motion.form>
         </div>
+
+        {/* Plan d'emplacement */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="mt-24"
+        >
+          <div className="text-center mb-10">
+            <span className="text-primary text-sm font-semibold tracking-widest uppercase">
+              Plan d'emplacement
+            </span>
+            <h3 className="mt-3 text-2xl md:text-4xl font-bold tracking-tight text-foreground">
+              Comment nous <span className="gradient-text">trouver</span>
+            </h3>
+            <p className="mt-3 text-muted-foreground text-sm max-w-2xl mx-auto">
+              BYTI Technologie International — Av. Kwame Nkrumah, Ouagadougou. Suivez l'itinéraire depuis le Rond-point des Nations Unies.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="rounded-2xl overflow-hidden border border-border/60 bg-card">
+              <img src={bytiMap1} alt="Plan d'emplacement BYTI Technologie — vue d'ensemble depuis le Rond-point des Nations Unies" className="w-full h-auto" loading="lazy" />
+            </div>
+            <div className="rounded-2xl overflow-hidden border border-border/60 bg-card">
+              <img src={bytiMap2} alt="Plan d'emplacement BYTI Technologie — accès détaillé via Avenue Kwame Nkrumah" className="w-full h-auto" loading="lazy" />
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
