@@ -183,7 +183,7 @@ export function ContactSection() {
           <div className="mt-6 rounded-2xl overflow-hidden border border-border/60 bg-card">
             <iframe
               title="Carte BYTI Technologie — Ouagadougou"
-              src="https://www.google.com/maps?q=12.36739236517424,-1.519113363344027&hl=fr&z=17&output=embed"
+              src="https://maps.google.com/maps?q=loc:12.36739236517424,-1.519113363344027&hl=fr&z=18&output=embed"
               width="100%"
               height="450"
               style={{ border: 0 }}
