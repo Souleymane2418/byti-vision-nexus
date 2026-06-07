@@ -1,6 +1,8 @@
 import { Smartphone, Camera, Battery, Monitor, HardHat, MapPin } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import bytiLogo from "@/assets/byti-logo.png";
+import bytiMap1 from "@/assets/byti-map-1.png.asset.json";
+import bytiMap2 from "@/assets/byti-map-2.png.asset.json";
 import { SocialLinksCompact } from "@/components/SocialLinks";
 
 const activities = [
@@ -143,6 +145,25 @@ export function Footer() {
               referrerPolicy="no-referrer-when-downgrade"
               allowFullScreen
               className="block w-full h-full min-h-[280px]"
+            />
+          </div>
+        </div>
+
+        <div className="mt-6 grid sm:grid-cols-2 gap-6">
+          <div className="rounded-2xl overflow-hidden border border-white/15 bg-white/5">
+            <img
+              src={bytiMap1.url}
+              alt="Plan d'emplacement BYTI — vue d'ensemble depuis le Rond-point des Nations Unies"
+              className="w-full h-auto block"
+              loading="lazy"
+            />
+          </div>
+          <div className="rounded-2xl overflow-hidden border border-white/15 bg-white/5">
+            <img
+              src={bytiMap2.url}
+              alt="Plan d'emplacement BYTI — accès détaillé via Avenue Kwame Nkrumah"
+              className="w-full h-auto block"
+              loading="lazy"
             />
           </div>
         </div>
