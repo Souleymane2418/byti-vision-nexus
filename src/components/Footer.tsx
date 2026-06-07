@@ -1,4 +1,4 @@
-import { Smartphone, Camera, Battery, Monitor, HardHat } from "lucide-react";
+import { Smartphone, Camera, Battery, Monitor, HardHat, MapPin } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import bytiLogo from "@/assets/byti-logo.png";
 import { SocialLinksCompact } from "@/components/SocialLinks";
@@ -106,6 +106,44 @@ export function Footer() {
               Réseaux sociaux
             </h4>
             <SocialLinksCompact />
+          </div>
+        </div>
+
+        <div className="mt-14 grid lg:grid-cols-5 gap-6 items-stretch">
+          <div className="lg:col-span-2 rounded-2xl border border-white/15 bg-white/5 p-6">
+            <div className="flex items-start gap-3">
+              <MapPin className="mt-1 h-5 w-5 text-byti-yellow shrink-0" />
+              <div>
+                <h4 className="text-sm font-bold text-byti-yellow tracking-wide uppercase mb-3">
+                  Plan d'emplacement
+                </h4>
+                <p className="text-sm text-white/75 leading-relaxed">
+                  BYTI Technologie International — Av. Kwame Nkrumah, Ouagadougou.
+                </p>
+                <p className="mt-3 text-xs text-white/55">12.367392, -1.519113</p>
+                <a
+                  href="https://www.google.com/maps/dir/?api=1&destination=12.36739236517424,-1.519113363344027"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-flex text-sm font-semibold text-byti-yellow hover:text-white transition-colors"
+                >
+                  Obtenir l'itinéraire →
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="lg:col-span-3 rounded-2xl overflow-hidden border border-white/15 bg-white/5 min-h-[280px]">
+            <iframe
+              title="Carte BYTI Technologie — Ouagadougou"
+              src="https://maps.google.com/maps?q=loc:12.36739236517424,-1.519113363344027&hl=fr&z=18&output=embed"
+              width="100%"
+              height="320"
+              style={{ border: 0 }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+              className="block w-full h-full min-h-[280px]"
+            />
           </div>
         </div>
 
