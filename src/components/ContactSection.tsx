@@ -173,10 +173,10 @@ export function ContactSection() {
           </div>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="rounded-2xl overflow-hidden border border-border/60 bg-card">
-              <img src={bytiMap1} alt="Plan d'emplacement BYTI Technologie — vue d'ensemble depuis le Rond-point des Nations Unies" className="w-full h-auto" loading="lazy" />
+              <img src={bytiMap1.url} alt="Plan d'emplacement BYTI Technologie — vue d'ensemble depuis le Rond-point des Nations Unies" className="w-full h-auto" loading="lazy" />
             </div>
             <div className="rounded-2xl overflow-hidden border border-border/60 bg-card">
-              <img src={bytiMap2} alt="Plan d'emplacement BYTI Technologie — accès détaillé via Avenue Kwame Nkrumah" className="w-full h-auto" loading="lazy" />
+              <img src={bytiMap2.url} alt="Plan d'emplacement BYTI Technologie — accès détaillé via Avenue Kwame Nkrumah" className="w-full h-auto" loading="lazy" />
             </div>
           </div>
         </motion.div>
