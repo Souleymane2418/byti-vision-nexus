@@ -179,6 +179,31 @@ export function ContactSection() {
               <img src={bytiMap2.url} alt="Plan d'emplacement BYTI Technologie — accès détaillé via Avenue Kwame Nkrumah" className="w-full h-auto" loading="lazy" />
             </div>
           </div>
+
+          <div className="mt-6 rounded-2xl overflow-hidden border border-border/60 bg-card">
+            <iframe
+              title="Carte BYTI Technologie — Ouagadougou"
+              src="https://www.google.com/maps?q=12.36739236517424,-1.519113363344027&hl=fr&z=17&output=embed"
+              width="100%"
+              height="450"
+              style={{ border: 0 }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
+            <div className="px-4 py-3 flex items-center justify-between text-sm">
+              <span className="text-muted-foreground">12.367392, -1.519113</span>
+              <a
+                href="https://www.google.com/maps/dir/?api=1&destination=12.36739236517424,-1.519113363344027"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary font-semibold hover:underline"
+              >
+                Obtenir l'itinéraire →
+              </a>
+            </div>
+          </div>
+
         </motion.div>
       </div>
     </section>
