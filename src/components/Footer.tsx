@@ -1,6 +1,8 @@
 import { Smartphone, Camera, Battery, Monitor, HardHat, MapPin } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import bytiLogo from "@/assets/byti-logo.png";
+import bytiMap1 from "@/assets/byti-map-1.png.asset.json";
+import bytiMap2 from "@/assets/byti-map-2.png.asset.json";
 import { SocialLinksCompact } from "@/components/SocialLinks";
 
 const activities = [
