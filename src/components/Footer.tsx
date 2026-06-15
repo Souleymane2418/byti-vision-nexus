@@ -174,6 +174,20 @@ export function Footer() {
           <p className="text-white/50">&copy; {new Date().getFullYear()} BYTI Technologie SARL. Tous droits réservés.</p>
           <p className="text-byti-yellow font-bold tracking-wide">Connecter · Construire · Innover</p>
         </div>
+
+        <div className="mt-6 text-center">
+          <p className="text-[11px] text-white/40">
+            Site web développé par{" "}
+            <a
+              href="https://www.ds-si.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/60 hover:text-byti-yellow transition-colors underline underline-offset-2"
+            >
+              ds-si.com
+            </a>
+          </p>
+        </div>
       </div>
     </footer>
   );
