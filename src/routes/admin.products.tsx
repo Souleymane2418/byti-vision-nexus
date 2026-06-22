@@ -317,7 +317,7 @@ function ProductsAdmin() {
                 <Input value={form.model} onChange={(e) => setForm({ ...form, model: e.target.value })} />
               </div>
               <div>
-                <Label>Prix (XAF)</Label>
+                <Label>Prix (CFA)</Label>
                 <Input type="number" min={0} value={form.price} onChange={(e) => setForm({ ...form, price: e.target.value })} />
               </div>
               <div>
