@@ -14,7 +14,7 @@ const phoneBrands: Partner[] = [
   { name: "Infinix" },
   { name: "itel" },
   { name: "Nokia", icon: "nokia" },
-  { name: "Realme", icon: "realme" },
+  { name: "Realme" },
 ];
 
 const cameraBrands: Partner[] = [
