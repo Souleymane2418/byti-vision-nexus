@@ -1,10 +1,16 @@
+import { useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+
 type Partner = {
   name: string;
-  // simpleicons.org slug (laissez vide si la marque n'y est pas — on affichera le wordmark)
+  /** URL d'image (logo téléversé ou URL externe) */
+  logoUrl?: string;
+  /** Fallback: slug simpleicons.org */
   icon?: string;
 };
 
-const phoneBrands: Partner[] = [
+// Marques par défaut (affichées si la BDD est vide)
+const defaultPhoneBrands: Partner[] = [
   { name: "Samsung", icon: "samsung" },
   { name: "Apple", icon: "apple" },
   { name: "Xiaomi", icon: "xiaomi" },
@@ -17,7 +23,7 @@ const phoneBrands: Partner[] = [
   { name: "Realme" },
 ];
 
-const cameraBrands: Partner[] = [
+const defaultCameraBrands: Partner[] = [
   { name: "Hikvision" },
   { name: "Dahua" },
   { name: "Bosch", icon: "bosch" },
@@ -29,14 +35,15 @@ const cameraBrands: Partner[] = [
 ];
 
 function PartnerCard({ p }: { p: Partner }) {
+  const src = p.logoUrl ?? (p.icon ? `https://cdn.simpleicons.org/${p.icon}` : null);
   return (
     <div className="mx-4 flex h-20 w-44 shrink-0 items-center justify-center rounded-xl border border-byti-blue/15 bg-white px-4 shadow-[0_4px_20px_-8px_oklch(0.5_0.13_240/0.2)]">
-      {p.icon ? (
+      {src ? (
         <img
-          src={`https://cdn.simpleicons.org/${p.icon}`}
+          src={src}
           alt={`${p.name} logo`}
           loading="lazy"
-          className="max-h-10 max-w-[120px] object-contain"
+          className="max-h-12 max-w-[140px] object-contain"
         />
       ) : (
         <span className="text-base font-extrabold tracking-tight text-byti-blue-deep">
@@ -56,6 +63,7 @@ function Row({
   reverse?: boolean;
   duration?: number;
 }) {
+  if (items.length === 0) return null;
   const loop = [...items, ...items];
   return (
     <div className="relative group overflow-hidden">
@@ -76,6 +84,27 @@ function Row({
 }
 
 export function PartnersMarquee() {
+  const [customPartners, setCustomPartners] = useState<Partner[]>([]);
+
+  useEffect(() => {
+    supabase
+      .from("partners")
+      .select("name,logo_url,position")
+      .eq("active", true)
+      .order("position", { ascending: true })
+      .then(({ data }) => {
+        if (!data) return;
+        setCustomPartners(
+          data.map((row) => ({ name: row.name, logoUrl: row.logo_url ?? undefined })),
+        );
+      });
+  }, []);
+
+  // Si le compte a ajouté des partenaires, ils s'affichent sur la 1ère ligne et
+  // les marques par défaut continuent en dessous. Sinon, on garde 2 lignes de marques connues.
+  const row1 = customPartners.length > 0 ? customPartners : defaultPhoneBrands;
+  const row2 = customPartners.length > 0 ? [...defaultPhoneBrands, ...defaultCameraBrands] : defaultCameraBrands;
+
   return (
     <section
       aria-label="Nos partenaires"
@@ -97,8 +126,8 @@ export function PartnersMarquee() {
       </div>
 
       <div className="space-y-4">
-        <Row items={phoneBrands} duration={55} />
-        <Row items={cameraBrands} duration={65} reverse />
+        <Row items={row1} duration={55} />
+        <Row items={row2} duration={65} reverse />
       </div>
 
       <style>{`

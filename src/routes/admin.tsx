@@ -2,7 +2,7 @@ import { createFileRoute, Link, Outlet, useNavigate, useLocation } from "@tansta
 import { useEffect } from "react";
 import { useAuth } from "@/lib/auth";
 import { supabase } from "@/integrations/supabase/client";
-import { Loader2, LogOut, Package, Users, LayoutDashboard, ShoppingBag } from "lucide-react";
+import { Loader2, LogOut, Package, Users, LayoutDashboard, ShoppingBag, Handshake } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import bytiLogo from "@/assets/byti-logo.png";
 
@@ -48,6 +48,7 @@ function AdminLayout() {
     { to: "/admin", label: "Tableau de bord", icon: LayoutDashboard, exact: true },
     { to: "/admin/products", label: "Produits", icon: Package },
     { to: "/admin/orders", label: "Commandes", icon: ShoppingBag },
+    { to: "/admin/partners", label: "Partenaires", icon: Handshake },
     ...(isAdmin ? [{ to: "/admin/users" as const, label: "Personnel", icon: Users }] : []),
   ];
 
