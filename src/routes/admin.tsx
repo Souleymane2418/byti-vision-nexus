@@ -48,6 +48,7 @@ function AdminLayout() {
     { to: "/admin", label: "Tableau de bord", icon: LayoutDashboard, exact: true },
     { to: "/admin/products", label: "Produits", icon: Package },
     { to: "/admin/orders", label: "Commandes", icon: ShoppingBag },
+    { to: "/admin/partners", label: "Partenaires", icon: Handshake },
     ...(isAdmin ? [{ to: "/admin/users" as const, label: "Personnel", icon: Users }] : []),
   ];
 
