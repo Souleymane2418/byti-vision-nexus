@@ -2,7 +2,7 @@ import { createFileRoute, Link, Outlet, useNavigate, useLocation } from "@tansta
 import { useEffect } from "react";
 import { useAuth } from "@/lib/auth";
 import { supabase } from "@/integrations/supabase/client";
-import { Loader2, LogOut, Package, Users, LayoutDashboard, ShoppingBag } from "lucide-react";
+import { Loader2, LogOut, Package, Users, LayoutDashboard, ShoppingBag, Handshake } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import bytiLogo from "@/assets/byti-logo.png";
 
