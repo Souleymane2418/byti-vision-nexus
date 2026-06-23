@@ -33,10 +33,10 @@ function PartnerCard({ p }: { p: Partner }) {
     <div className="mx-4 flex h-20 w-44 shrink-0 items-center justify-center rounded-xl border border-byti-blue/15 bg-white px-4 shadow-[0_4px_20px_-8px_oklch(0.5_0.13_240/0.2)]">
       {p.icon ? (
         <img
-          src={`https://cdn.simpleicons.org/${p.icon}/1E50A8`}
+          src={`https://cdn.simpleicons.org/${p.icon}`}
           alt={`${p.name} logo`}
           loading="lazy"
-          className="max-h-10 max-w-[120px] object-contain opacity-80"
+          className="max-h-10 max-w-[120px] object-contain"
         />
       ) : (
         <span className="text-base font-extrabold tracking-tight text-byti-blue-deep">
