@@ -6,6 +6,7 @@ import { EnergyShowcase } from "@/components/EnergyShowcase";
 import { EcoCommitment } from "@/components/EcoCommitment";
 
 import { WhyChooseUs } from "@/components/WhyChooseUs";
+import { PartnersMarquee } from "@/components/PartnersMarquee";
 import { Footer } from "@/components/Footer";
 
 import heroElectronicsImg from "@/assets/hero-electronics-wide.jpg";
@@ -132,6 +133,7 @@ function HomePage() {
       <EnergyShowcase />
       <EcoCommitment />
       <WhyChooseUs />
+      <PartnersMarquee />
       <Footer />
     </div>
   );
