@@ -237,6 +237,7 @@ function FeaturedCard({ product }: { product: EnergyProduct }) {
 }
 
 function SmallCard({ product, index, large }: { product: EnergyProduct; index: number; large?: boolean }) {
+  const { t } = useTranslation();
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
