@@ -372,6 +372,7 @@ function BatteriesPage() {
       </section>
 
       {/* Featured products from showcase (reuses energy products) */}
+      <ManufacturingShowcase />
       <EnergyShowcase />
 
       {/* FAQ */}
