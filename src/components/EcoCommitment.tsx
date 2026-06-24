@@ -1,32 +1,24 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { Leaf, Wind, Recycle, Sun } from "lucide-react";
 import ecoLandscape from "@/assets/eco-landscape.jpg";
 import ecoLeaves from "@/assets/eco-leaves.jpg";
 import ecoHandsPlant from "@/assets/eco-hands-plant.jpg";
 
 const stats = [
-  { value: "−2 800 t", label: "CO₂ évités par an grâce à nos installations solaires", icon: Wind },
-  { value: "100 %", label: "Énergie propre produite par nos fermes photovoltaïques", icon: Sun },
-  { value: "+15 000", label: "Arbres protégés par la transition énergétique BYTI", icon: Leaf },
-  { value: "0", label: "Émissions directes pour nos batteries lithium nouvelle génération", icon: Recycle },
-];
+  { value: "−2 800 t", key: "co2", icon: Wind },
+  { value: "100 %", key: "solar", icon: Sun },
+  { value: "+15 000", key: "trees", icon: Leaf },
+  { value: "0", key: "emissions", icon: Recycle },
+] as const;
 
 const pillars = [
-  {
-    title: "Réduction des gaz à effet de serre",
-    description:
-      "Chaque kilowattheure produit par nos installations solaires remplace un kilowattheure issu de générateurs diesel. BYTI s'engage à réduire activement l'empreinte carbone de l'Afrique centrale.",
-    image: ecoLeaves,
-  },
-  {
-    title: "Préservation de l'écosystème",
-    description:
-      "Nos chantiers respectent la biodiversité locale. Nous concevons des infrastructures qui s'intègrent au paysage et protègent la faune, la flore et les ressources en eau.",
-    image: ecoHandsPlant,
-  },
-];
+  { key: "ghg", image: ecoLeaves },
+  { key: "ecosystem", image: ecoHandsPlant },
+] as const;
 
 export function EcoCommitment() {
+  const { t } = useTranslation();
   return (
     <section id="environnement" className="relative py-24 md:py-32 bg-background overflow-hidden">
       {/* Hero banner */}
