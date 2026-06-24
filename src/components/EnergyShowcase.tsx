@@ -100,13 +100,14 @@ export function EnergyShowcase() {
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-4 backdrop-blur-md"
                   style={{ background: "color-mix(in oklch, var(--byti-red) 80%, transparent)" }}>
                   <Zap className="h-3.5 w-3.5" />
-                  <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest">Installation & expertise</span>
+                  <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest">{t("energyShowcase.bannerBadge")}</span>
                 </div>
-                <h3 className="text-2xl md:text-4xl lg:text-5xl font-display font-bold leading-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]">
-                  Des équipes certifiées<br />sur le terrain
-                </h3>
+                <h3
+                  className="text-2xl md:text-4xl lg:text-5xl font-display font-bold leading-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]"
+                  dangerouslySetInnerHTML={{ __html: t("energyShowcase.bannerTitle") }}
+                />
                 <p className="mt-3 text-sm md:text-base text-white/90 max-w-md drop-shadow-[0_1px_6px_rgba(0,0,0,0.7)]">
-                  De l'étude technique à la mise en service, BYTI installe vos solutions solaires avec rigueur et savoir-faire.
+                  {t("energyShowcase.bannerDesc")}
                 </p>
               </div>
             </div>
