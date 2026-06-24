@@ -29,5 +29,104 @@
     "energy": "Energy",
     "tv": "Televisions",
     "btp": "Construction"
+  },
+  "cta": {
+    "learnMore": "Learn more",
+    "discover": "Discover",
+    "ourSolutions": "Our solutions",
+    "shop": "Visit shop",
+    "viewProducts": "View products",
+    "ourWork": "Our projects",
+    "quote": "Request a quote",
+    "contact": "Contact us",
+    "readMore": "Read more",
+    "discoverGroup": "Discover the group"
+  },
+  "carousel": {
+    "slide1": {
+      "badge": "Lithium Storage",
+      "title": "Zero outage",
+      "subtitle": "Batteries up to 3000 kWh, 6000 cycles guaranteed"
+    },
+    "slide2": {
+      "badge": "Construction & Materials",
+      "title": "Build strong",
+      "subtitle": "Bricks, paving stones and quality concrete"
+    },
+    "slide3": {
+      "badge": "Security",
+      "title": "Protect what matters",
+      "subtitle": "Smart, connected video surveillance"
+    },
+    "slide4": {
+      "badge": "Electronics",
+      "title": "Always connected",
+      "subtitle": "Smartphones, TVs & modern equipment"
+    }
+  },
+  "hero": {
+    "international": {
+      "title": "BYTI International",
+      "subtitle": "A multinational serving Africa and the world",
+      "description": "Present across multiple continents with offices in China, Dubai, Côte d'Ivoire and Cameroon, the BYTI group combines international power with local expertise to deliver technology, energy and industrial solutions that meet the highest global standards."
+    },
+    "electronics": {
+      "title": "Electronics & smart equipment",
+      "subtitle": "Modern technology for a connected lifestyle"
+    },
+    "security": {
+      "title": "Security & video surveillance",
+      "subtitle": "Protect your assets with smart, high-performance solutions"
+    },
+    "energy": {
+      "title": "Energy & lithium batteries",
+      "subtitle": "Reliable, durable and innovative energy solutions"
+    },
+    "smartphones": {
+      "title": "Smartphones & mobile phones",
+      "subtitle": "A wide range of latest-generation smartphones at unbeatable prices"
+    },
+    "tv": {
+      "title": "TVs & display solutions",
+      "subtitle": "An immersive, high-quality visual experience"
+    },
+    "btp": {
+      "title": "Construction — Bricks, Pavers & Concrete",
+      "subtitle": "Our construction division designs and produces bricks, interlocking pavers, blocks and ready-mix concrete for residential and industrial projects."
+    }
+  },
+  "aboutTeaser": {
+    "kicker": "About BYTI",
+    "title": "BYTI is a <accent>multinational</accent>",
+    "body": "BYTI is a multinational with operations across several continents, with offices in <b>China, Dubai, Abidjan and Cameroon</b>. Through its subsidiary <b>BYTI Technologie SARL</b>, the group delivers a complete offering in Central Africa: electronics, security, energy, televisions and construction materials, combining international standards with local roots."
+  },
+  "why": {
+    "kicker": "Our strengths",
+    "title": "Why <accent>choose us</accent>",
+    "items": {
+      "quality": { "title": "Guaranteed quality", "text": "Products and services meeting the highest international standards." },
+      "expertise": { "title": "Technical expertise", "text": "A team of highly qualified engineers and technicians." },
+      "innovation": { "title": "Innovative solutions", "text": "Cutting-edge technology tailored to modern needs." },
+      "reliability": { "title": "Reliability", "text": "Proven solutions and long-term support." },
+      "reactivity": { "title": "Responsiveness", "text": "Fast handling and exemplary customer service." },
+      "leadership": { "title": "Multi-sector leadership", "text": "A strong presence in technology, energy and construction." }
+    }
+  },
+  "eco": {
+    "badge": "Environmental commitment",
+    "title": "BYTI acts for the planet",
+    "subtitle": "Connect, build and innovate without compromising the future. Our energy solutions actively reduce greenhouse gas emissions and protect African ecosystems.",
+    "captionKicker": "Clean energy · Preserved ecosystem",
+    "captionTitle": "Where technology meets nature",
+    "stats": {
+      "co2": "CO₂ avoided per year thanks to our solar installations",
+      "solar": "Clean energy produced by our photovoltaic farms",
+      "trees": "Trees protected by BYTI's energy transition",
+      "emissions": "Direct emissions for our new-generation lithium batteries"
+    },
+    "pillars": {
+      "ghg": { "title": "Reducing greenhouse gases", "text": "Every kilowatt-hour from our solar plants replaces one from diesel generators. BYTI is committed to actively reducing Central Africa's carbon footprint." },
+      "ecosystem": { "title": "Preserving the ecosystem", "text": "Our worksites respect local biodiversity. We design infrastructure that blends into the landscape and protects wildlife, plants and water resources." }
+    }
   }
 }

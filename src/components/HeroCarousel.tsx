@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 import poster3 from "@/assets/hero-btp.jpg";
 import poster4 from "@/assets/hero-security.jpg";
@@ -9,66 +10,56 @@ import vid4 from "@/assets/hero-security-loop.mp4.asset.json";
 import vid5 from "@/assets/hero-electronics.mp4.asset.json";
 import bytiPowerwallImg from "@/assets/byti-powerwall.png";
 
-
 interface Slide {
+  key: "slide1" | "slide2" | "slide3" | "slide4";
   video?: string;
   image?: string;
   poster: string;
-  badge: string;
-  title: string;
-  subtitle: string;
-  cta1: { label: string; href: string };
-  cta2: { label: string; href: string };
-  objectPosition?: string;
+  cta1: { labelKey: string; href: string };
+  cta2: { labelKey: string; href: string };
+  contain?: boolean;
 }
 
 const slides: Slide[] = [
   {
+    key: "slide1",
     image: bytiPowerwallImg,
     poster: bytiPowerwallImg,
-    badge: "Stockage Lithium",
-    title: "Zéro coupure",
-    subtitle: "Batteries 3000 kWh, 6000 cycles garantis",
-    cta1: { label: "En savoir plus", href: "/batteries" },
-    cta2: { label: "Demander un devis", href: "#contact" },
-    objectPosition: "center center",
+    cta1: { labelKey: "cta.learnMore", href: "/batteries" },
+    cta2: { labelKey: "cta.quote", href: "#contact" },
+    contain: true,
   },
   {
+    key: "slide2",
     image: poster3,
     poster: poster3,
-    badge: "BTP & Matériaux",
-    title: "Bâtir solide",
-    subtitle: "Briques, pavés, béton de qualité",
-    cta1: { label: "Nos réalisations", href: "/btp" },
-    cta2: { label: "Nous contacter", href: "/#contact" },
+    cta1: { labelKey: "cta.ourWork", href: "/btp" },
+    cta2: { labelKey: "cta.contact", href: "/#contact" },
   },
   {
+    key: "slide3",
     video: vid4.url,
     poster: poster4,
-    badge: "Sécurité",
-    title: "Protéger l'essentiel",
-    subtitle: "Vidéosurveillance intelligente & connectée",
-    cta1: { label: "Nos solutions", href: "/securite" },
-    cta2: { label: "Nous contacter", href: "/#contact" },
+    cta1: { labelKey: "cta.ourSolutions", href: "/securite" },
+    cta2: { labelKey: "cta.contact", href: "/#contact" },
   },
   {
+    key: "slide4",
     video: vid5.url,
     poster: poster5,
-    badge: "Électronique",
-    title: "Toujours connecté",
-    subtitle: "Smartphones, TV & équipements modernes",
-    cta1: { label: "Voir la boutique", href: "/boutique" },
-    cta2: { label: "En savoir plus", href: "/electronique" },
+    cta1: { labelKey: "cta.shop", href: "/boutique" },
+    cta2: { labelKey: "cta.learnMore", href: "/electronique" },
   },
 ];
 
 export function HeroCarousel() {
+  const { t } = useTranslation();
   const [index, setIndex] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    const t = setInterval(() => setIndex((i) => (i + 1) % slides.length), 6000);
-    return () => clearInterval(t);
+    const tm = setInterval(() => setIndex((i) => (i + 1) % slides.length), 6000);
+    return () => clearInterval(tm);
   }, []);
 
   const slide = slides[index];
@@ -102,22 +93,18 @@ export function HeroCarousel() {
               playsInline
               preload="auto"
               className="absolute inset-0 w-full h-full object-cover"
-              style={{ objectPosition: slide.objectPosition ?? "center" }}
             />
           ) : (
             <img
               src={slide.image}
-              alt={slide.title}
-              className={`absolute inset-0 w-full h-full ${slide.title === "Zéro coupure" ? "object-contain bg-white" : "object-cover"}`}
-              style={{ objectPosition: slide.objectPosition ?? "center" }}
+              alt={t(`carousel.${slide.key}.title`)}
+              className={`absolute inset-0 w-full h-full ${slide.contain ? "object-contain bg-white" : "object-cover"}`}
             />
           )}
           <div className="absolute inset-0 bg-black/45" />
         </motion.div>
       </AnimatePresence>
 
-
-      {/* Content - bottom left */}
       <div className="absolute inset-0 z-10 flex items-end">
         <div className="w-full pl-[60px] pr-6 pb-20 max-w-4xl">
           <AnimatePresence mode="wait">
@@ -129,13 +116,13 @@ export function HeroCarousel() {
               transition={{ duration: 0.8, ease: [0.25, 0.1, 0, 1] }}
             >
               <span className="inline-block bg-white/10 backdrop-blur-sm text-white uppercase tracking-[0.2em] px-3 py-1.5 rounded-sm border border-white/15" style={{ fontSize: "11px" }}>
-                ★ {slide.badge}
+                ★ {t(`carousel.${slide.key}.badge`)}
               </span>
               <h1 className="mt-5 text-white font-extrabold leading-tight text-5xl md:text-6xl lg:text-7xl drop-shadow-[0_2px_20px_rgba(0,0,0,0.5)]">
-                {slide.title}
+                {t(`carousel.${slide.key}.title`)}
               </h1>
               <p className="mt-3 text-white/75 text-lg max-w-xl">
-                {slide.subtitle}
+                {t(`carousel.${slide.key}.subtitle`)}
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
@@ -143,13 +130,13 @@ export function HeroCarousel() {
                   className="inline-flex items-center justify-center px-8 py-3.5 rounded-md text-sm font-bold uppercase tracking-wide text-white transition-all hover:brightness-110"
                   style={{ backgroundColor: "#D42B2B" }}
                 >
-                  {slide.cta1.label}
+                  {t(slide.cta1.labelKey)}
                 </a>
                 <a
                   href={slide.cta2.href}
                   className="inline-flex items-center justify-center px-8 py-3.5 rounded-md text-sm font-bold uppercase tracking-wide text-white border-[1.5px] border-white/60 hover:bg-white/10 transition-all"
                 >
-                  {slide.cta2.label}
+                  {t(slide.cta2.labelKey)}
                 </a>
               </div>
             </motion.div>
@@ -157,7 +144,6 @@ export function HeroCarousel() {
         </div>
       </div>
 
-      {/* Indicators */}
       <div className="absolute bottom-8 left-0 right-0 z-20 flex items-center justify-center gap-6">
         <div className="flex items-center gap-2">
           {slides.map((_, i) => (
@@ -176,7 +162,6 @@ export function HeroCarousel() {
         </span>
       </div>
 
-      {/* Bottom fade */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/70 to-transparent z-[1]" />
     </section>
   );

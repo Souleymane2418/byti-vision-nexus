@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 import { Navbar } from "@/components/Navbar";
 import { HeroCarousel } from "@/components/HeroCarousel";
 import { HeroSection } from "@/components/HeroSection";
@@ -67,81 +68,35 @@ export const Route = createFileRoute("/")({
   }),
 });
 
-const heroSections = [
-  {
-    id: "byti-international",
-    image: heroInternationalImg,
-    poster: heroInternationalImg,
-    title: "BYTI International",
-    subtitle: "Une multinationale au service de l'Afrique et du monde",
-    description:
-      "Présent sur plusieurs continents avec des représentations en Chine, à Dubai, en Côte d'Ivoire et au Cameroun, le groupe BYTI conjugue puissance internationale et expertise locale pour livrer des solutions technologiques, énergétiques et industrielles à la hauteur des plus grands standards mondiaux.",
-    buttonText: "Découvrir le groupe",
-    buttonHref: "/a-propos",
-  },
-  {
-    id: "electronics",
-    image: heroElectronicsImg,
-    poster: heroElectronicsImg,
-    title: "Électronique & équipements intelligents",
-    subtitle: "Des technologies modernes pour un quotidien connecté",
-    buttonText: "Découvrir",
-    buttonHref: "/electronique",
-  },
-  {
-    id: "security",
-    video: heroSecurityVid.url,
-    poster: heroSecurityImg,
-    title: "Sécurité & vidéosurveillance",
-    subtitle: "Protégez vos biens avec des solutions intelligentes et performantes",
-    buttonText: "Nos solutions",
-    buttonHref: "/securite",
-  },
-  {
-    id: "energy",
-    image: heroEnergyImg,
-    poster: heroEnergyImg,
-    title: "Énergie & batteries lithium",
-    subtitle: "Des solutions énergétiques fiables, durables et innovantes",
-    buttonText: "En savoir plus",
-    buttonHref: "/batteries",
-  },
-  {
-    id: "smartphones",
-    image: heroSmartphonesImg,
-    poster: heroSmartphonesImg,
-    title: "Smartphones & téléphones",
-    subtitle: "Large gamme de smartphones dernière génération à des prix imbattables",
-    buttonText: "Voir la boutique",
-    buttonHref: "/boutique",
-  },
-  {
-    id: "tv",
-    video: heroTvVid.url,
-    poster: heroTvImg,
-    title: "Téléviseurs & solutions d'affichage",
-    subtitle: "Une expérience visuelle immersive et de haute qualité",
-    buttonText: "Voir produits",
-    buttonHref: "/televiseurs",
-  },
-  {
-    id: "btp",
-    image: heroBtpImg,
-    poster: heroBtpImg,
-    title: "BTP — Briques, Pavés & Béton",
-    subtitle: "Notre pôle BTP conçoit et fabrique briques, pavés autobloquants, parpaings et béton prêt à l'emploi pour vos chantiers résidentiels et industriels.",
-    buttonText: "Nos réalisations",
-    buttonHref: "/btp",
-  },
-];
+const heroConfig = [
+  { id: "byti-international", tKey: "international", image: heroInternationalImg, poster: heroInternationalImg, buttonKey: "cta.discoverGroup", buttonHref: "/a-propos", withDescription: true },
+  { id: "electronics", tKey: "electronics", image: heroElectronicsImg, poster: heroElectronicsImg, buttonKey: "cta.discover", buttonHref: "/electronique" },
+  { id: "security", tKey: "security", video: heroSecurityVid.url, poster: heroSecurityImg, buttonKey: "cta.ourSolutions", buttonHref: "/securite" },
+  { id: "energy", tKey: "energy", image: heroEnergyImg, poster: heroEnergyImg, buttonKey: "cta.learnMore", buttonHref: "/batteries" },
+  { id: "smartphones", tKey: "smartphones", image: heroSmartphonesImg, poster: heroSmartphonesImg, buttonKey: "cta.shop", buttonHref: "/boutique" },
+  { id: "tv", tKey: "tv", video: heroTvVid.url, poster: heroTvImg, buttonKey: "cta.viewProducts", buttonHref: "/televiseurs" },
+  { id: "btp", tKey: "btp", image: heroBtpImg, poster: heroBtpImg, buttonKey: "cta.ourWork", buttonHref: "/btp" },
+] as const;
 
 function HomePage() {
+  const { t } = useTranslation();
   return (
     <div className="bg-background min-h-screen">
       <Navbar />
       <HeroCarousel />
-      {heroSections.map((hero) => (
-        <HeroSection key={hero.id} {...hero} />
+      {heroConfig.map((hero) => (
+        <HeroSection
+          key={hero.id}
+          id={hero.id}
+          video={"video" in hero ? hero.video : undefined}
+          image={"image" in hero ? hero.image : undefined}
+          poster={hero.poster}
+          title={t(`hero.${hero.tKey}.title`)}
+          subtitle={t(`hero.${hero.tKey}.subtitle`)}
+          description={"withDescription" in hero && hero.withDescription ? t(`hero.${hero.tKey}.description`) : undefined}
+          buttonText={t(hero.buttonKey)}
+          buttonHref={hero.buttonHref}
+        />
       ))}
       <EnergyShowcase />
       <EcoCommitment />
@@ -152,3 +107,4 @@ function HomePage() {
     </div>
   );
 }
+
