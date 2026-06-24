@@ -109,21 +109,21 @@ export function PartnersMarquee() {
 
   return (
     <section
-      aria-label="Nos partenaires"
+      aria-label={t("partners.ariaLabel")}
       className="border-y border-byti-blue/10 bg-gradient-to-r from-white via-byti-blue/5 to-white py-12"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-8 text-center">
         <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-byti-blue/10">
           <span className="w-1.5 h-1.5 rounded-full bg-byti-red" />
           <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-byti-blue-deep">
-            Nos partenaires
+            {t("partners.kicker")}
           </span>
         </span>
         <h3 className="mt-3 text-2xl md:text-3xl font-bold text-byti-blue-deep">
-          Les grandes marques que nous distribuons
+          {t("partners.title")}
         </h3>
         <p className="mt-2 text-sm text-byti-blue-deep/60">
-          Smartphones &amp; téléphones · Caméras de surveillance
+          {t("partners.subtitle")}
         </p>
       </div>
 
