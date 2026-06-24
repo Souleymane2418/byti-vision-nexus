@@ -79,7 +79,7 @@ export function HeroSection({
           >
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/25 text-white text-[11px] md:text-xs font-semibold uppercase tracking-[0.25em] drop-shadow">
               <Globe2 className="h-3.5 w-3.5" />
-              {tHero("hero.globalBadge")}
+              BYTI — Leader international multi-secteur
             </span>
           </motion.div>
           <motion.div
@@ -92,6 +92,16 @@ export function HeroSection({
               {title}
             </h1>
           </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.15 }}
+            className="mt-6 mx-auto max-w-3xl text-base md:text-lg text-white/95 leading-relaxed drop-shadow-[0_1px_8px_rgba(0,0,0,0.7)]"
+          >
+            Présent en <span className="font-semibold">Chine, à Dubaï, en Côte d'Ivoire, au Cameroun et au Burkina Faso</span>, le groupe <span className="font-semibold">BYTI</span> s'impose comme un acteur de référence mondial. De l'énergie à l'électronique, de la sécurité au BTP, nous conjuguons puissance industrielle internationale et expertise locale pour livrer des solutions à la hauteur des plus grands standards.
+          </motion.p>
+
 
 
           <motion.p
