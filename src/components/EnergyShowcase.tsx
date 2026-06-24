@@ -273,7 +273,7 @@ function SmallCard({ product, index, large }: { product: EnergyProduct; index: n
             {product.name}
           </h4>
           <div className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-muted-foreground group-hover:text-[color:var(--byti-red)] group-hover:gap-2 transition-all">
-            Sur devis <ArrowRight className="h-3 w-3" />
+            {t("energyShowcase.quote")} <ArrowRight className="h-3 w-3" />
           </div>
         </div>
       </Link>
