@@ -1,8 +1,10 @@
 import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
+import { Trans, useTranslation } from "react-i18next";
 import { ArrowRight, Globe2 } from "lucide-react";
 
 export function AboutTeaser() {
+  const { t } = useTranslation();
   return (
     <section className="py-24 px-6 lg:px-8 relative overflow-hidden">
       <div className="max-w-5xl mx-auto">
@@ -18,22 +20,22 @@ export function AboutTeaser() {
               <Globe2 className="h-5 w-5 text-white" />
             </div>
             <span className="text-[10px] font-semibold tracking-[0.3em] uppercase text-muted-foreground">
-              À propos de BYTI
+              {t("aboutTeaser.kicker")}
             </span>
           </div>
 
           <h2 className="editorial-title text-3xl md:text-4xl mb-5">
-            BYTI est une <span className="editorial-accent">multinationale</span>
+            <Trans
+              i18nKey="aboutTeaser.title"
+              components={{ accent: <span className="editorial-accent" /> }}
+            />
           </h2>
 
           <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-3xl">
-            BYTI est une multinationale présente sur plusieurs continents, avec des
-            représentations en <span className="font-semibold text-foreground">Chine, Dubai,
-            Abidjan et au Cameroun</span>. À travers sa filiale{" "}
-            <span className="font-semibold text-foreground">BYTI Technologie SARL</span>,
-            le groupe déploie en Afrique Centrale une offre complète d'électronique, de
-            sécurité, d'énergie, de téléviseurs et de matériaux BTP, en combinant
-            standards internationaux et ancrage local.
+            <Trans
+              i18nKey="aboutTeaser.body"
+              components={{ b: <span className="font-semibold text-foreground" /> }}
+            />
           </p>
 
           <div className="mt-8">
@@ -41,7 +43,7 @@ export function AboutTeaser() {
               to="/a-propos"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-foreground text-background font-semibold text-sm hover:opacity-90 transition-opacity"
             >
-              Lire la suite
+              {t("cta.readMore")}
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>

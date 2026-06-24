@@ -1,16 +1,18 @@
 import { motion } from "framer-motion";
+import { Trans, useTranslation } from "react-i18next";
 import { Award, Wrench, Lightbulb, ShieldCheck, Clock, Layers } from "lucide-react";
 
 const reasons = [
-  { icon: Award, title: "Qualité garantie", description: "Des produits et services aux standards internationaux les plus élevés." },
-  { icon: Wrench, title: "Expertise technique", description: "Une équipe d'ingénieurs et techniciens hautement qualifiés." },
-  { icon: Lightbulb, title: "Solutions innovantes", description: "Technologies de pointe adaptées aux besoins modernes." },
-  { icon: ShieldCheck, title: "Fiabilité", description: "Des solutions éprouvées et un accompagnement durable." },
-  { icon: Clock, title: "Réactivité", description: "Une prise en charge rapide et un service client exemplaire." },
-  { icon: Layers, title: "Leadership multi-secteur", description: "Une présence forte dans la technologie, l'énergie et la construction." },
-];
+  { key: "quality", icon: Award },
+  { key: "expertise", icon: Wrench },
+  { key: "innovation", icon: Lightbulb },
+  { key: "reliability", icon: ShieldCheck },
+  { key: "reactivity", icon: Clock },
+  { key: "leadership", icon: Layers },
+] as const;
 
 export function WhyChooseUs() {
+  const { t } = useTranslation();
   return (
     <section className="py-32 px-6 lg:px-8 bg-secondary/30">
       <div className="max-w-7xl mx-auto">
@@ -22,17 +24,20 @@ export function WhyChooseUs() {
           className="text-center mb-16"
         >
           <span className="text-primary text-sm font-semibold tracking-widest uppercase">
-            Nos atouts
+            {t("why.kicker")}
           </span>
           <h2 className="mt-4 text-3xl md:text-5xl font-bold tracking-tight text-foreground">
-            Pourquoi <span className="gradient-text">nous choisir</span>
+            <Trans
+              i18nKey="why.title"
+              components={{ accent: <span className="gradient-text" /> }}
+            />
           </h2>
         </motion.div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {reasons.map((reason, i) => (
             <motion.div
-              key={reason.title}
+              key={reason.key}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -42,8 +47,12 @@ export function WhyChooseUs() {
               <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors duration-300">
                 <reason.icon className="w-7 h-7 text-primary" />
               </div>
-              <h3 className="text-lg font-semibold text-foreground mb-2">{reason.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{reason.description}</p>
+              <h3 className="text-lg font-semibold text-foreground mb-2">
+                {t(`why.items.${reason.key}.title`)}
+              </h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                {t(`why.items.${reason.key}.text`)}
+              </p>
             </motion.div>
           ))}
         </div>
