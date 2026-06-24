@@ -17,6 +17,12 @@ type EnergyProduct = {
 };
 
 export function EnergyShowcase() {
+  const { t } = useTranslation();
+  const stats = [
+    { icon: Sun, value: "100%", label: t("energyShowcase.stats.solar") },
+    { icon: Battery, value: "6000+", label: t("energyShowcase.stats.cycles") },
+    { icon: Zap, value: "3000 kWh", label: t("energyShowcase.stats.capacity") },
+  ];
   const [products, setProducts] = useState<EnergyProduct[]>([]);
 
   useEffect(() => {
