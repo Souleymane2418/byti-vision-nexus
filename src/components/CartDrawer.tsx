@@ -3,8 +3,10 @@ import { Button } from "@/components/ui/button";
 import { useCart, formatPrice } from "@/lib/cart";
 import { Minus, Plus, Trash2, ShoppingBag } from "lucide-react";
 import { Link } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 
 export function CartDrawer() {
+  const { t } = useTranslation();
   const { items, open, setOpen, setQty, remove, total, count } = useCart();
 
   return (
