@@ -1,4 +1,7 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
+import { Globe2 } from "lucide-react";
+
 
 interface HeroSectionProps {
   video?: string;
