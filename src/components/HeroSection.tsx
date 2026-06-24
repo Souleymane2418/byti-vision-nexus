@@ -12,9 +12,11 @@ interface HeroSectionProps {
   secondaryButton?: { text: string; href: string };
   id?: string;
   priority?: boolean;
+  containImage?: boolean;
 }
 
-const containImageTitles = new Set(["Énergie & batteries lithium"]);
+const containByImageSrcKeyword = "powerwall";
+
 
 export function HeroSection({
   video,
