@@ -78,11 +78,11 @@ export function CartDrawer() {
 
             <div className="border-t border-border pt-4 space-y-3">
               <div className="flex justify-between font-display text-lg">
-                <span>Total</span>
+                <span>{t("cart.total")}</span>
                 <span className="text-primary font-bold">{formatPrice(total)}</span>
               </div>
               <Button asChild className="w-full" size="lg" onClick={() => setOpen(false)}>
-                <Link to="/checkout">Passer la commande</Link>
+                <Link to="/checkout">{t("cart.checkout")}</Link>
               </Button>
             </div>
           </>
