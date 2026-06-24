@@ -174,7 +174,7 @@ export function EnergyShowcase() {
             to="/boutique"
             className="btn-byti-red inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-bold tracking-wide uppercase"
           >
-            Voir toute la gamme énergie
+            {t("energyShowcase.cta")}
             <ArrowRight className="h-4 w-4" />
           </Link>
         </motion.div>
