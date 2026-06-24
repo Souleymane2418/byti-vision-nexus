@@ -16,6 +16,7 @@ import heroEnergyImg from "@/assets/byti-powerwall.png";
 import heroTvImg from "@/assets/hero-tv.jpg";
 import heroBtpImg from "@/assets/hero-btp.jpg";
 import heroSmartphonesImg from "@/assets/hero-smartphones.jpg";
+import bytiMapImg from "@/assets/byti-map-1.png.asset.json";
 
 import heroSecurityVid from "@/assets/hero-security-loop.mp4.asset.json";
 import heroTvVid from "@/assets/hero-tv-loop.mp4.asset.json";
@@ -67,6 +68,17 @@ export const Route = createFileRoute("/")({
 });
 
 const heroSections = [
+  {
+    id: "byti-international",
+    image: bytiMapImg.url,
+    poster: bytiMapImg.url,
+    title: "BYTI International",
+    subtitle: "Une multinationale au service de l'Afrique et du monde",
+    description:
+      "Présent sur plusieurs continents avec des représentations en Chine, à Dubai, en Côte d'Ivoire et au Cameroun, le groupe BYTI conjugue puissance internationale et expertise locale pour livrer des solutions technologiques, énergétiques et industrielles à la hauteur des plus grands standards mondiaux.",
+    buttonText: "Découvrir le groupe",
+    buttonHref: "/a-propos",
+  },
   {
     id: "electronics",
     image: heroElectronicsImg,
