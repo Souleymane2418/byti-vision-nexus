@@ -70,6 +70,17 @@ export function HeroSection({
       <div className="relative z-10 flex items-center justify-center h-full px-6">
         <div className="max-w-5xl text-center">
           <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="mb-5 flex justify-center"
+          >
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/25 text-white text-[11px] md:text-xs font-semibold uppercase tracking-[0.25em] drop-shadow">
+              <Globe2 className="h-3.5 w-3.5" />
+              {tHero("hero.globalBadge")}
+            </span>
+          </motion.div>
+          <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             
@@ -79,6 +90,7 @@ export function HeroSection({
               {title}
             </h1>
           </motion.div>
+
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}
