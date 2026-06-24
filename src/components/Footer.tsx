@@ -88,7 +88,7 @@ export function Footer() {
           {/* Contact */}
           <div>
             <h4 className="text-sm font-bold text-byti-yellow tracking-wide uppercase mb-4">
-              Contact
+              {t("footer.contact")}
             </h4>
             <ul className="space-y-2 text-sm text-white/85 mb-6">
               <li>
@@ -104,7 +104,7 @@ export function Footer() {
               </li>
             </ul>
             <h4 className="text-sm font-bold text-byti-yellow tracking-wide uppercase mb-3">
-              Réseaux sociaux
+              {t("footer.social")}
             </h4>
             <SocialLinksCompact />
           </div>
@@ -116,10 +116,10 @@ export function Footer() {
               <MapPin className="mt-1 h-5 w-5 text-byti-yellow shrink-0" />
               <div>
                 <h4 className="text-sm font-bold text-byti-yellow tracking-wide uppercase mb-3">
-                  Plan d'emplacement
+                  {t("footer.locationTitle")}
                 </h4>
                 <p className="text-sm text-white/75 leading-relaxed">
-                  BYTI Technologie International — Av. Kwame Nkrumah, Ouagadougou.
+                  {t("footer.locationAddress")}
                 </p>
                 <p className="mt-3 text-xs text-white/55">12.367392, -1.519113</p>
                 <a
@@ -128,7 +128,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className="mt-4 inline-flex text-sm font-semibold text-byti-yellow hover:text-white transition-colors"
                 >
-                  Obtenir l'itinéraire →
+                  {t("footer.directions")}
                 </a>
               </div>
             </div>
