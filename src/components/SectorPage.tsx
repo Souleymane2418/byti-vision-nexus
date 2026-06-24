@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import type { ReactNode } from "react";
 import { ArrowRight, CheckCircle2, type LucideIcon } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -13,6 +14,7 @@ export interface SectorPageProps {
   features: { icon: LucideIcon; title: string; text: string }[];
   offerings: { title: string; text: string }[];
   ctaPrimary?: { label: string; href: string };
+  showcase?: ReactNode;
 }
 
 export function SectorPage({
@@ -25,6 +27,7 @@ export function SectorPage({
   features,
   offerings,
   ctaPrimary,
+  showcase,
 }: SectorPageProps) {
   return (
     <div className="bg-background min-h-screen">
@@ -140,6 +143,8 @@ export function SectorPage({
           ))}
         </div>
       </section>
+
+      {showcase}
 
       {/* Final CTA */}
       <section className="py-20 px-6 lg:px-8">
