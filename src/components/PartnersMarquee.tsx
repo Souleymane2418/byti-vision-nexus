@@ -85,6 +85,7 @@ function Row({
 }
 
 export function PartnersMarquee() {
+  const { t } = useTranslation();
   const [customPartners, setCustomPartners] = useState<Partner[]>([]);
 
   useEffect(() => {
