@@ -30,7 +30,9 @@ export function HeroSection({
   secondaryButton,
   id,
   priority = false,
+  containImage,
 }: HeroSectionProps) {
+  const useContain = containImage ?? (typeof image === "string" && image.toLowerCase().includes(containByImageSrcKeyword));
   return (
     <section
       id={id}
@@ -51,7 +53,7 @@ export function HeroSection({
         <img
           src={image}
           alt={title}
-          className={`absolute inset-0 w-full h-full object-center ${containImageTitles.has(title) ? "object-contain bg-white" : "object-cover"}`}
+          className={`absolute inset-0 w-full h-full object-center ${useContain ? "object-contain bg-white" : "object-cover"}`}
         />
       )}
       {/* Lighter overlay so the video stays clearly visible while text remains readable */}
