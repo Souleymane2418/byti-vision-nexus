@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Smartphone, Cpu, Wifi, ShieldCheck, Zap, Headphones } from "lucide-react";
 import { SectorPage } from "@/components/SectorPage";
+import { ElectronicsShowcase } from "@/components/ElectronicsShowcase";
 import heroImg from "@/assets/hero-electronics-wide.jpg";
 
 export const Route = createFileRoute("/electronique")({
@@ -27,6 +28,7 @@ export const Route = createFileRoute("/electronique")({
         { title: "Informatique & bureautique", text: "Ordinateurs portables, imprimantes, périphériques et consommables professionnels." },
         { title: "Smart home", text: "Ampoules connectées, prises intelligentes, hubs domotiques et systèmes audio multi-pièces." },
       ]}
+      showcase={<ElectronicsShowcase />}
     />
   ),
   head: () => ({
