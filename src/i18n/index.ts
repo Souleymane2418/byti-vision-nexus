@@ -23,6 +23,7 @@ if (!i18n.isInitialized) {
     lng: "fr",
     fallbackLng: "fr",
     interpolation: { escapeValue: false },
+    returnObjects: true,
     react: { useSuspense: false },
   });
 }
