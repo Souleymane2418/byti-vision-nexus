@@ -16,7 +16,7 @@ import heroEnergyImg from "@/assets/byti-powerwall.png";
 import heroTvImg from "@/assets/hero-tv.jpg";
 import heroBtpImg from "@/assets/hero-btp.jpg";
 import heroSmartphonesImg from "@/assets/hero-smartphones.jpg";
-import bytiMapImg from "@/assets/byti-map-1.png.asset.json";
+import heroInternationalImg from "@/assets/hero-byti-international.jpg";
 
 import heroSecurityVid from "@/assets/hero-security-loop.mp4.asset.json";
 import heroTvVid from "@/assets/hero-tv-loop.mp4.asset.json";
@@ -70,8 +70,8 @@ export const Route = createFileRoute("/")({
 const heroSections = [
   {
     id: "byti-international",
-    image: bytiMapImg.url,
-    poster: bytiMapImg.url,
+    image: heroInternationalImg,
+    poster: heroInternationalImg,
     title: "BYTI International",
     subtitle: "Une multinationale au service de l'Afrique et du monde",
     description:
