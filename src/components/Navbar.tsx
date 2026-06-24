@@ -2,22 +2,25 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ShoppingCart } from "lucide-react";
 import { Link } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 import { useCart } from "@/lib/cart";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import bytiLogo from "@/assets/byti-logo.png";
 
-const navLinks = [
-  { label: "Accueil", href: "/", hash: "" },
-  { label: "Boutique", href: "/boutique", hash: "" },
-  { label: "Activités", href: "/activites", hash: "" },
-  { label: "À propos", href: "/a-propos", hash: "" },
-  { label: "Projets", href: "/projets", hash: "" },
-  { label: "Contact", href: "/contact", hash: "" },
-];
-
 export function Navbar() {
+  const { t } = useTranslation();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const { count, setOpen } = useCart();
+
+  const navLinks = [
+    { label: t("nav.home"), href: "/" as const },
+    { label: t("nav.shop"), href: "/boutique" as const },
+    { label: t("nav.activities"), href: "/activites" as const },
+    { label: t("nav.about"), href: "/a-propos" as const },
+    { label: t("nav.projects"), href: "/projets" as const },
+    { label: t("nav.contact"), href: "/contact" as const },
+  ];
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -51,22 +54,22 @@ export function Navbar() {
           </div>
         </Link>
 
-        <div className="hidden md:flex items-center gap-7">
+        <div className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
             <Link
-              key={link.label}
+              key={link.href}
               to={link.href}
-              hash={link.hash || undefined}
               className="text-sm font-medium text-white/85 hover:text-byti-yellow transition-colors duration-300 tracking-wide relative group"
             >
               {link.label}
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-byti-yellow group-hover:w-full transition-all duration-300" />
             </Link>
           ))}
+          <LanguageSwitcher />
           <button
             onClick={() => setOpen(true)}
             className="relative text-white hover:text-byti-red transition-colors p-2"
-            aria-label="Open cart"
+            aria-label={t("nav.cart")}
           >
             <ShoppingCart size={20} />
             {count > 0 && (
@@ -78,10 +81,11 @@ export function Navbar() {
         </div>
 
         <div className="md:hidden flex items-center gap-2">
+          <LanguageSwitcher />
           <button
             onClick={() => setOpen(true)}
             className="relative text-white p-2"
-            aria-label="Open cart"
+            aria-label={t("nav.cart")}
           >
             <ShoppingCart size={22} />
             {count > 0 && (
@@ -93,7 +97,7 @@ export function Navbar() {
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="text-white p-2"
-            aria-label="Toggle menu"
+            aria-label={t("nav.menu")}
           >
             {menuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -111,9 +115,8 @@ export function Navbar() {
             <div className="px-6 py-4 space-y-1">
               {navLinks.map((link) => (
                 <Link
-                  key={link.label}
+                  key={link.href}
                   to={link.href}
-                  hash={link.hash || undefined}
                   onClick={() => setMenuOpen(false)}
                   className="block py-3 text-white hover:text-byti-red transition-colors border-b border-white/10 last:border-0"
                 >
