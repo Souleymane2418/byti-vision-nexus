@@ -35,7 +35,9 @@ export function HeroSection({
   priority = false,
   containImage,
 }: HeroSectionProps) {
+  const { t: tHero } = useTranslation();
   const useContain = containImage ?? (typeof image === "string" && image.toLowerCase().includes(containByImageSrcKeyword));
+
   return (
     <section
       id={id}
