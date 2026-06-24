@@ -227,7 +227,7 @@ function FeaturedCard({ product }: { product: EnergyProduct }) {
               </p>
             )}
             <div className="inline-flex items-center gap-2 text-sm font-semibold group-hover:gap-3 transition-all">
-              Découvrir <ArrowRight className="h-4 w-4" />
+              {t("energyShowcase.discover")} <ArrowRight className="h-4 w-4" />
             </div>
           </div>
         </div>
