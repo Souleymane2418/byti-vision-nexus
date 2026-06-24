@@ -118,9 +118,13 @@ export function HeroCarousel() {
               <span className="inline-block bg-white/10 backdrop-blur-sm text-white uppercase tracking-[0.2em] px-3 py-1.5 rounded-sm border border-white/15" style={{ fontSize: "11px" }}>
                 ★ {t(`carousel.${slide.key}.badge`)}
               </span>
-              <h1 className="mt-5 text-white font-extrabold leading-tight text-5xl md:text-6xl lg:text-7xl drop-shadow-[0_2px_20px_rgba(0,0,0,0.5)]">
+              <p className="mt-4 text-white/85 text-sm md:text-base font-medium tracking-wide max-w-xl drop-shadow">
+                <span className="font-bold text-white">BYTI</span> — Leader international, présent en Chine, Dubaï, Côte d'Ivoire, Cameroun et Burkina Faso.
+              </p>
+              <h1 className="mt-3 text-white font-extrabold leading-tight text-5xl md:text-6xl lg:text-7xl drop-shadow-[0_2px_20px_rgba(0,0,0,0.5)]">
                 {t(`carousel.${slide.key}.title`)}
               </h1>
+
               <p className="mt-3 text-white/75 text-lg max-w-xl">
                 {t(`carousel.${slide.key}.subtitle`)}
               </p>
