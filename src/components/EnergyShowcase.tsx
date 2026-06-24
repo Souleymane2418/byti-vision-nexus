@@ -259,7 +259,7 @@ function SmallCard({ product, index, large }: { product: EnergyProduct; index: n
           {product.featured && (
             <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider"
               style={{ background: "var(--byti-blue)", color: "white" }}>
-              Top
+              {t("energyShowcase.top")}
             </div>
           )}
         </div>
