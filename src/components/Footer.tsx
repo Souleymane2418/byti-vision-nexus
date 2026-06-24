@@ -170,13 +170,13 @@ export function Footer() {
         <div className="section-divider mt-12 mb-8" />
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-          <p className="text-white/50">&copy; {new Date().getFullYear()} BYTI Technologie SARL. Tous droits réservés.</p>
-          <p className="text-byti-yellow font-bold tracking-wide">Connecter · Construire · Innover</p>
+          <p className="text-white/50">{t("footer.copyright", { year: new Date().getFullYear() })}</p>
+          <p className="text-byti-yellow font-bold tracking-wide">{t("footer.motto")}</p>
         </div>
 
         <div className="mt-6 text-center">
           <p className="text-[11px] text-white/40">
-            Site web développé par{" "}
+            {t("footer.developedBy")}{" "}
             <a
               href="https://www.ds-si.com"
               target="_blank"
