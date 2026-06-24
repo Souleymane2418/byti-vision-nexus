@@ -43,26 +43,10 @@
     "discoverGroup": "Discover the group"
   },
   "carousel": {
-    "slide1": {
-      "badge": "Lithium Storage",
-      "title": "Zero outage",
-      "subtitle": "Batteries up to 3000 kWh, 6000 cycles guaranteed"
-    },
-    "slide2": {
-      "badge": "Construction & Materials",
-      "title": "Build strong",
-      "subtitle": "Bricks, paving stones and quality concrete"
-    },
-    "slide3": {
-      "badge": "Security",
-      "title": "Protect what matters",
-      "subtitle": "Smart, connected video surveillance"
-    },
-    "slide4": {
-      "badge": "Electronics",
-      "title": "Always connected",
-      "subtitle": "Smartphones, TVs & modern equipment"
-    }
+    "slide1": { "badge": "Lithium Storage", "title": "Zero outage", "subtitle": "Batteries up to 3000 kWh, 6000 cycles guaranteed" },
+    "slide2": { "badge": "Construction & Materials", "title": "Build strong", "subtitle": "Bricks, paving stones and quality concrete" },
+    "slide3": { "badge": "Security", "title": "Protect what matters", "subtitle": "Smart, connected video surveillance" },
+    "slide4": { "badge": "Electronics", "title": "Always connected", "subtitle": "Smartphones, TVs & modern equipment" }
   },
   "hero": {
     "international": {
@@ -70,30 +54,12 @@
       "subtitle": "A multinational serving Africa and the world",
       "description": "Present across multiple continents with offices in China, Dubai, Côte d'Ivoire and Cameroon, the BYTI group combines international power with local expertise to deliver technology, energy and industrial solutions that meet the highest global standards."
     },
-    "electronics": {
-      "title": "Electronics & smart equipment",
-      "subtitle": "Modern technology for a connected lifestyle"
-    },
-    "security": {
-      "title": "Security & video surveillance",
-      "subtitle": "Protect your assets with smart, high-performance solutions"
-    },
-    "energy": {
-      "title": "Energy & lithium batteries",
-      "subtitle": "Reliable, durable and innovative energy solutions"
-    },
-    "smartphones": {
-      "title": "Smartphones & mobile phones",
-      "subtitle": "A wide range of latest-generation smartphones at unbeatable prices"
-    },
-    "tv": {
-      "title": "TVs & display solutions",
-      "subtitle": "An immersive, high-quality visual experience"
-    },
-    "btp": {
-      "title": "Construction — Bricks, Pavers & Concrete",
-      "subtitle": "Our construction division designs and produces bricks, interlocking pavers, blocks and ready-mix concrete for residential and industrial projects."
-    }
+    "electronics": { "title": "Electronics & smart equipment", "subtitle": "Modern technology for a connected lifestyle" },
+    "security": { "title": "Security & video surveillance", "subtitle": "Protect your assets with smart, high-performance solutions" },
+    "energy": { "title": "Energy & lithium batteries", "subtitle": "Reliable, durable and innovative energy solutions" },
+    "smartphones": { "title": "Smartphones & mobile phones", "subtitle": "A wide range of latest-generation smartphones at unbeatable prices" },
+    "tv": { "title": "TVs & display solutions", "subtitle": "An immersive, high-quality visual experience" },
+    "btp": { "title": "Construction — Bricks, Pavers & Concrete", "subtitle": "Our construction division designs and produces bricks, interlocking pavers, blocks and ready-mix concrete for residential and industrial projects." }
   },
   "aboutTeaser": {
     "kicker": "About BYTI",
@@ -128,5 +94,239 @@
       "ghg": { "title": "Reducing greenhouse gases", "text": "Every kilowatt-hour from our solar plants replaces one from diesel generators. BYTI is committed to actively reducing Central Africa's carbon footprint." },
       "ecosystem": { "title": "Preserving the ecosystem", "text": "Our worksites respect local biodiversity. We design infrastructure that blends into the landscape and protects wildlife, plants and water resources." }
     }
+  },
+  "sectorCommon": {
+    "discover": "Discover",
+    "quote": "Request a quote",
+    "whyByti": "★ Why BYTI",
+    "expertiseTitle": "Complete",
+    "expertiseAccent": "expertise",
+    "offerTitle": "Our",
+    "offerAccent": "offering",
+    "ctaTitle": "Let's talk about your project",
+    "ctaDesc": "Our BYTI experts will help you choose the most suitable solution for your needs and budget.",
+    "ctaButton": "Contact us"
+  },
+  "sectors": {
+    "btp": {
+      "badge": "Construction — Bricks, pavers & concrete",
+      "title": "Build",
+      "accent": "strong",
+      "subtitle": "Our construction division produces bricks, interlocking pavers, blocks and ready-mix concrete for residential, commercial and industrial projects.",
+      "features": [
+        { "title": "Bricks & blocks", "text": "Manufactured to current standards, in standard and custom sizes to match your plans." },
+        { "title": "Interlocking pavers", "text": "Decorative and technical pavers for driveways, parking lots, plazas and public spaces." },
+        { "title": "Ready-mix concrete", "text": "On-site production, mixer-truck delivery and formulations tailored to each job." },
+        { "title": "Site delivery", "text": "Clean logistics and scheduling aligned with your construction deadlines." },
+        { "title": "Industrial volumes", "text": "Production capacity for major projects: housing developments, schools, public infrastructure." },
+        { "title": "Technical advice", "text": "Our engineers support your teams with sizing and implementation." }
+      ],
+      "offerings": [
+        { "title": "Individuals & self-builders", "text": "Bricks, blocks and pavers for single-family homes, fences and outdoor landscaping." },
+        { "title": "Construction contractors", "text": "Regular supply, preferential rates and on-site storage available." },
+        { "title": "Major projects", "text": "Developments, infrastructure, public buildings: tailored production capacity and logistics." },
+        { "title": "Custom concrete", "text": "Formulations by required strength, mixer-truck delivery and pumping when needed." }
+      ]
+    },
+    "electronique": {
+      "badge": "Electronics & connected devices",
+      "title": "Smart",
+      "accent": "electronics",
+      "subtitle": "Smartphones, accessories and connected equipment for consumers and businesses. Strict selection, manufacturer warranty, local after-sales service.",
+      "ctaLabel": "Visit the shop",
+      "features": [
+        { "title": "Leading brands", "text": "Authorized distributor of major international brands with guaranteed authentic products." },
+        { "title": "Connected objects", "text": "Smart home, audio, mobile accessories and IoT solutions for consumers and businesses." },
+        { "title": "Warranty & service", "text": "Local after-sales service, repair and technical support by our certified teams." },
+        { "title": "Fast delivery", "text": "Stock available and express delivery in all major cities." },
+        { "title": "Personalized advice", "text": "Our experts guide you toward the gear that fits your use and budget." },
+        { "title": "Pro equipment", "text": "Mobile fleets, IT inventories, tailored contracts for businesses." }
+      ],
+      "offerings": [
+        { "title": "Smartphones & tablets", "text": "Wide catalog: entry-level, mid-range and premium from the top brands." },
+        { "title": "Audio & accessories", "text": "Headphones, wireless earbuds, chargers, cases, stands and all useful accessories." },
+        { "title": "IT & office", "text": "Laptops, printers, peripherals and professional consumables." },
+        { "title": "Smart home", "text": "Connected bulbs, smart plugs, home automation hubs and multi-room audio systems." }
+      ]
+    },
+    "securite": {
+      "badge": "Security & video surveillance",
+      "title": "Protect",
+      "accent": "what matters",
+      "subtitle": "Smart video surveillance, access control and connected alarms. Solutions tailored to homes, businesses and industrial sites.",
+      "features": [
+        { "title": "HD & IP cameras", "text": "Indoor, outdoor, PTZ dome cameras with night vision and smart detection." },
+        { "title": "Remote monitoring", "text": "Real-time access via smartphone, instant alerts and secure cloud recording." },
+        { "title": "Connected alarms", "text": "Intrusion sensors, door/window sensors, sirens and instant notifications." },
+        { "title": "Access control", "text": "Smart locks, badges, biometrics and centralized permission management." },
+        { "title": "Certified installation", "text": "Installation, configuration and training by our certified technicians." },
+        { "title": "Mobile app", "text": "Control your entire setup from a single intuitive application." }
+      ],
+      "offerings": [
+        { "title": "Residential", "text": "Home/villa pack: 2 to 8 cameras, alarm, mobile app and turnkey installation." },
+        { "title": "Shops & offices", "text": "Multi-zone surveillance, employee access control and weekly security reporting." },
+        { "title": "Industrial sites", "text": "High-capacity video surveillance, alarm/fire integration and 24/7 monitoring." },
+        { "title": "Maintenance & monitoring", "text": "Maintenance contracts, firmware updates and fast response to incidents." }
+      ]
+    },
+    "televiseurs": {
+      "badge": "Televisions & display",
+      "title": "An immersive",
+      "accent": "experience",
+      "subtitle": "LED, QLED and OLED televisions, professional digital signage displays. From living room to showroom, BYTI equips your spaces.",
+      "ctaLabel": "Visit the shop",
+      "features": [
+        { "title": "All sizes", "text": "From 32\" for the bedroom to 85\" for the living room or conference room." },
+        { "title": "4K & QLED", "text": "Ultra-high-definition picture, deep contrast and vivid colors." },
+        { "title": "Immersive sound", "text": "Compatible with soundbars, Dolby Atmos and home theater systems." },
+        { "title": "Smart TV", "text": "Built-in streaming apps, screen mirroring and voice control." },
+        { "title": "Pro installation", "text": "Wall mounting, picture calibration and source setup by our technicians." },
+        { "title": "Digital signage", "text": "Digital signage solutions for shops, restaurants, lobbies and showrooms." }
+      ],
+      "offerings": [
+        { "title": "Consumer TVs", "text": "LED, QLED and OLED catalog from the top brands. Manufacturer warranty included." },
+        { "title": "Professional displays", "text": "High-brightness screens for storefronts, signage panels and meeting rooms." },
+        { "title": "Installation & accessories", "text": "Wall mounts, soundbars, HDMI cabling and on-site setup." },
+        { "title": "Home cinema pack", "text": "TV + sound + installation to turn your living room into a true screening room." }
+      ]
+    }
+  },
+  "services": {
+    "kicker": "★ Our activities",
+    "titleStart": "Solutions for",
+    "titleAccent": "every sector",
+    "items": {
+      "electronics": { "title": "Electronics", "description": "Smartphones, accessories and smart devices" },
+      "security": { "title": "Security", "description": "Video surveillance and monitoring solutions" },
+      "energy": { "title": "Energy", "description": "Lithium batteries and energy solutions" },
+      "tv": { "title": "Televisions", "description": "HD screens and display solutions" },
+      "btp": { "title": "Construction & Materials", "description": "Manufacturing of bricks, pavers, blocks and quality concrete" }
+    }
+  },
+  "projects": {
+    "kicker": "★ Achievements",
+    "titleStart": "Our recent",
+    "titleAccent": "projects",
+    "titleEnd": "",
+    "categories": { "security": "Security", "energy": "Energy", "btp": "Construction", "electronics": "Electronics" },
+    "items": [
+      { "title": "Video surveillance installation" },
+      { "title": "Solar energy deployment" },
+      { "title": "Bricks, pavers & concrete production" },
+      { "title": "Technology equipment" }
+    ]
+  },
+  "about": {
+    "kicker": "★ A brand that travels",
+    "titleStart": "Inside the",
+    "titleAccent": "BYTI sphere",
+    "p1Part1": "BYTI Technologie SARL",
+    "p1Part2": "is based in Africa and the Middle East with offices in",
+    "p1Part3": "China, Dubai, Abidjan, Cameroon...",
+    "p1Part4": "This international presence allows us to ensure quality sourcing, strong logistics support and technology standards that match the world's leading brands.",
+    "p2Part1": "We combine this global reach with a",
+    "p2Part2": "100% local identity",
+    "p2Part3": "in Burkina Faso and West Africa, delivering a customer experience close to the ground and tailored to African realities.",
+    "brandKicker": "Brand identity",
+    "brandName": "THE BYTI SPHERE",
+    "brandTagline": "One brand, multiple areas of expertise",
+    "stats": {
+      "international": { "value": "International", "label": "Multi-continent presence" },
+      "telecom": { "value": "Telecom", "label": "Messaging & communication" },
+      "network": { "value": "Networks", "label": "Roads & interconnections" },
+      "digital": { "value": "Digital", "label": "Customer transformation" }
+    },
+    "ecosystemKicker": "Our ecosystem",
+    "ecosystemTitleStart": "One brand, international",
+    "ecosystemTitleAccent": "synergies",
+    "ecosystemDesc": "We deploy a complementary portfolio locally: electronics, security, energy, televisions and construction materials. Our approach draws on the international standards of the BYTI brand while staying rooted in African realities.",
+    "synergies": [
+      { "zone": "Burkina Faso · Cameroon · Côte d'Ivoire", "hubs": "BYTI Technologie SARL — local operations" },
+      { "zone": "China · Dubai", "hubs": "BYTI offices — sourcing & partnerships" },
+      { "zone": "Exchanges", "hubs": "Shared sourcing, expertise and quality standards" },
+      { "zone": "Ambition", "hubs": "Make the BYTI brand shine across Africa" }
+    ]
+  },
+  "contactSection": {
+    "kicker": "Contact",
+    "titleStart": "Let's talk about your",
+    "titleAccent": "project",
+    "phone": "Phone",
+    "whatsapp": "WhatsApp",
+    "sendMsg": "Send a message",
+    "social": "Social media",
+    "email": "Email",
+    "address": "Address",
+    "addressValue": "Av. Kwame Nkrumah, Ouagadougou, Burkina Faso",
+    "form": {
+      "name": "Name",
+      "namePh": "Your name",
+      "email": "Email",
+      "emailPh": "your@email.com",
+      "subject": "Subject",
+      "subjectPh": "Subject of your message",
+      "message": "Message",
+      "messagePh": "Your message...",
+      "send": "Send message"
+    },
+    "mapKicker": "Location",
+    "mapTitleStart": "How to",
+    "mapTitleAccent": "find us",
+    "mapDesc": "BYTI Technologie International — Av. Kwame Nkrumah, Ouagadougou. Follow the route from the United Nations Roundabout.",
+    "directions": "Get directions →"
+  },
+  "manufacturing": {
+    "kicker": "Our partner factories",
+    "titleStart": "The power of",
+    "titleAccent": "lithium manufacturing",
+    "desc": "BYTI relies on a network of cutting-edge gigafactories in China to produce LiFePO₄ batteries for domestic and industrial use, delivered across Africa.",
+    "items": [
+      { "badge": "Gigafactory", "title": "Automated assembly lines", "text": "Robotic lines produce high-density LiFePO₄ cells with millimeter precision, ensuring performance and longevity." },
+      { "badge": "Clean-room", "title": "Quality control in a clean room", "text": "Every module is inspected by our technicians in an ultra-controlled environment before being integrated into our energy solutions." },
+      { "badge": "Industrial storage", "title": "From home to industry", "text": "From residential powerwalls to multi-MWh storage containers, BYTI provides solutions at every scale, all across Africa." }
+    ]
+  },
+  "electronicsShowcase": {
+    "kicker": "From factory to your pocket",
+    "titleStart": "The making of",
+    "titleAccent": "electronic devices",
+    "desc": "BYTI works directly with the largest manufacturing plants in China to offer you certified authentic smartphones, tablets and electronic accessories.",
+    "items": [
+      { "badge": "Mobile manufacturing", "title": "Next-generation smartphones", "text": "Robotic assembly lines continuously produce smartphones, tablets and accessories under strict quality control." },
+      { "badge": "Precision electronics", "title": "Boards & microcomponents", "text": "High-precision SMT lines for soldering miniaturized components: reliability starts at the board level." },
+      { "badge": "Showroom", "title": "Premium selection for you", "text": "BYTI selects and distributes the best connected electronic devices: smartphones, tablets, watches and audio." }
+    ]
+  },
+  "energyShowcase": {
+    "badge": "BYTI Energy range",
+    "titleAccent": "Energy",
+    "titleRest": "that never stops",
+    "desc": "Portable stations, solar inverters and LiFePO₄ lithium batteries certified by BYTI. Built to last, designed to endure.",
+    "stats": {
+      "solar": "Solar energy",
+      "cycles": "LiFePO₄ cycles",
+      "capacity": "Max capacity"
+    },
+    "bannerBadge": "Installation & expertise",
+    "bannerTitle": "Certified teams<br/>on the ground",
+    "bannerDesc": "From technical study to commissioning, BYTI installs your solar solutions with rigor and craftsmanship.",
+    "bestseller": "BYTI Best-seller",
+    "discover": "Discover",
+    "top": "Top",
+    "quote": "On request",
+    "cta": "See the full energy range"
+  },
+  "partners": {
+    "ariaLabel": "Our partners",
+    "kicker": "Our partners",
+    "title": "The major brands we distribute",
+    "subtitle": "Smartphones & phones · Surveillance cameras"
+  },
+  "cart": {
+    "title": "My cart",
+    "empty": "Your cart is empty",
+    "discover": "Discover the shop",
+    "total": "Total",
+    "checkout": "Checkout"
   }
 }

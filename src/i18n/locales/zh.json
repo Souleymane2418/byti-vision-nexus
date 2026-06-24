@@ -43,26 +43,10 @@
     "discoverGroup": "了解集团"
   },
   "carousel": {
-    "slide1": {
-      "badge": "锂电池储能",
-      "title": "零断电",
-      "subtitle": "最高 3000 千瓦时电池,保证 6000 次循环"
-    },
-    "slide2": {
-      "badge": "建筑与材料",
-      "title": "坚固建造",
-      "subtitle": "高品质砖块、地砖与混凝土"
-    },
-    "slide3": {
-      "badge": "安防",
-      "title": "守护重要的一切",
-      "subtitle": "智能联网视频监控"
-    },
-    "slide4": {
-      "badge": "电子产品",
-      "title": "始终在线",
-      "subtitle": "智能手机、电视与现代设备"
-    }
+    "slide1": { "badge": "锂电池储能", "title": "零断电", "subtitle": "最高 3000 千瓦时电池,保证 6000 次循环" },
+    "slide2": { "badge": "建筑与材料", "title": "坚固建造", "subtitle": "高品质砖块、地砖与混凝土" },
+    "slide3": { "badge": "安防", "title": "守护重要的一切", "subtitle": "智能联网视频监控" },
+    "slide4": { "badge": "电子产品", "title": "始终在线", "subtitle": "智能手机、电视与现代设备" }
   },
   "hero": {
     "international": {
@@ -70,30 +54,12 @@
       "subtitle": "服务非洲与世界的跨国集团",
       "description": "BYTI 集团在多个大洲设有办事处,包括中国、迪拜、科特迪瓦和喀麦隆,凭借国际化实力与本地化专业,提供达到全球最高标准的科技、能源与工业解决方案。"
     },
-    "electronics": {
-      "title": "电子产品与智能设备",
-      "subtitle": "现代科技,连接日常生活"
-    },
-    "security": {
-      "title": "安防与视频监控",
-      "subtitle": "以智能、高性能的方案守护您的资产"
-    },
-    "energy": {
-      "title": "能源与锂电池",
-      "subtitle": "可靠、耐用、创新的能源解决方案"
-    },
-    "smartphones": {
-      "title": "智能手机与电话",
-      "subtitle": "丰富的最新款智能手机,价格无可比拟"
-    },
-    "tv": {
-      "title": "电视与显示方案",
-      "subtitle": "沉浸式高品质视觉体验"
-    },
-    "btp": {
-      "title": "建筑工程 — 砖块、地砖与混凝土",
-      "subtitle": "我们的建筑事业部为住宅与工业项目设计并生产砖块、互锁地砖、砌块及预拌混凝土。"
-    }
+    "electronics": { "title": "电子产品与智能设备", "subtitle": "现代科技,连接日常生活" },
+    "security": { "title": "安防与视频监控", "subtitle": "以智能、高性能的方案守护您的资产" },
+    "energy": { "title": "能源与锂电池", "subtitle": "可靠、耐用、创新的能源解决方案" },
+    "smartphones": { "title": "智能手机与电话", "subtitle": "丰富的最新款智能手机,价格无可比拟" },
+    "tv": { "title": "电视与显示方案", "subtitle": "沉浸式高品质视觉体验" },
+    "btp": { "title": "建筑工程 — 砖块、地砖与混凝土", "subtitle": "我们的建筑事业部为住宅与工业项目设计并生产砖块、互锁地砖、砌块及预拌混凝土。" }
   },
   "aboutTeaser": {
     "kicker": "关于 BYTI",
@@ -128,5 +94,239 @@
       "ghg": { "title": "减少温室气体", "text": "我们太阳能电站发出的每一度电都替代了一度柴油发电的电量。BYTI 致力于持续降低中非地区的碳足迹。" },
       "ecosystem": { "title": "守护生态系统", "text": "我们的工地尊重本地生物多样性。所设计的基础设施与景观融合,保护动物、植物及水资源。" }
     }
+  },
+  "sectorCommon": {
+    "discover": "探索",
+    "quote": "申请报价",
+    "whyByti": "★ 为何选择 BYTI",
+    "expertiseTitle": "全方位的",
+    "expertiseAccent": "专业实力",
+    "offerTitle": "我们的",
+    "offerAccent": "方案",
+    "ctaTitle": "聊聊您的项目",
+    "ctaDesc": "BYTI 的专家将为您挑选最契合需求与预算的解决方案。",
+    "ctaButton": "联系我们"
+  },
+  "sectors": {
+    "btp": {
+      "badge": "建筑工程 — 砖、地砖与混凝土",
+      "title": "坚固",
+      "accent": "建造",
+      "subtitle": "我们的建筑事业部为住宅、商业与工业项目生产砖块、互锁地砖、砌块及预拌混凝土。",
+      "features": [
+        { "title": "砖与砌块", "text": "符合现行标准制造,提供标准与定制规格以匹配您的图纸。" },
+        { "title": "互锁地砖", "text": "用于车道、停车场、广场与公共空间的装饰与功能型地砖。" },
+        { "title": "预拌混凝土", "text": "现场生产、搅拌车送达,并根据每项工程定制配方。" },
+        { "title": "工地配送", "text": "整洁的物流与与工期匹配的计划。" },
+        { "title": "工业规模", "text": "为大型项目提供产能:住宅区、学校、公共基础设施。" },
+        { "title": "技术咨询", "text": "我们的工程师在选型与施工上为您的团队提供支持。" }
+      ],
+      "offerings": [
+        { "title": "个人与自建房客户", "text": "为独栋住宅、围墙与户外景观提供砖块、砌块与地砖。" },
+        { "title": "建筑承包商", "text": "定期供应、优惠价格,可在工地存放。" },
+        { "title": "大型项目", "text": "住宅开发、基础设施、公共建筑:匹配的产能与物流。" },
+        { "title": "定制混凝土", "text": "按强度需求配制,搅拌车送达,如需可提供泵送。" }
+      ]
+    },
+    "electronique": {
+      "badge": "电子产品与智能设备",
+      "title": "智能",
+      "accent": "电子产品",
+      "subtitle": "面向个人与企业的智能手机、配件与联网设备。严选产品、原厂保修、本地售后。",
+      "ctaLabel": "进入商店",
+      "features": [
+        { "title": "知名品牌", "text": "国际主要品牌的授权经销商,保证产品正品。" },
+        { "title": "联网设备", "text": "智能家居、音频、便携配件以及面向个人与企业的物联网方案。" },
+        { "title": "保修与售后", "text": "由我们认证团队提供本地售后、维修与技术支持。" },
+        { "title": "快速配送", "text": "现货充足,主要城市快速送达。" },
+        { "title": "个性化咨询", "text": "我们的专家根据您的使用场景与预算推荐合适设备。" },
+        { "title": "企业装备", "text": "移动机群、IT 设备以及面向企业的定制合同。" }
+      ],
+      "offerings": [
+        { "title": "智能手机与平板", "text": "覆盖入门、中端与高端的丰富目录,精选热门品牌。" },
+        { "title": "音频与配件", "text": "耳机、无线耳塞、充电器、保护壳、支架及各类实用配件。" },
+        { "title": "电脑与办公", "text": "笔记本电脑、打印机、外设以及专业耗材。" },
+        { "title": "智能家居", "text": "智能灯泡、智能插座、家庭自动化中心及多房间音频系统。" }
+      ]
+    },
+    "securite": {
+      "badge": "安防与视频监控",
+      "title": "守护",
+      "accent": "重要的一切",
+      "subtitle": "智能视频监控、门禁控制与联网报警。面向住宅、商业与工业场所的方案。",
+      "features": [
+        { "title": "高清与 IP 摄像机", "text": "室内、室外、PTZ 球机,支持夜视与智能检测。" },
+        { "title": "远程监控", "text": "通过手机实时访问、即时告警以及安全的云端录制。" },
+        { "title": "联网报警", "text": "入侵传感器、门窗传感器、警报器与即时通知。" },
+        { "title": "门禁控制", "text": "智能门锁、门禁卡、生物识别及集中授权管理。" },
+        { "title": "认证安装", "text": "由我们认证技术员负责安装、配置与培训。" },
+        { "title": "移动应用", "text": "通过一个直观的应用控制您的整套系统。" }
+      ],
+      "offerings": [
+        { "title": "住宅方案", "text": "家庭/别墅套餐:2 至 8 台摄像机、报警器、移动应用及交钥匙安装。" },
+        { "title": "商铺与办公", "text": "多区域监控、员工门禁与每周安防报告。" },
+        { "title": "工业场所", "text": "高容量视频监控、报警/消防联动以及 24/7 监控。" },
+        { "title": "维护与监测", "text": "维护合约、固件更新与事故快速响应。" }
+      ]
+    },
+    "televiseurs": {
+      "badge": "电视与显示",
+      "title": "沉浸式",
+      "accent": "体验",
+      "subtitle": "LED、QLED、OLED 电视以及专业数字标牌显示屏。从客厅到展厅,BYTI 装备您的空间。",
+      "ctaLabel": "进入商店",
+      "features": [
+        { "title": "全尺寸", "text": "从 32 英寸卧室到 85 英寸客厅或会议室。" },
+        { "title": "4K 与 QLED", "text": "超高清画质、深邃对比与鲜艳色彩。" },
+        { "title": "沉浸音效", "text": "兼容回音壁、Dolby Atmos 与家庭影院系统。" },
+        { "title": "智能电视", "text": "内置流媒体应用、投屏与语音控制。" },
+        { "title": "专业安装", "text": "由我们的技术员完成壁挂、画面校准与信号源设置。" },
+        { "title": "数字标牌", "text": "面向商铺、餐厅、大堂与展厅的数字标牌方案。" }
+      ],
+      "offerings": [
+        { "title": "家用电视", "text": "热门品牌的 LED、QLED 与 OLED 产品目录,含原厂保修。" },
+        { "title": "专业显示屏", "text": "用于橱窗、广告与会议室的高亮度显示屏。" },
+        { "title": "安装与配件", "text": "壁挂支架、回音壁、HDMI 布线及现场配置。" },
+        { "title": "家庭影院套餐", "text": "电视 + 音响 + 安装,将客厅打造为真正的观影空间。" }
+      ]
+    }
+  },
+  "services": {
+    "kicker": "★ 我们的业务",
+    "titleStart": "面向各行业的",
+    "titleAccent": "解决方案",
+    "items": {
+      "electronics": { "title": "电子产品", "description": "智能手机、配件与智能设备" },
+      "security": { "title": "安防", "description": "视频监控与监测方案" },
+      "energy": { "title": "能源", "description": "锂电池与能源解决方案" },
+      "tv": { "title": "电视", "description": "高清屏幕与显示方案" },
+      "btp": { "title": "建筑与材料", "description": "高品质砖块、地砖、砌块与混凝土的生产" }
+    }
+  },
+  "projects": {
+    "kicker": "★ 成果",
+    "titleStart": "我们的最新",
+    "titleAccent": "项目",
+    "titleEnd": "",
+    "categories": { "security": "安防", "energy": "能源", "btp": "建筑", "electronics": "电子产品" },
+    "items": [
+      { "title": "视频监控安装" },
+      { "title": "太阳能部署" },
+      { "title": "砖块、地砖与混凝土生产" },
+      { "title": "科技设备" }
+    ]
+  },
+  "about": {
+    "kicker": "★ 一个走向世界的品牌",
+    "titleStart": "走进",
+    "titleAccent": "BYTI 的世界",
+    "p1Part1": "BYTI Technologie SARL",
+    "p1Part2": "立足非洲与中东,并在以下地区设有代表处:",
+    "p1Part3": "中国、迪拜、阿比让、喀麦隆……",
+    "p1Part4": "这种国际化布局让我们能够保证优质采购、强大的物流支持,以及对标世界领先品牌的技术标准。",
+    "p2Part1": "我们将这一全球视野与",
+    "p2Part2": "100% 本地化身份",
+    "p2Part3": "结合,在布基纳法索及西非提供贴近一线、契合非洲实际的客户体验。",
+    "brandKicker": "品牌身份",
+    "brandName": "BYTI 之球",
+    "brandTagline": "一个品牌,多领域专长",
+    "stats": {
+      "international": { "value": "国际", "label": "跨大洲布局" },
+      "telecom": { "value": "电信", "label": "通讯与消息" },
+      "network": { "value": "网络", "label": "道路与互联" },
+      "digital": { "value": "数字化", "label": "客户转型" }
+    },
+    "ecosystemKicker": "我们的生态",
+    "ecosystemTitleStart": "一个品牌,国际化的",
+    "ecosystemTitleAccent": "协同效应",
+    "ecosystemDesc": "我们在本地部署互补的产品组合:电子、安防、能源、电视与建筑材料。我们的方法借鉴 BYTI 品牌所秉持的国际标准,同时扎根于非洲现实。",
+    "synergies": [
+      { "zone": "布基纳法索 · 喀麦隆 · 科特迪瓦", "hubs": "BYTI Technologie SARL — 本地运营" },
+      { "zone": "中国 · 迪拜", "hubs": "BYTI 代表处 — 采购与合作" },
+      { "zone": "交流", "hubs": "共享采购、专长与质量标准" },
+      { "zone": "愿景", "hubs": "让 BYTI 品牌在非洲熠熠生辉" }
+    ]
+  },
+  "contactSection": {
+    "kicker": "联系我们",
+    "titleStart": "聊聊您的",
+    "titleAccent": "项目",
+    "phone": "电话",
+    "whatsapp": "WhatsApp",
+    "sendMsg": "发送消息",
+    "social": "社交媒体",
+    "email": "邮箱",
+    "address": "地址",
+    "addressValue": "Av. Kwame Nkrumah, 瓦加杜古, 布基纳法索",
+    "form": {
+      "name": "姓名",
+      "namePh": "您的姓名",
+      "email": "邮箱",
+      "emailPh": "your@email.com",
+      "subject": "主题",
+      "subjectPh": "您的留言主题",
+      "message": "留言",
+      "messagePh": "您的留言…",
+      "send": "发送消息"
+    },
+    "mapKicker": "位置",
+    "mapTitleStart": "如何",
+    "mapTitleAccent": "找到我们",
+    "mapDesc": "BYTI Technologie International — 瓦加杜古市 Kwame Nkrumah 大道。从联合国环岛出发即可到达。",
+    "directions": "获取路线 →"
+  },
+  "manufacturing": {
+    "kicker": "我们的合作工厂",
+    "titleStart": "锂电池制造的",
+    "titleAccent": "强大实力",
+    "desc": "BYTI 依托中国一流的超级工厂网络,生产可用于家庭与工业的 LiFePO₄ 电池,并配送至非洲各地。",
+    "items": [
+      { "badge": "超级工厂", "title": "自动化装配线", "text": "机器人产线以毫米级精度生产高密度 LiFePO₄ 电芯,确保性能与耐久。" },
+      { "badge": "无尘车间", "title": "无尘车间品质管控", "text": "每个模组在投入能源方案前都由我们的技术员在严格受控的环境中检测。" },
+      { "badge": "工业储能", "title": "从家用到工业", "text": "从家用储能墙到多兆瓦时储能集装箱,BYTI 在非洲各地提供各种规模的方案。" }
+    ]
+  },
+  "electronicsShowcase": {
+    "kicker": "从工厂直达您的口袋",
+    "titleStart": "电子设备的",
+    "titleAccent": "精工制造",
+    "desc": "BYTI 直接与中国最大的制造工厂合作,为您提供获得正品认证的智能手机、平板及电子配件。",
+    "items": [
+      { "badge": "移动制造", "title": "新一代智能手机", "text": "机器人装配线在严格的质量管控下持续生产智能手机、平板与配件。" },
+      { "badge": "精密电子", "title": "电路板与微元件", "text": "高精度 SMT 产线焊接微型元件:可靠性从电路板开始。" },
+      { "badge": "展厅", "title": "为您精选的高端产品", "text": "BYTI 精选并销售最优秀的联网电子产品:智能手机、平板、手表与音频。" }
+    ]
+  },
+  "energyShowcase": {
+    "badge": "BYTI 能源系列",
+    "titleAccent": "永不停歇的",
+    "titleRest": "能源",
+    "desc": "BYTI 认证的便携电站、太阳能逆变器与 LiFePO₄ 锂电池。坚固耐用,经久可靠。",
+    "stats": {
+      "solar": "太阳能",
+      "cycles": "LiFePO₄ 循环",
+      "capacity": "最大容量"
+    },
+    "bannerBadge": "安装与专长",
+    "bannerTitle": "现场作业的<br/>认证团队",
+    "bannerDesc": "从技术勘察到投入使用,BYTI 以严谨与匠心安装您的太阳能方案。",
+    "bestseller": "BYTI 畅销产品",
+    "discover": "了解更多",
+    "top": "热门",
+    "quote": "需报价",
+    "cta": "查看全部能源产品"
+  },
+  "partners": {
+    "ariaLabel": "我们的合作伙伴",
+    "kicker": "我们的合作伙伴",
+    "title": "我们经销的主要品牌",
+    "subtitle": "智能手机与电话 · 监控摄像头"
+  },
+  "cart": {
+    "title": "我的购物车",
+    "empty": "购物车为空",
+    "discover": "去逛商店",
+    "total": "合计",
+    "checkout": "结算下单"
   }
 }
