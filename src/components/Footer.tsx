@@ -1,28 +1,28 @@
 import { Smartphone, Camera, Battery, Monitor, HardHat, MapPin } from "lucide-react";
 import { Link } from "@tanstack/react-router";
+import { Trans, useTranslation } from "react-i18next";
 import bytiLogo from "@/assets/byti-logo.png";
 import bytiMap1 from "@/assets/byti-map-1.png.asset.json";
 import bytiMap2 from "@/assets/byti-map-2.png.asset.json";
 import { SocialLinksCompact } from "@/components/SocialLinks";
 
-const activities = [
-  { icon: Smartphone, label: "Électronique", to: "/electronique" },
-  { icon: Camera, label: "Sécurité", to: "/securite" },
-  { icon: Battery, label: "Énergie", to: "/batteries" },
-  { icon: Monitor, label: "Téléviseurs", to: "/televiseurs" },
-  { icon: HardHat, label: "BTP", to: "/btp" },
-] as const;
-
-const quickLinks = [
-  { label: "Accueil", to: "/", hash: "" },
-  { label: "Activités", to: "/activites", hash: "" },
-  { label: "À propos", to: "/a-propos", hash: "" },
-  { label: "Projets", to: "/projets", hash: "" },
-  { label: "Contact", to: "/contact", hash: "" },
-  { label: "Boutique", to: "/boutique", hash: "" },
-] as const;
-
 export function Footer() {
+  const { t } = useTranslation();
+  const activities = [
+    { icon: Smartphone, label: t("activities.electronics"), to: "/electronique" as const },
+    { icon: Camera, label: t("activities.security"), to: "/securite" as const },
+    { icon: Battery, label: t("activities.energy"), to: "/batteries" as const },
+    { icon: Monitor, label: t("activities.tv"), to: "/televiseurs" as const },
+    { icon: HardHat, label: t("activities.btp"), to: "/btp" as const },
+  ];
+  const quickLinks = [
+    { label: t("nav.home"), to: "/" as const },
+    { label: t("nav.activities"), to: "/activites" as const },
+    { label: t("nav.about"), to: "/a-propos" as const },
+    { label: t("nav.projects"), to: "/projets" as const },
+    { label: t("nav.contact"), to: "/contact" as const },
+    { label: t("nav.shop"), to: "/boutique" as const },
+  ];
   return (
     <footer className="border-t-2 border-byti-blue bg-byti-blue-deep text-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
@@ -42,21 +42,20 @@ export function Footer() {
               </span>
             </div>
             <p className="text-sm text-white/85 leading-relaxed">
-              Filiale africaine de <span className="font-semibold text-white">BYTI </span>, multinationale spécialisée en technologie, énergie et infrastructure.
+              <Trans i18nKey="footer.tagline" components={{ b: <span className="font-semibold text-white" /> }} />
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
             <h4 className="text-sm font-bold text-byti-yellow tracking-wide uppercase mb-4">
-              Navigation
+              {t("footer.navigation")}
             </h4>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
-                <li key={link.label}>
+                <li key={link.to}>
                   <Link
                     to={link.to}
-                    hash={link.hash || undefined}
                     className="text-sm text-white/65 hover:text-byti-yellow transition-colors"
                   >
                     {link.label}
@@ -69,7 +68,7 @@ export function Footer() {
           {/* Activities */}
           <div>
             <h4 className="text-sm font-bold text-byti-yellow tracking-wide uppercase mb-4">
-              Activités
+              {t("footer.activities")}
             </h4>
             <ul className="space-y-2">
               {activities.map((a) => (
@@ -89,7 +88,7 @@ export function Footer() {
           {/* Contact */}
           <div>
             <h4 className="text-sm font-bold text-byti-yellow tracking-wide uppercase mb-4">
-              Contact
+              {t("footer.contact")}
             </h4>
             <ul className="space-y-2 text-sm text-white/85 mb-6">
               <li>
@@ -105,7 +104,7 @@ export function Footer() {
               </li>
             </ul>
             <h4 className="text-sm font-bold text-byti-yellow tracking-wide uppercase mb-3">
-              Réseaux sociaux
+              {t("footer.social")}
             </h4>
             <SocialLinksCompact />
           </div>
@@ -117,10 +116,10 @@ export function Footer() {
               <MapPin className="mt-1 h-5 w-5 text-byti-yellow shrink-0" />
               <div>
                 <h4 className="text-sm font-bold text-byti-yellow tracking-wide uppercase mb-3">
-                  Plan d'emplacement
+                  {t("footer.locationTitle")}
                 </h4>
                 <p className="text-sm text-white/75 leading-relaxed">
-                  BYTI Technologie International — Av. Kwame Nkrumah, Ouagadougou.
+                  {t("footer.locationAddress")}
                 </p>
                 <p className="mt-3 text-xs text-white/55">12.367392, -1.519113</p>
                 <a
@@ -129,7 +128,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className="mt-4 inline-flex text-sm font-semibold text-byti-yellow hover:text-white transition-colors"
                 >
-                  Obtenir l'itinéraire →
+                  {t("footer.directions")}
                 </a>
               </div>
             </div>
@@ -171,13 +170,13 @@ export function Footer() {
         <div className="section-divider mt-12 mb-8" />
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-          <p className="text-white/50">&copy; {new Date().getFullYear()} BYTI Technologie SARL. Tous droits réservés.</p>
-          <p className="text-byti-yellow font-bold tracking-wide">Connecter · Construire · Innover</p>
+          <p className="text-white/50">{t("footer.copyright", { year: new Date().getFullYear() })}</p>
+          <p className="text-byti-yellow font-bold tracking-wide">{t("footer.motto")}</p>
         </div>
 
         <div className="mt-6 text-center">
           <p className="text-[11px] text-white/40">
-            Site web développé par{" "}
+            {t("footer.developedBy")}{" "}
             <a
               href="https://www.ds-si.com"
               target="_blank"

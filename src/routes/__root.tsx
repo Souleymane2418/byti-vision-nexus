@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { CartProvider } from "@/lib/cart";
 import { CartDrawer } from "@/components/CartDrawer";
 import { Toaster } from "@/components/ui/sonner";
+import "@/i18n";
 
 import appCss from "../styles.css?url";
 
