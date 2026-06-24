@@ -210,7 +210,7 @@ function FeaturedCard({ product }: { product: EnergyProduct }) {
           <div className="absolute top-6 left-6 inline-flex items-center gap-2 px-4 py-2 rounded-full"
             style={{ background: "var(--byti-red)", color: "white" }}>
             <Zap className="h-3.5 w-3.5" />
-            <span className="text-[11px] font-bold uppercase tracking-widest">Best-seller BYTI</span>
+            <span className="text-[11px] font-bold uppercase tracking-widest">{t("energyShowcase.bestseller")}</span>
           </div>
 
           {/* Content overlay */}
