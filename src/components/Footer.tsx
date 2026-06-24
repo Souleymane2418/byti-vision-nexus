@@ -1,28 +1,28 @@
 import { Smartphone, Camera, Battery, Monitor, HardHat, MapPin } from "lucide-react";
 import { Link } from "@tanstack/react-router";
+import { Trans, useTranslation } from "react-i18next";
 import bytiLogo from "@/assets/byti-logo.png";
 import bytiMap1 from "@/assets/byti-map-1.png.asset.json";
 import bytiMap2 from "@/assets/byti-map-2.png.asset.json";
 import { SocialLinksCompact } from "@/components/SocialLinks";
 
-const activities = [
-  { icon: Smartphone, label: "Électronique", to: "/electronique" },
-  { icon: Camera, label: "Sécurité", to: "/securite" },
-  { icon: Battery, label: "Énergie", to: "/batteries" },
-  { icon: Monitor, label: "Téléviseurs", to: "/televiseurs" },
-  { icon: HardHat, label: "BTP", to: "/btp" },
-] as const;
-
-const quickLinks = [
-  { label: "Accueil", to: "/", hash: "" },
-  { label: "Activités", to: "/activites", hash: "" },
-  { label: "À propos", to: "/a-propos", hash: "" },
-  { label: "Projets", to: "/projets", hash: "" },
-  { label: "Contact", to: "/contact", hash: "" },
-  { label: "Boutique", to: "/boutique", hash: "" },
-] as const;
-
 export function Footer() {
+  const { t } = useTranslation();
+  const activities = [
+    { icon: Smartphone, label: t("activities.electronics"), to: "/electronique" as const },
+    { icon: Camera, label: t("activities.security"), to: "/securite" as const },
+    { icon: Battery, label: t("activities.energy"), to: "/batteries" as const },
+    { icon: Monitor, label: t("activities.tv"), to: "/televiseurs" as const },
+    { icon: HardHat, label: t("activities.btp"), to: "/btp" as const },
+  ];
+  const quickLinks = [
+    { label: t("nav.home"), to: "/" as const },
+    { label: t("nav.activities"), to: "/activites" as const },
+    { label: t("nav.about"), to: "/a-propos" as const },
+    { label: t("nav.projects"), to: "/projets" as const },
+    { label: t("nav.contact"), to: "/contact" as const },
+    { label: t("nav.shop"), to: "/boutique" as const },
+  ];
   return (
     <footer className="border-t-2 border-byti-blue bg-byti-blue-deep text-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
