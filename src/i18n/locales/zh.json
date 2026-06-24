@@ -29,5 +29,104 @@
     "energy": "能源",
     "tv": "电视",
     "btp": "建筑工程"
+  },
+  "cta": {
+    "learnMore": "了解更多",
+    "discover": "探索",
+    "ourSolutions": "我们的解决方案",
+    "shop": "进入商店",
+    "viewProducts": "查看产品",
+    "ourWork": "我们的项目",
+    "quote": "申请报价",
+    "contact": "联系我们",
+    "readMore": "阅读更多",
+    "discoverGroup": "了解集团"
+  },
+  "carousel": {
+    "slide1": {
+      "badge": "锂电池储能",
+      "title": "零断电",
+      "subtitle": "最高 3000 千瓦时电池,保证 6000 次循环"
+    },
+    "slide2": {
+      "badge": "建筑与材料",
+      "title": "坚固建造",
+      "subtitle": "高品质砖块、地砖与混凝土"
+    },
+    "slide3": {
+      "badge": "安防",
+      "title": "守护重要的一切",
+      "subtitle": "智能联网视频监控"
+    },
+    "slide4": {
+      "badge": "电子产品",
+      "title": "始终在线",
+      "subtitle": "智能手机、电视与现代设备"
+    }
+  },
+  "hero": {
+    "international": {
+      "title": "BYTI 国际",
+      "subtitle": "服务非洲与世界的跨国集团",
+      "description": "BYTI 集团在多个大洲设有办事处,包括中国、迪拜、科特迪瓦和喀麦隆,凭借国际化实力与本地化专业,提供达到全球最高标准的科技、能源与工业解决方案。"
+    },
+    "electronics": {
+      "title": "电子产品与智能设备",
+      "subtitle": "现代科技,连接日常生活"
+    },
+    "security": {
+      "title": "安防与视频监控",
+      "subtitle": "以智能、高性能的方案守护您的资产"
+    },
+    "energy": {
+      "title": "能源与锂电池",
+      "subtitle": "可靠、耐用、创新的能源解决方案"
+    },
+    "smartphones": {
+      "title": "智能手机与电话",
+      "subtitle": "丰富的最新款智能手机,价格无可比拟"
+    },
+    "tv": {
+      "title": "电视与显示方案",
+      "subtitle": "沉浸式高品质视觉体验"
+    },
+    "btp": {
+      "title": "建筑工程 — 砖块、地砖与混凝土",
+      "subtitle": "我们的建筑事业部为住宅与工业项目设计并生产砖块、互锁地砖、砌块及预拌混凝土。"
+    }
+  },
+  "aboutTeaser": {
+    "kicker": "关于 BYTI",
+    "title": "BYTI 是一家 <accent>跨国集团</accent>",
+    "body": "BYTI 是一家跨多个大洲运营的跨国集团,在<b>中国、迪拜、阿比让和喀麦隆</b>设有代表处。通过其子公司 <b>BYTI Technologie SARL</b>,集团在中非地区提供电子、安防、能源、电视及建筑材料的完整解决方案,结合国际标准与本地深耕。"
+  },
+  "why": {
+    "kicker": "我们的优势",
+    "title": "为什么<accent>选择我们</accent>",
+    "items": {
+      "quality": { "title": "品质保证", "text": "产品与服务符合最高国际标准。" },
+      "expertise": { "title": "技术专长", "text": "一支高素质的工程师与技术员团队。" },
+      "innovation": { "title": "创新方案", "text": "面向现代需求的前沿技术。" },
+      "reliability": { "title": "可靠", "text": "经过验证的方案与长期的支持。" },
+      "reactivity": { "title": "响应迅速", "text": "快速处理,卓越的客户服务。" },
+      "leadership": { "title": "多领域领先", "text": "在科技、能源与建筑领域均有强大影响力。" }
+    }
+  },
+  "eco": {
+    "badge": "环境承诺",
+    "title": "BYTI 为地球行动",
+    "subtitle": "在不牺牲未来的前提下,连接、建设与创新。我们的能源方案积极减少温室气体排放,并保护非洲的生态系统。",
+    "captionKicker": "清洁能源 · 守护生态",
+    "captionTitle": "当科技遇见自然",
+    "stats": {
+      "co2": "得益于我们太阳能装置每年减少的 CO₂",
+      "solar": "由我们光伏电站生产的清洁能源",
+      "trees": "因 BYTI 能源转型而被保护的树木",
+      "emissions": "我们新一代锂电池的直接排放量"
+    },
+    "pillars": {
+      "ghg": { "title": "减少温室气体", "text": "我们太阳能电站发出的每一度电都替代了一度柴油发电的电量。BYTI 致力于持续降低中非地区的碳足迹。" },
+      "ecosystem": { "title": "守护生态系统", "text": "我们的工地尊重本地生物多样性。所设计的基础设施与景观融合,保护动物、植物及水资源。" }
+    }
   }
 }
