@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "@/components/Navbar";
 import { AboutSection } from "@/components/AboutSection";
+import { ManufacturingShowcase } from "@/components/ManufacturingShowcase";
 import { Footer } from "@/components/Footer";
 
 export const Route = createFileRoute("/a-propos")({
@@ -31,6 +32,7 @@ function AProposPage() {
       <Navbar />
       <div className="pt-24">
         <AboutSection />
+        <ManufacturingShowcase />
       </div>
       <Footer />
     </div>

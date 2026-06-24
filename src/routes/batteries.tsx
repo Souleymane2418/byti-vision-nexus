@@ -15,6 +15,7 @@ import {
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { EnergyShowcase } from "@/components/EnergyShowcase";
+import { ManufacturingShowcase } from "@/components/ManufacturingShowcase";
 import heroEnergyWide from "@/assets/byti-powerwall.png";
 
 export const Route = createFileRoute("/batteries")({
@@ -371,6 +372,7 @@ function BatteriesPage() {
       </section>
 
       {/* Featured products from showcase (reuses energy products) */}
+      <ManufacturingShowcase />
       <EnergyShowcase />
 
       {/* FAQ */}
