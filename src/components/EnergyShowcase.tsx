@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "@tanstack/react-router";
 import { Battery, Zap, Sun, ArrowRight } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { supabase } from "@/integrations/supabase/client";
 import bytiPowerwallImg from "@/assets/byti-powerwall.png";
 
@@ -14,12 +15,6 @@ type EnergyProduct = {
   featured: boolean;
   specs: Record<string, string> | null;
 };
-
-const stats = [
-  { icon: Sun, value: "100%", label: "Énergie solaire" },
-  { icon: Battery, value: "6000+", label: "Cycles LiFePO₄" },
-  { icon: Zap, value: "3000 kWh", label: "Capacité max" },
-];
 
 export function EnergyShowcase() {
   const [products, setProducts] = useState<EnergyProduct[]>([]);
