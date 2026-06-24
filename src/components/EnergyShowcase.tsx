@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "@tanstack/react-router";
 import { Battery, Zap, Sun, ArrowRight } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { supabase } from "@/integrations/supabase/client";
 import bytiPowerwallImg from "@/assets/byti-powerwall.png";
 
@@ -15,13 +16,13 @@ type EnergyProduct = {
   specs: Record<string, string> | null;
 };
 
-const stats = [
-  { icon: Sun, value: "100%", label: "Énergie solaire" },
-  { icon: Battery, value: "6000+", label: "Cycles LiFePO₄" },
-  { icon: Zap, value: "3000 kWh", label: "Capacité max" },
-];
-
 export function EnergyShowcase() {
+  const { t } = useTranslation();
+  const stats = [
+    { icon: Sun, value: "100%", label: t("energyShowcase.stats.solar") },
+    { icon: Battery, value: "6000+", label: t("energyShowcase.stats.cycles") },
+    { icon: Zap, value: "3000 kWh", label: t("energyShowcase.stats.capacity") },
+  ];
   const [products, setProducts] = useState<EnergyProduct[]>([]);
 
   useEffect(() => {
@@ -63,17 +64,16 @@ export function EnergyShowcase() {
             }}>
             <Sun className="h-4 w-4" style={{ color: "var(--byti-red)" }} />
             <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: "var(--byti-blue-deep)" }}>
-              Gamme Énergie BYTI
+              {t("energyShowcase.badge")}
             </span>
           </div>
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight mb-5">
-            <span className="gradient-text">L'énergie</span>
+            <span className="gradient-text">{t("energyShowcase.titleAccent")}</span>
             <br />
-            <span className="text-foreground">qui ne s'arrête jamais</span>
+            <span className="text-foreground">{t("energyShowcase.titleRest")}</span>
           </h2>
           <p className="max-w-2xl mx-auto text-base md:text-lg text-muted-foreground">
-            Stations portables, onduleurs solaires et batteries lithium LiFePO₄ certifiés BYTI.
-            Conçus pour résister, pensés pour durer.
+            {t("energyShowcase.desc")}
           </p>
         </motion.div>
 
@@ -100,13 +100,14 @@ export function EnergyShowcase() {
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-4 backdrop-blur-md"
                   style={{ background: "color-mix(in oklch, var(--byti-red) 80%, transparent)" }}>
                   <Zap className="h-3.5 w-3.5" />
-                  <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest">Installation & expertise</span>
+                  <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest">{t("energyShowcase.bannerBadge")}</span>
                 </div>
-                <h3 className="text-2xl md:text-4xl lg:text-5xl font-display font-bold leading-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]">
-                  Des équipes certifiées<br />sur le terrain
-                </h3>
+                <h3
+                  className="text-2xl md:text-4xl lg:text-5xl font-display font-bold leading-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]"
+                  dangerouslySetInnerHTML={{ __html: t("energyShowcase.bannerTitle") }}
+                />
                 <p className="mt-3 text-sm md:text-base text-white/90 max-w-md drop-shadow-[0_1px_6px_rgba(0,0,0,0.7)]">
-                  De l'étude technique à la mise en service, BYTI installe vos solutions solaires avec rigueur et savoir-faire.
+                  {t("energyShowcase.bannerDesc")}
                 </p>
               </div>
             </div>
@@ -173,7 +174,7 @@ export function EnergyShowcase() {
             to="/boutique"
             className="btn-byti-red inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-bold tracking-wide uppercase"
           >
-            Voir toute la gamme énergie
+            {t("energyShowcase.cta")}
             <ArrowRight className="h-4 w-4" />
           </Link>
         </motion.div>
@@ -183,6 +184,7 @@ export function EnergyShowcase() {
 }
 
 function FeaturedCard({ product }: { product: EnergyProduct }) {
+  const { t } = useTranslation();
   return (
     <motion.div
       initial={{ opacity: 0, x: -30 }}
@@ -208,7 +210,7 @@ function FeaturedCard({ product }: { product: EnergyProduct }) {
           <div className="absolute top-6 left-6 inline-flex items-center gap-2 px-4 py-2 rounded-full"
             style={{ background: "var(--byti-red)", color: "white" }}>
             <Zap className="h-3.5 w-3.5" />
-            <span className="text-[11px] font-bold uppercase tracking-widest">Best-seller BYTI</span>
+            <span className="text-[11px] font-bold uppercase tracking-widest">{t("energyShowcase.bestseller")}</span>
           </div>
 
           {/* Content overlay */}
@@ -225,7 +227,7 @@ function FeaturedCard({ product }: { product: EnergyProduct }) {
               </p>
             )}
             <div className="inline-flex items-center gap-2 text-sm font-semibold group-hover:gap-3 transition-all">
-              Découvrir <ArrowRight className="h-4 w-4" />
+              {t("energyShowcase.discover")} <ArrowRight className="h-4 w-4" />
             </div>
           </div>
         </div>
@@ -235,6 +237,7 @@ function FeaturedCard({ product }: { product: EnergyProduct }) {
 }
 
 function SmallCard({ product, index, large }: { product: EnergyProduct; index: number; large?: boolean }) {
+  const { t } = useTranslation();
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -256,7 +259,7 @@ function SmallCard({ product, index, large }: { product: EnergyProduct; index: n
           {product.featured && (
             <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider"
               style={{ background: "var(--byti-blue)", color: "white" }}>
-              Top
+              {t("energyShowcase.top")}
             </div>
           )}
         </div>
@@ -270,7 +273,7 @@ function SmallCard({ product, index, large }: { product: EnergyProduct; index: n
             {product.name}
           </h4>
           <div className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-muted-foreground group-hover:text-[color:var(--byti-red)] group-hover:gap-2 transition-all">
-            Sur devis <ArrowRight className="h-3 w-3" />
+            {t("energyShowcase.quote")} <ArrowRight className="h-3 w-3" />
           </div>
         </div>
       </Link>

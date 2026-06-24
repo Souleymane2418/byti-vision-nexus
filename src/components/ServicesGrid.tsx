@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { Smartphone, Camera, Battery, Monitor, HardHat } from "lucide-react";
+import { Smartphone, Camera, Battery, Monitor, HardHat, type LucideIcon } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 import heroElectronics from "@/assets/hero-electronics.jpg";
 import heroSecurity from "@/assets/hero-security.jpg";
@@ -7,15 +8,32 @@ import heroEnergy from "@/assets/byti-powerwall.png";
 import heroTv from "@/assets/hero-tv.jpg";
 import heroBtp from "@/assets/hero-btp.jpg";
 
-const services = [
-  { icon: Smartphone, title: "Électronique", description: "Smartphones, accessoires et équipements intelligents", image: heroElectronics },
-  { icon: Camera, title: "Sécurité", description: "Vidéosurveillance et solutions de monitoring", image: heroSecurity },
-  { icon: Battery, title: "Énergie", description: "Batteries lithium et solutions énergétiques", image: heroEnergy },
-  { icon: Monitor, title: "Téléviseurs", description: "Écrans HD et solutions d'affichage", image: heroTv },
-  { icon: HardHat, title: "BTP & Matériaux", description: "Fabrication de briques, pavés, parpaings et béton de qualité", image: heroBtp },
-];
+const serviceKeys = ["electronics", "security", "energy", "tv", "btp"] as const;
+const serviceIcons: Record<(typeof serviceKeys)[number], LucideIcon> = {
+  electronics: Smartphone,
+  security: Camera,
+  energy: Battery,
+  tv: Monitor,
+  btp: HardHat,
+};
+const serviceImages: Record<(typeof serviceKeys)[number], string> = {
+  electronics: heroElectronics,
+  security: heroSecurity,
+  energy: heroEnergy,
+  tv: heroTv,
+  btp: heroBtp,
+};
 
 export function ServicesGrid() {
+  const { t } = useTranslation();
+  const services = serviceKeys.map((k) => ({
+    key: k,
+    icon: serviceIcons[k],
+    image: serviceImages[k],
+    title: t(`services.items.${k}.title`),
+    description: t(`services.items.${k}.description`),
+  }));
+
   return (
     <section id="services" className="py-32 px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -26,10 +44,10 @@ export function ServicesGrid() {
           transition={{ duration: 0.7 }}
           className="text-center mb-16"
         >
-          <span className="pill-badge">★ Nos activités</span>
+          <span className="pill-badge">{t("services.kicker")}</span>
           <h2 className="editorial-title mt-6 text-3xl md:text-5xl">
-            Des solutions pour{" "}
-            <span className="editorial-accent">chaque secteur</span>
+            {t("services.titleStart")}{" "}
+            <span className="editorial-accent">{t("services.titleAccent")}</span>
           </h2>
           <div className="dot-divider mt-6">
             <span className="dot-divider-dot" />
@@ -39,7 +57,7 @@ export function ServicesGrid() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, i) => (
             <motion.div
-              key={service.title}
+              key={service.key}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

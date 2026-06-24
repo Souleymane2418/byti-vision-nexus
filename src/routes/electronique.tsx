@@ -1,36 +1,36 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Smartphone, Cpu, Wifi, ShieldCheck, Zap, Headphones } from "lucide-react";
+import { Smartphone, Cpu, Wifi, ShieldCheck, Zap, Headphones, type LucideIcon } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { SectorPage } from "@/components/SectorPage";
 import { ElectronicsShowcase } from "@/components/ElectronicsShowcase";
 import heroImg from "@/assets/hero-electronics-wide.jpg";
 
-export const Route = createFileRoute("/electronique")({
-  component: () => (
+const featureIcons: LucideIcon[] = [Cpu, Wifi, ShieldCheck, Zap, Headphones, Smartphone];
+
+function ElectroniqueRoute() {
+  const { t } = useTranslation();
+  const features = (t("sectors.electronique.features", { returnObjects: true }) as { title: string; text: string }[]).map(
+    (f, i) => ({ ...f, icon: featureIcons[i] }),
+  );
+  const offerings = t("sectors.electronique.offerings", { returnObjects: true }) as { title: string; text: string }[];
+  return (
     <SectorPage
       heroImage={heroImg}
       Icon={Smartphone}
-      badge="Électronique & objets connectés"
-      title="Électronique"
-      accent="intelligente"
-      subtitle="Smartphones, accessoires et équipements connectés pour particuliers et professionnels. Sélection rigoureuse, garantie constructeur, SAV local."
-      ctaPrimary={{ label: "Voir la boutique", href: "/boutique" }}
-      features={[
-        { icon: Cpu, title: "Marques de référence", text: "Distributeur agréé des grandes marques internationales avec produits authentiques garantis." },
-        { icon: Wifi, title: "Objets connectés", text: "Maison intelligente, audio, accessoires nomades et solutions IoT pour particuliers et entreprises." },
-        { icon: ShieldCheck, title: "Garantie & SAV", text: "Service après-vente local, réparation et assistance technique assurés par nos équipes certifiées." },
-        { icon: Zap, title: "Livraison rapide", text: "Stock disponible et livraison express dans toutes les grandes villes." },
-        { icon: Headphones, title: "Conseil personnalisé", text: "Nos experts vous orientent vers le matériel adapté à votre usage et budget." },
-        { icon: Smartphone, title: "Équipement pro", text: "Flottes mobiles, parcs informatiques, contrats sur mesure pour entreprises." },
-      ]}
-      offerings={[
-        { title: "Smartphones & tablettes", text: "Catalogue large : entrée de gamme, milieu de gamme et premium des plus grandes marques." },
-        { title: "Audio & accessoires", text: "Casques, écouteurs sans fil, chargeurs, coques, supports et tous accessoires utiles." },
-        { title: "Informatique & bureautique", text: "Ordinateurs portables, imprimantes, périphériques et consommables professionnels." },
-        { title: "Smart home", text: "Ampoules connectées, prises intelligentes, hubs domotiques et systèmes audio multi-pièces." },
-      ]}
+      badge={t("sectors.electronique.badge")}
+      title={t("sectors.electronique.title")}
+      accent={t("sectors.electronique.accent")}
+      subtitle={t("sectors.electronique.subtitle")}
+      ctaPrimary={{ label: t("sectors.electronique.ctaLabel"), href: "/boutique" }}
+      features={features}
+      offerings={offerings}
       showcase={<ElectronicsShowcase />}
     />
-  ),
+  );
+}
+
+export const Route = createFileRoute("/electronique")({
+  component: ElectroniqueRoute,
   head: () => ({
     meta: [
       { title: "Électronique & équipements connectés — BYTI" },

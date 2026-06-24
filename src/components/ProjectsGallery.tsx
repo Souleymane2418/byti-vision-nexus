@@ -1,18 +1,29 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 import projectVideosurveillance from "@/assets/project-videosurveillance.jpg";
 import projectSolar from "@/assets/project-solar-deployment.jpg";
 import heroBtp from "@/assets/hero-btp.jpg";
 import heroElectronics from "@/assets/hero-electronics.jpg";
 
-const projects = [
-  { title: "Installation vidéosurveillance", category: "Sécurité", image: projectVideosurveillance },
-  { title: "Déploiement énergie solaire", category: "Énergie", image: projectSolar },
-  { title: "Production briques, pavés & béton", category: "BTP", image: heroBtp },
-  { title: "Équipement technologique", category: "Électronique", image: heroElectronics },
-];
+const projectKeys = ["security", "energy", "btp", "electronics"] as const;
+const projectImages: Record<(typeof projectKeys)[number], string> = {
+  security: projectVideosurveillance,
+  energy: projectSolar,
+  btp: heroBtp,
+  electronics: heroElectronics,
+};
 
 export function ProjectsGallery() {
+  const { t } = useTranslation();
+  const items = t("projects.items", { returnObjects: true }) as { title: string }[];
+  const projects = projectKeys.map((k, i) => ({
+    key: k,
+    image: projectImages[k],
+    category: t(`projects.categories.${k}`),
+    title: items[i]?.title ?? "",
+  }));
+
   return (
     <section id="projects" className="py-32 px-6 lg:px-8 bg-secondary/30">
       <div className="max-w-7xl mx-auto">
@@ -23,9 +34,9 @@ export function ProjectsGallery() {
           transition={{ duration: 0.7 }}
           className="text-center mb-16"
         >
-          <span className="pill-badge pill-badge-red">★ Réalisations</span>
+          <span className="pill-badge pill-badge-red">{t("projects.kicker")}</span>
           <h2 className="editorial-title mt-6 text-3xl md:text-5xl">
-            Nos <span className="editorial-accent">projets</span> récents
+            {t("projects.titleStart")} <span className="editorial-accent">{t("projects.titleAccent")}</span> {t("projects.titleEnd")}
           </h2>
           <div className="dot-divider mt-6">
             <span className="dot-divider-dot" />
@@ -35,7 +46,7 @@ export function ProjectsGallery() {
         <div className="grid sm:grid-cols-2 gap-6">
           {projects.map((project, i) => (
             <motion.div
-              key={project.title}
+              key={project.key}
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}

@@ -1,34 +1,18 @@
 import { motion } from "framer-motion";
-import { Smartphone, Cpu, Sparkles } from "lucide-react";
+import { Smartphone, Cpu, Sparkles, type LucideIcon } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import shot1 from "@/assets/factory-electronics-1.jpg";
 import shot2 from "@/assets/factory-electronics-2.jpg";
 import shot3 from "@/assets/factory-electronics-3.jpg";
 
-const items = [
-  {
-    img: shot1,
-    icon: Smartphone,
-    badge: "Manufacture mobile",
-    title: "Smartphones de nouvelle génération",
-    text: "Des chaînes d'assemblage robotisées produisent en flux continu smartphones, tablettes et accessoires, sous contrôle qualité strict.",
-  },
-  {
-    img: shot2,
-    icon: Cpu,
-    badge: "Électronique de précision",
-    title: "Cartes & microcomposants",
-    text: "Lignes SMT haute précision pour le soudage de composants miniaturisés : la fiabilité commence au niveau de la carte.",
-  },
-  {
-    img: shot3,
-    icon: Sparkles,
-    badge: "Showroom",
-    title: "Sélection premium pour vous",
-    text: "BYTI sélectionne et distribue les meilleurs appareils électroniques connectés : smartphones, tablettes, montres et audio.",
-  },
-];
+const images = [shot1, shot2, shot3];
+const icons: LucideIcon[] = [Smartphone, Cpu, Sparkles];
 
 export function ElectronicsShowcase() {
+  const { t } = useTranslation();
+  const tItems = t("electronicsShowcase.items", { returnObjects: true }) as { badge: string; title: string; text: string }[];
+  const items = tItems.map((it, i) => ({ ...it, img: images[i], icon: icons[i] }));
+
   return (
     <section className="py-20 md:py-28 px-6 lg:px-8 bg-gradient-to-b from-background via-secondary/20 to-background">
       <div className="max-w-7xl mx-auto">
@@ -40,14 +24,13 @@ export function ElectronicsShowcase() {
               color: "var(--byti-blue-deep)",
             }}
           >
-            De l'usine à votre poche
+            {t("electronicsShowcase.kicker")}
           </span>
           <h2 className="text-3xl md:text-5xl font-display font-bold tracking-tight">
-            La fabrication des <span className="gradient-text">appareils électroniques</span>
+            {t("electronicsShowcase.titleStart")} <span className="gradient-text">{t("electronicsShowcase.titleAccent")}</span>
           </h2>
           <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
-            BYTI travaille directement avec les plus grandes usines de manufacture en Chine
-            pour vous offrir smartphones, tablettes et accessoires électroniques certifiés authentiques.
+            {t("electronicsShowcase.desc")}
           </p>
         </div>
 

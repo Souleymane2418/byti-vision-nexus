@@ -3,8 +3,10 @@ import { Button } from "@/components/ui/button";
 import { useCart, formatPrice } from "@/lib/cart";
 import { Minus, Plus, Trash2, ShoppingBag } from "lucide-react";
 import { Link } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 
 export function CartDrawer() {
+  const { t } = useTranslation();
   const { items, open, setOpen, setQty, remove, total, count } = useCart();
 
   return (
@@ -12,16 +14,16 @@ export function CartDrawer() {
       <SheetContent className="w-full sm:max-w-md flex flex-col">
         <SheetHeader>
           <SheetTitle className="flex items-center gap-2 font-display">
-            <ShoppingBag className="h-5 w-5" /> Mon panier ({count})
+            <ShoppingBag className="h-5 w-5" /> {t("cart.title")} ({count})
           </SheetTitle>
         </SheetHeader>
 
         {items.length === 0 ? (
           <div className="flex-1 flex flex-col items-center justify-center text-center text-muted-foreground gap-3">
             <ShoppingBag className="h-12 w-12 opacity-30" />
-            <p>Votre panier est vide</p>
+            <p>{t("cart.empty")}</p>
             <Button asChild variant="outline" onClick={() => setOpen(false)}>
-              <Link to="/boutique">Découvrir la boutique</Link>
+              <Link to="/boutique">{t("cart.discover")}</Link>
             </Button>
           </div>
         ) : (
@@ -76,11 +78,11 @@ export function CartDrawer() {
 
             <div className="border-t border-border pt-4 space-y-3">
               <div className="flex justify-between font-display text-lg">
-                <span>Total</span>
+                <span>{t("cart.total")}</span>
                 <span className="text-primary font-bold">{formatPrice(total)}</span>
               </div>
               <Button asChild className="w-full" size="lg" onClick={() => setOpen(false)}>
-                <Link to="/checkout">Passer la commande</Link>
+                <Link to="/checkout">{t("cart.checkout")}</Link>
               </Button>
             </div>
           </>

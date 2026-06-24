@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, MessageCircle, Share2 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { SocialLinks } from "@/components/SocialLinks";
 import bytiMap1 from "@/assets/byti-map-1.png.asset.json";
 import bytiMap2 from "@/assets/byti-map-2.png.asset.json";
 
 export function ContactSection() {
+  const { t } = useTranslation();
   return (
     <section id="contact" className="py-32 px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -16,11 +18,11 @@ export function ContactSection() {
           className="text-center mb-16"
         >
           <span className="text-primary text-sm font-semibold tracking-widest uppercase">
-            Contact
+            {t("contactSection.kicker")}
           </span>
           <h2 className="mt-4 text-3xl md:text-5xl font-bold tracking-tight text-foreground">
-            Parlons de votre{" "}
-            <span className="gradient-text">projet</span>
+            {t("contactSection.titleStart")}{" "}
+            <span className="gradient-text">{t("contactSection.titleAccent")}</span>
           </h2>
         </motion.div>
 
@@ -38,7 +40,7 @@ export function ContactSection() {
                 <Phone className="w-5 h-5 text-primary" />
               </div>
               <div>
-                <h4 className="font-semibold text-foreground">Téléphone</h4>
+                <h4 className="font-semibold text-foreground">{t("contactSection.phone")}</h4>
                 <a href="tel:+22676767663" className="block text-muted-foreground text-sm mt-1 hover:text-primary transition-colors">
                   +226 76 76 76 63
                 </a>
@@ -53,14 +55,14 @@ export function ContactSection() {
                 <MessageCircle className="w-5 h-5 text-primary" />
               </div>
               <div>
-                <h4 className="font-semibold text-foreground">WhatsApp</h4>
+                <h4 className="font-semibold text-foreground">{t("contactSection.whatsapp")}</h4>
                 <a
                   href="https://wa.me/22676767663"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-primary text-sm mt-1 hover:underline"
                 >
-                  Envoyer un message
+                  {t("contactSection.sendMsg")}
                 </a>
               </div>
             </div>
@@ -70,7 +72,7 @@ export function ContactSection() {
                 <Share2 className="w-5 h-5 text-primary" />
               </div>
               <div>
-                <h4 className="font-semibold text-foreground">Réseaux sociaux</h4>
+                <h4 className="font-semibold text-foreground">{t("contactSection.social")}</h4>
                 <div className="mt-2">
                   <SocialLinks className="!gap-2" iconClassName="!px-2 !py-1.5 !bg-muted hover:!bg-primary hover:!text-white !text-foreground" />
                 </div>
@@ -82,7 +84,7 @@ export function ContactSection() {
                 <Mail className="w-5 h-5 text-primary" />
               </div>
               <div>
-                <h4 className="font-semibold text-foreground">Email</h4>
+                <h4 className="font-semibold text-foreground">{t("contactSection.email")}</h4>
                 <p className="text-muted-foreground text-sm mt-1">contact@bytitechnologie.com</p>
               </div>
             </div>
@@ -92,9 +94,9 @@ export function ContactSection() {
                 <MapPin className="w-5 h-5 text-primary" />
               </div>
               <div>
-                <h4 className="font-semibold text-foreground">Adresse</h4>
+                <h4 className="font-semibold text-foreground">{t("contactSection.address")}</h4>
                 <p className="text-muted-foreground text-sm mt-1">
-                  Av. Kwame Nkrumah, Ouagadougou, Burkina Faso
+                  {t("contactSection.addressValue")}
                 </p>
               </div>
             </div>
@@ -111,35 +113,35 @@ export function ContactSection() {
           >
             <div className="grid sm:grid-cols-2 gap-6">
               <div>
-                <label className="text-sm font-medium text-foreground mb-2 block">Nom</label>
+                <label className="text-sm font-medium text-foreground mb-2 block">{t("contactSection.form.name")}</label>
                 <input
                   type="text"
-                  placeholder="Votre nom"
+                  placeholder={t("contactSection.form.namePh")}
                   className="w-full px-4 py-3 rounded-lg bg-input border border-border/50 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition"
                 />
               </div>
               <div>
-                <label className="text-sm font-medium text-foreground mb-2 block">Email</label>
+                <label className="text-sm font-medium text-foreground mb-2 block">{t("contactSection.form.email")}</label>
                 <input
                   type="email"
-                  placeholder="votre@email.com"
+                  placeholder={t("contactSection.form.emailPh")}
                   className="w-full px-4 py-3 rounded-lg bg-input border border-border/50 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition"
                 />
               </div>
             </div>
             <div>
-              <label className="text-sm font-medium text-foreground mb-2 block">Sujet</label>
+              <label className="text-sm font-medium text-foreground mb-2 block">{t("contactSection.form.subject")}</label>
               <input
                 type="text"
-                placeholder="Sujet de votre message"
+                placeholder={t("contactSection.form.subjectPh")}
                 className="w-full px-4 py-3 rounded-lg bg-input border border-border/50 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition"
               />
             </div>
             <div>
-              <label className="text-sm font-medium text-foreground mb-2 block">Message</label>
+              <label className="text-sm font-medium text-foreground mb-2 block">{t("contactSection.form.message")}</label>
               <textarea
                 rows={5}
-                placeholder="Votre message..."
+                placeholder={t("contactSection.form.messagePh")}
                 className="w-full px-4 py-3 rounded-lg bg-input border border-border/50 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition resize-none"
               />
             </div>
@@ -147,7 +149,7 @@ export function ContactSection() {
               type="submit"
               className="btn-primary-glow w-full px-8 py-3.5 rounded-lg text-sm font-semibold tracking-wide uppercase"
             >
-              Envoyer le message
+              {t("contactSection.form.send")}
             </button>
           </motion.form>
         </div>
@@ -162,13 +164,13 @@ export function ContactSection() {
         >
           <div className="text-center mb-10">
             <span className="text-primary text-sm font-semibold tracking-widest uppercase">
-              Plan d'emplacement
+              {t("contactSection.mapKicker")}
             </span>
             <h3 className="mt-3 text-2xl md:text-4xl font-bold tracking-tight text-foreground">
-              Comment nous <span className="gradient-text">trouver</span>
+              {t("contactSection.mapTitleStart")} <span className="gradient-text">{t("contactSection.mapTitleAccent")}</span>
             </h3>
             <p className="mt-3 text-muted-foreground text-sm max-w-2xl mx-auto">
-              BYTI Technologie International — Av. Kwame Nkrumah, Ouagadougou. Suivez l'itinéraire depuis le Rond-point des Nations Unies.
+              {t("contactSection.mapDesc")}
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
@@ -199,7 +201,7 @@ export function ContactSection() {
                 rel="noopener noreferrer"
                 className="text-primary font-semibold hover:underline"
               >
-                Obtenir l'itinéraire →
+                {t("contactSection.directions")}
               </a>
             </div>
           </div>

@@ -1,21 +1,24 @@
 import { motion } from "framer-motion";
-import { Globe2, MessageSquare, Smartphone, Network, MapPin } from "lucide-react";
+import { Globe2, MessageSquare, Smartphone, Network, MapPin, type LucideIcon } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
-const partnerStats = [
-  { icon: Globe2, value: "International", label: "Présence multi-continents" },
-  { icon: MessageSquare, value: "Télécoms", label: "Messagerie & communication" },
-  { icon: Network, value: "Réseaux", label: "Routes & interconnexions" },
-  { icon: Smartphone, value: "Digital", label: "Transformation client" },
-];
-
-const synergies = [
-  { zone: "Burkina Faso · Cameroun · Côte d'Ivoire", hubs: "BYTI Technologie SARL — opérations locales" },
-  { zone: "Chine · Dubai", hubs: "Représentations BYTI — sourcing & partenariats" },
-  { zone: "Échanges", hubs: "Sourcing, expertise et standards qualité partagés" },
-  { zone: "Ambition", hubs: "Faire rayonner la marque BYTI en Afrique" },
-];
+const statKeys = ["international", "telecom", "network", "digital"] as const;
+const statIcons: Record<(typeof statKeys)[number], LucideIcon> = {
+  international: Globe2,
+  telecom: MessageSquare,
+  network: Network,
+  digital: Smartphone,
+};
 
 export function AboutSection() {
+  const { t } = useTranslation();
+  const partnerStats = statKeys.map((k) => ({
+    icon: statIcons[k],
+    value: t(`about.stats.${k}.value`),
+    label: t(`about.stats.${k}.label`),
+  }));
+  const synergies = t("about.synergies", { returnObjects: true }) as { zone: string; hubs: string }[];
+
   return (
     <section id="about" className="py-32 px-6 lg:px-8 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
@@ -27,24 +30,21 @@ export function AboutSection() {
           transition={{ duration: 0.7 }}
           className="max-w-3xl"
         >
-          <span className="pill-badge">★ Une marque qui voyage</span>
+          <span className="pill-badge">{t("about.kicker")}</span>
           <h2 className="editorial-title mt-6 text-3xl md:text-5xl">
-            Dans la sphère{" "}
-            <span className="editorial-accent">BYTI</span>
+            {t("about.titleStart")}{" "}
+            <span className="editorial-accent">{t("about.titleAccent")}</span>
           </h2>
           <p className="mt-6 text-muted-foreground text-lg leading-relaxed">
-            <span className="font-semibold text-foreground">BYTI Technologie SARL</span>{" "}
-            est implantée en Afrique et au Moyen-Orient avec des représentations en{" "}
-            <span className="font-semibold text-foreground">Chine, Dubai, Abidjan, Cameroun... </span>
-            Cette présence internationale nous permet d'assurer un sourcing de qualité,
-            un appui logistique solide et des standards technologiques à la hauteur des
-            grandes marques mondiales.
+            <span className="font-semibold text-foreground">{t("about.p1Part1")}</span>{" "}
+            {t("about.p1Part2")}{" "}
+            <span className="font-semibold text-foreground">{t("about.p1Part3")}</span>{" "}
+            {t("about.p1Part4")}
           </p>
           <p className="mt-4 text-muted-foreground text-lg leading-relaxed">
-            Nous combinons cette dimension globale avec une{" "}
-            <span className="font-semibold text-foreground">identité 100% locale</span>{" "}
-            au Burkina Faso et en Afrique de l'Ouest, pour livrer une expérience client
-            proche du terrain et adaptée aux réalités du continent.
+            {t("about.p2Part1")}{" "}
+            <span className="font-semibold text-foreground">{t("about.p2Part2")}</span>{" "}
+            {t("about.p2Part3")}
           </p>
         </motion.div>
 
@@ -63,13 +63,13 @@ export function AboutSection() {
               </div>
               <div className="flex flex-col leading-tight">
                 <span className="text-[10px] font-semibold tracking-[0.3em] uppercase text-muted-foreground">
-                  Identité de marque
+                  {t("about.brandKicker")}
                 </span>
                 <span className="text-2xl md:text-3xl font-bold tracking-[0.12em] gradient-text">
-                  LA SPHÈRE BYTI
+                  {t("about.brandName")}
                 </span>
                 <span className="text-xs text-muted-foreground mt-1">
-                  Une marque, plusieurs territoires d'expertise
+                  {t("about.brandTagline")}
                 </span>
               </div>
             </div>
@@ -98,17 +98,14 @@ export function AboutSection() {
             transition={{ duration: 0.7 }}
           >
             <h3 className="text-xs font-bold uppercase tracking-[0.25em] text-byti-red mb-4">
-              Notre écosystème
+              {t("about.ecosystemKicker")}
             </h3>
             <p className="editorial-title text-2xl md:text-3xl mb-6">
-              Une marque, des{" "}
-              <span className="editorial-accent">synergies internationales</span>
+              {t("about.ecosystemTitleStart")}{" "}
+              <span className="editorial-accent">{t("about.ecosystemTitleAccent")}</span>
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              Nous déployons localement un portefeuille complémentaire : électronique,
-              sécurité, énergie, téléviseurs et matériaux de construction. Notre approche
-              s'inspire des standards internationaux portés par la marque BYTI, tout en
-              restant ancrée dans les réalités africaines.
+              {t("about.ecosystemDesc")}
             </p>
           </motion.div>
 
