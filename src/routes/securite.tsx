@@ -1,33 +1,33 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Camera, ShieldCheck, Eye, Bell, Smartphone, Lock } from "lucide-react";
+import { Camera, ShieldCheck, Eye, Bell, Smartphone, Lock, type LucideIcon } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { SectorPage } from "@/components/SectorPage";
 import heroImg from "@/assets/hero-security.jpg";
 
-export const Route = createFileRoute("/securite")({
-  component: () => (
+const featureIcons: LucideIcon[] = [Camera, Eye, Bell, Lock, ShieldCheck, Smartphone];
+
+function SecuriteRoute() {
+  const { t } = useTranslation();
+  const features = (t("sectors.securite.features", { returnObjects: true }) as { title: string; text: string }[]).map(
+    (f, i) => ({ ...f, icon: featureIcons[i] }),
+  );
+  const offerings = t("sectors.securite.offerings", { returnObjects: true }) as { title: string; text: string }[];
+  return (
     <SectorPage
       heroImage={heroImg}
       Icon={Camera}
-      badge="Sécurité & vidéosurveillance"
-      title="Protéger"
-      accent="l'essentiel"
-      subtitle="Vidéosurveillance intelligente, contrôle d'accès et alarmes connectées. Solutions adaptées aux résidences, commerces et sites industriels."
-      features={[
-        { icon: Camera, title: "Caméras HD & IP", text: "Caméras intérieures, extérieures, dôme PTZ, vision nocturne et détection intelligente." },
-        { icon: Eye, title: "Surveillance à distance", text: "Accès temps réel via smartphone, alertes instantanées et enregistrement cloud sécurisé." },
-        { icon: Bell, title: "Alarmes connectées", text: "Détecteurs d'intrusion, capteurs d'ouverture, sirènes et notifications immédiates." },
-        { icon: Lock, title: "Contrôle d'accès", text: "Serrures connectées, badges, biométrie et gestion centralisée des autorisations." },
-        { icon: ShieldCheck, title: "Installation certifiée", text: "Pose, paramétrage et formation par nos techniciens certifiés." },
-        { icon: Smartphone, title: "Application mobile", text: "Pilotez l'ensemble de votre installation depuis une seule application intuitive." },
-      ]}
-      offerings={[
-        { title: "Résidentiel", text: "Pack maison/villa : 2 à 8 caméras, alarme, application mobile et installation clé en main." },
-        { title: "Commerces & bureaux", text: "Surveillance multi-zones, contrôle d'accès employés et reporting sécurité hebdomadaire." },
-        { title: "Sites industriels", text: "Vidéosurveillance haute capacité, intégration alarme/incendie et supervision 24/7." },
-        { title: "Maintenance & monitoring", text: "Contrats de maintenance, mises à jour firmware et intervention rapide en cas d'incident." },
-      ]}
+      badge={t("sectors.securite.badge")}
+      title={t("sectors.securite.title")}
+      accent={t("sectors.securite.accent")}
+      subtitle={t("sectors.securite.subtitle")}
+      features={features}
+      offerings={offerings}
     />
-  ),
+  );
+}
+
+export const Route = createFileRoute("/securite")({
+  component: SecuriteRoute,
   head: () => ({
     meta: [
       { title: "Sécurité & vidéosurveillance — BYTI" },

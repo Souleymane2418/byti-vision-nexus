@@ -1,34 +1,18 @@
 import { motion } from "framer-motion";
-import { Factory, Cpu, Zap } from "lucide-react";
+import { Factory, Cpu, Zap, type LucideIcon } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import factory1 from "@/assets/factory-lithium-1.jpg";
 import factory2 from "@/assets/factory-lithium-2.jpg";
 import factory3 from "@/assets/factory-lithium-3.jpg";
 
-const items = [
-  {
-    img: factory1,
-    icon: Factory,
-    badge: "Gigafactory",
-    title: "Lignes d'assemblage automatisées",
-    text: "Des chaînes robotisées produisent des cellules LiFePO₄ haute densité avec une précision millimétrique, garantissant performance et longévité.",
-  },
-  {
-    img: factory2,
-    icon: Cpu,
-    badge: "Clean-room",
-    title: "Contrôle qualité en salle blanche",
-    text: "Chaque module est inspecté par nos techniciens dans un environnement ultra-contrôlé avant son intégration dans nos solutions énergétiques.",
-  },
-  {
-    img: factory3,
-    icon: Zap,
-    badge: "Stockage industriel",
-    title: "Du domestique à l'industriel",
-    text: "Des powerwalls résidentiels aux containers de stockage multi-MWh, BYTI fournit des solutions à toutes les échelles, partout en Afrique.",
-  },
-];
+const images = [factory1, factory2, factory3];
+const icons: LucideIcon[] = [Factory, Cpu, Zap];
 
 export function ManufacturingShowcase() {
+  const { t } = useTranslation();
+  const tItems = t("manufacturing.items", { returnObjects: true }) as { badge: string; title: string; text: string }[];
+  const items = tItems.map((it, i) => ({ ...it, img: images[i], icon: icons[i] }));
+
   return (
     <section className="py-20 md:py-28 px-6 lg:px-8 bg-gradient-to-b from-background via-secondary/20 to-background">
       <div className="max-w-7xl mx-auto">
@@ -40,14 +24,13 @@ export function ManufacturingShowcase() {
               color: "var(--byti-blue-deep)",
             }}
           >
-            Nos usines partenaires
+            {t("manufacturing.kicker")}
           </span>
           <h2 className="text-3xl md:text-5xl font-display font-bold tracking-tight">
-            La puissance de la <span className="gradient-text">manufacture lithium</span>
+            {t("manufacturing.titleStart")} <span className="gradient-text">{t("manufacturing.titleAccent")}</span>
           </h2>
           <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
-            BYTI s'appuie sur un réseau de gigafactories de pointe en Chine pour produire
-            des batteries LiFePO₄ à usage domestique et industriel, livrées partout en Afrique.
+            {t("manufacturing.desc")}
           </p>
         </div>
 

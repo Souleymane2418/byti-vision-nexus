@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 import { ArrowRight, CheckCircle2, type LucideIcon } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
@@ -29,6 +30,7 @@ export function SectorPage({
   ctaPrimary,
   showcase,
 }: SectorPageProps) {
+  const { t } = useTranslation();
   return (
     <div className="bg-background min-h-screen">
       <Navbar />
@@ -68,13 +70,13 @@ export function SectorPage({
                 href={ctaPrimary?.href ?? "/#contact"}
                 className="btn-byti-red inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-bold uppercase tracking-wide"
               >
-                {ctaPrimary?.label ?? "Demander un devis"} <ArrowRight className="h-4 w-4" />
+                {ctaPrimary?.label ?? t("sectorCommon.quote")} <ArrowRight className="h-4 w-4" />
               </a>
               <a
                 href="#offre"
                 className="inline-flex items-center px-8 py-4 rounded-full text-sm font-bold uppercase tracking-wide text-white border-[1.5px] border-white/60 hover:bg-white/10 transition-all"
               >
-                Découvrir
+                {t("sectorCommon.discover")}
               </a>
             </div>
           </motion.div>
@@ -85,9 +87,9 @@ export function SectorPage({
       <section id="offre" className="py-20 md:py-28 px-6 lg:px-8 bg-gradient-to-b from-background via-secondary/20 to-background">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <span className="pill-badge">★ Pourquoi BYTI</span>
+            <span className="pill-badge">{t("sectorCommon.whyByti")}</span>
             <h2 className="text-3xl md:text-5xl font-display font-bold tracking-tight mt-4">
-              Une expertise <span className="gradient-text">complète</span>
+              {t("sectorCommon.expertiseTitle")} <span className="gradient-text">{t("sectorCommon.expertiseAccent")}</span>
             </h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -118,7 +120,7 @@ export function SectorPage({
       <section className="py-20 md:py-28 px-6 lg:px-8 max-w-5xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-5xl font-display font-bold tracking-tight">
-            Notre <span className="gradient-text">offre</span>
+            {t("sectorCommon.offerTitle")} <span className="gradient-text">{t("sectorCommon.offerAccent")}</span>
           </h2>
         </div>
         <div className="space-y-4">
@@ -154,17 +156,16 @@ export function SectorPage({
         >
           <Icon className="absolute top-6 right-6 h-32 w-32 opacity-10" />
           <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">
-            Parlons de votre projet
+            {t("sectorCommon.ctaTitle")}
           </h2>
           <p className="max-w-xl mx-auto mb-8 text-white/90">
-            Nos experts BYTI vous accompagnent dans le choix de la solution la plus adaptée à
-            vos besoins et votre budget.
+            {t("sectorCommon.ctaDesc")}
           </p>
           <a
             href="/#contact"
             className="inline-flex items-center gap-2 px-10 py-4 rounded-full text-sm font-bold uppercase tracking-wide bg-white text-[color:var(--byti-red)] hover:scale-105 transition-transform"
           >
-            Nous contacter <ArrowRight className="h-4 w-4" />
+            {t("sectorCommon.ctaButton")} <ArrowRight className="h-4 w-4" />
           </a>
         </div>
       </section>
