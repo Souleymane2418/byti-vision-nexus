@@ -133,6 +133,7 @@ function HomePage() {
       ))}
       <EnergyShowcase />
       <EcoCommitment />
+      <AboutTeaser />
       <WhyChooseUs />
       <PartnersMarquee />
       <Footer />
