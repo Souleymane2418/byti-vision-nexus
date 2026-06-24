@@ -32,14 +32,13 @@ export function EcoCommitment() {
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-byti-blue/10 text-byti-blue dark:text-byti-blue text-xs font-semibold uppercase tracking-wider mb-6">
             <Leaf className="w-3.5 h-3.5" />
-            Engagement environnemental
+            {t("eco.badge")}
           </span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.05]">
-            BYTI agit pour la planète
+            {t("eco.title")}
           </h2>
           <p className="mt-6 text-lg md:text-xl text-muted-foreground leading-relaxed">
-            Connecter, construire et innover sans compromettre l'avenir. Nos solutions énergétiques
-            réduisent activement les émissions de gaz à effet de serre et protègent les écosystèmes africains.
+            {t("eco.subtitle")}
           </p>
         </motion.div>
 
@@ -53,7 +52,7 @@ export function EcoCommitment() {
         >
           <img
             src={ecoLandscape}
-            alt="Installations solaires BYTI intégrées dans un paysage africain préservé"
+            alt={t("eco.captionTitle")}
             loading="lazy"
             width={1920}
             height={1080}
@@ -62,10 +61,10 @@ export function EcoCommitment() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
             <p className="text-byti-yellow text-sm font-semibold uppercase tracking-widest mb-3">
-              Énergie propre · Écosystème préservé
+              {t("eco.captionKicker")}
             </p>
             <h3 className="text-2xl md:text-4xl font-bold text-white max-w-2xl drop-shadow-lg">
-              Quand la technologie rencontre la nature
+              {t("eco.captionTitle")}
             </h3>
           </div>
         </motion.div>
@@ -74,7 +73,7 @@ export function EcoCommitment() {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-20">
           {stats.map((stat, i) => (
             <motion.div
-              key={stat.label}
+              key={stat.key}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -85,7 +84,9 @@ export function EcoCommitment() {
               <div className="text-3xl md:text-4xl font-bold text-foreground tracking-tight">
                 {stat.value}
               </div>
-              <div className="mt-2 text-sm text-muted-foreground leading-snug">{stat.label}</div>
+              <div className="mt-2 text-sm text-muted-foreground leading-snug">
+                {t(`eco.stats.${stat.key}`)}
+              </div>
             </motion.div>
           ))}
         </div>
@@ -94,7 +95,7 @@ export function EcoCommitment() {
         <div className="grid md:grid-cols-2 gap-8 md:gap-12">
           {pillars.map((pillar, i) => (
             <motion.div
-              key={pillar.title}
+              key={pillar.key}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
@@ -104,7 +105,7 @@ export function EcoCommitment() {
               <div className="relative h-64 overflow-hidden">
                 <img
                   src={pillar.image}
-                  alt={pillar.title}
+                  alt={t(`eco.pillars.${pillar.key}.title`)}
                   loading="lazy"
                   width={1024}
                   height={1024}
@@ -113,8 +114,12 @@ export function EcoCommitment() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
               </div>
               <div className="p-8">
-                <h3 className="text-2xl font-bold text-foreground mb-3">{pillar.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{pillar.description}</p>
+                <h3 className="text-2xl font-bold text-foreground mb-3">
+                  {t(`eco.pillars.${pillar.key}.title`)}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  {t(`eco.pillars.${pillar.key}.text`)}
+                </p>
               </div>
             </motion.div>
           ))}
