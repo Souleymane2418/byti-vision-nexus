@@ -42,21 +42,20 @@ export function Footer() {
               </span>
             </div>
             <p className="text-sm text-white/85 leading-relaxed">
-              Filiale africaine de <span className="font-semibold text-white">BYTI </span>, multinationale spécialisée en technologie, énergie et infrastructure.
+              <Trans i18nKey="footer.tagline" components={{ b: <span className="font-semibold text-white" /> }} />
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
             <h4 className="text-sm font-bold text-byti-yellow tracking-wide uppercase mb-4">
-              Navigation
+              {t("footer.navigation")}
             </h4>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
-                <li key={link.label}>
+                <li key={link.to}>
                   <Link
                     to={link.to}
-                    hash={link.hash || undefined}
                     className="text-sm text-white/65 hover:text-byti-yellow transition-colors"
                   >
                     {link.label}
@@ -69,7 +68,7 @@ export function Footer() {
           {/* Activities */}
           <div>
             <h4 className="text-sm font-bold text-byti-yellow tracking-wide uppercase mb-4">
-              Activités
+              {t("footer.activities")}
             </h4>
             <ul className="space-y-2">
               {activities.map((a) => (
