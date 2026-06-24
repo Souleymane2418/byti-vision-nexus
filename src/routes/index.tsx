@@ -69,6 +69,17 @@ export const Route = createFileRoute("/")({
 
 const heroSections = [
   {
+    id: "byti-international",
+    image: bytiMapImg.url,
+    poster: bytiMapImg.url,
+    title: "BYTI International",
+    subtitle: "Une multinationale au service de l'Afrique et du monde",
+    description:
+      "Présent sur plusieurs continents avec des représentations en Chine, à Dubai, en Côte d'Ivoire et au Cameroun, le groupe BYTI conjugue puissance internationale et expertise locale pour livrer des solutions technologiques, énergétiques et industrielles à la hauteur des plus grands standards mondiaux.",
+    buttonText: "Découvrir le groupe",
+    buttonHref: "/a-propos",
+  },
+  {
     id: "electronics",
     image: heroElectronicsImg,
     poster: heroElectronicsImg,
