@@ -64,17 +64,16 @@ export function EnergyShowcase() {
             }}>
             <Sun className="h-4 w-4" style={{ color: "var(--byti-red)" }} />
             <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: "var(--byti-blue-deep)" }}>
-              Gamme Énergie BYTI
+              {t("energyShowcase.badge")}
             </span>
           </div>
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight mb-5">
-            <span className="gradient-text">L'énergie</span>
+            <span className="gradient-text">{t("energyShowcase.titleAccent")}</span>
             <br />
-            <span className="text-foreground">qui ne s'arrête jamais</span>
+            <span className="text-foreground">{t("energyShowcase.titleRest")}</span>
           </h2>
           <p className="max-w-2xl mx-auto text-base md:text-lg text-muted-foreground">
-            Stations portables, onduleurs solaires et batteries lithium LiFePO₄ certifiés BYTI.
-            Conçus pour résister, pensés pour durer.
+            {t("energyShowcase.desc")}
           </p>
         </motion.div>
 
