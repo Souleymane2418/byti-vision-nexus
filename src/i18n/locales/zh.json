@@ -49,6 +49,8 @@
     "slide4": { "badge": "电子产品", "title": "始终在线", "subtitle": "智能手机、电视与现代设备" }
   },
   "hero": {
+    "globalBadge": "BYTI — 全球多领域领导者",
+
     "international": {
       "title": "BYTI 国际",
       "subtitle": "服务非洲与世界的跨国集团",

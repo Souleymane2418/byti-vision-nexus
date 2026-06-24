@@ -49,7 +49,9 @@
     "slide4": { "badge": "Électronique", "title": "Toujours connecté", "subtitle": "Smartphones, TV & équipements modernes" }
   },
   "hero": {
+    "globalBadge": "BYTI — Leader international multi-secteur",
     "international": {
+
       "title": "BYTI International",
       "subtitle": "Une multinationale au service de l'Afrique et du monde",
       "description": "Présent sur plusieurs continents avec des représentations en Chine, à Dubai, en Côte d'Ivoire et au Cameroun, le groupe BYTI conjugue puissance internationale et expertise locale pour livrer des solutions technologiques, énergétiques et industrielles à la hauteur des plus grands standards mondiaux."

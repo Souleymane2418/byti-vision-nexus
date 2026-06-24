@@ -49,6 +49,8 @@
     "slide4": { "badge": "Electronics", "title": "Always connected", "subtitle": "Smartphones, TVs & modern equipment" }
   },
   "hero": {
+    "globalBadge": "BYTI — Global multi-sector leader",
+
     "international": {
       "title": "BYTI International",
       "subtitle": "A multinational serving Africa and the world",
