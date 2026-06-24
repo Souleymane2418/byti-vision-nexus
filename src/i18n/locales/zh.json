@@ -1,0 +1,33 @@
+{
+  "nav": {
+    "home": "首页",
+    "shop": "商店",
+    "activities": "业务",
+    "about": "关于我们",
+    "projects": "项目",
+    "contact": "联系我们",
+    "cart": "购物车",
+    "menu": "菜单",
+    "language": "语言"
+  },
+  "footer": {
+    "navigation": "导航",
+    "activities": "业务",
+    "contact": "联系方式",
+    "social": "社交媒体",
+    "tagline": "<b>BYTI</b> 集团在非洲的子公司,专注于科技、能源与基础设施。",
+    "locationTitle": "位置地图",
+    "locationAddress": "BYTI Technologie International — 瓦加杜古市 Kwame Nkrumah 大道",
+    "directions": "获取路线 →",
+    "copyright": "© {{year}} BYTI Technologie SARL. 版权所有。",
+    "motto": "连接 · 建设 · 创新",
+    "developedBy": "网站由"
+  },
+  "activities": {
+    "electronics": "电子产品",
+    "security": "安防",
+    "energy": "能源",
+    "tv": "电视",
+    "btp": "建筑工程"
+  }
+}

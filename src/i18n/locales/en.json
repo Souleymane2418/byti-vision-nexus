@@ -1,0 +1,33 @@
+{
+  "nav": {
+    "home": "Home",
+    "shop": "Shop",
+    "activities": "Activities",
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact",
+    "cart": "Cart",
+    "menu": "Menu",
+    "language": "Language"
+  },
+  "footer": {
+    "navigation": "Navigation",
+    "activities": "Activities",
+    "contact": "Contact",
+    "social": "Social media",
+    "tagline": "African subsidiary of <b>BYTI</b>, a multinational specialized in technology, energy and infrastructure.",
+    "locationTitle": "Location map",
+    "locationAddress": "BYTI Technologie International — Av. Kwame Nkrumah, Ouagadougou.",
+    "directions": "Get directions →",
+    "copyright": "© {{year}} BYTI Technologie SARL. All rights reserved.",
+    "motto": "Connect · Build · Innovate",
+    "developedBy": "Website developed by"
+  },
+  "activities": {
+    "electronics": "Electronics",
+    "security": "Security",
+    "energy": "Energy",
+    "tv": "Televisions",
+    "btp": "Construction"
+  }
+}
