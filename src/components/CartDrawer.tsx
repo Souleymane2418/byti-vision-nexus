@@ -14,16 +14,16 @@ export function CartDrawer() {
       <SheetContent className="w-full sm:max-w-md flex flex-col">
         <SheetHeader>
           <SheetTitle className="flex items-center gap-2 font-display">
-            <ShoppingBag className="h-5 w-5" /> Mon panier ({count})
+            <ShoppingBag className="h-5 w-5" /> {t("cart.title")} ({count})
           </SheetTitle>
         </SheetHeader>
 
         {items.length === 0 ? (
           <div className="flex-1 flex flex-col items-center justify-center text-center text-muted-foreground gap-3">
             <ShoppingBag className="h-12 w-12 opacity-30" />
-            <p>Votre panier est vide</p>
+            <p>{t("cart.empty")}</p>
             <Button asChild variant="outline" onClick={() => setOpen(false)}>
-              <Link to="/boutique">Découvrir la boutique</Link>
+              <Link to="/boutique">{t("cart.discover")}</Link>
             </Button>
           </div>
         ) : (
