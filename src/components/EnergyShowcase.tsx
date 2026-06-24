@@ -184,6 +184,7 @@ export function EnergyShowcase() {
 }
 
 function FeaturedCard({ product }: { product: EnergyProduct }) {
+  const { t } = useTranslation();
   return (
     <motion.div
       initial={{ opacity: 0, x: -30 }}
